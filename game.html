@@ -772,11 +772,11 @@
         isGameOver = true;
         healthDisplay.textContent = "GAME OVER (Refresh to restart)";
         player.speed = 0;
-        
+
         // Stop any existing sounds
         gameOverSound.pause();
         gameOverSound.currentTime = 0;
-        
+
         // Play new sound
         gameOverSound.play().catch(e => console.log("Game over sound failed:", e));
       }
@@ -1446,7 +1446,35 @@
 
         ctx.font = '18px Arial';
         ctx.fillText('Bourne is now impressed with your work!', canvas.width / 2, canvas.height / 2 + 25);
+
+        // Draw button
+        ctx.fillStyle = '#28a745'; // Green color
+        ctx.fillRect(canvas.width / 2 - 75, canvas.height / 2 + 50, 150, 40);
+
+        ctx.fillStyle = 'white';
+        ctx.font = '20px Arial';
+        ctx.fillText('Click Here', canvas.width / 2, canvas.height / 2 + 78);
       }
+
+      // Click detection
+      canvas.addEventListener('click', function (event) {
+        if (gameState === GAME_STATES.VICTORY) {
+          let rect = canvas.getBoundingClientRect();
+          let clickX = event.clientX - rect.left;
+          let clickY = event.clientY - rect.top;
+
+          let buttonX = canvas.width / 2 - 75;
+          let buttonY = canvas.height / 2 + 50;
+          let buttonWidth = 150;
+          let buttonHeight = 40;
+
+          if (clickX >= buttonX && clickX <= buttonX + buttonWidth &&
+            clickY >= buttonY && clickY <= buttonY + buttonHeight) {
+            window.location.href = "https://admissions.g30.nagoya-u.ac.jp/"; // Change to your desired URL
+          }
+        }
+      });
+
     }
     function drawDirectionArrow(targetX, targetY, color) {
       // Calculate direction to target
