@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Get 30 Germans At My Estate</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #222;
+      font-family: Arial, sans-serif;
+      display: flex;
+      /* New flex layout */
+    }
+
+    /* New sidebar styles */
+    .sidebar {
+      width: 200px;
+      padding: 20px;
+      color: #aaa;
+      background-color: #111;
+      height: 100vh;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    #left-sidebar {
+      border-right: 2px solid #333;
+    }
+
+    #right-sidebar {
+      border-left: 2px solid #333;
+    }
+
+    #gameContainer {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #gameCanvas {
+      background-color: #333;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #healthDisplay {
+      position: absolute;
+      top: 10px;
+      left: 210px;
+      /* Adjusted for left sidebar */
+      color: white;
+      font-size: 20px;
+    }
+
+    .sponsor-ad {
+      width: 100% !important;
+      /* Force full width */
+      max-width: 100% !important;
+      /* Prevent overflow */
+      height: auto !important;
+      /* Maintain aspect ratio */
+      display: block;
+      margin: 10px 0;
+      object-fit: contain;
+      /* Force image to fit */
+      border: 1px solid #333;
+      /* Visual boundary */
+    }
+
+    #stageDisplay {
+      position: absolute;
+      top: 10px;
+      right: 210px;
+      /* Adjusted for right sidebar */
+      color: white;
+      font-size: 20px;
+    }
+
+    #bossHealthDisplay {
+      position: absolute;
+      top: 40px;
+      left: 210px;
+      /* Adjusted for left sidebar */
+      color: white;
+      font-size: 16px;
+      display: none;
+    }
+
+    #instructions {
+      position: absolute;
+      bottom: 10px;
+      left: 210px;
+      /* Adjusted for left sidebar */
+      color: #aaa;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body> <!-- Left Sidebar -->
+  <div id="left-sidebar" class="sidebar">
+    <h3>Links from Our Sponsors</h3>
+    <a href="https://www.math.nagoya-u.ac.jp/~richard/SMLspring2025.html" target="_blank">
+      <image class="sponsor-ad" src="law_ad.png"></image>
+    </a>
+    <a href="https://sites.google.com/site/khomologyzone/teaching/sml-spring-2025?authuser=0" target="_blank">
+      <image class="sponsor-ad" src="niceass.png"></image>
+    </a>
+    <a href="https://youtu.be/S19-czjTYoY?t=225" target="_blank">
+      <p style="color: white">These links belong to our sponsors, who do not necessarily agree with us.</p>
+    </a>
+  </div>
+
+  <!-- Main Game Container -->
+  <div id="gameContainer">
+    <div id="healthDisplay">Health: ❤❤❤❤❤</div>
+    <div id="stageDisplay">Stage: 1</div>
+    <div id="bossHealthDisplay"></div>
+    <canvas id="gameCanvas" width="1000" height="900"></canvas>
+    <div id="instructions">
+      WASD to move (too lazy to implement arrow keys) | SPACE to attack | Monsters take 99999999 hits | You DIE after
+      taking 5 hits!
+    </div>
+  </div>
+
+  <!-- Right Sidebar -->
+  <div id="right-sidebar" class="sidebar">
+    <h1>Press ESC to get a gap year!</h1>
+    <h2>Transcript</h2>
+    <div class="sponsor-ad">
+      <ol>
+        <li>Compulsary credit not enough.</li><br>
+        <li>Introduction to Academic Success: C-</li><br>
+        <li>Quantum Mechanis IIIIIII: S</li> <br>
+        <li>Special Mathematics Lecture is my favourite course in g30 because it allows us to learn about interesting
+          math topics every semester and engage with it by writing reports please take it otherwise I don't get my ad
+          money.</li>
+      </ol>
+    </div>
+    <a href="https://admissions.g30.nagoya-u.ac.jp/" target="_blank">
+      <image class="sponsor-ad" src="g30suck.jpg"></image>
+    </a>
+    <a href="https://admissions.g30.nagoya-u.ac.jp/" target="_blank">
+      <image class="sponsor-ad" src="g30suck.jpg"></image>
+    </a>
+    <a href="https://admissions.g30.nagoya-u.ac.jp/" target="_blank">
+      <image class="sponsor-ad" src="g30suck.jpg"></image>
+    </a>
+  </div>
+
+  <script>
+
+    const gameOverSound = new Audio("alarming.mp3");
+    gameOverSound.volume = 0.7;
+    let isGameOver = false; // To prevent repeated triggers\
+
+    const images = {
+      player: new Image(),
+      monsters: new Image(),
+      boss: new Image(),
+      sameras: new Image(),
+      wings: new Image(),
+      background: new Image(),
+      portal: new Image()
+    };
+
+    // Load images
+    images.player.src = 'player.png';
+    images.monsters.src = 'monsters.png';
+    images.boss.src = 'bourne.png';
+    images.sameras.src = 'serge_camera.png';
+    images.wings.src = 'bachmann_wings.png';
+    images.background.src = 'background.jpg';
+    images.portal.src = 'portal.png'
+
+    // Track loaded images
+    let imagesLoaded = 0;
+    const totalImages = Object.keys(images).length;
+
+    function pause() {
+      alert("You are in gap year! Congratulations. Click OK to resume.")
+    }
+
+    function imageLoaded() {
+      imagesLoaded++;
+      if (imagesLoaded === totalImages) {
+        // All images loaded, start game
+        init();
+      }
+    }
+
+    // Set up load handlers
+    Object.values(images).forEach(img => {
+      img.onload = imageLoaded;
+      img.onerror = () => console.error('Error loading image:', img.src);
+    });
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const healthDisplay = document.getElementById('healthDisplay');
+    const stageDisplay = document.getElementById('stageDisplay');
+    const bossHealthDisplay = document.getElementById('bossHealthDisplay');
+
+    // Game states
+    const GAME_STATES = {
+      STAGE_1: 0,
+      STAGE_1_COMPLETE: 1,
+      STAGE_2: 2,
+      STAGE_2_PHASE2: 3,
+      VICTORY: 4
+    };
+    let gameState = GAME_STATES.STAGE_1;
+
+    // Game world dimensions
+    const stage1Width = 2000;
+    const stage1Height = 2000;
+    const stage2Width = 1000;
+    const stage2Height = 1000;
+    const fanAngle = Math.PI * 0.375;
+    let btime = 180;
+
+    // Center portal
+    const centerPortal = {
+      x: stage1Width / 2,
+      y: stage1Height / 2,
+      radius: 40,
+      active: false,
+      pulsate: 0
+    };
+
+    // Camera/viewport
+    let camera = {
+      x: 0,
+      y: 0,
+      width: canvas.width,
+      height: canvas.height
+    };
+
+    // Player
+    let player = {
+      x: stage1Width / 2,
+      y: stage1Height / 2,
+      size: 30,
+      speed: 5,
+      color: '#4CAF50',
+      attacking: false,
+      attackRadius: 100,
+      attackAngle: 0,
+      attackDuration: 30,
+      attackTimer: 0,
+      attackCooldown: 0,
+      health: 5,
+      lastMoveAngle: 0,
+      attackWindUp: 0,
+      attackActive: false,
+      invulnerable: 0
+    };
+
+    // Monsters
+    let monsters = [];
+    const MONSTER_COUNT = 10;
+
+    // Boss stage elements
+    let boss = {
+      x: stage2Width / 2,
+      y: stage2Height / 2,
+      size: 60,
+      health: 100,
+      maxHealth: 100,
+      active: false,
+      attackTimer: 0,
+      bombTimer: 0,
+      shield: 9, // 9x health shield when minions alive
+      phase: 1,
+      defeatedOnce: false
+    };
+
+    // Replace the samera declaration with:
+    const MAX_CAMERAS = 4;
+    // Proper camera placement in all four corners
+    let sameras = [
+      { // Top-left
+        x: 100,
+        y: 100,
+        size: 40,
+        health: 50,
+        maxHealth: 50,
+        color: '#5555FF',
+        active: true
+      },
+      { // Top-right
+        x: stage2Width - 100,
+        y: 100,
+        size: 40,
+        health: 50,
+        maxHealth: 50,
+        color: '#5555FF',
+        active: true
+      },
+      { // Bottom-left
+        x: 100,
+        y: stage2Height - 100,
+        size: 40,
+        health: 50,
+        maxHealth: 50,
+        color: '#5555FF',
+        active: true
+      },
+      { // Bottom-right
+        x: stage2Width - 100,
+        y: stage2Height - 100,
+        size: 40,
+        health: 50,
+        maxHealth: 50,
+        color: '#5555FF',
+        active: true
+      }
+    ];
+
+    // Remove the old samera and initsameras() definitions
+    let bachmannWings = {
+      x: stage2Width - 100,
+      y: stage2Height - 100,
+      size: 35,
+      health: Infinity,
+      maxHealth: Infinity,
+      active: false,
+      color: '#FF5555',
+      chargeTimer: 0,
+      charging: false,
+      chargeDirection: 0,
+      chargeSpeed: 6,
+      normalSpeed: 2
+    };
+
+    let bossBombs = [];
+    let bossAttackArms = [];
+    let stage2Monsters = [];
+    // Add with other game variables
+    let extraWings = [];
+
+    // Controls
+    let keys = {};
+
+    function initsameras() {
+      sameras = [
+        { ...sameraTemplate, x: 100, y: 100 }, // Top-left
+        { ...sameraTemplate, x: stage2Width - 100, y: 100 }, // Top-right
+        { ...sameraTemplate, x: 100, y: stage2Height - 100 }, // Bottom-left
+        { ...sameraTemplate, x: stage2Width - 100, y: stage2Height - 100 } // Bottom-right
+      ];
+    }
+
+    // Initialize
+    function init() {
+      // Spawn monsters randomly
+      for (let i = 0; i < MONSTER_COUNT; i++) {
+        spawnMonster();
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {  // Only respond to ESC
+          pause();
+          e.preventDefault(); // Prevent browser from exiting fullscreen
+        }
+      });
+
+      let attackSoundPlaying = false; // Track if attack sound is playing
+
+      // Set up controls
+      window.addEventListener('keydown', (e) => {
+        keys[e.key.toLowerCase()] = true;
+
+        if (e.key === ' ' && !player.attacking && player.attackCooldown <= 0) {
+          e.preventDefault();
+          player.attacking = true;
+          player.attackWindUp = 6;
+          player.attackAngle = player.lastMoveAngle;
+          player.attackCooldown = 10;
+
+          // Only play sound if no instance is currently playing
+          if (!attackSoundPlaying) {
+            attackSoundPlaying = true;
+            let attackSound = new Audio("shinJACK POT.mp3");
+            attackSound.volume = 0.5;
+            attackSound.play();
+
+            // When sound ends, allow playing again
+            attackSound.onended = () => {
+              attackSoundPlaying = false;
+            };
+          }
+        }
+      });
+
+
+
+      window.addEventListener('keyup', (e) => {
+        keys[e.key.toLowerCase()] = false;
+      });
+
+      // Start game loop
+      gameLoop();
+    }
+
+    // Spawn a monster
+    function spawnMonster() {
+      monsters.push({
+        x: Math.random() * stage1Width,
+        y: Math.random() * stage1Height,
+        size: 25,
+        speed: 2,
+        color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+        health: 15,
+        active: false,
+        attackCooldown: 0,
+        attackWindUp: 0,
+        hitRadius: 35,
+        hurtRadius: 25
+      });
+    }
+
+    // Spawn a stage 2 monster
+    function spawnStage2Monster() {
+      stage2Monsters.push({
+        x: Math.random() * stage2Width,
+        y: Math.random() * stage2Height,
+        size: 25,
+        speed: 2,
+        color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+        health: 15,
+        active: true,
+        attackCooldown: 0,
+        attackWindUp: 0,
+        hitRadius: 35,
+        hurtRadius: 25
+      });
+    }
+
+    // Game loop
+    function gameLoop() {
+      update();
+      render();
+      requestAnimationFrame(gameLoop);
+    }
+
+    function update() {
+      // Player movement
+      let moved = false;
+      if (keys['w']) { player.y -= player.speed; moved = true; }
+      if (keys['s']) { player.y += player.speed; moved = true; }
+      if (keys['a']) { player.x -= player.speed; moved = true; }
+      if (keys['d']) { player.x += player.speed; moved = true; }
+
+      // Update last movement angle if player moved
+      if (moved) {
+        player.lastMoveAngle = Math.atan2(
+          (keys['s'] ? 1 : 0) - (keys['w'] ? 1 : 0),
+          (keys['d'] ? 1 : 0) - (keys['a'] ? 1 : 0)
+        );
+      }
+
+      // Keep player in bounds based on current stage
+      if (gameState === GAME_STATES.STAGE_1 || gameState === GAME_STATES.STAGE_1_COMPLETE) {
+        player.x = Math.max(player.size, Math.min(stage1Width - player.size, player.x));
+        player.y = Math.max(player.size, Math.min(stage1Height - player.size, player.y));
+      } else {
+        player.x = Math.max(player.size, Math.min(stage2Width - player.size, player.x));
+        player.y = Math.max(player.size, Math.min(stage2Height - player.size, player.y));
+      }
+
+      // Update camera (follow player unless at edge)
+      if (gameState === GAME_STATES.STAGE_1 || gameState === GAME_STATES.STAGE_1_COMPLETE) {
+        camera.x = Math.max(0, Math.min(player.x - canvas.width / 2, stage1Width - camera.width));
+        camera.y = Math.max(0, Math.min(player.y - canvas.height / 2, stage1Height - camera.height));
+      } else {
+        camera.x = Math.max(0, Math.min(player.x - canvas.width / 2, stage2Width - camera.width));
+        camera.y = Math.max(0, Math.min(player.y - canvas.height / 2, stage2Height - camera.height));
+      }
+
+      if (player.attackCooldown > 0) player.attackCooldown--;
+      if (player.invulnerable > 0) player.invulnerable--;
+
+      if (player.attacking) {
+        player.attackWindUp--;
+
+        // Active frames (last 3 frames of wind-up)
+        player.attackActive = (player.attackWindUp <= 3 && player.attackWindUp > 0);
+
+        if (player.attackActive) {
+          checkAttack();
+        }
+
+        // End attack
+        if (player.attackWindUp <= 0) {
+          player.attacking = false;
+          player.attackTimer = player.attackDuration;
+        }
+      }
+
+      // Check if all monsters are defeated (Stage 1 complete)
+      if (gameState === GAME_STATES.STAGE_1 && monsters.length === 0) {
+        gameState = GAME_STATES.STAGE_1_COMPLETE;
+        centerPortal.active = true;
+        stageDisplay.textContent = "Stage: Toyota Auditorium Unlocked!";
+      }
+
+      // Check if player reaches portal to start Stage 2
+      if (gameState === GAME_STATES.STAGE_1_COMPLETE) {
+        const dx = player.x - centerPortal.x;
+        const dy = player.y - centerPortal.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < player.size + centerPortal.radius) {
+          gameState = GAME_STATES.STAGE_2;
+          stageDisplay.textContent = "Stage: 2 (Bourne Fight)";
+          centerPortal.active = false;
+          bossHealthDisplay.style.display = "block";
+
+          // Initialize boss fight
+          boss.active = true;
+
+          sameras.forEach(samera => {
+            samera.active = true;
+            samera.health = samera.maxHealth;
+          });
+
+          bachmannWings.active = true;
+
+          // Position player in stage 2
+          player.x = 100;
+          player.y = 100;
+
+          // Play the boss fight music
+          let bossMusic = new Audio("terify.mp3");
+          bossMusic.loop = true; // Loop the music so it doesn't stop
+          bossMusic.volume = 1; // Adjust volume if needed
+          bossMusic.play();
+        }
+
+      }
+
+      // Update monsters (only in Stage 1)
+      if (gameState === GAME_STATES.STAGE_1) {
+        monsters.forEach((monster, index) => {
+          const dx = player.x - monster.x;
+          const dy = player.y - monster.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 300) monster.active = true;
+
+          if (monster.active) {
+            // Movement
+            if (monster.attackWindUp <= 0) {
+              monster.x += (dx / dist) * monster.speed;
+              monster.y += (dy / dist) * monster.speed;
+
+              if (dist < 80) {
+                monster.attackWindUp = 30;
+              }
+            } else {
+              monster.attackWindUp--;
+
+              // Attack when wind-up completes
+              if (monster.attackWindUp === 0 && dist < 80) {
+                if (player.invulnerable <= 0) {
+                  player.health--;
+                  updateHealthDisplay();
+                  player.invulnerable = 30;
+                }
+                monster.attackCooldown = 60;
+              }
+            }
+          }
+        });
+      }
+
+      // Update boss stage elements
+      if (gameState === GAME_STATES.STAGE_2 || gameState === GAME_STATES.STAGE_2_PHASE2) {
+        // Boss attacks
+        boss.attackTimer++;
+        if (boss.attackTimer >= 180) { // Every 3 seconds
+          boss.attackTimer = 0;
+          triggerBossAttack();
+        }
+
+        // Boss bombs
+        boss.bombTimer++;
+        if (boss.bombTimer >= btime) { // Every 10 seconds
+          boss.bombTimer = 0;
+          spawnBossBomb();
+        }
+
+        // Update boss attack arms
+        // In update(), modify the boss attack arm collision detection:
+        bossAttackArms.forEach((arm, index) => {
+          arm.progress += 0.03;
+          if (arm.progress >= 1) {
+            bossAttackArms.splice(index, 1);
+          }
+
+          // Damage check during active frames (0.7-1.0 progress)
+          if (arm.progress >= 0.7 && arm.progress <= 1.0) {
+            const armLength = boss.size + arm.length * arm.progress;
+            const armX = boss.x + Math.cos(arm.angle) * armLength;
+            const armY = boss.y + Math.sin(arm.angle) * armLength;
+
+            const distToPlayer = Math.sqrt(
+              Math.pow(player.x - armX, 2) +
+              Math.pow(player.y - armY, 2)
+            );
+
+            if (distToPlayer < player.size + 60 && player.invulnerable <= 0) {
+              player.health--;
+              updateHealthDisplay();
+              player.invulnerable = 30;
+            }
+          }
+        });
+
+        // Update boss bombs
+        bossBombs.forEach((bomb, index) => {
+          bomb.timer--;
+          if (bomb.timer <= 0) {
+            // Explode
+            bossBombs.splice(index, 1);
+
+            // Check if player was hit
+            const dist = Math.sqrt(Math.pow(player.x - bomb.x, 2) + Math.pow(player.y - bomb.y, 2));
+            if (dist < player.size + 250 && player.invulnerable <= 0) {
+              player.health--;
+              updateHealthDisplay();
+              player.invulnerable = 30;
+            }
+          }
+        });
+
+        const allWings = [bachmannWings, ...extraWings];
+        allWings.forEach(wings => {
+          if (!wings.active) return;
+
+          if (wings.charging) {
+            wings.x += Math.cos(wings.chargeDirection) * wings.chargeSpeed;
+            wings.y += Math.sin(wings.chargeDirection) * wings.chargeSpeed;
+
+            // Boundary check
+            if (wings.x < wings.size || wings.x > stage2Width - wings.size ||
+              wings.y < wings.size || wings.y > stage2Height - wings.size) {
+              wings.charging = false;
+              wings.chargeTimer = 60 + Math.random() * 30; // Random cooldown
+            }
+
+            // Player collision
+            const dist = Math.sqrt(Math.pow(player.x - wings.x, 2) +
+              Math.pow(player.y - wings.y, 2));
+            if (dist < player.size + wings.size && player.invulnerable <= 0) {
+              player.health--;
+              updateHealthDisplay();
+              player.invulnerable = 30;
+              wings.charging = false;
+              wings.chargeTimer = 60;
+            }
+          } else {
+            wings.chargeTimer--;
+            if (wings.chargeTimer <= 0) {
+              wings.charging = true;
+              const dx = player.x - wings.x;
+              const dy = player.y - wings.y;
+              wings.chargeDirection = Math.atan2(dy, dx);
+            } else {
+              // Normal movement
+              const dx = player.x - wings.x;
+              const dy = player.y - wings.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist > 0) {
+                wings.x += (dx / dist) * wings.normalSpeed;
+                wings.y += (dy / dist) * wings.normalSpeed;
+              }
+            }
+          }
+        });
+
+        // Update stage 2 monsters (only in phase 2)
+        if (gameState === GAME_STATES.STAGE_2_PHASE2) {
+          stage2Monsters.forEach((monster, index) => {
+            const dx = player.x - monster.x;
+            const dy = player.y - monster.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // Movement
+            if (monster.attackWindUp <= 0) {
+              monster.x += (dx / dist) * monster.speed;
+              monster.y += (dy / dist) * monster.speed;
+
+              if (dist < 80) {
+                monster.attackWindUp = 30;
+              }
+            } else {
+              monster.attackWindUp--;
+
+              // Attack when wind-up completes
+              if (monster.attackWindUp === 0 && dist < 80) {
+                if (player.invulnerable <= 0) {
+                  player.health--;
+                  updateHealthDisplay();
+                  player.invulnerable = 30;
+                }
+                monster.attackCooldown = 60;
+              }
+            }
+          });
+        }
+      }
+
+      // Pulsate the portal
+      if (centerPortal.active) {
+        centerPortal.pulsate = (centerPortal.pulsate + 0.05) % (Math.PI * 2);
+      }
+
+      // Check boss defeat conditions
+      if ((gameState === GAME_STATES.STAGE_2 || gameState === GAME_STATES.STAGE_2_PHASE2) &&
+        boss.active && boss.health <= 0) {
+        if (boss.phase === 1) {
+          alert("Bourne shall REBOURNE!!!")
+          btime = 120;
+          boss.phase = 2;
+          boss.defeatedOnce = true;
+          boss.health = boss.maxHealth;
+          player.invulnerable = 300;
+
+          // Reactivate all cameras with full health
+          sameras.forEach(samera => {
+            samera.active = true;
+            samera.health = samera.maxHealth;
+          });
+
+          // Spawn additional enemies
+          for (let i = 0; i < 10; i++) spawnStage2Monster();
+
+          // Add two more wings with positions avoiding cameras
+          const wingPositions = [
+            { x: stage2Width / 2, y: 150 },
+            { x: stage2Width / 2, y: stage2Height - 150 }
+          ];
+
+          extraWings = wingPositions.map(pos => ({
+            ...pos,
+            size: 35,
+            health: Infinity,
+            color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+            chargeTimer: Math.random() * 60,
+            charging: false,
+            chargeDirection: 0,
+            chargeSpeed: 6, // Faster than phase 1 wings
+            normalSpeed: 4,
+            active: true
+          }));
+
+          gameState = GAME_STATES.STAGE_2_PHASE2;
+          stageDisplay.textContent = "Stage: 2 (Phase 2)";
+        } else {
+          // Complete victory
+          gameState = GAME_STATES.VICTORY;
+          stageDisplay.textContent = "VICTORY!";
+          boss.active = false;
+        }
+      }
+
+      if (player.health <= 0 && !isGameOver) {
+        isGameOver = true;
+        healthDisplay.textContent = "GAME OVER (Refresh to restart)";
+        player.speed = 0;
+        
+        // Stop any existing sounds
+        gameOverSound.pause();
+        gameOverSound.currentTime = 0;
+        
+        // Play new sound
+        gameOverSound.play().catch(e => console.log("Game over sound failed:", e));
+      }
+    }
+
+    function triggerBossAttack() {
+      // Choose attack pattern (diagonal or cardinal)
+      const pattern = Math.random() > 0.5 ? 'diagonal' : 'cardinal';
+
+      if (pattern === 'diagonal') {
+        // Diagonal attacks (NW/SE and NE/SW)
+        bossAttackArms.push({
+          angle: Math.PI * 0.25, // NE
+          length: stage2Width,
+          progress: 0,
+          color: 'rgba(255, 100, 100, 0.7)'
+        });
+        bossAttackArms.push({
+          angle: Math.PI * 1.25, // SW
+          length: stage2Width,
+          progress: 0,
+          color: 'rgba(255, 100, 100, 0.7)'
+        });
+
+        // Second pair after a delay
+        setTimeout(() => {
+          bossAttackArms.push({
+            angle: Math.PI * 0.75, // NW
+            length: stage2Width,
+            progress: 0,
+            color: 'rgba(255, 100, 100, 0.7)'
+          });
+          bossAttackArms.push({
+            angle: Math.PI * 1.75, // SE
+            length: stage2Width,
+            progress: 0,
+            color: 'rgba(255, 100, 100, 0.7)'
+          });
+        }, 500);
+      } else {
+        // Cardinal attacks (N/S/E/W)
+        bossAttackArms.push({
+          angle: 0, // E
+          length: stage2Width,
+          progress: 0,
+          color: 'rgba(255, 100, 100, 0.7)'
+        });
+        bossAttackArms.push({
+          angle: Math.PI, // W
+          length: stage2Width,
+          progress: 0,
+          color: 'rgba(255, 100, 100, 0.7)'
+        });
+
+        // Second pair after a delay
+        setTimeout(() => {
+          bossAttackArms.push({
+            angle: Math.PI * 0.5, // N
+            length: stage2Width,
+            progress: 0,
+            color: 'rgba(255, 100, 100, 0.7)'
+          });
+          bossAttackArms.push({
+            angle: Math.PI * 1.5, // S
+            length: stage2Width,
+            progress: 0,
+            color: 'rgba(255, 100, 100, 0.7)'
+          });
+        }, 500);
+      }
+    }
+
+    function spawnBossBomb() {
+      bossBombs.push({
+        x: player.x,
+        y: player.y,
+        timer: 180, // 3 seconds
+        size: 300
+      });
+    }
+
+    function render() {
+      // Clear canvas
+      ctx.fillStyle = '#333';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw tiled background - covers entire game world
+      if (images.background.complete) {
+        const worldWidth = gameState === GAME_STATES.STAGE_1 || gameState === GAME_STATES.STAGE_1_COMPLETE ? stage1Width : stage2Width;
+        const worldHeight = gameState === GAME_STATES.STAGE_1 || gameState === GAME_STATES.STAGE_1_COMPLETE ? stage1Height : stage2Height;
+
+        // Calculate visible area
+        const startX = Math.max(0, Math.floor(camera.x / images.background.width));
+        const startY = Math.max(0, Math.floor(camera.y / images.background.height));
+        const endX = Math.ceil((camera.x + canvas.width) / images.background.width);
+        const endY = Math.ceil((camera.y + canvas.height) / images.background.height);
+
+        // Draw only visible tiles
+        for (let x = startX; x < endX; x++) {
+          for (let y = startY; y < endY; y++) {
+            ctx.drawImage(
+              images.background,
+              x * images.background.width - camera.x,
+              y * images.background.height - camera.y,
+              images.background.width,
+              images.background.height
+            );
+          }
+        }
+      } else {
+        // Fallback to original checkered pattern
+        const tileSize = 50;
+        ctx.fillStyle = '#3a3a3a';
+        const worldWidth = gameState === GAME_STATES.STAGE_1 || gameState === GAME_STATES.STAGE_1_COMPLETE ? stage1Width : stage2Width;
+        const worldHeight = gameState === GAME_STATES.STAGE_1 || gameState === GAME_STATES.STAGE_1_COMPLETE ? stage1Height : stage2Height;
+
+        for (let x = -tileSize; x < camera.width + tileSize; x += tileSize * 2) {
+          for (let y = -tileSize; y < camera.height + tileSize; y += tileSize * 2) {
+            const worldX = Math.floor((camera.x + x) / tileSize) * tileSize;
+            const worldY = Math.floor((camera.y + y) / tileSize) * tileSize;
+            ctx.fillRect(worldX - camera.x, worldY - camera.y, tileSize, tileSize);
+          }
+        }
+      }
+
+      // Draw center portal if active
+      if (centerPortal.active) {
+        const pulseSize = Math.sin(centerPortal.pulsate) * 5;
+
+        // Outer glow
+        ctx.fillStyle = 'rgba(100, 200, 255, 0.3)';
+        ctx.beginPath();
+        ctx.arc(centerPortal.x - camera.x, centerPortal.y - camera.y,
+          centerPortal.radius + 20 + pulseSize, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Portal ring
+        ctx.strokeStyle = 'rgba(100, 200, 255, 0.8)';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.arc(centerPortal.x - camera.x, centerPortal.y - camera.y,
+          centerPortal.radius + pulseSize, 0, Math.PI * 2);
+        ctx.stroke();
+
+        if (images.portal.complete) {
+          // Calculate dimensions based on portal radius
+          const drawSize = centerPortal.radius * 1.4; // Slightly larger than base radius
+          const aspectRatio = images.portal.width / images.portal.height;
+
+          // Maintain aspect ratio while fitting to portal size
+          let drawWidth, drawHeight;
+          if (aspectRatio > 1) {
+            drawWidth = drawSize;
+            drawHeight = drawSize / aspectRatio;
+          } else {
+            drawHeight = drawSize;
+            drawWidth = drawSize * aspectRatio;
+          }
+
+          ctx.drawImage(
+            images.portal,
+            centerPortal.x - camera.x - drawWidth / 2, // Corrected positioning
+            centerPortal.y - camera.y - drawHeight / 2,
+            drawWidth,
+            drawHeight
+          );
+        } else {
+          // Fallback portal center
+          ctx.fillStyle = 'rgba(100, 200, 255, 0.5)';
+          ctx.beginPath();
+          ctx.arc(centerPortal.x - camera.x, centerPortal.y - camera.y,
+            centerPortal.radius * 0.7, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Draw hint arrows for off-screen monsters or portal
+      if (gameState === GAME_STATES.STAGE_1_COMPLETE) {
+        // Draw arrow to portal if it's off-screen
+        if (centerPortal.active && (
+          centerPortal.x < camera.x ||
+          centerPortal.x > camera.x + camera.width ||
+          centerPortal.y < camera.y ||
+          centerPortal.y > camera.y + camera.height
+        )) {
+          drawDirectionArrow(centerPortal.x, centerPortal.y, 'rgba(100, 200, 255, 0.7)');
+        }
+      } else if (gameState === GAME_STATES.STAGE_1) {
+        // Draw arrows to off-screen monsters
+        monsters.forEach(monster => {
+          if (
+            monster.x < camera.x ||
+            monster.x > camera.x + camera.width ||
+            monster.y < camera.y ||
+            monster.y > camera.y + camera.height
+          ) {
+            drawDirectionArrow(monster.x, monster.y, 'rgba(255, 255, 0, 0.7)');
+          }
+        });
+      } else if (gameState === GAME_STATES.STAGE_2 || gameState === GAME_STATES.STAGE_2_PHASE2) {
+        // Draw arrows to off-screen sameras (enemy cameras)
+        sameras.forEach(samera => {
+          if (!samera.active) return;
+
+          // Convert samera world position to screen position
+          const screenX = samera.x - camera.x;
+          const screenY = samera.y - camera.y;
+
+          // Check if samera is off-screen
+          if (screenX < 0 ||
+            screenX > canvas.width ||
+            screenY < 0 ||
+            screenY > canvas.height) {
+
+            // Draw arrow pointing to the samera's WORLD position
+            drawDirectionArrow(samera.x, samera.y, samera.color.replace(')', ', 0.7)'));
+          }
+        });
+
+        // Draw arrows to off-screen wings (unchanged)
+        [bachmannWings, ...extraWings].forEach(wings => {
+          if (wings.active && (
+            wings.x < camera.x ||
+            wings.x > camera.x + camera.width ||
+            wings.y < camera.y ||
+            wings.y > camera.y + camera.height
+          )) {
+            drawDirectionArrow(wings.x, wings.y, wings.color.replace(')', ', 0.7)'));
+          }
+        });
+      }
+
+      if (gameState === GAME_STATES.STAGE_1) {
+        monsters.forEach(monster => {
+          if (images.monsters.complete) {
+            // Scale monster sprite to fit your game size (25px radius = 50px diameter)
+            const spriteSize = monster.size * 2; // 50px
+            const scale = spriteSize / Math.max(images.monsters.width, images.monsters.height);
+            const drawWidth = images.monsters.width * scale;
+            const drawHeight = images.monsters.height * scale;
+
+            ctx.drawImage(
+              images.monsters,
+              monster.x - camera.x - drawWidth / 2,
+              monster.y - camera.y - drawHeight / 2,
+              drawWidth,
+              drawHeight
+            );
+          } else {
+            // Fallback
+            ctx.fillStyle = monster.color;
+            ctx.beginPath();
+            ctx.arc(monster.x - camera.x, monster.y - camera.y, monster.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Health indicator (5 segments)
+          const healthSegments = 5;
+          const segmentHealth = 3;
+          const segmentWidth = (monster.size * 2) / healthSegments;
+
+          ctx.fillStyle = 'black';
+          ctx.fillRect(
+            monster.x - camera.x - monster.size,
+            monster.y - camera.y - monster.size - 12,
+            monster.size * 2,
+            6
+          );
+
+          const filledSegments = Math.ceil(monster.health / segmentHealth);
+          for (let i = 0; i < filledSegments; i++) {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(
+              monster.x - camera.x - monster.size + (i * segmentWidth),
+              monster.y - camera.y - monster.size - 12,
+              segmentWidth - 1,
+              6
+            );
+          }
+        });
+      }
+
+      // Draw boss bombs
+      bossBombs.forEach(bomb => {
+        // Shadow
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+        ctx.beginPath();
+        ctx.arc(bomb.x - camera.x, bomb.y - camera.y + 5, bomb.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Bomb body
+        const pulse = Math.sin(Date.now() / 200) * 3;
+        ctx.fillStyle = 'rgba(255, 50, 50, 0.8)';
+        ctx.beginPath();
+        ctx.arc(bomb.x - camera.x, bomb.y - camera.y, bomb.size + pulse, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Fuse
+        ctx.strokeStyle = 'rgba(255, 200, 50, 0.9)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(bomb.x - camera.x + bomb.size * 0.7, bomb.y - camera.y - bomb.size * 0.7);
+        ctx.lineTo(bomb.x - camera.x + bomb.size * 0.7 + 10, bomb.y - camera.y - bomb.size * 0.7 - 15);
+        ctx.stroke();
+
+        // Timer text
+        ctx.fillStyle = 'white';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(Math.ceil(bomb.timer / 60), bomb.x - camera.x, bomb.y - camera.y + 5);
+      });
+
+      // Draw boss attack arms
+      bossAttackArms.forEach(arm => {
+        ctx.strokeStyle = arm.color;
+        ctx.lineWidth = 20;
+        ctx.beginPath();
+        ctx.moveTo(boss.x - camera.x, boss.y - camera.y);
+        ctx.lineTo(
+          boss.x - camera.x + Math.cos(arm.angle) * (boss.size + arm.length * arm.progress),
+          boss.y - camera.y + Math.sin(arm.angle) * (boss.size + arm.length * arm.progress)
+        );
+        ctx.stroke();
+      });
+
+      // Draw boss and minions
+      if (gameState === GAME_STATES.STAGE_2 || gameState === GAME_STATES.STAGE_2_PHASE2) {
+        // Draw Serge's Camera
+        // Draw all active cameras
+        sameras.forEach((samera, index) => {
+          if (!samera.active) return;  // Fixed: Changed camera.active to samera.active
+
+          if (images.sameras.complete) {
+            const spriteSize = samera.size * 2; // 80px
+            const scale = spriteSize / Math.max(images.sameras.width, images.sameras.height);
+            const drawWidth = images.sameras.width * scale;
+            const drawHeight = images.sameras.height * scale;
+
+            ctx.drawImage(
+              images.sameras,
+              samera.x - camera.x - drawWidth / 2,
+              samera.y - camera.y - drawHeight / 2,
+              drawWidth,
+              drawHeight
+            );
+          } else {
+            // Fallback
+            ctx.fillStyle = samera.color;
+            ctx.beginPath();
+            ctx.arc(samera.x - camera.x, samera.y - camera.y, samera.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          // Keep existing camera indicators
+          // ...
+          // Health bar - Fixed coordinates and references
+          const healthWidth = samera.size * 1.5;
+          ctx.fillStyle = 'black';
+          ctx.fillRect(
+            samera.x - camera.x - healthWidth / 2,  // Fixed: using samera.x not camera.x
+            samera.y - camera.y - samera.size - 15, // Fixed: using samera.y not camera.y
+            healthWidth,
+            8
+          );
+          ctx.fillStyle = 'blue';
+          ctx.fillRect(
+            samera.x - camera.x - healthWidth / 2,
+            samera.y - camera.y - samera.size - 15,
+            healthWidth * (samera.health / samera.maxHealth), // Fixed: using samera health
+            8
+          );
+
+          // Camera indicator - Fixed 
+          ctx.fillStyle = 'white';
+          ctx.font = 'bold 14px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText(`Cam ${index + 1}`,
+            samera.x - camera.x,  // Fixed: using samera position
+            samera.y - camera.y + 5
+          );
+        });
+        // Find the Bachmann's Wings rendering and replace with:
+        [bachmannWings, ...extraWings].forEach(wings => {
+          if (!wings.active) return;
+
+          // Wings body
+          if (images.wings.complete) {
+            const spriteSize = wings.size * 2; // 70px
+            const scale = spriteSize / Math.max(images.wings.width, images.wings.height);
+            const drawWidth = images.wings.width * scale;
+            const drawHeight = images.wings.height * scale;
+
+            ctx.save();
+            ctx.translate(wings.x - camera.x, wings.y - camera.y);
+            if (wings.charging) {
+              ctx.rotate(wings.chargeDirection + Math.PI / 2);
+            } else {
+              const dx = player.x - wings.x;
+              const dy = player.y - wings.y;
+              ctx.rotate(Math.atan2(dy, dx) + Math.PI / 2);
+            }
+            ctx.drawImage(
+              images.wings,
+              -drawWidth / 2,
+              -drawHeight / 2,
+              drawWidth,
+              drawHeight
+            );
+            ctx.restore();
+          } else {
+            // Fallback
+            ctx.fillStyle = wings.color;
+            ctx.beginPath();
+            ctx.arc(wings.x - camera.x, wings.y - camera.y, wings.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Wing direction indicator when charging
+          if (wings.charging) {
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(wings.x - camera.x, wings.y - camera.y);
+            ctx.lineTo(
+              wings.x - camera.x + Math.cos(wings.chargeDirection) * wings.size * 1.5,
+              wings.y - camera.y + Math.sin(wings.chargeDirection) * wings.size * 1.5
+            );
+            ctx.stroke();
+          }
+
+          // Invincility indicator
+          ctx.strokeStyle = 'rgba(0, 255, 255, 0.7)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(wings.x - camera.x, wings.y - camera.y, wings.size + 5, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Health
+          ctx.fillStyle = 'black';
+          ctx.fillRect(bachmannWings.x - camera.x - bachmannWings.size,
+            bachmannWings.y - camera.y - bachmannWings.size - 15,
+            bachmannWings.size * 2, 8);
+          ctx.fillStyle = 'red';
+          ctx.fillRect(bachmannWings.x - camera.x - bachmannWings.size,
+            bachmannWings.y - camera.y - bachmannWings.size - 15,
+            bachmannWings.size * 2 * (bachmannWings.health / bachmannWings.maxHealth), 8);
+        });
+      }
+
+      // Draw boss
+      if (boss.active) {
+        // Boss shadow
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+        ctx.beginPath();
+        ctx.arc(boss.x - camera.x, boss.y - camera.y + 10, boss.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Boss body
+        if (images.boss.complete) {
+          const spriteSize = boss.size * 2; // 120px
+          const scale = spriteSize / Math.max(images.boss.width, images.boss.height);
+          const drawWidth = images.boss.width * scale;
+          const drawHeight = images.boss.height * scale;
+
+          ctx.drawImage(
+            images.boss,
+            boss.x - camera.x - drawWidth / 2,
+            boss.y - camera.y - drawHeight / 2,
+            drawWidth,
+            drawHeight
+          );
+        } else {
+          // Fallback
+          ctx.fillStyle = 'rgba(200, 50, 50, 0.9)';
+          ctx.beginPath();
+          ctx.arc(boss.x - camera.x, boss.y - camera.y, boss.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Boss health bar
+        ctx.fillStyle = 'black';
+        ctx.fillRect(boss.x - camera.x - boss.size, boss.y - camera.y - boss.size - 25,
+          boss.size * 2, 15);
+        ctx.fillStyle = boss.phase === 1 ? 'red' : 'purple';
+        ctx.fillRect(boss.x - camera.x - boss.size, boss.y - camera.y - boss.size - 25,
+          boss.size * 2 * (boss.health / boss.maxHealth), 15);
+
+        // Boss phase indicator
+        ctx.fillStyle = 'white';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(`Phase ${boss.phase}`, boss.x - camera.x, boss.y - camera.y - boss.size - 10);
+
+        // Boss shield indicator if minions are alive
+        // Replace with this updated shield rendering code:
+        const activeSameras = sameras.filter(s => s.active); // More descriptive name
+
+        if (activeSameras.length > 0) {  // More explicit than .some()
+          // Shield effect
+          ctx.strokeStyle = 'rgba(100, 200, 255, 0.7)';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.arc(boss.x - camera.x, boss.y - camera.y, boss.size + 15, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Pulsing shield fill effect
+          const pulse = Math.sin(Date.now() / 300) * 0.2 + 0.3;
+          ctx.fillStyle = `rgba(100, 200, 255, ${pulse})`;
+          ctx.beginPath();
+          ctx.arc(boss.x - camera.x, boss.y - camera.y, boss.size + 15, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Shield strength indicator
+          ctx.fillStyle = 'white';
+          ctx.font = 'bold 14px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText(`${activeSameras.length}/${MAX_CAMERAS}`,
+            boss.x - camera.x,
+            boss.y - camera.y + 5);
+        }
+
+        // Draw stage 2 monsters
+        if (gameState === GAME_STATES.STAGE_2_PHASE2) {
+          stage2Monsters.forEach(monster => {
+
+            if (images.monsters.complete) {
+              // Scale monster sprite to fit your game size (25px radius = 50px diameter)
+              const spriteSize = monster.size * 2; // 50px
+              const scale = spriteSize / Math.max(images.monsters.width, images.monsters.height);
+              const drawWidth = images.monsters.width * scale;
+              const drawHeight = images.monsters.height * scale;
+
+              ctx.drawImage(
+                images.monsters,
+                monster.x - camera.x - drawWidth / 2,
+                monster.y - camera.y - drawHeight / 2,
+                drawWidth,
+                drawHeight
+              );
+            } else {
+              // Fallback
+              ctx.fillStyle = monster.color;
+              ctx.beginPath();
+              ctx.arc(monster.x - camera.x, monster.y - camera.y, monster.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            // Health indicator
+            ctx.fillStyle = 'black';
+            const segments = 5;
+            for (let i = 0; i < segments; i++) {
+              ctx.fillStyle = monster.health > (i * 3) ? 'red' : 'black';
+              ctx.fillRect(
+                monster.x - camera.x - monster.size + (i * (monster.size * 2 / segments)),
+                monster.y - camera.y - monster.size - 10,
+                (monster.size * 2 / segments),
+                5
+              );
+            }
+          });
+        }
+      }
+
+      // Main player body
+      if (player.invulnerable <= 0 || Math.floor(Date.now() / 100) % 2 === 0) {
+        if (images.player.complete) {
+          const spriteSize = player.size * 2; // 60px
+          const scale = spriteSize / Math.max(images.player.width, images.player.height);
+          const drawWidth = images.player.width * scale;
+          const drawHeight = images.player.height * scale;
+
+          ctx.save();
+          ctx.translate(player.x - camera.x, player.y - camera.y);
+          ctx.rotate(player.lastMoveAngle + Math.PI / 2);
+          ctx.drawImage(
+            images.player,
+            -drawWidth / 2,
+            -drawHeight / 2,
+            drawWidth,
+            drawHeight
+          );
+          ctx.restore();
+        } else {
+          // Fallback
+          ctx.fillStyle = player.color;
+          ctx.beginPath();
+          ctx.arc(player.x - camera.x, player.y - camera.y, player.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      // Movement direction indicator (only when moving)
+      if (keys['w'] || keys['a'] || keys['s'] || keys['d']) {
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(player.x - camera.x, player.y - camera.y);
+        ctx.lineTo(
+          player.x - camera.x + Math.cos(player.lastMoveAngle) * (player.size + 10),
+          player.y - camera.y + Math.sin(player.lastMoveAngle) * (player.size + 10)
+        );
+        ctx.stroke();
+
+        // Small arrowhead
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.moveTo(
+          player.x - camera.x + Math.cos(player.lastMoveAngle) * (player.size + 20),
+          player.y - camera.y + Math.sin(player.lastMoveAngle) * (player.size + 20)
+        );
+        ctx.lineTo(
+          player.x - camera.x + Math.cos(player.lastMoveAngle - Math.PI / 1.5) * 10,
+          player.y - camera.y + Math.sin(player.lastMoveAngle - Math.PI / 1.5) * 10
+        );
+        ctx.lineTo(
+          player.x - camera.x + Math.cos(player.lastMoveAngle + Math.PI / 1.5) * 10,
+          player.y - camera.y + Math.sin(player.lastMoveAngle + Math.PI / 1.5) * 10
+        );
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // Attack cooldown indicator (when not attacking)
+      if (!player.attacking) {
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(player.x - camera.x, player.y - camera.y, player.size + 5, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Draw attack effect if attacking
+      if (player.attacking && player.attackActive) {
+        ctx.fillStyle = 'rgba(255, 255, 0, 0.3)';
+        ctx.beginPath();
+        ctx.moveTo(player.x - camera.x, player.y - camera.y);
+        ctx.arc(
+          player.x - camera.x, player.y - camera.y,
+          player.attackRadius,
+          player.attackAngle - fanAngle,
+          player.attackAngle + fanAngle
+        );
+        ctx.closePath();
+        ctx.fill();
+      } else if (player.attacking) {
+        // Wind-up indicator
+        ctx.strokeStyle = 'rgba(255, 165, 0, 0.2)';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(
+          player.x - camera.x, player.y - camera.y,
+          player.attackRadius,
+          player.attackAngle - fanAngle,
+          player.attackAngle + fanAngle
+        );
+        ctx.stroke();
+      }
+
+      // Draw victory message
+      if (gameState === GAME_STATES.VICTORY) {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        ctx.fillRect(canvas.width / 2 - 200, canvas.height / 2 - 60, 400, 120);
+
+        ctx.fillStyle = 'white';
+        ctx.font = '36px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('VICTORY!', canvas.width / 2, canvas.height / 2 - 15);
+
+        ctx.font = '18px Arial';
+        ctx.fillText('Bourne is now impressed with your work!', canvas.width / 2, canvas.height / 2 + 25);
+      }
+    }
+    function drawDirectionArrow(targetX, targetY, color) {
+      // Calculate direction to target
+      const angle = Math.atan2(
+        targetY - (player.y),
+        targetX - (player.x)
+      );
+
+      // Position arrow at edge of screen pointing toward target
+      const edgePadding = 20;
+      const arrowX = Math.max(
+        edgePadding,
+        Math.min(
+          canvas.width - edgePadding,
+          canvas.width / 2 + Math.cos(angle) * (canvas.width / 2 - edgePadding)
+        )
+      );
+      const arrowY = Math.max(
+        edgePadding,
+        Math.min(
+          canvas.height - edgePadding,
+          canvas.height / 2 + Math.sin(angle) * (canvas.height / 2 - edgePadding)
+        )
+      );
+
+      // Draw arrow
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(arrowX, arrowY);
+      ctx.lineTo(arrowX - 15 * Math.cos(angle - Math.PI / 6), arrowY - 15 * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(arrowX - 15 * Math.cos(angle + Math.PI / 6), arrowY - 15 * Math.sin(angle + Math.PI / 6));
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function checkAttack() {
+      // Only check during active frames
+      if (player.attackWindUp > 3 || player.attackWindUp <= 0) return;
+
+      if (gameState === GAME_STATES.STAGE_1) {
+        // Attack monsters in Stage 1
+        monsters.forEach((monster, index) => {
+          const dx = monster.x - player.x;
+          const dy = monster.y - player.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < player.attackRadius + monster.hurtRadius) {
+            const angleToMonster = Math.atan2(dy, dx);
+            let angleDiff = Math.atan2(
+              Math.sin(angleToMonster - player.attackAngle),
+              Math.cos(angleToMonster - player.attackAngle)
+            );
+
+            if (Math.abs(angleDiff) < fanAngle) {
+              monster.health--;
+              if (monster.health <= 0) monsters.splice(index, 1);
+            }
+          }
+        });
+      } else if (gameState === GAME_STATES.STAGE_2 || gameState === GAME_STATES.STAGE_2_PHASE2) {
+        // Attack boss and minions in Stage 2
+        let hitSomething = false;
+
+        // Check boss hit
+        if (boss.active) {
+          const dx = boss.x - player.x;
+          const dy = boss.y - player.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < player.attackRadius + boss.size) {
+            const angleToBoss = Math.atan2(dy, dx);
+            let angleDiff = Math.atan2(
+              Math.sin(angleToBoss - player.attackAngle),
+              Math.cos(angleToBoss - player.attackAngle)
+            );
+
+            if (Math.abs(angleDiff) < fanAngle) {
+              // Check if shield is active (minions alive)
+              const shieldActive = sameras.some(cam => cam.active);
+              boss.health -= shieldActive ? 0.1 : 1;
+              hitSomething = true;
+            }
+          }
+        }
+        // Attack detection for cameras
+        sameras.forEach(samera => {  // Changed parameter name from camera to samera
+          if (!samera.active) return;
+
+          // Use samera.x/y (world coordinates) for distance calculation
+          const dx = samera.x - player.x;
+          const dy = samera.y - player.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < player.attackRadius + samera.size) {
+            const angleToCamera = Math.atan2(dy, dx);
+            let angleDiff = Math.atan2(
+              Math.sin(angleToCamera - player.attackAngle),
+              Math.cos(angleToCamera - player.attackAngle)
+            );
+
+            if (Math.abs(angleDiff) < fanAngle) {
+              samera.health--;  // Changed camera.health to samera.health
+              hitSomething = true;
+              if (samera.health <= 0) {
+                samera.active = false;
+                // Camera destruction effect
+                createExplosion(samera.x, samera.y, samera.color);
+
+                // Optional: Boost nearby wings when camera is destroyed
+                boostWingsNearCamera(samera.x, samera.y);
+              }
+            }
+          }
+        });
+
+        function createExplosion(x, y, color) {
+          // Add your explosion particle effects here
+          console.log(`Camera destroyed at ${x}, ${y}`);
+          // You can implement visual effects like particles spreading out
+        }
+
+        function boostWingsNearCamera(x, y) {
+          const allWings = [bachmannWings, ...extraWings];
+          allWings.forEach(wings => {
+            const dist = Math.sqrt(Math.pow(wings.x - x, 2) + Math.pow(wings.y - y, 2));
+            if (dist < 400) {
+              wings.chargeSpeed *= 1.5;
+              wings.normalSpeed *= 1.5;
+              setTimeout(() => {
+                wings.chargeSpeed /= 1.5;
+                wings.normalSpeed /= 1.5;
+              }, 5000);
+            }
+          });
+        }
+
+        // Check Bachmann's Wings hit
+        if (bachmannWings.active) {
+          const dx = bachmannWings.x - player.x;
+          const dy = bachmannWings.y - player.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < player.attackRadius + bachmannWings.size) {
+            const angleToWings = Math.atan2(dy, dx);
+            let angleDiff = Math.atan2(
+              Math.sin(angleToWings - player.attackAngle),
+              Math.cos(angleToWings - player.attackAngle)
+            );
+
+            if (Math.abs(angleDiff) < fanAngle) {
+              bachmannWings.health--;
+              hitSomething = true;
+              if (bachmannWings.health <= 0) {
+                bachmannWings.active = false;
+              }
+            }
+          }
+        }
+
+        // Check stage 2 monsters hit
+        if (gameState === GAME_STATES.STAGE_2_PHASE2) {
+          stage2Monsters.forEach((monster, index) => {
+            const dx = monster.x - player.x;
+            const dy = monster.y - player.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < player.attackRadius + monster.hurtRadius) {
+              const angleToMonster = Math.atan2(dy, dx);
+              let angleDiff = Math.atan2(
+                Math.sin(angleToMonster - player.attackAngle),
+                Math.cos(angleToMonster - player.attackAngle)
+              );
+
+              if (Math.abs(angleDiff) < fanAngle) {
+                monster.health--;
+                hitSomething = true;
+                if (monster.health <= 0) {
+                  stage2Monsters.splice(index, 1);
+                }
+              }
+            }
+          });
+        }
+
+        // Play hit sound if something was hit
+        if (hitSomething) {
+          // Sound effect would go here
+        }
+      }
+      updateHealthDisplay();
+    }
+
+    function updateHealthDisplay() {
+      // Player health
+      let hearts = "";
+      for (let i = 0; i < 5; i++) {
+        hearts += (i < player.health) ? "❤" : "♡";
+      }
+      healthDisplay.textContent = `Health: ${hearts}`;
+
+      // Boss health
+      if (gameState >= GAME_STATES.STAGE_2) {
+        const activeCameras = sameras.filter(cam => cam.active).length;
+        const shieldActive = activeCameras > 0;
+
+        bossHealthDisplay.innerHTML = `Boss: ${Math.ceil(boss.health)}/${boss.maxHealth}<br>
+                Active Cameras: ${activeCameras}/${MAX_CAMERAS}`;
+
+        // Show camera health if only one remains
+        if (activeCameras === 1) {
+          const lastCamera = sameras.find(cam => cam.active);
+          bossHealthDisplay.innerHTML += `<br>Last Camera: ${lastCamera.health}/${lastCamera.maxHealth}`;
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <title>Get 30 Germans At My Estate</title>
+  <style>
+    body {
+      background: url('floor.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      text-align: center;
+    }
+    #clickOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: pointer;
+    }
+    #clickText {
+      font-size: 60px;
+      color: red;
+      background-color: yellow;
+      padding: 20px;
+      border: 5px solid red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="clickOverlay">
+    <div id="clickText">CLICK ANYWHERE TO ENTER</div>
+  </div>
+
+  <img src="re.png">
+  <img src="g30suck.jpg">
+  <a style="font-size: 100px; color: red; background-color: yellow;">Play </a>
+  <a style="font-size: 100px; color: red; background-color: yellow;" href="lore.html">Lore</a>
+  <img style="width: 50%;" src="BEST.png">
+  <img src="bourne.png">
+
+  <script>
+    const bgm = new Audio("survive.mp3");
+    bgm.loop = true;
+    bgm.volume = 0.5;
+
+    const overlay = document.getElementById("clickOverlay");
+
+    // Remove overlay and start music on click
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      bgm.play().catch(error => console.log("Playback failed:", error));
+    });
+
+    // Optional: Try to autoplay in case overlay is bypassed
+    bgm.play().catch(() => console.log("Autoplay blocked."));
+  </script>
+</body>
+</html>

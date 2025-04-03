@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>lore of G30GAME</title>
+  <style>
+    body {
+      background: url('floor.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-size: 30px;
+      color: white;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    a {
+      font-size: 40px;
+      color: yellow;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: red;
+    }
+
+    #clickOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: pointer;
+    }
+
+    #clickText {
+      font-size: 60px;
+      color: red;
+      background-color: yellow;
+      padding: 20px;
+      border: 5px solid red;
+      font-weight: bold;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="clickOverlay">
+    <div id="clickText">CLICK TO READ THE SACRED LORE</div>
+  </div>
+
+  <p>
+    In this game, you are the embodiment of the Nagoya University Global 30 Programs dream, or otherwise a meager
+    character with an infinite bullet shotgun. You realized that you have been useless all of your life, which is fine
+    because we all are. But you decided that this is not enough anymore. Before your last dying breath, you embark on this
+    journey to make an impression on all of the best professors in the world, and that is why we are here.
+  </p>
+
+  <p>
+    You start off in a desolate place called 2000 px by 2000 px arena that is a horribly resized map of Nagoya University.
+    You fend off yourself from all the Compulsory Elective credits who violate the laws of nature just by existing. Once
+    you have acquired yourself all of the compulsory elective credits, the gates of the Toyota Auditorium unlock, and you
+    may begin impressing the great Professor Bourne.
+  </p>
+
+  <p>
+    The Bourne is not without needs. He, albeit the greatest mind we have ever seen, equipped with the most native English
+    this university has to offer, wants a permanent position. Without a permanent position, he is hesitant in watching
+    your shenanigans and has a 10x damage reduction shield. To expedite his acquisition of a permanent position,
+    you may remove Professor Serge's cameras located in the corners of the arena. However, be aware that the TEBASAKI that
+    another unfortunate unnamed professor has planted will try to stop you. They charge at you and gain a ridiculous speed
+    boost when you destroy one camera.
+  </p>
+
+  <p>
+    <a href="game.html">
+      When you manage to impress Bourne by 100 damage, he becomes Rebourne, and everything becomes much harder. You will
+      sadly have to see for yourself because I don't care enough to explain what I implemented. Try a few times if one
+      time didn't work. Also, hit detection and pathfinding might still be in operation even in death, so you might be able
+      to cheat. THIS IS THE START BUTTON CLICK THIS TO START!!!!!!! LOOK AT ME!!! READ ME!!!!
+    </a>
+  </p>
+
+  <p>Start playing by clicking on the only link on this webpage.</p>
+
+  <script>
+    const bgm = new Audio("survive.mp3");
+    bgm.loop = true;
+    bgm.volume = 0.5;
+
+    const overlay = document.getElementById("clickOverlay");
+
+    // Remove overlay and start music on click
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none';
+      bgm.play().catch(error => console.log("Playback failed:", error));
+    });
+
+    // Optional: Try to autoplay in case overlay is bypassed
+    bgm.play().catch(() => console.log("Autoplay blocked."));
+  </script>
+</body>
+</html>
