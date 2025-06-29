@@ -1,0 +1,185 @@
+/* g30-styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Modify the top-bar in g30-styles.css */
+.top-bar {
+    background-color: #004231;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start; /* Change from space-between to flex-start */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Modify the nav-links */
+.nav-links {
+    display: flex;
+    margin-left: 40px; /* Add some space between logo and links */
+}
+
+/* Remove or keep empty the user-options div in your HTML */
+.user-options {
+    display: none; /* Hide it completely */
+}
+/* And modify the logo-container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    min-width: 180px; /* Add this to give the logo area a fixed space */
+}
+
+
+.logo-image {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    /* Remove justify-content: center; */
+    /* Remove flex-grow: 1; */
+    margin-left: 20px; /* Add this instead */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-options {
+    display: flex;
+}
+
+.user-options a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+/* Main content styling */
+.main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    color: #00664a;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+/* Course grid and card styling */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.course-card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.course-image {
+    height: 180px;
+    background-size: 100% 100%; /* Forces image to stretch/deform to fit exactly */
+    background-position: center;
+}
+
+.course-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* This allows the details to expand */
+}
+
+.course-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.course-description {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Push button to bottom of card */
+.course-button-container {
+    margin-top: auto;
+}
+
+.course-button {
+    display: block;
+    text-align: center;
+    background-color: #00664a;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.course-button:hover {
+    background-color: #004231;
+}
+
+.featured-banner {
+    background-color: #e83e8c;
+    color: white;
+    font-size: 14px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 3px;
+}
+
+.course-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}

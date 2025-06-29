@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Solution</title>
+    <link rel="stylesheet" href="../g30-styles.css" />
+    <style>
+        .assignment-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .assignment-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .assignment-title {
+            font-size: 22px;
+            color: #00664a;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .assignment-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #004231;
+            text-decoration: underline;
+        }
+
+        .solution-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .solution-list li {
+            margin-bottom: 10px;
+        }
+
+        .solution-list a {
+            color: #00664a;
+            text-decoration: none;
+            border-bottom: 1px dashed #00664a;
+        }
+
+        .solution-list a:hover {
+            text-decoration: none;
+            border-bottom: 1px solid #004231;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="../../favicon.png" alt="G30 Logo" class="logo-image" />
+            <div class="logo-text"> is beautiful.</div>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="https://dibbywang.itch.io/get-30-germans-at-my-establishment">Games</a>
+            <a href="https://tact.ac.thers.ac.jp/portal">TACT</a>
+            <a href="../../resources.html">Resources</a>
+        </div>
+        <div class="user-options"></div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="page-title">Mathematics of QIT – Solutions</h1>
+
+        <div class="assignment-card">
+            <div class="assignment-title">Assignment 1: Entropy Basics</div>
+            <a href="https://example.com/qit-assignment1.pdf" class="assignment-link">Download Assignment PDF</a>
+            <ul class="solution-list">
+                <li><a href="https://drive.google.com/file/d/EXAMPLE1">Solution 1 (PDF)</a></li>
+                <li><a href="https://drive.google.com/file/d/EXAMPLE2">Detailed Write-up (Latex)</a></li>
+            </ul>
+        </div>
+
+        <div class="assignment-card">
+            <div class="assignment-title">Assignment 2: Quantum Channels</div>
+            <a href="https://example.com/qit-assignment2.pdf" class="assignment-link">Download Assignment PDF</a>
+            <ul class="solution-list">
+                <li><a href="https://drive.google.com/file/d/EXAMPLE3">Main Solution (PDF)</a></li>
+                <li><a href="https://drive.google.com/file/d/EXAMPLE4">Q&A Supplement</a></li>
+            </ul>
+        </div>
+
+        <!-- Add more assignments below -->
+    </div>
+</body>
+</html>
