@@ -23,6 +23,15 @@ body {
     margin-left: 40px; /* Add some space between logo and links */
 }
 
+.John_notif {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 50px;
+    background-color: yellow;
+    color: red;
+    font-weight: bolder;
+}
+
 /* Remove or keep empty the user-options div in your HTML */
 .user-options {
     display: none; /* Hide it completely */
