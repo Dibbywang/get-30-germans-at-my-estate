@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G30 is Beautiful - Student Report Statistics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+
+    <style>
+        /* --- GLOBAL STYLES --- */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        .top-bar {
+            background: #fff;
+            border-bottom: 1px solid #e1e4e8;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-container {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #24292e;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            color: #555;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #586069;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0366d6;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .main-content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            min-height: 80vh;
+        }
+
+        /* --- LOADING STATE --- */
+        #loading-screen {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- TABS --- */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e1e4e8;
+            margin-bottom: 25px;
+            background: #fff;
+            border-radius: 8px 8px 0 0;
+            padding: 0 10px;
+        }
+
+        .tab-btn {
+            padding: 15px 20px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #0366d6;
+            background: #f8f9fa;
+        }
+
+        .tab-btn.active {
+            color: #0366d6;
+            border-bottom: 3px solid #0366d6;
+            font-weight: 600;
+        }
+
+        /* --- PANELS & CARDS --- */
+        .panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- LIST STYLES --- */
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-badge {
+            background: #eef7ff;
+            color: #0366d6;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* --- SEARCH INPUTS --- */
+        .search-box {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            transition: border 0.2s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        /* --- INTEGRATED CSV TABLE --- */
+        .csv-wrapper {
+            overflow-x: auto;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+        }
+
+        table.csv-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            min-width: 600px;
+        }
+
+        .csv-table th {
+            background: #f6f8fa;
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #e1e4e8;
+            color: #24292e;
+        }
+
+        .csv-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+        }
+
+        .csv-table tr:hover {
+            background: #fcfcfc;
+        }
+
+        .raw-csv-area {
+            width: 100%;
+            height: 150px;
+            margin-top: 20px;
+            padding: 15px;
+            font-family: monospace;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fafafa;
+            color: #555;
+            resize: vertical;
+        }
+
+        /* --- ERROR MESSAGE --- */
+        .error-box {
+            background: #ffeef0;
+            color: #b31d28;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #f9d1d5;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="logo-container">
+            SML <span class="logo-text">Student Reports</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#" class="active">Statistics</a>
+            <a href="https://tact.ac.thers.ac.jp/portal">TACT</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <div id="loading-screen">
+            <div class="spinner"></div>
+            <h3>Loading Database...</h3>
+            <p style="color: #666;">Fetching <code>sml_reports.db</code> from server.</p>
+            <div id="error-msg" class="error-box"></div>
+        </div>
+
+        <div id="dashboard" style="display: none;">
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('overview', this)">Overview</button>
+                <button class="tab-btn" onclick="showTab('authors', this)">Authors</button>
+                <button class="tab-btn" onclick="showTab('reports', this)">Reports Search</button>
+                <button class="tab-btn" onclick="showTab('csv', this)">Course-wise Information</button>
+            </div>
+
+            <div id="overview" class="panel active">
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>General Statistics</h3>
+                        <div id="general-stats"></div>
+
+                        <h4 style="margin-top:20px; color:#555;">Highest Collaboration</h4>
+                        <div id="collab-stats"
+                            style="background:#f9f9f9; padding:15px; border-radius:6px; border-left:4px solid #3498db;">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Categories (Course Pages)</h3>
+                        <div id="category-list" style="max-height: 400px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="authors" class="panel">
+                <div class="card">
+                    <input type="text" id="author-search" class="search-box" placeholder="Search for an author..."
+                        onkeyup="renderAuthors()">
+                    <div id="author-list" style="max-height: 600px; overflow-y: auto;"></div>
+                </div>
+            </div>
+
+            <div id="reports" class="panel">
+                <div class="card">
+                    <input type="text" id="report-search" class="search-box" placeholder="Search report titles..."
+                        onkeyup="renderReports()">
+                    <div id="report-list"></div>
+                </div>
+            </div>
+
+            <div id="csv" class="panel">
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                        <h3>Generated Statistics CSV</h3>
+                        <button onclick="copyCSV()"
+                            style="padding:8px 16px; background:#0366d6; color:fff; border:none; border-radius:4px; color:white; cursor:pointer;">Copy
+                            Raw Text</button>
+                    </div>
+
+                    <div class="csv-wrapper">
+                        <table class="csv-table" id="csv-table-body">
+                            <thead>
+                                <tr>
+                                    <th>Page Title</th>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <h4 style="margin-top:20px;">Raw CSV Text</h4>
+                    <textarea id="raw-csv" class="raw-csv-area" readonly></textarea>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        const DB_FILE = 'sml_reports.db';
+        const SQL_WASM_URL = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js';
+        const SQL_WASM_PATH = 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.wasm';
+
+        // --- STATE ---
+        let db = null;
+        let allReports = [];
+        let reportsByPage = {};
+        let reportsByAuthor = {}; // Key: normalized name, Value: Array of reports
+        let nameVariations = {};  // Key: normalized name, Value: Set of display names
+
+        // --- INITIALIZATION ---
+        window.onload = async function () {
+            try {
+                // 1. Load SQL.js
+                const sqlPromise = window.initSqlJs({ locateFile: () => SQL_WASM_PATH });
+
+                // 2. Fetch Database File
+                const dataPromise = fetch(DB_FILE).then(res => {
+                    if (!res.ok) throw new Error(`Could not fetch ${DB_FILE} (Status: ${res.status})`);
+                    return res.arrayBuffer();
+                });
+
+                const [SQL, buf] = await Promise.all([sqlPromise, dataPromise]);
+
+                // 3. Open Database
+                db = new SQL.Database(new Uint8Array(buf));
+
+                // 4. Process Data
+                processData();
+
+                // 5. Render & Show
+                renderAll();
+                document.getElementById('loading-screen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+
+            } catch (err) {
+                const errDiv = document.getElementById('error-msg');
+                errDiv.style.display = 'block';
+                errDiv.innerHTML = `<strong>Error Loading Database:</strong><br>${err.message}<br><br>
+                <em>Note: If you are opening this HTML file directly from your hard drive, it may fail due to browser security (CORS). Please serve this folder via a local web server (e.g., Python 'http.server' or VSCode Live Server).</em>`;
+                console.error(err);
+            }
+        };
+
+        // --- PYTHON LOGIC PORT ---
+
+        function normalizeName(name) {
+            if (!name || name.toLowerCase() === 'unknown author') return 'unknown author';
+
+            // Regex cleanups based on your Python script
+            let clean = name.trim().replace(/\s+/g, ' ');
+            clean = clean.replace(/^(Mr\.|Ms\.|Dr\.|Prof\.)\s*/i, '');
+
+            const parts = clean.split(' ');
+            if (parts.length <= 1) return clean.toLowerCase();
+
+            // "John Smith" -> "john smith"
+            const normalizedKey = parts.map(p => p.toLowerCase()).sort().join(' ');
+
+            // Track variations for display purposes
+            if (!nameVariations[normalizedKey]) nameVariations[normalizedKey] = new Set();
+            nameVariations[normalizedKey].add(clean);
+
+            return normalizedKey;
+        }
+
+        function getDisplayName(key) {
+            if (!nameVariations[key]) return key.replace(/\b\w/g, c => c.toUpperCase()); // Fallback title case
+            // Return longest string in the set
+            return Array.from(nameVariations[key]).reduce((a, b) => a.length > b.length ? a : b);
+        }
+
+        function processData() {
+            try {
+                // Query all reports
+                const stmt = db.prepare("SELECT * FROM reports ORDER BY id ASC");
+
+                while (stmt.step()) {
+                    const row = stmt.getAsObject();
+
+                    // Parse Authors
+                    const authors = row.author_name.split(/ & | and /).map(a => a.trim()).filter(a => a);
+
+                    const report = {
+                        ...row,
+                        authors: authors
+                    };
+
+                    allReports.push(report);
+
+                    // Group by Page
+                    if (!reportsByPage[report.page_title]) reportsByPage[report.page_title] = [];
+                    reportsByPage[report.page_title].push(report);
+
+                    // Group by Author
+                    authors.forEach(auth => {
+                        const key = normalizeName(auth);
+                        if (key !== 'unknown author') {
+                            if (!reportsByAuthor[key]) reportsByAuthor[key] = [];
+                            reportsByAuthor[key].push(report);
+                        }
+                    });
+                }
+                stmt.free();
+            } catch (e) {
+                throw new Error("Database schema invalid. Ensure crawler.py created this DB.");
+            }
+        }
+
+        // --- SORTING UTILITY ---
+        
+        function sortPagesDescending(a, b) {
+            // Expected format: "SML [Season] [Year]" (e.g., "SML Spring 2024")
+            const regex = /SML\s+(Spring|Fall)\s+(\d{4})/i;
+            
+            const matchA = a.match(regex);
+            const matchB = b.match(regex);
+
+            // Fallback for unexpected formats
+            if (!matchA || !matchB) return b.localeCompare(a);
+
+            const yearA = parseInt(matchA[2], 10);
+            const yearB = parseInt(matchB[2], 10);
+            
+            const seasonA = matchA[1].toLowerCase();
+            const seasonB = matchB[1].toLowerCase();
+
+            // 1. Sort by Year (Descending: 2025 -> 2024)
+            if (yearA !== yearB) {
+                return yearB - yearA; 
+            }
+
+            // 2. Sort by Season (Fall > Spring for same year)
+            // Fall = 1, Spring = 0. We want descending (Fall first).
+            const valA = seasonA === 'fall' ? 1 : 0;
+            const valB = seasonB === 'fall' ? 1 : 0;
+            
+            return valB - valA; 
+        }
+
+        // --- RENDERING ---
+
+        function renderAll() {
+            renderOverview();
+            renderAuthors(); // Initial Render
+            renderReports(); // Initial Render
+            renderCSV();
+        }
+
+        function renderOverview() {
+            // General Stats
+            const totalAuthors = Object.keys(reportsByAuthor).length;
+            const totalPages = Object.keys(reportsByPage).length;
+
+            document.getElementById('general-stats').innerHTML = `
+                <div class="stat-row"><span>Total Reports</span> <strong>${allReports.length}</strong></div>
+                <div class="stat-row"><span>Unique Authors</span> <strong>${totalAuthors}</strong></div>
+                <div class="stat-row"><span>Course Categories</span> <strong>${totalPages}</strong></div>
+            `;
+
+            // Categories - Uses Custom Sort
+            const sortedPages = Object.keys(reportsByPage).sort(sortPagesDescending);
+            
+            let catHtml = '';
+            sortedPages.forEach(p => {
+                catHtml += `<div class="stat-row"><span>${p}</span> <span class="stat-badge">${reportsByPage[p].length}</span></div>`;
+            });
+            document.getElementById('category-list').innerHTML = catHtml;
+
+            // Collaboration
+            if (allReports.length > 0) {
+                const sortedRep = [...allReports].sort((a, b) => b.authors.length - a.authors.length);
+                const max = sortedRep[0].authors.length;
+                const tops = sortedRep.filter(r => r.authors.length === max);
+
+                let collabHtml = `<p>Max authors on one report: <strong>${max}</strong></p>`;
+                tops.forEach(r => {
+                    collabHtml += `<div><strong>${r.title}</strong><br><small>${r.authors.join(', ')}</small></div><hr style="border:0; border-top:1px solid #ddd; margin:10px 0;">`;
+                });
+                document.getElementById('collab-stats').innerHTML = collabHtml;
+            }
+        }
+
+        function renderAuthors() {
+            const q = document.getElementById('author-search').value.toLowerCase();
+            const container = document.getElementById('author-list');
+
+            // Convert to array
+            let list = Object.keys(reportsByAuthor).map(key => ({
+                key: key,
+                display: getDisplayName(key),
+                count: reportsByAuthor[key].length
+            }));
+
+            // Filter
+            if (q) list = list.filter(a => a.display.toLowerCase().includes(q));
+
+            // Sort (Count DESC, then Alpha)
+            list.sort((a, b) => b.count - a.count || a.display.localeCompare(b.display));
+
+            let html = '';
+            // Limit render for performance if query is empty
+            const limit = q ? list.length : 100;
+
+            list.slice(0, limit).forEach(item => {
+                html += `
+                    <div class="stat-row">
+                        <span>${item.display}</span>
+                        <span class="stat-badge">${item.count} pubs</span>
+                    </div>
+                `;
+            });
+
+            if (list.length > limit) html += `<div style="text-align:center; padding:10px; color:#888;">...and ${list.length - limit} more</div>`;
+            if (list.length === 0) html = `<div style="padding:20px; text-align:center;">No authors found.</div>`;
+
+            container.innerHTML = html;
+        }
+
+        function renderReports() {
+            const q = document.getElementById('report-search').value.toLowerCase();
+            const container = document.getElementById('report-list');
+
+            let matches = allReports;
+            if (q) matches = allReports.filter(r => r.title.toLowerCase().includes(q));
+            else matches = allReports.slice(0, 20); // Show recent 20 by default
+
+            let html = '';
+            matches.forEach(r => {
+                html += `
+                    <div style="padding:15px; border-bottom:1px solid #eee;">
+                        <div style="font-weight:600; color:#3498db; font-size:0.85rem;">${r.page_title}</div>
+                        <div style="font-size:1.05rem; margin:4px 0;">${r.title}</div>
+                        <div style="color:#666; font-size:0.9rem;">by ${r.author_name}</div>
+                        ${r.link ? `<a href="${r.link}" target="_blank" style="font-size:0.85rem; color:#0366d6;">View Link &rarr;</a>` : ''}
+                    </div>
+                `;
+            });
+
+            if (matches.length === 0) html = `<div style="padding:20px; text-align:center;">No reports found.</div>`;
+            container.innerHTML = html;
+        }
+
+        function renderCSV() {
+            const tbody = document.querySelector('#csv-table-body tbody');
+            let rawText = "Page Title,Metric,Value\n";
+            let htmlRows = "";
+
+            // Uses Custom Sort
+            const sortedPages = Object.keys(reportsByPage).sort(sortPagesDescending); 
+
+            sortedPages.forEach(page => {
+                const reports = reportsByPage[page];
+                if (reports.length === 0) return;
+
+                const first = reports[0]; // Assuming ID order is chronological order in DB
+
+                // Helper to add row
+                const addRow = (metric, val) => {
+                    htmlRows += `<tr><td>${page}</td><td>${metric}</td><td>${val}</td></tr>`;
+                    // Escape quotes for CSV
+                    const safeVal = val.replace(/"/g, '""');
+                    rawText += `"${page}","${metric}","${safeVal}"\n`;
+                };
+
+                // 1. First Report
+                addRow("First Report", `'${first.title}' by ${first.author_name}`);
+
+                // 2. Most Published
+                const counts = {};
+                reports.forEach(r => r.authors.forEach(a => {
+                    const k = normalizeName(a);
+                    if (k !== 'unknown author') counts[k] = (counts[k] || 0) + 1;
+                }));
+
+                if (Object.keys(counts).length > 0) {
+                    const topKey = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+                    addRow("Most Published", `${getDisplayName(topKey)} (${counts[topKey]})`);
+                }
+
+                // 3. Shortest/Longest
+                const shortest = reports.reduce((a, b) => a.title_char_count < b.title_char_count ? a : b);
+                const longest = reports.reduce((a, b) => a.title_char_count > b.title_char_count ? a : b);
+
+                addRow("Shortest Title", `'${shortest.title}' (${shortest.title_char_count})`);
+                addRow("Longest Title", `'${longest.title}' (${longest.title_char_count})`);
+
+                // Separator in HTML only
+                htmlRows += `<tr style="background:#f4f6f8;"><td colspan="3"></td></tr>`;
+            });
+
+            tbody.innerHTML = htmlRows;
+            document.getElementById('raw-csv').value = rawText;
+        }
+
+        // --- UTILITIES ---
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        function copyCSV() {
+            const el = document.getElementById('raw-csv');
+            el.select();
+            document.execCommand('copy');
+            alert("CSV data copied to clipboard!");
+        }
+
+    </script>
+</body>
+
+</html>
