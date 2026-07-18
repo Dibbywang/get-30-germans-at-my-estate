@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 4: Skate Electroreception - Part 2 & Sour Taste (Otop1)</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../g30-styles.css" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 20px auto 10px auto;
+            padding: 0 20px;
+        }
+        .back-btn {
+            background-color: #00664a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: #004231;
+        }
+        .dual-pane {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto 30px auto;
+            padding: 0 20px;
+            height: calc(100vh - 180px);
+            box-sizing: border-box;
+        }
+        .summary-pane {
+            flex: 1;
+            overflow-y: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .transcript-pane {
+            flex: 1;
+            overflow-y: auto;
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .summary-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .summary-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .summary-section h3 {
+            color: #00664a;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .summary-section p {
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .summary-section ul, .summary-section ol {
+            padding-left: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .summary-section li {
+            margin-bottom: 8px;
+        }
+        .summary-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .summary-section th, .summary-section td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .summary-section th {
+            background-color: #00664a;
+            color: white;
+        }
+        .equation {
+            background: #f0f7f4;
+            padding: 15px;
+            border-left: 4px solid #00664a;
+            margin: 15px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+        .transcript-para {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.5s ease, border-left 0.5s ease;
+            border-left: 4px solid transparent;
+        }
+        .transcript-para p {
+            margin: 5px 0 0 0;
+            line-height: 1.5;
+            color: #444;
+        }
+        .timestamp {
+            display: inline-block;
+            background: #00664a;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .timestamp:hover {
+            background: #004231;
+        }
+        .time-link {
+            color: #00664a;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: monospace;
+            padding: 1px 4px;
+            border-radius: 3px;
+            background: #e8f5e9;
+        }
+        .time-link:hover {
+            background: #c8e6c9;
+            text-decoration: underline;
+        }}
+        .transcript-para.highlight {
+            background-color: #e8f5e9;
+            border-left: 4px solid #00664a;
+        }
+        /* Customize scrollbars for a premium feel */
+        .summary-pane::-webkit-scrollbar, .transcript-pane::-webkit-scrollbar {
+            width: 8px;
+        }
+        .summary-pane::-webkit-scrollbar-track, .transcript-pane::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .summary-pane::-webkit-scrollbar-thumb, .transcript-pane::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        .summary-pane::-webkit-scrollbar-thumb:hover, .transcript-pane::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .dual-pane {
+                flex-direction: column;
+                height: auto;
+            }
+            .summary-pane, .transcript-pane {
+                height: 500px;
+                flex: none;
+            }
+        }
+    </style>
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <!-- MathJax for rendering equations beautifully -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="../../../favicon.png" alt="G30 Logo" class="logo-image" />
+            <div class="logo-text">is beautiful.</div>
+        </div>
+        <div class="nav-links">
+            <a href="../../../index.html">Home</a>
+            <a href="https://dibbywang.itch.io/get-30-germans-at-my-establishment">Games</a>
+            <a href="https://tact.ac.thers.ac.jp/portal">TACT</a>
+            <a href="../../../resources.html">Resources</a>
+        </div>
+        <div class="user-options"></div>
+    </div>
+
+    <div class="header-container">
+        <h2 style="color: #00664a; margin: 0;">Lecture 4: Skate Electroreception - Part 2 & Sour Taste (Otop1)</h2>
+        <a href="CB4.html" class="back-btn">← Back to Index</a>
+    </div>
+
+    <div class="dual-pane">
+        <div class="summary-pane" id="summary-pane">
+            
+    <div class="summary-section">
+        <h3>1. Molecular Adaptations in the Skate BK Channel</h3>
+        <p>Building on the CaV1.3 adaptation, the skate's BK channel also shows crucial evolutionary changes compared to the mammalian (mouse) BK channel. <a href="#t-487000" class="time-link">[08:07]</a></p>
+        <ul>
+            <li>In single-channel recordings using the <strong>inside-out patch-clamp configuration</strong> (which exposes the intracellular side to the bath to control calcium), the skate BK channel showed a much smaller single-channel conductance (< 10 pS) than the mouse (~20 pS). <a href="#t-901000" class="time-link">[15:01]</a></li>
+            <li>However, the skate BK channel stays open for a longer duration (mean open time ~5 ms vs ~1 ms). <a href="#t-979000" class="time-link">[16:19]</a></li>
+            <li>This is due to the loss of negative charges in the S6 pore-lining domain, reducing electrostatic attraction for K<sup>+</sup> and lowering conductance while maintaining robust calcium-dependent gating. <a href="#t-1156000" class="time-link">[19:16]</a></li>
+        </ul>
+        <p>Together with the window current from CaV1.3, these adaptations drive the stable, self-sustaining membrane potential oscillations essential for detecting minute electric fields. <a href="#t-1464000" class="time-link">[24:24]</a></p>
+    </div>
+
+    <div class="summary-section">
+        <h3>2. Ion Selectivity and the Nernst Equation</h3>
+        <p>To determine what ion a channel transports, electrophysiologists rely on the reversal potential from I-V curves. <a href="#t-2063000" class="time-link">[34:23]</a></p>
+        <p>By shifting the extracellular concentration of an ion and re-measuring the reversal potential, they check if the shift matches the theoretical value calculated by the <strong>Nernst Equation</strong>. If the experimental data fits the theoretical curve, the channel is highly selective for that specific ion. <a href="#t-2231000" class="time-link">[37:11]</a></p>
+    </div>
+
+    <div class="summary-section">
+        <h3>3. Sensory Biology of Taste</h3>
+        <p>The tongue detects five basic tastes: Sweet, Sour, Bitter, Salty, and Umami (Savory). <a href="#t-2519000" class="time-link">[41:59]</a></p>
+        <ul>
+            <li>Sweet, Umami, and Bitter use GPCRs (G-protein coupled receptors) to initiate an intracellular signaling cascade ending in calcium release and TRPM5 channel activation. <a href="#t-2735000" class="time-link">[45:35]</a></li>
+            <li>Salty taste relies primarily on ENaC (Epithelial Sodium Channels). <a href="#t-2837000" class="time-link">[47:17]</a></li>
+        </ul>
+    </div>
+
+    <div class="summary-section">
+        <h3>4. The Quest for the Sour Taste Receptor</h3>
+        <p>Sour taste is the detection of protons (H<sup>+</sup>) from acidic foods. The molecular identity of the sour receptor was highly controversial. <a href="#t-2837000" class="time-link">[47:17]</a></p>
+        <p>Initially, <strong>PKD2L1</strong> (a TRP channel) was widely accepted as the sour receptor based on genetic and pharmacological data (2006). However, by 2011, double-knockout mice lacking PKD2L1 still showed robust nerve responses to acids, meaning the true receptor was still unknown. <a href="#t-3351000" class="time-link">[55:51]</a></p>
+        <p>In 2010, the Liman lab successfully recorded a massive, zinc-sensitive proton current in fluorescently-labeled sour taste cells, establishing the biophysical signature of the missing receptor. <a href="#t-3572000" class="time-link">[59:32]</a></p>
+    </div>
+
+    <div class="summary-section">
+        <h3>5. Discovery of Otop1 as the Proton Channel</h3>
+        <p>After an 8-year search using single-cell RNA sequencing (comparing sour cells to other taste cells), researchers pinpointed <strong>Otop1 (Otopetrin-1)</strong> as the elusive sour receptor. <a href="#t-3958000" class="time-link">[65:58]</a></p>
+        <p>Otop1 was previously linked to inner-ear gravity sensing (otoconia formation) but its channel function was unknown. <a href="#t-4410000" class="time-link">[73:30]</a></p>
+        <p><strong>Validation of Otop1:</strong></p>
+        <ul>
+            <li><strong>Electrophysiology in Xenopus Oocytes & HEK cells:</strong> Otop1 expression yielded a robust inward current upon extracellular acidification, which was potently blocked by zinc. <a href="#t-4479000" class="time-link">[74:39]</a></li>
+            <li><strong>Selectivity:</strong> The reversal potential perfectly tracked the Nernst equilibrium potential for protons across varying pH levels. Introducing high concentrations of competing ions (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Cl<sup>-</sup>) did not alter the current, proving it is highly selective for H<sup>+</sup>. <a href="#t-4989000" class="time-link">[83:09]</a></li>
+            <li><strong>In Vivo:</strong> Otop1 knockout mice completely lost the ability to detect sour tastes, confirming it as the primary mammalian sour receptor. <a href="#t-5281000" class="time-link">[88:01]</a></li>
+        </ul>
+    </div>
+    
+        </div>
+
+        <div class="transcript-pane" id="transcript-pane">
+            
+        <div class="transcript-para" id="t-0">
+            <span class="timestamp" data-start="0">00:00</span>
+            <p>Electro-reception, so it's the ability to sense a little bit the electrical field of animals that are around other animals, and you have animals that can feel electricity, and the objective for the researcher was to find what's the cause, how these animals, what is the molecular mechanism of the electro-reception, so they are using RNA sequencing and combine with electro-physiological studies, so patch clumps, patch clumps, now they could identify two different ion channels, and it's called CAE 1.3, which is a calcium selective channel, and the other one is BK, which is a potassium selective channel, and its activity is modulated by calcium ion, so we saw that this CAE 1.3, which is also expressed in mammalians, including human and rat,</p>
+        </div>
+
+        <div class="transcript-para" id="t-96000">
+            <span class="timestamp" data-start="96000">01:36</span>
+            <p>Has a little customized ad, which consists in a few amino acids, that is absent in other species, like human or rat or even zebrafish, and this little piece of amino acid, this little chain of amino acid, is found between S2 and S3, so it's S, I remind you, so these channels are tetramer of 6, alpha and transprime domain, 1, 2, 3, 4, 5, 6, so they are called S1, S2, S3, S4, S5, S6, so all the channels have alpha elix, transprime and alpha elix, and they are all named from S1 to S4, 5, 6, 8, 9, 4, 10, depending on their structure, and in the case of the voltage, gated channels like CAE 1.3, it's a voltage gated, they have</p>
+        </div>
+
+        <div class="transcript-para" id="t-193920">
+            <span class="timestamp" data-start="193920">03:13</span>
+            <p>In S4, what is called a voltage sensor, minus, so the voltage sensor contains arginine residues, which are electrically charged, voltage sensor, and this voltage sensor moves according to the plasma membrane potential, so when the plasma membrane potential is negative inside, the voltage sensor is attracted by the negative charge, and when the polarity change because of the depolarization, the voltage sensor moves, and it opens the pore that is located here, so this S5 and S4 makes the selective pore for the ion, four times the selective pore, and what they found is that these little five amino acids are located here, they are located here, and they made a little, they are slightly positive, so they make a little</p>
+        </div>
+
+        <div class="transcript-para" id="t-278640">
+            <span class="timestamp" data-start="278640">04:38</span>
+            <p>Local, very local change in the membrane potential difference across here the idea is they are a little bit responsive force for S4, and that's what they could measure here, so here is the experience where they took these five amino acids and they added into the rat sequence, and they also neutralized these charges in the little skate, and when they neutralized the charge, the phenotypes go back to rat phenotype, down on conductance, and down on gating, and that was the same for when they put the sequence in the rat, they found the, they found a shift in the curve to the conductance over the gating current, that is the same to the skate, so they concluded in this figure, so they made</p>
+        </div>
+
+        <div class="transcript-para" id="t-351600">
+            <span class="timestamp" data-start="351600">05:51</span>
+            <p>A, they measure the kinetics, of the activation of the current between the charge and the neutral, and they could see some little difference between the charge and the neutral in the kinetics, and they made their model, so the voltage sensor needs a large in the rat, the Mamaria, the voltage sensor needs a large shift in the membrane potential to move, and then to open the channel, while the skate, because of the presence of this positive charge, this local presence of the positive charge, already pre, pre, already started the movement, or not started, but really pre-position for a small, for the need of a very small potential change to get to the channel, so they make it much more positive compared to the,</p>
+        </div>
+
+        <div class="transcript-para" id="t-418240">
+            <span class="timestamp" data-start="418240">06:58</span>
+            <p>Compared to the Mamarian one, and then they compare, they also check the, the Mamaria and the little skate, BK channel, that's the second part, just, we, we, we, here, so the BK channel is the calcium-sensitive, potassium-selective channel, it's also a voltage, gator, so when you depolarize, the channel will open, but there is a calcium modulation, so there is a calcium binding site, somewhere, I forgot where, there is a calcium binding site in the channel, the channel, there is, the calcium can bind somewhere and potentiate, the channel activity, there are points b, because they are big, so they have a large conductance, so they let potassium pass, and so what they did, because they had this, the RLA sequence,</p>
+        </div>
+
+        <div class="transcript-para" id="t-487840">
+            <span class="timestamp" data-start="487840">08:07</span>
+            <p>They could clone, as we saw last week on the CN3.1, they sub-clone, or they clone the CMA of BK, they put the CMA in a plasmid vector, and then they transfect the plasmid into the hexes, and they perform the experiments, so BK, because they are big, they are usually measured in single-channel mode, so the current that you see here, these are single-channel measurements, so how they achieve the single-channel measurement?</p>
+        </div>
+
+        <div class="transcript-para" id="t-540720">
+            <span class="timestamp" data-start="540720">09:00</span>
+            <p>So you have the cell, so last week for the, for the, for the CAD 1.3, they applied the pipette, they made a negative pressure, and the negative pressure is strong enough to break the membrane, and then you have what is called the, that's the earth, you have the two electrodes, this is for the whole cell, because you can measure the channels, all the channels on the surface of the plasma membrane, and that's how they measure CAD 1.3 activity, so they measure an influx of calcium, and I remind you, an influx of positive charge is seen as an inward current, as a negative current, as a negative current, it's a positive cation, but it's a negative current that you measure, and then they measure the intensity of the current,</p>
+        </div>
+
+        <div class="transcript-para" id="t-624400">
+            <span class="timestamp" data-start="624400">10:24</span>
+            <p>And then you plot the ID curve, in the case of the BK, and the same, they apply the pipette, in the, over the cell, but they came, but then they rapidly, and in a rapid movement, they pull out the pipette, from the cell, the cell is attached to the surface, so they just pull out everything, and they could rip out a piece of membrane, so you have just, in the pipette, you catch a piece of membrane, and if you are lucky, you have a one or two channel in the membrane, and you can measure their activity, this is called, when it's open like this, this is called the force cell, configuration, they are called configuration, and this is called the inside</p>
+        </div>
+
+        <div class="transcript-para" id="t-718080">
+            <span class="timestamp" data-start="718080">11:58</span>
+            <p>Out configuration, why inside out, so the pipette volume here contains the solution, that's limit the intracellular, the intracellular cytoplasm solution, and then you have here the extracellular solution, so we call it vast solution or extracellular solution, and this one is called the pipette solution, and it's the intracellular solution, it's limit the intracellular solution, but in the case of this single cell configuration, this becomes the extracellular domain, this is out, and here the vast solution becomes the inside of the cell, so that's why the inside is out, so you have an access to the intracellular domain, so that's why it's called inside out, and here is the intracellular domain, and here is the extracellular domain, the extracellular domain becomes inside the pipette,</p>
+        </div>
+
+        <div class="transcript-para" id="t-827120">
+            <span class="timestamp" data-start="827120">13:47</span>
+            <p>And then they measure the current, so they have to put a lot of rotation in the vast solution, while when you have a solution like this, you need to put rotation inside the pipette, and the part that the rotation is moving out, and you can see a positive current, and then they compare the mouse, sorry, it's not a rat, it's a mouse, the mouse cdna of bk with the scale cdna of bk, so what do you see here, it's very obvious, you see a large current, about 20 picohm pair, or even self picohm pair when you are at 100 millivolts, and what you see in the in the little bk, less than 10 picohm pair, so there is already a</p>
+        </div>
+
+        <div class="transcript-para" id="t-901680">
+            <span class="timestamp" data-start="901680">15:01</span>
+            <p>Dramatic change in the single channel conductance, the single channel current between the scale and the mouse, if you zoom a little bit, you can see here the small current, it's the time, if you zoom here for example, you can see the difference at the same scale between the current, and then they count the events, the number of events that are the time, the length of the opening time, and you can see that they are open at a mean, they fit, the power and the power is 5 millisecond compared to 1 millisecond, so not only they are open more, they have a larger influx of ions, but they also are open a longer time than for escape, so it's the same gene,</p>
+        </div>
+
+        <div class="transcript-para" id="t-979760">
+            <span class="timestamp" data-start="979760">16:19</span>
+            <p>But their activity or their phenotype, their mark of activity is much different, and then they wanted to know the difference, so they did the same for the CLD 1.3, they checked the sequence, and they only found a very, very small difference, and the difference was 3 large ones, 3 large ones, what are you going to say, this one, yeah, here, here, and here, yeah, and here, here and here, yeah, these two amino acid, I and E, what is the I? Yeah, and what is E?</p>
+        </div>
+
+        <div class="transcript-para" id="t-1058320">
+            <span class="timestamp" data-start="1058320">17:38</span>
+            <p>Maybe, something like this, G, and in the skate, what do you have, an A or an E, and what's the difference between these two amino acids, maybe these three amino acids, these, those one are negatively charged, and in the little skate, Arani has no charge, but it's easy to guess because you have this little skate, this little skin here, in the case of the mouse, BK, you have a little bit too negative charge, this is S6, S6O, it's the same, I have six transmembrane domains, one, two, three, four, five, six, S5 and S6, six, and S4, voltage sensor, this is inside, outside, S5 and S6 makes the four, and here, in S6, they have neutral charge, so in the mouse, they are a little bit negative, more negative,</p>
+        </div>
+
+        <div class="transcript-para" id="t-1156000">
+            <span class="timestamp" data-start="1156000">19:16</span>
+            <p>And this little negative charge, according to their hypothesis, will attract more potassium because they are positive and negative, and they are just here in the mouse at the beginning of the, at the beginning of the, of the channel's pour, so more potassium will accumulate here, and when you have it locally, and when you have deparization, you will have an increase of the current, and they, they made a mutation, and when they did the mutation, they increase, the double mutation, they increase the, the current, and when they, they made a mutation of this amino acid, and they could increase the current, and when they neutralize this charge in the mouse, they reduce the current, oops, but just changing a little bit the amino acid, so the two amino acids, they could,</p>
+        </div>
+
+        <div class="transcript-para" id="t-1242320">
+            <span class="timestamp" data-start="1242320">20:42</span>
+            <p>They could mimic the, the change in the current, so in the case of the CAB 1.3, you have five amino acids, but in the case of the big day, you have plus five amino acid, but here you have just a change in the amino acid, you don't have more amino acid, but you just neutralize two amino acids from minus to neutral, and they could change, and change the phenotype, so what's the consequence for this income of physiology, first is that they measure the potential, so using the same approach of the patch clamp in the whole cell, you change from, in the whole cell like this, this is called a voltage clamp, when you measure the current, but in other case, they measure the, they,</p>
+        </div>
+
+        <div class="transcript-para" id="t-1325920">
+            <span class="timestamp" data-start="1325920">22:05</span>
+            <p>They don't clamp, they just measure the membrane potential, so it's called the I0 mode, they don't impose, they just measure the potential at, they just measure the, no, no, no, they just measure, I don't know, sorry, they are sitting in the voltage clamp and they, they measure the, the current oscillation, no, no, I, I forgot, oh, I, I, I, I, I, they measure the potential at different, they measure the potential fluctuation at different potential value, and they could see oscillation, and they could see this oscillation at very negative or close to the resting potential, to the resting potential values of the cell, and you can see that the amplitude of these oscillations, of these potential oscillations, they fit with the window current, if you remember the window current.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1464880">
+            <span class="timestamp" data-start="1464880">24:24</span>
+            <p>You remember the window current here, and so the window current falls here in 1.3, here, fits with the oscillatory behavior of the potential at different potential values, So it means that when the CLD1.3 is constantly open, a fraction of the channels are constantly open, you have oscillations, you have a lot of oscillations, and when you block the channels activity, we fed it in for CLD1.3, and DA4BK, so the general blocker for potassium channels is specific for L type channels, you block the oscillatory behavior, the same when you add a drug, or a blocker of the potassium channel, so you block the amplitude of the oscillation, you block the frequency of the oscillations, and then they made a behavior</p>
+        </div>
+
+        <div class="transcript-para" id="t-1555840">
+            <span class="timestamp" data-start="1555840">25:55</span>
+            <p>System, and they have a water tank, they put the fish in the water tank, and pillars, with some other stimulator, and they put the current in these pillars, for example in these pillars here, and they look at the skate behavior, and these are the skate, when they map, using the camera, they map their movement, and you can see when they block the two channels activity, their behavior, they lost the electroreception capacity, so here there is a stimulation, so the skate thinks there is a prey around here, so they move just around the pillar, and when the channels are blocked, they don't move again around the pillar, so the time near the electrode in the control, when you have a stimulus, is much higher than when they block the channels, this is a meter</p>
+        </div>
+
+        <div class="transcript-para" id="t-1631440">
+            <span class="timestamp" data-start="1631440">27:11</span>
+            <p>Fraction, it's a T channel blocker that uses control, so it has no effect on the behavior of the fish, so they made a little scheme for their experiment, so a little change in the potential made of potassium influx, calcium influx, which depolarized at very negative potential, which depolarized the membrane potential, and then the calcium activates the decay channel, influx of potassium, so reduction of the potential, and then block the CAV, and then there is a circle like this, so you have an oscillatory behavior, and it's a protein that also blocks the activity of the big cake, it's in the paper, but we just mentioned, so just addition of a few amino acids, which are specific to the little skate, CAV 1.3 and BK channel, make a</p>
+        </div>
+
+        <div class="transcript-para" id="t-1706800">
+            <span class="timestamp" data-start="1706800">28:26</span>
+            <p>Major functional difference, and a specific physiological role for the electroreception, so that's paper, it's very interesting for this, so it's also a very good paper to see the foundation of the ion channel activity, how they behave, how they are measured in secret channel activity, or in the whole cell activity, but they also give a very important and interesting information, how nature can adapt the same gene for a different function of a different role, and what is interesting, this paper was followed by the same group, just one year later, they published a major paper, where they also study electroreception that they compare between shark and the skates, and in the little skate, sorry, in the little skate, so they have a couple, a functional coupling between CAV 1.3</p>
+        </div>
+
+        <div class="transcript-para" id="t-1775920">
+            <span class="timestamp" data-start="1775920">29:35</span>
+            <p>And the BK channel, what was interesting is that in the shark, in the catch shark, it's a little shark, it's a shark, it's a little shark, they found that there is not a functional coupling, but there is a coupling of activity between CAV 1.3 and another potassium channel gene, it's called CAV 1.3, also 1.3, and they found that these two channels, this channel has also the same mutation, or not the same, not a mutation, but the same addition of amino acids than the little skate, but the coupling of the activity is made with a different potassium channel, and this potassium channel also has a little difference in amino acid compared to the mammalian one and provides him for more sensitive capacity, and as I briefly</p>
+        </div>
+
+        <div class="transcript-para" id="t-1837360">
+            <span class="timestamp" data-start="1837360">30:37</span>
+            <p>Mentioned in the last week's lecture at the end, so this repetition of amino acid is not only found in fish, but was also found in the pigeon, and not in electroreception, but in the inner ear of the pigeon, in the vestibular hair cell, in the ear, and it's probably, they made a supposition, it's not for electroreception, but for magneto-reception, and what is magneto-reception? What is magneto-reception used for?</p>
+        </div>
+
+        <div class="transcript-para" id="t-1886720">
+            <span class="timestamp" data-start="1886720">31:26</span>
+            <p>Navigation of the birds or other animals, so there is a very, there is a very fierce debate on magneto-reception, there is a lot of hypothesis, a lot of mechanism to debate, so I hope maybe one of you can find it, some say it's a rhodopsin, it's due in the eye, and it's kind of oxidized, a cytochrome that is important for magneto-reception, others say it's a channel, others say there is a kind of magnetic, it's kind of a protein that has some magnetic property, there's a lot of different hypotheses, so it's still a big debate, and maybe if you find the real, if you prove that you have magneto-reception, that would be a big discovery, so maybe it's a channel, or maybe it's not a channel, I like the idea of the channel,</p>
+        </div>
+
+        <div class="transcript-para" id="t-1968080">
+            <span class="timestamp" data-start="1968080">32:48</span>
+            <p>So this first paper was important to showing the, what's an IV curve, how to measure the current, activation, activation and inactivation, and also the gating mechanism, the voltage sensing gating, and that they can measure the gating current, so the current generated by the movement of the voltage sensor, and with this, measuring this channel property, and they could see the difference between manians and user states, and they could characterize the electro-reception molecular mechanism, so this is mainly about gating and the voltage sensing, and the channel, the channel behavior, but now there is another property of channel, what is important, it's called ion selectivity, so we saw that CME 1.3 is selected for calcium, I said, maybe you don't remember, but</p>
+        </div>
+
+        <div class="transcript-para" id="t-2063360">
+            <span class="timestamp" data-start="2063360">34:23</span>
+            <p>When you put a patch clamp using a calcium channel, you can replace the calcium by barium, and actually its channels are more selected for barium than for calcium, and if you put other ions, so they won't pass through the channel, and the bake is a potassium selective channel, so how the people or how the researchers claim that this channel is selected for this ion or this channel is selected for this other ion, so one of the, one of the trick or one of the tool that is used is usually the Nernst equation, and measuring the equilibrium potential, and when you, when you do your IV curves, and you measure the current, this is the voltage, current, and your curve</p>
+        </div>
+
+        <div class="transcript-para" id="t-2141200">
+            <span class="timestamp" data-start="2141200">35:41</span>
+            <p>Cross the zero axis, so the value of this potential is called a reversal potential, and when your reversal potential is the same as this, equilibrium potential for a specific ion, so you can say this channel is selected for this, for this ion, and this is what can be used, this is a paper I published with a collaborator, so we were characterizing this channel in the cylindrical point membrane, they solve the structure and I measure the selectivity by measuring the change in the reversal potential and in different ionic condition, so I could see that the channel is selected for chloride but also selected for other ions, and that's how you do, why you use the Boltzmann-Ortin equation that you simplify and you can compare</p>
+        </div>
+
+        <div class="transcript-para" id="t-2231200">
+            <span class="timestamp" data-start="2231200">37:11</span>
+            <p>The selectivity against one single ion channel, yes? Will it be like always a threshold or relative, like you can see whether a channel is selected by this base or like a certain threshold you set, yeah, yes, so it's always relative to another ion, yeah, it's always relative to a standard ion and actually other ions can pass but not that easy, so the ions are usually the most accepted model is that ions like sodium are hydrated, they have what's called a hydration shell and you have a little bit of more negative charge in the oxygen and this makes a hydration shell and the idea is that we select the filter, we make the hydration shell for a specific ion and this distance here</p>
+        </div>
+
+        <div class="transcript-para" id="t-2299440">
+            <span class="timestamp" data-start="2299440">38:19</span>
+            <p>Is different between the oxygen and the sodium and the sodium is different depending on the ion, not question of ion size, it's a question of distance and the the selective filter with bimic dehydration shell is oxygen that are at a good distance with the ion but the model is not always perfect and this is one of the last paper I read on ion selectivity so it's make a little bit, it's challenging a little bit the model of the hydration shell, it's not a perfect selectivity so you see that they go well but the sodium ion has a a passage that's not, it's too narrow for not well enough for the potassium sodium atoms in selecting the sodium across the potassium channel, the sodium trap in the tortious trajectory for</p>
+        </div>
+
+        <div class="transcript-para" id="t-2367840">
+            <span class="timestamp" data-start="2367840">39:27</span>
+            <p>The sodium can enter the selective filter that doesn't pass well, you have people studying who is a model but you always can use this equation to measure your selectivity and that's why I want to study the next paper I send you with and this paper is here so the the group of Emily Zeman she had a quest to finding the receptor for acid taste and they found in the in our tongue or in the Mamalian tongue of the mouse they found a new gene they found not a new gene they found a gene that they could play it's a proton selective okay so I use this paper as an example for how the people study the selective in ion channel okay so and you will see that they use the reversal</p>
+        </div>
+
+        <div class="transcript-para" id="t-2443520">
+            <span class="timestamp" data-start="2443520">40:43</span>
+            <p>Potential or if you read the paper they use the reversal potential for the proton to show in their experimental condition to show that the reversal potential of their current fits with the equilibrium potential of the proton concentration gradient that is theoretically calculated in their experimental conditions okay and that's how they could play this is with other different evidence but this is a selective channel approach okay but just before I start I will make a brief introduction to the taste so taste testing we all enjoy food okay so where do we sense mostly taste of course there is a combination between olfaction and the tongue and what we see it's good it smells good and tastes delicious okay and our major organ for taste is our tongue</p>
+        </div>
+
+        <div class="transcript-para" id="t-2519680">
+            <span class="timestamp" data-start="2519680">41:59</span>
+            <p>Okay and our tongue can feel how many taste five first sweet sour bitter salt oh yes and then and then the tablet yeah okay so all these five tastes have specific receptors the food release molecules and you have receptors and the cells that detect the taste are for the taste receptor cells for taste and you see they have a similar organization than the the electro reception it's a group of cells that are together and they are electrically connected to the central nervous system there is a little part of them that is exposed outside and the receptors are here and through the receptor activation they can release no transmitter and give us information or this is taste delicious this is salt and</p>
+        </div>
+
+        <div class="transcript-para" id="t-2594560">
+            <span class="timestamp" data-start="2594560">43:14</span>
+            <p>This image is wrong this 2005 there is no area for the taste we can taste any taste everywhere this is wrong so you have five taste but you only have three type of taste receptor cells it's called a taste but it looks like an onion okay and you have a lot around here around here okay so you have different and that you can feel the surface of your tongue is not flat there is kind of gluten formation like this okay and within these three type of cells you have the five tastes okay and how it works inside the cell so the taste bud is connected through different ganglion you have different nerve projections and then you have the central nervous system with the taste information so what happened</p>
+        </div>
+
+        <div class="transcript-para" id="t-2666800">
+            <span class="timestamp" data-start="2666800">44:26</span>
+            <p>In term of here so you have a receptor the receptors usually induce a chain of signaling pathway like release of secondary messenger release of calcium and the calcium enables the release of neurotransmitter and then the neurotransmitter and generates an action potential in the nerves okay so you also have one kind of channels and the receptors are usually for taste five days but they have two types so you have either a gpcr what is a gpcr okay so it's a seven transfer brain domain protein that it's coupled to a g-protein and this type of cascade of signaling okay the researcher found the gpcr of the Nobel Prize the researcher found the g-protein Nobel Prize okay so they are very important not only for taste</p>
+        </div>
+
+        <div class="transcript-para" id="t-2735280">
+            <span class="timestamp" data-start="2735280">45:35</span>
+            <p>But for all the reception and hormone reception and neurotransmitter all kind of communication in cells okay release of calcium okay so they have gpcr or ion challenge okay mostly it's a gpcr okay and this this is a old this is a old scheme okay umami umami is a two gpcr different gpcr together later also gpcr you have different g okay and sodium it's a sodium channel it's called inac it's the same sodium channel that is in your kidney okay so salt it's an ncl ncl mostly sodium okay so it's easy to have a sodium channel okay and then kind of sour and this is a old review and the sour was a very long quest and people say for example</p>
+        </div>
+
+        <div class="transcript-para" id="t-2837920">
+            <span class="timestamp" data-start="2837920">47:17</span>
+            <p>This pkd channel it's very important for sour taste in this way okay so there was a a big fight this is another review from 2010 so sweet umami is a gpcr and then a chain of interesting events salt is a sodium channel that deprives the cell and then sour maybe the proton sensitive channel not a proton selective channel the proton is passing through some mechanism and this will induce an increase of proton inside the cell and block a channel or other inventory yes it's like other kinds of salts is it also true the sodium net channel right it's like other kind of salt like potassium salt potassium chloride i don't think potassium doesn't mean the sensational salt for example if you</p>
+        </div>
+
+        <div class="transcript-para" id="t-2908640">
+            <span class="timestamp" data-start="2908640">48:28</span>
+            <p>Eat banana banana is full of potassium don't make it for example some water that's hot different hotness yeah and then the mineral contains different teeth ah yeah which can be yeah but salty in general i'm not specialist on taste but as in salt taste is mostly defined by the amount of sodium inside the cell but yeah some some food contain a lot of potassium so what how they hold the taste i'm not sure and how we are interceding this taste maybe they they can influence the membrane potential so they they hyper-coronize the cell in a bit the the social i think taste but i'm not sure oh professor professor i think the potassium might potassium chloride might be used as a salt substitute in some specific diets yeah so if you</p>
+        </div>
+
+        <div class="transcript-para" id="t-2973840">
+            <span class="timestamp" data-start="2973840">49:33</span>
+            <p>Have hypertension yes like i have so you need to have a low potassium food intake so no potato chips no sodium then i think you you need to have a high the potassium rich food yeah so it's reduced deparization membrane deparization but i think then potassium chloride might at least be able to replace sodium by some internal taste yes i think so but i i haven't verified it and it should be simple to verify okay please check but for an exit i have to smuggle some potassium from the lab no you never do that but i think i don't i can't buy it anywhere this is for research okay so if it's very dangerous if you if you have too much potassium intake you might have</p>
+        </div>
+
+        <div class="transcript-para" id="t-3030640">
+            <span class="timestamp" data-start="3030640">50:30</span>
+            <p>A drop of blood pressure and a lot of filling and don't taste the potassium chloride or even the sodium chloride of course it tastes like salt but i remember i had a when i was phd student my lab had the office of an old professor and she always come to our lab take the glucose and the sucrose and put in her coffee research because it's okay for me i know she said she was already retired okay so let's come back to the proton okay so one of the one so the identity was controversial and one of the model was this pkd proton sensitive channel okay and one of the evidence for this pkd channel was this experiment okay these are electric</p>
+        </div>
+
+        <div class="transcript-para" id="t-3110080">
+            <span class="timestamp" data-start="3110080">51:50</span>
+            <p>Response problems so they put the electrode in the town or behind the town just to measure the electric influx or the electric response to in the mouse on the nerve town two different tastes okay so they put umami taste with this bitter taste sour taste and salty taste okay and they could observe the response to this electrical response with this different taste and they took already known knockout mice for the different umami sweet and bitter and you can see that when you have this gbcr t1r1 knockouts you lose the umami taste this t1r2 you lose the sweet taste t1r3 is important for both sweet and umami and t2r5 and you lose the bitter taste and they use fish toxin and this toxin in blood is pkd2 and pkd1 channel is like a specific</p>
+        </div>
+
+        <div class="transcript-para" id="t-3182240">
+            <span class="timestamp" data-start="3182240">53:02</span>
+            <p>Inhibitor okay and they lost the sour taste okay so using the toxin they say it's an evidence to say that this the sour means this channel okay and then these are two effectors downstream the this gpcr so phospholipase c beta 2 which is activated by the release of diacyglycerol after the activation of the gene protein okay and okay you see that they are important for sweet umami and bitter and tlpm5 is a channel that is activated downstream this gpcr this gpcr activation and they are also important for this sweet taste but not for sweet unsalted okay so this was 2006 so already 20 years ago so that was the model okay and that's why people were writing this kind of review where you have this is important for the sour</p>
+        </div>
+
+        <div class="transcript-para" id="t-3260080">
+            <span class="timestamp" data-start="3260080">54:20</span>
+            <p>Taste okay so in this case they use a toxin which is a strong evidence but what should be a more more effective evidence or a more definitive proof to say that this pkd2 and pkd2 l1 channel is important for sour taste what kind of experiments would you do when you want to prove that the gene is an important function okay knock out mars it means you suppress the gene from the animal and that's what they need but unfortunately and that was published a few years after the nature paper sour taste responses in my slagging challenge yeah sometimes you publish a great good paper you are very happy and then someone i said maybe no okay that's happened so pkd1 is not the major sour taste</p>
+        </div>
+
+        <div class="transcript-para" id="t-3351360">
+            <span class="timestamp" data-start="3351360">55:51</span>
+            <p>Okay and that's exactly the same experiments they did we use the knock out mice here and here they have to knock out mice they even have to double knock out mice they add acid you got salt and phenol and other stuff and they always have a response okay in the knock out mice oh no okay it's yeah okay you have a response these are other tests are such a good ncl phenol and it's okay oh no this was published in 2011 so five years after the 2006 okay so that means oh no you have to start again and try to find what is the what is this set okay and this is the response so there's a little reduction in the in the spike and</p>
+        </div>
+
+        <div class="transcript-para" id="t-3426800">
+            <span class="timestamp" data-start="3426800">57:06</span>
+            <p>In the in the response speed okay the response to the high concentration but they are still responding and these are the the blood cells and the electrode and they will show the response okay oh no and then came the group of lima and they published in 2010 so just before the the knock out mice and they just by electrophysiology they could record the proper current drive action potentials in genetically identified sour taste cell what does it mean and this was published in the pns for studying natural academia of science of the united states it's a very prestigious journal when you are a member of the academy okay so they could generate a mouse with a fluorescence in the sour taste cells</p>
+        </div>
+
+        <div class="transcript-para" id="t-3500880">
+            <span class="timestamp" data-start="3500880">58:20</span>
+            <p>They made a fluorescent mice in mice expressing pkd to l1 okay and the trp m5 mouse is more type 2 or type 3 i forgot but it's more for the umami sweet and the bitter taste okay so you have cells that are known and fluorescent for the sour taste you have cells that are more for this other taste and they measure the electrical response to acid okay and you can see that in this pkd l1 yellow fp yellow fluorescent protein you have a response to acid ph when you when you stimulate these cells with acid which was not the case in this trp m5 gfp expressing cells okay so when you have acid you have an electric response this is a member of current okay and when you don't have acid in</p>
+        </div>
+
+        <div class="transcript-para" id="t-3572480">
+            <span class="timestamp" data-start="3572480">59:32</span>
+            <p>The trp m5 almost no response okay and then they did patch clump and they measure the reversal potential and they plot this current also with the current with the ph so the more they acidify the higher is the current so the more you increase the concentration gradient of proton the more you increase the current it's evidence that proton it has some effect on the current and the reversal potential they measure at different ph condition fit the theoretical equilibrium potential of ph and this is the dash line and this is the experimental value it's almost the same so that's also very strong evidence to say this current is proton selective there is a ph dependence of the intensity of the current</p>
+        </div>
+
+        <div class="transcript-para" id="t-3647680">
+            <span class="timestamp" data-start="3647680">60:47</span>
+            <p>There is a reversal potential that fits there is a equilibrium reversal potential that fits with the theoretical equilibrium potential of the ph there is no known inhibitor of proton current except zinc for all the people that work in the proton channels zinc was always the inhibitor of proton conductance they put proton they could zinc and they almost inhibit most of the current okay and the last evidence here they didn't measure the current but they use the fluorescent fluorescence what is fluorescence yes fluorescent or proton so it's a molecule compound that emits fluorescence when you have the binding of the proton or the the opposite you have a when you don't have proton and have fluorescence okay and that's what they they observe</p>
+        </div>
+
+        <div class="transcript-para" id="t-3731600">
+            <span class="timestamp" data-start="3731600">62:11</span>
+            <p>Here there is in this pkd2 cell when they put hdl there's a decrease in the fluorescence so it means there's some proton movement inside the cell okay which is not the case in prpm5 well the movement is very small so with this one two three four piece of evidence they could claim yeah there is something about proton there is a proton channel maybe there is a proton channel that stimulates and activates the cell the proton channel proton influx deprives the membrane then the sodium channel further deprives the reaction potential influx of calcium and release of the neurotransmitter okay when this paper was published in 2010 by hurlman one two three orders that's the professor 2010 and then they started</p>
+        </div>
+
+        <div class="transcript-para" id="t-3808960">
+            <span class="timestamp" data-start="3808960">63:28</span>
+            <p>Search for the molecular identity of this channel and how many years does it take 2018 how many years eight years how many years your studies four years twice your university time okay so research takes time okay okay and you can see who's the first author do the what is that authors and the system last author is always the professor and the pr who's the first author the one who did the experiments usually to graduate students PhD students or postdocs okay how much is a graduate studies years how much is a PhD four five three postdocs two or three years eight years okay but you see Mr. or Mr. John I don't know it's here as a first author but he also contributes here</p>
+        </div>
+
+        <div class="transcript-para" id="t-3891200">
+            <span class="timestamp" data-start="3891200">64:51</span>
+            <p>Is here as a contribute for this paper okay but maybe it's another student who was the leader of this but the PI is always the PI okay so when you are in a paper when you're on the side left or right it's better when you are a leader so high contribution and contribution is started okay but they still but their name is here so they have a significant contribution okay so they they worked very hard for eight years and they found one one one family of gene that encode for a proton selective channel and his family is called Otop1 it's not that they didn't find a new gene but they identified a gene that was known to function as a proton selective channel</p>
+        </div>
+
+        <div class="transcript-para" id="t-3958240">
+            <span class="timestamp" data-start="3958240">65:58</span>
+            <p>This gene was already known but nobody all the function was not clear okay but they prove it's a channel okay and it's a proton selective channel so what what they use they use different methods so they use a mouse that the same mouse they had in the first paper the pns paper so one expressing jf3 in plpm cells for as control and beta sour sweet and another one is yfp for kdl2 expressing cells for acetase cells and in 2010 you could not do single RNA sequencing and that's why it took a few years but with single cell RNA sequencing technology they could perform a transcriptome analysis and they could clone the gene and then they did exactly the same in the previous paper we read sequencing cloning and then mRNA prediction</p>
+        </div>
+
+        <div class="transcript-para" id="t-4025200">
+            <span class="timestamp" data-start="4025200">67:05</span>
+            <p>Electrophysiology on all sides but cloned on x-cells and a little bit of proton imaging and that's made to prove that this Otop1 is a proton selective channel in sour test cell and that was published in very prestigious journal no science is a top journal okay so how they proceed they separated both cells and they is a transcription transcription transcriptomic analysis with ppm5 cells against pkdl1 cells and one dot is one gene okay and they measure their expression so they measure the this graph shows that the genes here are mostly expressed selectively in the pkdl1 cell and these genes here are mostly only expressed in tpm5 cells and there you see some thresholds that are experimentally selected okay and you have dots that are a little bigger</p>
+        </div>
+
+        <div class="transcript-para" id="t-4113920">
+            <span class="timestamp" data-start="4113920">68:33</span>
+            <p>And more visible so once you have transcription you have a list of genes and then you can try to select the genes that are only expressed in the plasma membrane okay and that's the the dots here okay so they they found a lot of these genes okay and they could identify 41 genes that are specifically expressed in the membrane of pkd2l1 cell okay so in this 41 genes they took the genes and they had a screening for a response to acidification and zinc okay as a first and rapid screening for a potential candidate for proton channel so they observed only one gene that responds to acidification but generates a current of an acidification and this response</p>
+        </div>
+
+        <div class="transcript-para" id="t-4194480">
+            <span class="timestamp" data-start="4194480">69:54</span>
+            <p>Was blocked by zinc all others ignore response okay so you can imagine the stress of the student or the researcher to start from here and after a few weeks it's still here or the stress on the other side to start all immediately you've got a response yeah please don't please don't you check everyone and say no response no this is the research especially when you do the screen okay but they had they were lucky also you have luck in the research but they did consistently have the file of this Otop1 response to the cell and this if you have to do this with spatch clumps very long and very hard so they use the xenopause of the oocyte now the oocyte of xenopause i don't know if</p>
+        </div>
+
+        <div class="transcript-para" id="t-4263600">
+            <span class="timestamp" data-start="4263600">71:03</span>
+            <p>So xenopause is a probe as you see it's very big and it's a cute and they have a they have a the female and a lot of oocyte they are quite large and you can see your eyes okay and they are also used for as an electrophysiological tool you can inject not the plasmid but directly the mRNA and wait a little bit and you will have the expression of your channel and then but Trump is very hard because you have to touch the cell under the microscope but here you just implant two electrodes and then you measure your current now you have a system with several wells so you can put several oocyte and implant and then measure several at the same time okay so with a an efficient screening they can identify</p>
+        </div>
+
+        <div class="transcript-para" id="t-4333920">
+            <span class="timestamp" data-start="4333920">72:13</span>
+            <p>This Otop1 and they look the literature i mean the database what is Otop1 Otop1 is abbreviation for Otopetrin which was found in in the inner here and was related to hearing atology when you have mutation okay so you have several Otopetrin 1 2 and 3 which are surprise variants it's for 1 2 3 4 10 extra 10 transform brain domain okay and one of there was a paper the function in 2007 auto petrion activation by pure engine electrolyte regulates intracellular calcium that's all okay but here they found all its response to acid it's blocked the electrical response is blocked by zinc so it has the potential to do channel so if you look at the figure one on figure supplementary figure one</p>
+        </div>
+
+        <div class="transcript-para" id="t-4410000">
+            <span class="timestamp" data-start="4410000">73:30</span>
+            <p>In the Xenopus they measure the current at acid pH at neutral pH the current is very small you increase the pH you increase the current the reversal potential almost fits the theoretical equilibrium potential for the pH at least in the range of five or six okay and they measure in the all side and then they moved from all sides to why it's not perfectly fit here because at this high pH the the clamp is not so easy you don't have using all side you don't have access to here you just change the medium here so you just acidify it here but the control of the gradient is not perfect they just have an estimation of the intracellular pH okay so it's not perfect so to have a</p>
+        </div>
+
+        <div class="transcript-para" id="t-4479200">
+            <span class="timestamp" data-start="4479200">74:39</span>
+            <p>A perfect fit and use the patch clamp because you have access to the intracellular space intracellular space is small you can control the pH here you can control the pH here pH means the concentration of proton you have control both so you have a good control of the gradient okay and what they did that's what they did this is in all sides they changed the extracellular pH so they moved from 7.4 to 6 and then back to 7.4 how they do this so in your experiment your all side is in a tank with a medium at pH 7.4 and you have your electrodes and machine and here you have what is called a perfusion system with tubes</p>
+        </div>
+
+        <div class="transcript-para" id="t-4549680">
+            <span class="timestamp" data-start="4549680">75:49</span>
+            <p>And you have different tanks with medium at pH 7.4 so you can perfuse using a pump and then you can change you go to pH 5 and you perfuse and you change the medium okay so while they change the medium to pH 6 to a higher higher proton concentration they could see the current okay they clamp it at minus 8 mu1 they increase the the proton concentration the current increase okay and then they did a ramp test they did a ramp test at different pH and they measured the reversal potential okay at the current amplitude as they measure the current amplitude the current increase is the increase of pH the same here and they did the same in hexels where you have a better clamp</p>
+        </div>
+
+        <div class="transcript-para" id="t-4613840">
+            <span class="timestamp" data-start="4613840">76:53</span>
+            <p>Okay from 7.4 to 6 you have the current or increase or increase make a ramp and you see change of the reversal potential and increase of the current increase of the current I said increase because we are in the negative the zero is here so the current increase one they have here the dots here is the control untranspected cells and here is uninjected cells no mRNA so so this is the first event there's a pH the content of the current so when you have asked you to increase the gradient difference of proton you increase the current does it mean this is selective for proton no just say increase the gradient increase the proton so it can be also a proton modulated system so the proton binds and increases the current</p>
+        </div>
+
+        <div class="transcript-para" id="t-4703600">
+            <span class="timestamp" data-start="4703600">78:23</span>
+            <p>Okay like basic like the basic channel so they have to check that this is really transselective so the first since they eat they check where Otop1 is expressed so they made a construct they tag it's called tag again so you add a little something so they have Otop1 and they put the tag and the tag is the fluorescent protein and in this case is YSP so the tag makes it visible by fluorescence and they observe in the cell where is located the fluorescence and you can see that the location is at the border of the cell which is means it's expressed in the membrane mostly of course you have signal in the cell why are you also have fluorescence in the cell</p>
+        </div>
+
+        <div class="transcript-para" id="t-4777200">
+            <span class="timestamp" data-start="4777200">79:37</span>
+            <p>Because it's it's creating still at the surface but this is confocal yeah it's localized to membrane but you still have signal inside when you you produce the protein the protein is produced in the of ER and then with the protein it's a bit of intracellular location but they put a line here and you can see the fluorescence has a peak in the border then it's lower inside and then at the peak at the other border so this is a good evidence that it's located at the class membrane okay they use they measure the pH intracellular pH by fluorescence and they could see that when they acidify the acidified the extracellular medium in the presence of Otop1 they have the strongest intracellular acidification</p>
+        </div>
+
+        <div class="transcript-para" id="t-4840320">
+            <span class="timestamp" data-start="4840320">80:40</span>
+            <p>The the blue lines is the error so you can see the acidification is quite consistent and when you have a shard it means you transfect something else the acidification is much less strong okay this is a very strong acidification with a permeable system as a date both as a control both acidified okay so this is a second evidence okay you have Otop1 you have intracellular acidification same with the fluorescence here another fluorescent probe they have acidification they use pH rhodo red okay and this is the the ultimate the very strong evidence for the or the the proof of the ion selectivity one is ion replacement they measure the current in acid pH the current is here</p>
+        </div>
+
+        <div class="transcript-para" id="t-4919840">
+            <span class="timestamp" data-start="4919840">81:59</span>
+            <p>And then they add another ion they add an excess of another ion just to see if this excess of other ion will influence the current and you can see that there is almost nothing happening when they add extra sodium they add extra lithium nothing they add extra cesium nothing they add extra calcium nothing i think in the supplementary they also use other ions but nothing move in the presence of proton and another ion that would compete for the selectivity so this is a strong evidence and then as we discussed they measure the reversal potential at different pH and they plot this reversal potential against the pH delta pH and they draw the theoretical equilibrium potential at these pH values</p>
+        </div>
+
+        <div class="transcript-para" id="t-4989920">
+            <span class="timestamp" data-start="4989920">83:09</span>
+            <p>And you see that the point the experimental measurement almost perfectly perfectly fits with the theoretical value and this is a very strong evidence that this current they measure here in the presence of Otop1 at this pH this is proton passing from the channel and these are also strong evidence that this proton pass but probably only proton pass okay now you could test a lot of other ions but at least compared to this you have a mostly set proton channel oh for time okay so and then they did a ion they also test again potassium a little change but not much not significant change okay this is the Otop1 they look at mouse versus mouse and the Otop1 sequence this is a</p>
+        </div>
+
+        <div class="transcript-para" id="t-5060400">
+            <span class="timestamp" data-start="5060400">84:20</span>
+            <p>Transparent domain the sequence in amino acids the concept how much they are conserved Otop1 and auto p3 also change auto p2 and auto p3 also change the pH so they are also from proton channels okay please wait five minutes then they measure the current also and also in in pk1 cell the current is also blocked by zinc so they could get the current so they the paper had a strong impact in the community of the taste the taste researchers there was a general general general physiology there was a comment so Otop1 must be there maybe something else or strong acid is maybe Otop1 for weak acid maybe something else and they make a scheme okay so what they use they what they could find the proton selective channel in the acid taste cells</p>
+        </div>
+
+        <div class="transcript-para" id="t-5144000">
+            <span class="timestamp" data-start="5144000">85:44</span>
+            <p>Okay is it really the taste receptor how to prove it from what i said you make a not so it's not cosmic wise and that so that was published in 2018 there was no look at mouse at the time the the research was moving very fast so just one year later lima that probably collaborate with this professor one okay they published a very nice paper with a structure of Otop1 they could see that they form a diameter of 12 trans membrane domain and they characterize a little bit they made some mutations to show that some amino acid are very important for the proton transport of the of the in the channel okay so that was very fast but the quest was not finished is it really the sour taste receptor you have to</p>
+        </div>
+
+        <div class="transcript-para" id="t-5207280">
+            <span class="timestamp" data-start="5207280">86:47</span>
+            <p>Prove it so i go very fast this is the taste system of the mice receptor you have you have protection of axons in different countries and then like this okay so what happened bam in 2019 just one year after they published another book this book published itself it's also top journal for the biology sour sensing from the tongue to the brain and they did the knockout mice they did the knockout mice and they showed that from the knockout the the mice is losing the taste i don't present the paper but they did a tremendous work it's impossible to do this in one year so these guys knew about the paper so they started before it's a competition so they could see from you see the measure of the</p>
+        </div>
+
+        <div class="transcript-para" id="t-5281840">
+            <span class="timestamp" data-start="5281840">88:01</span>
+            <p>Current size before and Otop1 knockout even you have sour taste there is no response electrical response they could find sour responding neurons in the anglia taste and then in the brain which is the neuron it's a pkd neuron that responds to the sour and then they did a behavior test using optogenetics in in mouths and this is liman who also published almost at the same time the knockout mice but in another journal the current biology so they're a good journal but that is much better so you see the competition is very tough and when you make a discovery other ones also to take advantage of your discovery so you have to be very careful when you want to</p>
+        </div>
+
+        <div class="transcript-para" id="t-5339200">
+            <span class="timestamp" data-start="5339200">88:59</span>
+            <p>Publish your discovery because it's very tough competition at least they could publish but the credit will go more than to her of course she had the credit of finding but the proof that it's a sweet receptor sour receptor is another group and you can see the out not so many people but they work very hard i guess win the competition and they okay just to finish that's a oops that's another paper that was just published last year of course they found the structure but they're also for pharmacological business or for pharmacological use they try to find an inhibitor of autopsy one and they made a big screening of three hundred thousand compound not by bachclon but in cdco now we can work in cdco so they can make a talking and they found 50 compound</p>
+        </div>
+
+        <div class="transcript-para" id="t-5440880">
+            <span class="timestamp" data-start="5440880">90:40</span>
+            <p>That they screened for the inhibition also by bachclon using their assay and you can see that they found this c11 and c22 compound that has a very strong inhibition of the of the current okay and then they characterize and they could see the pocket of the binding so when you make a big discovery like this you can continue and try to make other nice discovery this was published in major communications which is a very good journal and it was published in 2025 okay so when you do research you always advance and make new things and because new methods enables you to make new discoveries here they took advantage of this in cdco work on the structure and the docking and they could identify compounds that inhibits and could be used in the</p>
+        </div>
+
+        <div class="transcript-para" id="t-5503200">
+            <span class="timestamp" data-start="5503200">91:43</span>
+            <p>Future and by the pharma industry a treatment of pathology related to autopsy one okay okay good i guess you're hungry now why you feel all sweet paste no acid taste sour taste so when you eat next time you say okay i'm activating those</p>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeLinks = document.querySelectorAll('.time-link');
+            const transcriptPane = document.getElementById('transcript-pane');
+
+            timeLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    let targetPara = document.getElementById(targetId);
+
+                    if (!targetPara) {
+                        const requestedTime = parseInt(targetId.replace('t-', ''));
+                        const allParas = Array.from(document.querySelectorAll('.transcript-para'));
+                        let closest = null;
+                        let minDiff = Infinity;
+                        
+                        allParas.forEach(p => {
+                            const pTime = parseInt(p.id.replace('t-', ''));
+                            if (!isNaN(pTime)) {
+                                const diff = Math.abs(pTime - requestedTime);
+                                if (diff < minDiff) {
+                                    minDiff = diff;
+                                    closest = p;
+                                }
+                            }
+                        });
+                        targetPara = closest;
+                    }
+
+                    if (targetPara) {
+                        // Remove highlight from any other paragraph
+                        document.querySelectorAll('.transcript-para').forEach(p => {
+                            p.classList.remove('highlight');
+                        });
+
+                        // Scroll the paragraph into view in the right pane
+                        const topPos = targetPara.offsetTop - transcriptPane.offsetTop - 10;
+                        transcriptPane.scrollTo({
+                            top: topPos,
+                            behavior: 'smooth'
+                        });
+
+                        // Highlight the target paragraph
+                        targetPara.classList.add('highlight');
+                        setTimeout(() => {
+                            targetPara.classList.remove('highlight');
+                        }, 3000);
+                    }
+                });
+            });
+
+            // Clicking on timestamps in the transcript highlights them too
+            const timestamps = document.querySelectorAll('.timestamp');
+            timestamps.forEach(ts => {
+                ts.addEventListener('click', () => {
+                    const para = ts.closest('.transcript-para');
+                    if (para) {
+                        para.classList.add('highlight');
+                        setTimeout(() => {
+                            para.classList.remove('highlight');
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

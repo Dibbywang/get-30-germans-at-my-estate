@@ -1,0 +1,1599 @@
+You can sense electricity with the finger, but that's pain.
+That's not the electroreception.
+So don't try things.
+Yeah, so I use this article, because at first,
+I think it's very interesting.
+When I first read the article, I don't know about anything
+about electroreception.
+And then it's because it has a good, how to say,
+lot of electrophysiology results.
+So it's a good example to learn about ion channel.
+So it's called the molecular basis of ancestral vertebrate
+electroreception.
+It's a very famous professor that introduced in the field
+of ion channel.
+So it's an article that was published in Nature in Africa
+a few years ago.
+Talk about electroreception.
+So what is electroreception?
+So these animals are all electro-sensitized.
+So they can all feed the electricity.
+Even a small amount of electricity they can feed.
+This one, not only detects, has electroreception,
+but it also can discharge a very strong electric shock.
+If you are in the sea, don't touch it.
+Otherwise, you will feel big pain.
+So you have fish, amphibian, bees,
+also all kind of animals that can feed electroreception.
+One of the reasons is probably because they
+don't have a clear vision, especially for the fish
+in the water, or there are night-living animals.
+And it's used for hunting, or escape,
+and even for navigation.
+And for some of them, elephant news fish,
+an electric torpedo ray, is for communication.
+They communicate with each other between the species.
+Because this elephant news fish is a weak electric fish.
+So it can generate some electric shock, but very small,
+just to communicate with pairs, also torpedo ray.
+So in term of electroreception, just a brief introduction
+about electroreception.
+So you have to type passive electroreception,
+like the shark in the paper.
+Just perceive the low-frequency environmental
+electric activity, or active electroreception,
+is the perception of distortion.
+High-frequency shark generate electric feed.
+So some fish, like this one, or this one,
+can generate electric pulse with high frequency,
+with high level, or small level, and this
+helps for them to communicate, or to locate something.
+So electro-location, social communication,
+through active electric charge, this charge.
+And in the article, they talk, they use the shark, kind of shark,
+and they talked about an organ that is here,
+and it's called the, not an organ, but a small duct,
+that's called the ampullae of Lorenzini.
+So these fishes that have an electro-sensation
+have a big network of ampullae of Lorenzini,
+and this is a small structure in fishes.
+You can see the pulse over here, that detect electric field.
+So it can help the fish to navigate,
+and when it's not so far, quite close,
+it can help the fish to catch the prey.
+And this is the structure they have been studying.
+So this is the ampullae of Lorenzini, very briefly.
+So it's a simple, small aperture here in the epidermis.
+So it makes a small tube like this,
+and at the bottom of the tube, you
+have cells that are located.
+And these are the electro-receptor cells.
+And of course, they are connected to axon from NERVs.
+And they detect the small change in electricity,
+and they send, they can transmit,
+they can transmit that, they can transmit the information
+to the central nervous system.
+And you have support cells here that help these cells to lead.
+And you have different morphologies
+of this ampullae of Lorenzini, depending on the animals.
+Some are open like this, some are closed like this,
+some are almost outside.
+So you have different morphology in this ampullae.
+And this is another from Scientific American,
+another illustration.
+This is the aperture here.
+You have a gel, kind of gel.
+The gel is mainly made of water with glycoproteins
+that are charged.
+And the gel has some semiconductor properties.
+And at the end of the gel, you have the cells.
+And the cells have a little bit of their plasma membrane
+in contact with the gel.
+And when you have the electric current coming here,
+they can detect this very small change in electric field,
+and they will transmit the information to the nerves.
+So the ampullae of Lorenzini was found many, many years ago.
+But nobody knew exactly how the things
+was working, how, what was the mechanism of this detection.
+OK?
+So that's exactly what the Juggist group
+would also try to find the molecular basis of the mechanism
+of electroreception.
+OK?
+So what basically, what they found?
+Yeah, there's a coupling between two proteins.
+What about these two proteins?
+That's B, S.
+Channels.
+OK.
+OK.
+So it's the work between two channels.
+OK.
+One is?
+S, C, V, S, C, and V.
+C, and V.
+1.3.
+1.3.
+And the other one is?
+BK.
+OK.
+OK.
+This is just Channels' name, so what?
+What is the characteristic of C, V, 1.3?
+Yeah, but more general.
+What is the C, V, 1.3?
+C, V, 1.3?
+It's a calcium.
+Calcium, Channels.
+Channels.
+OK.
+And it's voltage and heat.
+OK.
+And as we said, it's very low voltage change.
+OK.
+And BK is a potassium channel.
+OK.
+And it's voltage activated.
+OK.
+V is for V. OK.
+That's a lot of potassium to pass through the channel.
+OK.
+And it also has one characteristic.
+It's calcium sensitivity.
+OK.
+So they have a coupling.
+So the calcium coming to the cell.
+And it will bind to the BK.
+And the BK will let the potassium move out.
+OK.
+So this will make oscillation of the membrane potential.
+Because the influx of calcium will depolarize the cell.
+And the influx of potassium will depolarize the cell.
+Exactly like what?
+Yeah, like an action potential.
+OK.
+And this is what they show.
+OK.
+And this is what they show.
+But what was special with?
+So CID 1.3, human also have.
+Human, mouse, many animals have.
+We also have.
+OK.
+So what was special with this?
+With the, based on the little scale.
+It's kind of sharp.
+Yeah.
+This one?
+Sharp.
+No sharp.
+OK.
+So you only found them here.
+In the east, west, east, coast of the US.
+East coast.
+OK.
+Now a very narrow area.
+OK.
+So what is special with this challenge?
+That is not found in human or mouse.
+We have the same gene.
+But they don't behave the same way our.
+No.
+Yeah.
+Yeah.
+They have a special front end.
+Make it more sensitive.
+Yeah.
+Yeah.
+That's what they show.
+It becomes more sensitive than.
+But in their paper, they use icing of the rat.
+The rat, CID 1.3.
+More sensitive.
+Voltage.
+Because electron reception is the perception of very small change in the surrounding electrical field.
+So evolution.
+Give a little custom.
+They custom the channel.
+And they add a little sequence of a few amino acids.
+I see five or six.
+We will do later.
+So this little change in the amino acid sequence of the channel.
+Make them more sensitive.
+And provide a new function that we don't have.
+Which is electron reception.
+And that's the same.
+And even for PK in the one or two amino acid.
+That was different.
+And then it changed the icing of the plant.
+There was much less potassium flowing through this channel.
+So it changed a little bit.
+Not a little bit, but there is a change in the phenotype of the channel behavior.
+And this provides a new function.
+Or a new sensing system for this fish.
+So let's have a look a little bit to the paper.
+You can look at the figure.
+And just before explaining.
+I'll just make a few explanations.
+So two channels.
+So C and E, 1.3.
+So this is a slide that explains just the family of voltage-gated calcium channels.
+Sorry, I did L-type, but L-type is just restricted to this group here.
+And C and E, 1.3 is here.
+And it's called the L-type.
+So I will explain this table.
+So there are voltage-gated calcium selective channels.
+So they only let pass calcium.
+So they can discriminate between ions and only calcium will pass through their pores.
+So they have very important roles in the relation of synaptic transmission, muscle contraction,
+your heart muscle, depending on this kind of channel.
+Your skeletal muscle, when you move, depending on these channels.
+Hormone secretion, gene expression, and many other functions.
+So they have been discovered.
+They have a lot of names because of their discovery history.
+So they were first discovered as a function by electrophysiology.
+So they were classified in two families first.
+By just by the measurement of the calcium currents.
+So HVA means high V for voltage and A for activator.
+And LVA means low voltage activator.
+So I haven't explained yet, but I will explain later.
+So when you characterize a channel, you plot what is called the IV curve.
+The current I, or current, and voltage, the relationship between the current and the voltage.
+How the currents behave according to the voltage.
+The voltage dependent of the current.
+So when you study the channel and you see the result of the channel activity,
+you always see an IV curve or current voltage relationship.
+So with voltage in the x-axis and current, usually I,
+either compare or nano compare.
+And sometimes, but rarely micro compare.
+And the voltage in millivolts.
+And when the researcher tried to measure the channel activity,
+they will, as we saw last week, they will use the voltage clamp.
+So using the pipette and the cell and the amplifier will control the voltage
+and measure the resulting current.
+So you clamp the voltage at different potential values.
+So you have the protocol which consists in steps from the holding potential
+or a resting potential that is usually negative.
+And then you make a step of, for example, plus 10 millivolts.
+So minus 18 millivolts, minus 17 millivolts, and so on.
+And you make steps, and you measure the resulting current.
+And in the case of the voltage gated calcium channel,
+you would see always a negative current.
+You see a current like this.
+You would see a current developing like this.
+So here, from the step, you would see an activation.
+Activation means the channels are opening.
+The channel here is closed.
+The channel open.
+And then the channels, what happen?
+Open, no, open, inactivate.
+You have inactivation.
+So that's what you see inactivation.
+And this is deactivation.
+When you come back to the resting potential.
+So when you see a negative current, what does it mean?
+It's a cut ion, or it's a positive ion, a calcium, for example, or sodium,
+that moves into the cell.
+Negative current, be careful.
+Negative current is a positive ion that moves into the cell.
+And what if you see a positive current, what does it mean?
+It's a positive ion flowing into the cell making a negative current.
+If you measure a positive current, it's a positive ion that moves out of the cell.
+The time of the current will give you the direction of the movement of the ion.
+Positive ion moving in is a negative current.
+Positive ion moving out is a positive current.
+And that's the opposite for the problem.
+In the case of the calcium channel, the signature is always something like this.
+So you can see the current that is increasing and that some voltage comes to be smaller
+because of the electrochemical gradient getting preventing the driving force
+or reducing the driving force.
+And I become close to the zero line of the voltage.
+And this is the equilibrium potential, or the reversal potential,
+which is equal to the equilibrium potential of the branch equation.
+So I come back to my H, I, A, B, A and low B, A.
+You can see here, L type, it's an H, B, A.
+So from the test potential to the resting potential, you have a large, large change
+from minus 80 to minus 40.
+So it's a 40 millivolts increase.
+And then you can see the channel to start to open.
+That's why there are all H, B, A, so high voltage activator.
+You need a large potential step to start to see the channel activator.
+But you have two, you have this family of low B, low voltage activator,
+which are also called C type, because then using different drugs or toxins,
+they could differentiate between the H, B, A using the L type, the P2 type,
+the N type, the R type, and then the C type.
+And using the pharmacology and more electrochemical characterization.
+But using the H, B, A, you have a 1.3.
+So then you have the proteins and you have the genes.
+And each gene has a different protein name.
+You have C, A, D, 1.1.
+And this one is only seen in the skeletal muscle.
+1.2 is a cardiac and hormone.
+1.3 is cardiac and other tissue.
+1.4 is only in the eye.
+The C, A, D, 2.2 for the P2 and R type, they're all neuronal.
+They are all for the synaptic transmission.
+And then you have a special class for the T type because they are tiny
+and very sensitive to a change of voltage, so low voltage activator,
+with a small conductance, that's why they call it T type.
+And you have three genes, C, A, D, 3.1, 3.2, 3.3.
+They have a lot of functions, sensing transmission, base making, and so on.
+And this one is a little special, C, A, D, 1.3,
+because it has also low voltage activator.
+It already has a shift from the normal or the classical type.
+They have a shift to more negative potential.
+Okay?
+And there are structures and something like this.
+So the alpha subunit or the C, A, D subunit is the pore.
+And then you have accessory proteins, beta, gamma, alpha to delta.
+Okay? And they are also encoded by different genes, so they make different combinations.
+Okay? And the low NDA has only one pore subunit
+and no associated protein that has been yet discovered.
+Okay?
+That's the short introduction of this channel.
+So that's the first channel that was described in the paper.
+Okay? So they described this here with 1.3.
+So that's the small introduction of the channel.
+And the second channel that was described is the EK channel,
+the problem of the channel is they have a lot of names for the same channel.
+So they are called EK, but the protein is K-cal-1,
+and the gene is K-C-M-N-E-1, or even slower.
+So when you study channels, you have to remember all these names,
+a little bit annoying, but you get used to it.
+Okay? So one is the first name they got.
+Okay? So the voltage gets a potassium channel, so it detects potassium.
+Okay? The calcium activates the potassium channel.
+So with the structure, there is a calcium binding pocket.
+So the calcium is bound, and the channel is more activated.
+Without calcium, the channel is functional,
+but at a range of voltage that are non-disiological.
+Okay? So if you have calcium, you can see that the activation is shifted to more negative,
+and then you have a functional calcium.
+So they usually function as a pair.
+The calcium channel provides the calcium for the potassium channel to be activated,
+or the potassium is dissolved, and then this will inhibit the channel.
+So it will feedback loop. Okay?
+They work together, and that enables some oscillatory behavior of the membrane potential.
+And you can see that the channel is mostly studied at the single channel IP.
+Okay? I will compact this in a little bit.
+Okay? So that's the two channels.
+And then there are a few scenes that we will see in the paper.
+We will see this in the paper.
+Okay.
+Okay, so just have a look at the figure.
+And let's try to understand what they did.
+Okay? That's the little skate.
+Okay? That's the fish model.
+Okay? Have you seen in real?
+Okay? That's look like this.
+And you see they stay on each line here.
+What we present each line is the nerve that leads to the ampullae of Lorenzini.
+Okay? That's the mouse.
+So you can see that it has a large network of ampullae of Lorenzini just around the mouse.
+So it's helped the fish to localize precisely where is the prey.
+Okay? What they did? What is this?
+Yeah, that's the duck.
+And here you have the cells.
+And what is the lines here?
+That's the nerve.
+So they desiccate.
+When you do biology, you have the biological sample, you have desiccate.
+So they desiccate the ampullae of Lorenzini of the little skate.
+And then they mechanically and enzymatically desiccate the ampullae
+and got the small receptor cells on a culture dish.
+Okay? And from these cells, they could perform the particular experiments
+and that's what they need here.
+Okay?
+So, what is this?
+This is the, this is the folder.
+The voltage.
+The axis.
+What is this?
+The current pair.
+Ah, to cooperate and explain later.
+What is this?
+This is the current voltage current.
+It's not exactly the current voltage curve because they use the capacitance.
+Why they use the capacitance?
+If you remember what is the electrical capacitance?
+What is the capacitance?
+The charge separation and it's directly proportional to the surface.
+If you look at the formula of the capacitance, it's directly proportional to the surface.
+So the capacitance gives you a cell with a large capacitance.
+Large cell?
+Large cell. And a cell with a small capacitance.
+Small cell.
+Small cell. Okay?
+So, you can measure the capacitance by electrophysiology.
+Using the patch ground.
+You can measure the capacitance because you have these peaks.
+When you do the whole cell.
+You measure the capacitance so it gives you an indication of the cell size.
+So if you want to normalize your current.
+Because larger cells will have larger current and small cells will have more currents.
+So to normalize this, they use the capacitance.
+So that's why they divide their current result by the capacitance of each cell.
+And then they measure the current.
+So how they pull from this recording.
+This is the recording.
+How they plot this graph.
+They measure the intensity of the current.
+So they have a voltage protocol.
+You can see this is the voltage protocol from the resting potential to each potential.
+The green line here represents the minus 55 voltage.
+The blue line represents the minus 45 millivolts.
+And you can see here, when they are at minus 15 millivolts.
+They can measure here a small current.
+And when they are minus 45, they record a larger current.
+So they measure the difference between the resting state.
+They measure either the maximum current or the steady state current.
+I guess they measure the maximum current.
+So then they can plot at minus 55, then they will be here.
+Minus 55, I don't know where it is.
+It's around here.
+So they can plot.
+And then the current is changing.
+She can be like this.
+So they have a current that is first megaheat.
+And then they come back to the full heat.
+That's a direct signature of an ion that is flowing into the cell.
+And the condition they use, if you remember what we discussed last week,
+they can control the ionic condition in the cell and outside the cell.
+They have a lot of calcium outside.
+They could season.
+Why they could season?
+Because season prevents the potassium channel to work.
+So the season blocks the potassium channel naturally.
+So they can isolate one type of conductance.
+It's a trick that is used in exo-physiology to isolate one specific type of ion conductance.
+So what they measure?
+There is a current that is activated at low voltage.
+And then there is a reversal and positive current.
+So that's already a small indication that some ions are going inside.
+This is probably calcium.
+So to be sure that it's calcium,
+they use a lot of pharmaceutical evidence.
+So they took the maximum current and they compare the control over the treatment.
+So the drug.
+That's why it's one for the control.
+Before the treatment and after the treatment,
+the control doesn't change the state to what?
+It's a ratio.
+And then they add different molecules or ions.
+Cadmium is an ion that will block calcium conductance mainly.
+Cobalt also.
+They completely block the conductance.
+But they are not selective.
+They can block a lot of different conductance.
+Then they use what is called the BAKA.
+BAKA is an agonist.
+They will open all the channels at the same time.
+And you can see they have an increase.
+And BAKA is specific for L-type.
+They use nipenicine, pneumoniae.
+These are few drugs that I use by the pharma industry
+and by medical doctors to treat hypertension or cardiac disease
+by targeting specifically L-type calcium channel.
+And you can see that there is a strong reduction of the current.
+The current is only reduced.
+Then they use toxin.
+These are toxins that are found in scorpion or spiders.
+And I think that the application of alpha toxin or phenotoxin
+does not block the channel.
+And these are the blockers of the TQ and N-channel.
+So they try to see the different channels.
+Then they use nipenicine or low concentration of nickel
+to block the TQ and N-channel.
+And you see that it does not block the channel.
+And last, if you step on the toxin.
+You know what the step on the toxin is.
+How much are you buying?
+It's a fish and it blocks.
+So I am trying to understand that.
+And you see that there is no effect.
+So, do you understand?
+So this is a little evidence.
+It's probably calcium channel.
+And this is a more stronger evidence.
+That is the calcium channel that is probably L-type.
+It's not sodium channel.
+It's not T-type.
+And then they measure this curve.
+It's a little bit more difficult.
+These two curves are called the G- or G-max.
+It's called activation.
+It's the fraction of channel that are activated at each voltage.
+Half of the channels are activated at maybe minus 40 or minus 50.
+And then all the channels are activated.
+And this is what is called inactivation curve.
+I over I max.
+So it's the fraction of channel that are closing.
+And it blocks both curves together.
+You have here what is called the window current.
+There is a fraction of channels that are always open in this range of voltage.
+It makes a passive influx of calcium inside the cell.
+It's called the window current.
+Like window.
+So how to calculate the confidence?
+The confidence is the reverse of the...
+The confidence is the resistance.
+The confidence is...
+So this you can measure, this you know, so you can calculate the confidence.
+And the voltage is...
+This is supposed to be the...
+Thank you.
+And it's the Siemens.
+So from this graph, you can plot this one.
+And G max is at the maximum.
+So you normalize by G max and then you take 1.
+And for this one, you need to make another type of protocol.
+You need to make a first depurization, a long depurization.
+And then you deactivate a different potential.
+And you obtain what is called the tail current.
+And from the tail current, you can enjoy the activation curve.
+Okay?
+Yes?
+Is the resting potential always the same?
+No, no, no.
+Yeah, so this is the resting potential.
+So they are all inactivated and they are all closed.
+Ah, so.
+Yeah, the resting potential...
+So the resting potential in a cell at a physiological condition depends on the cell type.
+So for example, for a new role, it's usually minus 60 millivolts.
+At this potential, most of the channels are just white.
+They are just closed.
+Some channels are.
+Some channels can be open, but they are usually closed.
+And in the skeleton muscle, it's around minus 80 or minus 90 millivolts.
+These are in the physiological cellular condition.
+But we said resting potential.
+When you are on experiments, you have to define which is your level of resting potential.
+So if you study a voltage-gated calcium channel, you put your resting potential,
+maybe around minus 70 or minus 80, because you are sure that at this potential,
+they will activate the channel.
+And then you find your...
+For example, if you study chloride channel, you can put a zero.
+So it depends on the channel.
+You choose your experimental condition.
+Okay?
+Here.
+This is how they got their activation.
+So you have...
+In this case here, they choose a minus 120 millivolts resting potential.
+Then for 40 millisecond, they depolarize the cell to different voltage of the first 20 millivolts.
+Okay?
+For a few steps, you see trace of recording, and then increasing,
+and then coming back to the decreasing, and then increasing back again.
+And then they measure the intensity at the peak here,
+and they plot the ID curve.
+This is the ID curve.
+And using this ID curve, this is the max, this is the I max.
+Okay?
+And the conductance formula.
+They can plot this activation curve.
+Okay?
+You can plot the activation curve.
+You can take the slope.
+It's here.
+You can take the half of the voltage.
+And you can see what is called the activation curve.
+Okay?
+And you can measure the activation curve in different conditions.
+In this case for this channel, you see that some point mutation can affect the activation curve.
+Okay?
+And then this plot going from 1 to 0 is called the static inactivation.
+Okay?
+So it's a little bit more complex protocol, where you have a priorization,
+then you memorize a different voltage, and come back to a more positive voltage.
+Okay?
+So we measure here.
+From here to here, you have an after, and this will be what is called the inactivation
+curve.
+And the structural challenge of closing.
+Okay?
+And it's inactivation curve.
+Mine stays here.
+There is no change in the mutation.
+In this paper that we are studying, then we see a change in this curve.
+Okay?
+By comparing the skate and the mouse or the mammalian G. Okay?
+Again.
+And if you plot both curves on the same graph, so the activation curve and the inactivation
+curve, you can observe, if you measure the area here under both curves, it's called the
+window current.
+And the window current is a fraction of voltage, where you have a small proportion of channels
+that are constantly open, and enable a constant influence of traction inside the set.
+Okay?
+Let's go back to the paper.
+Yeah.
+Okay?
+So the first, just by electrophysiology, they can characterize that there is one entire
+calcium channel in this cell here of the receptor cell.
+Okay?
+Let's look this later.
+Then what they did, and this is something that nobody could do 10 years ago or even more,
+they did an RNA sequencing of the cells.
+Okay?
+And they, of these electrosensory cells, and they could see or discover two genes that
+are specifically expressed in these sensory cells.
+So they measure the genes, the different voltage-getted calcium channels, and you can see that they,
+in the ampoulae, they compare with other tissue, the canal that's in the liver and different
+tissue.
+But in the ampoulae, they have a very strong expression of the CAD-143.
+Okay?
+And they also see this beta channel.
+But we will come back to the beta channel later.
+Okay?
+So from a regular argument that you have this gene, you see an antibody.
+What is an antibody?
+What is an antibody?
+Yes?
+I don't have to take the target, something like this.
+Yeah, it's a, what does the antibody come from?
+The cells.
+The cells are from what system?
+White blood.
+Yes, blood cells, what system?
+What is the system?
+Cerebratory systems.
+Cerebratory systems?
+Immune.
+Immune system.
+Okay. From the immune system, as you said, your big cells, which are white blood cells,
+they secrete antibodies. And what are antibodies made for?
+What do they target? Yeah, they target something. Anti-gen.
+They target something that has been tried with your body, and that must be removed.
+Okay. So, antibodies are very important for your immune system, to protect you from disease.
+Sometimes, antibodies can be even dangerous for yourself, because they don't match
+yourself, and make yourself really dangerous for yourself, and your immune system attacks
+yourself. This is auto-immune disease. But they are also used as tools for research.
+Why? Why they are used as tools for research? Because they bind one specific antibody,
+one specific antibody. So, you can fabricate or develop antibodies against any protein you want.
+They are very selective, and they are also very simple to produce. So, you can produce these cells,
+these are the clone antibodies that will produce one antibody for one anti-gen,
+for one single protein, and one at the top, inside a single protein. So, you can detect the protein,
+use an antibody that you can cover, do some things. What you can do, what you can cover,
+make a detection, of course, here. Fluorescent. Fluorescent. Fluorescent. Fluorescent molecule,
+or an enzyme, that makes light. Also uranium, nuclear isotope. Yeah, some people also use isotope,
+but does anyone want to work with radioactive? Irradiant. Nobody wants to work with radioactive.
+In fact, like, of course, horseradish peroxidase emits some photo, and you can detect the photos.
+Okay? So, researchers use antibodies as a means to protect proteins, specific proteins, and that
+exactly what they do here. They use an antibody that targets CLE 1.3, and its copper is a fluorescent
+protein, so they go under a fluorescent microscope, and you know what fluorescence, I hope.
+And in the receptor cells, they can detect the red one, CLE 1.3, they can detect the presence
+of CLE 1.3. So, they have three evidence, molecular, electrophysiological, and
+biochemical. Okay? Wow, we have a challenge. Okay? That's not enough to make your
+paper. So, they want a little bit more in detail. Okay?
+And that's what they need.
+No, I will. But that's, they want a little bit more in detail. Okay. I explained this as a
+supplementary figure, and you should always look also at the supplementary figure. They measure
+the current using calcium, barium. So, these channels are more permissive to barium. So,
+the current is higher, or even strontium. Okay? But these are not ions that are formed in our
+cell. Okay? And they compare the state, so what they could do. Okay? Then the RNA sec.
+RNA sec. Okay? So, they can sequence the RNA. Once you sequence the RNA, what can you do?
+So, you have the RNA, or the messenger RNA sequence of a gene. What can you do?
+These are for biologies.
+What can you do?
+You can change this RNA to something. Okay? Before making your paper.
+You can do what's called
+transcription. What you heard. So, what's transcription? What do you get?
+What do you get? That's called?
+Why is different from the real gene sequence?
+Yeah, going through. Okay? You have only the coding sequence.
+So, it's either complementary cDNA or for the DNA. Okay? And then what can you do
+with this piece of DNA?
+Okay, yeah. But they already sequence. Trans. Trans. Translation. So, yeah.
+What kind of a translation? But to make a translation, what do you have to put
+in the cDNA? In-reversal. No? No, no, no, no.
+I drew one, one, one, one geometric figure and I, I hope you understand.
+Plasmid. Yeah.
+Plasmid. What is a plasmid?
+Plasmid. Yeah. It's a bacterial DNA. That is a small encyclop. And it's a tool for all biologists,
+not for only biologists or only biologists. Why? Because you can take this piece of cDNA
+and insert it in here. And then, as you said, you put them into the cell
+and it would be expressed as a protein. Okay? It's an expression vector. It's called an
+expression vector. It's a mean to express a protein in a cell.
+How you can put a cDNA into a plasmid?
+I'm sure you have seen this.
+That is a mean. Yeah, that's just a mean.
+Yes, restriction design. Okay? So you can cut and you put them into the plasmid.
+So how and where do you have to put this cDNA so it can be expressed as a protein?
+Plasmid has a lot of sequences.
+Yeah, you have to put it downstream one spotter to promote the
+following the molecular biology course again.
+But yeah, just to mean. So that's exactly what they need. So they claw the cDNA of the middle
+scale, CAB 1.3. They put it in a plasmid under the control of a strong promoter,
+usually CMV, and the viral promoter, so there's a lot of expression.
+And then they express, they put this plasmid and put it into the cell. What's the name of the
+technique to put the plasmid DNA in the cell? Transformation. No, it's T, but not transformation.
+Transformation is compacted. Transformation. No, it's T. Yes. Transfaction. Okay, two-level
+construction. Maybe you will do one day. So you put a little bit of liposomes, a little bit of
+lipids around the plasmid, and this helps you to put the plasmid inside the cell. And then the cell
+that you choose will express CAB 1.3, okay, at the surface of the plasma membrane, and then you
+can come with your glass pipette and start to measure the current. And that's what they did.
+Okay, so they measure the current.
+That's the native cell, so the little scale current recording using calcium, barium, or
+strontium, okay. That's the clone for S, little scale. Little scale to the similar conditions.
+And that's, as a control, they use the gene of the rat CAB 1.3, okay.
+And they add the Nifedipine, which is a blocker of ethyl calcium channels.
+He, using the little scale CDNA, expressing mammalian cells, they could block, they could see
+the concentration dependence of the Nifedipine. They use the mnemonitine, another ethyl calcium
+channel blocker. They do the same using the rat sequence as a control. You always need a control.
+So they're similar. They're similar, but they are different, okay, and where they are different.
+And this is a figure of the paper, and this is an important figure, so this remember those who
+will make the test, okay. So they, they did the apache clump experiments.
+So they have the CDNA with the CAB 1.3 from the scale and the rat. They put in the cells and
+they do the apache clump experiment.
+They have the channel, they use the cell line that is called the HEK, human cells, HEK for human
+and every other unit, kidney, kidney cells. It's called a cell line, who knows, a mammalian cell line.
+What cell do you use in the lab?
+Hello you.
+Mdm, mdm, vm, vm, vm, vm,singing.
+Ah, breast cancer?
+A breast cancer?
+Yeah.
+Okay.
+What is HILA?
+Yeah.
+They're all cancer cells.
+embryonic is an embryo.
+Immortalized.
+They are called
+immoralized
+because they are always within.
+As long as you provide them with food.
+Okay.
+HILA was the first
+satellite, I think,
+historical.
+HILA is very
+used a lot
+because they basically have
+almost no channel.
+Just a few potassium channels.
+So people working on channels
+with a lot of HILA
+especially with a lot of potassium channels
+you can express and you are sure
+that the calcium current you are measuring
+is from the CDNA
+you have
+that into the cell.
+And then they do their pastoral experiment.
+Okay.
+So they used
+CID 1.3
+from the scale
+and compare
+from the rat
+which is a mammalian
+CID 1.3
+very similar to the human.
+Okay.
+So they use and they compare
+and they did the same experiment
+and they plot the ibicar.
+Okay.
+And you see here
+this is the scale
+in blue,
+blue scale,
+red,
+red.
+And they plot
+both ibicar
+in the same plot.
+Okay.
+In the same graph.
+And what can you see?
+There is a little difference.
+They are the same protein
+but from two different animals
+to different species
+that you can see here
+there is a shift
+in
+the peak
+of the current here.
+The peak is reached around zero
+the peak is reached
+in more negative voltage.
+The start of the channel opening
+is more negative than
+the rat.
+Okay.
+So to look
+at
+how
+more in detail
+they
+calculate the conductance
+and they plot the activation curve.
+They did the other protocol
+for the inactivation curve
+and they could see that the inactivation curve
+has not changed.
+But what about the activation curve?
+What can you see here?
+There is a
+shift.
+There is a shift too.
+For more reacting.
+Thank you.
+When you see this
+you say big grow.
+When you are a researcher
+when you see a difference
+what?
+Or there is something interesting.
+That's why when you
+do your experiments
+analysis
+you have to extract
+all the information
+you can get from
+what you have
+in your
+recording.
+This is what we call the
+they could make two kind of graph
+one more graph here
+because they analyze the half
+activation around here
+and you can see that the half
+activation is very different
+in the rat
+and the little scale.
+This is little
+a not typical difference
+that makes it
+become interesting.
+You have a shift more negative voltage.
+You have a shift
+in the half activation voltage.
+What does it mean? Why?
+You have the same G
+but you have
+a difference
+being
+here.
+So that's the
+that makes things
+more interesting
+and they want to understand
+the cause
+of this difference.
+Now I have to go over
+to the
+0
+before
+coming back here.
+Next group
+here.
+It's good here.
+So what is a voltage
+get a channel?
+It's a channel that is sensitive
+to the plasma membrane potential.
+This is the channel
+you have a force.
+In this channel
+you have what is called
+a voltage sensor.
+Voltage sensor in alpha.
+There is a
+voltage sensor.
+There is 4 voltage sensors.
+Because it's a Petramea.
+So
+when you have a change
+in the plasma membrane
+this voltage sensor will be moved
+and it will trigger the
+opening of the channel.
+Okay.
+So
+let me
+run.
+So
+the
+entire calcium channel is
+a Petramea
+of
+6
+1, 2,
+3, 4, 5,
+6, maybe something like that.
+6 alpha elix
+and the 4 of the channel is here.
+These alpha elix
+are named
+S1 to S5.
+1, 2, 3,
+4,
+5,
+6.
+Okay.
+And
+n-terminality.
+This is outside the cell.
+And you have loops.
+I explain why I do like this.
+And this is the
+n.
+And this is the c.
+Okay. And this is called S1,
+S2, S3,
+S4.
+Please remember S4,
+S5, and S6.
+Okay.
+So S5 and 6
+here.
+And the loop between S5 and 6
+are
+the 4
+forming
+alpha elix
+using this
+loop. And this
+makes the selective filter.
+Okay.
+And S5
+usually you can see
+S4, sorry, S4.
+You can see S4
+represented as the alpha elix
+that have
+plus charges.
+Why there are plus charges?
+Because this alpha elix
+contains
+in this structure
+arginine
+amino acid
+which are positive charge in
+physiological pH.
+Okay.
+So this is the
+S4 and this is the voltage sensor.
+Okay.
+Okay.
+And
+how is the plasma membrane
+like this?
+Okay. And we know the membrane
+is
+a little bit more positive
+outside than inside.
+A little bit more negative.
+So plus likes
+plus or minus.
+And
+these are positive charge
+so they are
+attracted to the negative.
+So they are usually
+how it is exactly placed
+not well known, but they are
+attracted to the negative. So they are
+a little bit more deep inside
+the membrane.
+Okay. And when the potential
+change
+there is
+a deparization
+so this
+repulse the positive charge
+and the voltage sensor
+move a little bit.
+It's not
+a strong movement, but it's a movement
+used in charge
+attraction repulsion.
+And this will open
+the gate.
+Okay.
+So the movement
+of this voltage sensor
+using the electric
+to guarantee
+across the plasma membrane
+enable the channel
+to open.
+It's called the voltage
+sensor and it's called
+the
+gate.
+Okay. That's very important
+to remember.
+So the movement
+of the voltage sensor
+because it's positive charge
+is attracted by the negative charge
+is moving out
+when the potential change
+attracted by the
+negative charge of the
+outside of the membrane
+is open the channel.
+And when you have reparization
+it's again
+no, this is inactivation.
+Sorry, inactivation.
+But when there is inactivation
+or no
+deactivation
+the voltage sensor
+is coming back to its position.
+Okay.
+Why people could make a model
+like this?
+You cannot see.
+Now
+yeah
+yeah
+yeah
+So how people could make a model like this
+without seeing the structure
+because they could
+measure
+they could measure
+what's
+called
+the gate current
+and what made it that was
+in the paper
+they talk about gate current
+maybe that confused you
+or that was difficult to understand.
+So because there
+this sensor is positive charge
+and movement of charge
+means
+current
+some researcher
+could measure
+the current of this movement.
+How?
+So they found
+of the potassium channel
+the
+potassium channel is there
+but even in reparation
+it doesn't open.
+Okay.
+So because you don't see the current
+because the current of the ions
+it's much much higher
+than the movement of this
+but thanks to this mutant
+they could measure
+transient
+current
+very short and transient current
+when they depolarize
+when they depolarize
+the voltages are moved out
+so they see positive current
+and when they deactivate
+when they
+compact the potential
+the voltages are in the back
+and they could see
+a negative current
+and they call this
+gating current.
+So
+they could plot and they could
+measure the gating current
+and then they plot
+the gating current
+as g are conductance
+or now they also call it q
+I don't know why they call it q
+because the gating charge
+movement is defined as a q
+okay
+and you can see the q
+the gating charge current
+in the activation curve
+it's always
+before
+the activation curve
+of the channel
+so there is a
+first the movement
+of the voltage sensor
+then the gate open
+and then you can measure the current
+okay
+yes
+no no if you
+put them together
+the q
+is always more negative
+than it's always before
+the gating
+it's
+scaling
+yeah it's normalizing
+it's normalizing
+if you don't normalize
+the q is here and the q is here
+okay
+another figure
+just to
+show you
+so you measure the current
+you can calculate the conductance
+and normalize the q max
+this is the gating current
+and this is
+a review
+so how the voltage sensor
+is exactly moving is not well known
+now
+thanks to the crystal structure
+of the channel
+they kind of
+heat how the
+voltage sensor is moving
+because they could trap the structure
+in the claws and the open conformation
+so they could see that
+this alpha elix is not in the same position
+so from the two positions
+you can try to guess how it's moving
+it's not moving up and down
+more like
+from the side
+like this
+so they are trying to make more
+values
+okay
+so how do you
+calculate q
+if you don't calculate the intensity
+you calculate
+the area under the curve
+so you make an integral
+you calculate the area under the curve
+and it's helping to
+calculate q
+your graph
+okay
+so it's a small model
+so it's moving like this
+okay
+and what is important to know is that
+because it has positive charge
+can positive charge
+be in a hydrophobic
+environment
+so you have water pockets
+in here
+in the structure
+you have water pockets that come inside
+and this enables this S4
+to be positively charged
+here
+so you have a little bit of water pockets
+and this is interesting
+why they could see this water pocket
+it's because
+at the same time
+you can see proton moving
+across the plasma membrane
+make kind of
+proton current
+and they are measuring this proton current
+generated by
+the voltage sensor movement
+in
+in the
+potassium channel
+and more recently
+they could observe
+the movement of the voltage sensor
+thanks to this technique
+which I have no idea how it works
+but by just
+looking at the graphics
+to understand
+it's a Japanese professor
+you have a gold
+attached to the channel
+and the gold will
+diffract
+the x-ray
+you have the image
+and when the voltage sensor is moving
+and opening the channel
+so it's a rotary movement
+and they could observe the movement
+of the voltage sensor
+at one molecule that day
+this is one of the experiments
+it's called
+diffracted
+x-ray tracking
+DXT method
+and this is also
+for people working
+with the structure
+they could see the structure
+in the open conformation
+and
+it moves down
+so they could see a little
+a few action
+movement or a few action difference
+in the voltage sensor position
+ok and that's
+also a strong evidence
+of the voltage sensor movement
+so why it's interesting
+in this case here
+I come back to the paper
+so they see a shift
+in the
+activation
+current so it means that
+the channel is activated
+at more negative potential
+so at more negative just changing the potential
+make the channel to be open
+ok so why
+why this is caused by this
+so they
+look at
+the gating current
+so we don't have return force
+here is 1.3
+a drug that blocks the channel
+it would block the currents
+the currents are
+not here but you see
+you have a small peak here
+a small peak here
+this is the gating current
+there's a small peak here but it's much smaller
+it's larger in the opening
+than in the closing
+and they calculate
+and they measure
+this current
+g and g max
+over
+the gating current
+qon and qmax
+and you can see here
+there's a shift
+in the rat
+and the little scale
+what does mean this shift
+this is the gating current
+and this is the current of the channel
+so
+with less
+gating current
+you have more current
+ok
+so it means that
+just a little potential change
+you open the channel
+the maximum ok
+so it means this channel is more sensitive
+to a change in the potential
+ok
+and then they measure the phase current
+here and they can see also the shift
+here
+so
+this shift is very important
+so why
+they have a shift like this
+oh we already
+finished the class
+I need 4 hours
+sorry
+ok but I will finish with this
+because this is
+the most important
+and why they could publish to measure
+because of this finding
+so why they could observe
+this change
+not dramatic
+this very strong change
+here
+and here ok
+in the phenotype of the channel
+so as someone said
+at the beginning of the class
+they look at the sequence
+of the amino acid that they compare
+the amino acid sequence
+between different species
+in humans who have zebrafish
+and what they could see
+this is the
+little scape
+and at the end you see the same amino acid
+same amino acid
+but suddenly here
+you have a few more amino acids
+and what is
+KKK
+it's not the group of clown
+what?
+KKK
+it's a racist
+no
+but this is not the KKK
+this is KKK from little scape
+what is K?
+lysine
+no
+ok
+and how
+what is the charge of the lysine?
+yeah
+ok
+and then you have an R
+which is
+someone said
+ok
+and where is located this little sequence
+between
+the intra
+the S2
+and S3
+of the domain number 4
+6
+6
+and this is number 4
+alpha x number 2
+and alpha x number 3
+and in the loop
+remember
+you have
+in the loop here
+in the loop here
+and then you have
+this is
+S4
+let's do like this
+and
+let's make
+in this loop
+here
+there is your small difference between
+RAT
+and human and little scape
+just a few amino acids here
+KKK
+R
+ok
+what does it mean?
+this
+this
+ok
+you have a little bit of plus around
+ok
+let's continue
+so ok
+now they have this sequence
+they made a mutation
+you can do what is called mutagenesis
+you can change
+the sequence and put other amino acids
+and they put Q
+for this Q
+mutagenesis
+and
+yeah I forgot
+sorry
+ok
+but
+they are neutral
+they are actually neutral
+so they put a little K
+scape and they neutralize it
+it's the red one
+the white one
+the neutral
+but you can see
+that the shift
+goes and looks like
+which one?
+the red one
+so they lost the sensitivity
+they lost the getting sensitivity
+and what they did
+they added this sequence
+into the RAT
+and what happened
+this is the RAT
+the normal RAT
+the wild type
+and they could see
+the appearance of the
+little scape phenotype
+ok
+just a few little amino acids
+change the phenotype
+of your channel
+behavior
+make more sense if the megaprogram
+so
+this evolution
+make a little custom change
+when your car
+you want to add the light
+and everybody is looking at your car
+ok
+that's the same
+not the same but
+evolution
+by having a little change here
+they made the channel much more sensitive
+a little change
+of membrane potential
+and this little change of membrane potential
+provide a new function
+to the little scape
+and
+I think in 3 minutes
+before you go to the RAT
+why
+and try to think
+I know your brain is already
+tired
+but
+try to think a little bit more
+why
+just a few was in charge
+make these voltages
+more sensitive
+to a potential change
+what would happen
+what is your hypothesis
+it's already
+drawn towards the megaprogram
+why
+drawn to the
+not like drawn to the
+this is supposed to be so
+more effective
+but
+in brain growth you also have
+positive charge
+for
+this positive charge
+extra repulsion
+and even the potential
+is
+let's say minus 60
+but in the brain growth
+context here
+how can this be
+who should it be
+so it's prime
+the voltage sensor
+but then you need
+just a little change
+and to the moment
+my best hypothesis
+of that
+because in the context here
+in here you have a
+positive
+positive and positive repulsion
+so of course
+it repulse here but
+it change the position
+of the voltage sensor
+maybe a more prime
+or more ready
+just like you are ready to run
+okay but if someone push you
+you will start to be faster
+okay
+so that's probably
+the idea of
+having a few positive charge
+near here
+okay
+so I will finish here
+and maybe
+next week before
+I talk in the next paper at the end
+but that's the model
+so the calcium comes here
+activates the beta
+and then blocks
+and then you have this at great low potential
+you have this oscillations
+so if you increase the potential
+you have more oscillations
+and more strong
+sensing
+from the fish and at the end
+they need a behavioral experiment
+when they block the channel
+the fish were not
+pharmacologically
+so the people
+get lost
+they are sensing
+okay
+and we will see
+but you can read the paper
+you will see that in the case of the BK
+you have two amino acid
+change
+and make it
+very different in term of behavior
+so this is the little skate
+this is the mouse
+you can see that the single channel parent
+are much different
+and this is good for
+just two amino acids
+here in the bore of the channel
+okay
+and what is interesting
+oh sorry I can hold you
+you have another sense
+which is called magnetoreception
+and this
+I had many animas
+to nightly get using
+the first magnetic field
+and
+what is interesting is that
+in the pigeon
+which has magnetoreception
+what they found
+the same
+in the same channel
+the same addition
+of the picture
+making maybe this
+they didn't measure it
+functionally
+they just show it
+the addition of KKK
+is also present
+in
+in this pigeon
+yes
+I don't know it's RKKR
+but same sport
+picture
+but it doesn't mean that this is the mechanism
+of magnetoreception
+but it gives a very more
+sensitive system to the pigeon
+and maybe this is one of the four
+of the pigeon magnetoreception
+okay
+and the last slide so that's the paper
+so
+the sweet taste
+not sweet
+sour taste
+so sour taste
+it's a
+another channel
+today we saw the gating mechanism
+and with this proton
+channel we see
+how the channels are selected
+and how the researcher
+can define that a channel
+selected for a single ion
+or in

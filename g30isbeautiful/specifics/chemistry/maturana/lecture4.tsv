@@ -1,0 +1,623 @@
+start	end	text
+0	13360	Electro-reception, so it's the ability to sense a little bit the electrical field of animals
+13360	18720	that are around other animals, okay, and you have animals that can feel electricity,
+19360	28000	and the objective for the researcher was to find what's the cause, how these animals,
+28080	33600	what is the molecular mechanism of the electro-reception, okay, so they are using
+34400	45920	RNA sequencing and combine with electro-physiological studies, so patch clumps, okay, patch clumps,
+46880	56080	now they could identify two different ion channels, and it's called CAE 1.3,
+56720	60720	which is a calcium selective channel, okay,
+65760	70320	and the other one is BK, which is a potassium
+70320	84880	selective channel, and its activity is modulated by calcium ion, okay,
+85840	95120	so we saw that this CAE 1.3, which is also expressed in mammalians, including human and rat,
+96000	108080	has a little customized ad, which consists in a few amino acids,
+111440	118560	that is absent in other species, okay, like human or rat or even zebrafish,
+119440	129680	and this little piece of amino acid, this little chain of amino acid,
+130240	141760	is found between S2 and S3, so it's S, I remind you, so these channels are
+142080	165440	tetramer of 6, alpha and transprime domain, okay, 1, 2, 3, 4, 5, 6, okay, so they are called
+165440	177600	S1, S2, S3, S4, S5, S6, so all the channels have alpha elix, transprime and alpha elix,
+177600	185040	and they are all named from S1 to S4, 5, 6, 8, 9, 4, 10, depending on their structure,
+186000	193200	and in the case of the voltage, gated channels like CAE 1.3, it's a voltage gated, they have
+193920	200880	in S4, what is called a voltage sensor, minus, so the voltage sensor contains
+200880	204560	arginine residues, which are electrically charged,
+209200	218880	voltage sensor, okay, and this voltage sensor moves according to the plasma membrane potential,
+218880	225920	okay, so when the plasma membrane potential is negative inside, the voltage sensor is attracted
+225920	231680	by the negative charge, and when the polarity change because of the depolarization, the voltage
+231680	241600	sensor moves, and it opens the pore that is located here, okay, so this S5 and S4 makes the
+242560	257840	selective pore for the ion, four times the selective pore, okay, and what they found is that these
+258800	264240	little five amino acids are located here, okay,
+267360	270480	they are located here, and they made a little,
+273120	275760	they are slightly positive, so they make a little
+278640	285520	local, very local change in the membrane potential difference across here, so
+286480	294800	the idea is they are a little bit responsive force for S4, okay, and that's what they could
+295520	303040	measure here, so here is the experience where they took these five amino acids and they added
+303840	311600	into the rat sequence, and they also neutralized these charges in the little skate, and when
+311600	320480	they neutralized the charge, the phenotypes go back to rat phenotype, down on conductance,
+321120	328240	and down on gating, okay, and that was the same for when they put the sequence in the rat, they found
+329200	340400	the, they found a shift in the curve to the conductance over the gating current, okay,
+340400	350880	that is the same to the skate, okay, so they concluded in this figure, so they made
+351600	359040	a, they measure the kinetics, okay, of the activation of the current between the charge
+359040	366240	and the neutral, and they could see some little difference between the charge and the neutral
+366240	374080	in the kinetics, and they made their model, so the voltage sensor needs a large in the rat,
+374160	380800	the Mamaria, the voltage sensor needs a large shift in the membrane potential to move,
+381840	389680	and then to open the channel, while the skate, because of the presence of this positive charge,
+389680	400720	this local presence of the positive charge, already pre, pre, already started the movement,
+400720	409760	or not started, but really pre-position for a small, for the need of a very small
+410880	417360	potential change to get to the channel, so they make it much more positive compared to the,
+418240	426640	compared to the Mamarian one, okay, and then they compare, they also check
+426640	440000	the, the Mamaria and the little skate, uh, vacate channel, uh, that's the second part,
+440000	447280	just, uh, we, we, we, here, so the vacate channel is the calcium-sensitive, uh, potassium-selective
+447280	455040	channel, it's also a voltage, uh, gator, so when you depolarize, the channel will open,
+455120	458880	but there is a calcium modulation, so there is a calcium binding site,
+460160	464320	somewhere, I forgot where, there is a calcium binding site in the channel,
+466320	474480	the channel, there is, the calcium can bind somewhere and potentiate, uh, the channel activity,
+475120	480720	okay, there are points b, because they are big, so they have a large conductance, so they let
+481200	487840	potassium pass, okay, and so what they did, because they had this, the RLA sequence,
+487840	495760	they could clone, uh, as we saw last week on the CN3.1, they sub-clone, or they clone the CMA
+497360	507760	of BK, they put the CMA in a plasmid vector, and then they transfect the plasmid into the hexes,
+511280	521120	and they perform the experiments, okay, so BK, because they are big, okay, they are usually measured
+521760	530400	in single-channel mode, okay, so the current that you see here,
+532800	539600	okay, these are single-channel measurements, so how they achieve the single-channel measurement?
+540720	559440	Okay, so you have the cell, so last week for the, for the, for the CAD 1.3,
+560960	569920	they applied the pipette, okay, they made a negative pressure,
+570720	574480	and the negative pressure is strong enough to break the membrane, okay,
+576000	581840	and then you have what is called the, that's the earth, you have the two electrodes,
+584160	590960	this is for the whole cell, because you can measure the channels, all the channels on the surface
+590960	598240	of the plasma membrane, okay, and that's how they measure CAD 1.3 activity, so they measure
+598800	609200	an influx of calcium, and I remind you, an influx of positive charge is seen as an
+610000	617280	inward current, as a negative current, okay, as a negative current, it's a positive cation,
+617280	623680	but it's a negative current that you measure, okay, and then they measure the intensity of the current,
+624400	631280	and then you plot the ID curve, okay, in the case of the BK,
+635200	642320	and the same, they apply the pipette, okay, in the, over the cell, but
+642320	651440	they came,
+654800	665200	but then they rapidly, and in a rapid movement, they pull out the pipette, okay,
+665600	673120	from the cell, the cell is attached to the surface, okay, so they just pull out
+673680	682240	everything, and they could rip out a piece of membrane, okay, so you have just,
+683840	690560	in the pipette, you catch a piece of membrane, okay, and if you are lucky,
+690800	703920	you have a one or two channel in the membrane, and you can measure their activity, okay,
+703920	708480	this is called, when it's open like this, okay, this is called the force cell,
+710240	717200	configuration, they are called configuration, and this is called the inside
+718080	721520	out configuration, why inside out,
+728240	737200	so the pipette volume here contains the solution, okay, that's limit the intracellular,
+737680	747360	the intracellular cytoplasm solution, and then you have here the extracellular
+749040	757600	solution, okay, so we call it vast solution or extracellular
+757680	767760	solution, okay, and this one is called the pipette
+769200	772400	solution, and it's the intracellular
+776640	783280	solution, it's limit the intracellular solution, but in the case of this single cell configuration,
+783920	786000	this becomes the extracellular
+789440	800960	domain, okay, this is out, and here the vast solution becomes the inside of the cell,
+800960	809040	so that's why the inside is out, okay, so you have an access to the intracellular domain, okay,
+810000	818320	so that's why it's called inside out, and here is the intracellular domain,
+818320	825760	and here is the extracellular domain, the extracellular domain becomes inside the pipette, okay,
+827120	830080	and then they measure the current, so they have to put
+830080	840960	a lot of rotation in the vast solution, okay, while when you have a solution like this,
+840960	848880	you need to put rotation inside the pipette, okay, and the part that the rotation is moving out,
+849840	860960	okay, and you can see a positive current, okay, and then they compare the mouse, sorry,
+860960	870240	it's not a rat, it's a mouse, okay, the mouse cdna of bk with the scale cdna of bk,
+871040	880080	so what do you see here, it's very obvious, okay, you see a large current,
+881760	890640	about 20 picohm pair, or even self picohm pair when you are at 100 millivolts, okay,
+890960	901680	and what you see in the in the little bk, less than 10 picohm pair, okay, so there is already a
+901680	914320	dramatic change in the single channel conductance, the single channel current between the scale and
+915280	922800	the mouse, okay, if you zoom a little bit, you can see here the small current, it's the time,
+924640	932080	if you zoom here for example, you can see the difference at the same scale between the current,
+932080	938880	okay, and then they count the events, the number of events that are
+941520	950080	the time, okay, the length of the opening time, okay, and you can see that they are open
+952720	959360	at a mean, okay, they fit, the power and the power is 5 millisecond compared to 1 millisecond,
+960320	967680	so not only they are open more, they have a larger influx of ions,
+968400	976320	but they also are open a longer time than for escape, okay, so it's the same gene,
+979760	986320	but their activity or their phenotype, their mark of activity is much different, okay,
+990000	997280	and then they wanted to know the difference, so they did the same for the CLD 1.3, they
+997280	1006000	checked the sequence, and they only found a very, very small difference, and the difference was
+1006960	1028960	3 large ones, 3 large ones, what are you going to say, this one, yeah, okay, here, okay, here,
+1028960	1046160	and here, okay, yeah, and here, here and here, yeah, these two amino acid, okay,
+1046960	1052720	I and E, what is the I? Yeah, and what is E?
+1058320	1068640	Maybe, something like this, G, okay, and in the skate, what do you have, an A or an E,
+1069280	1074400	and what's the difference between these two amino acids, maybe these three amino acids,
+1075200	1085280	these, those one are negatively charged, okay, and in the little skate, Arani has no charge, okay,
+1086560	1092720	but it's easy to guess because you have this little skate, this little skin here, in the case of the
+1092720	1104480	mouse, BK, you have a little bit too negative charge, this is S6, S6O, it's the same, I have
+1105440	1107040	six transmembrane domains,
+1112880	1116960	one, two, three, four, five, six, S5 and S6,
+1120960	1124320	six, and S4, voltage sensor,
+1124480	1128880	this is inside, outside,
+1133920	1145520	S5 and S6 makes the four, okay, and here, in S6, they have
+1145680	1154960	neutral charge, okay, so in the mouse, they are a little bit negative, more negative,
+1156000	1163280	and this little negative charge, according to their hypothesis, will attract more
+1164560	1171200	potassium because they are positive and negative, and they are just here in the mouse at the beginning of
+1171760	1180160	the, at the beginning of the, of the channel's pour, so more potassium will accumulate here,
+1180160	1186400	and when you have it locally, and when you have deparization, you will have an increase of the
+1186960	1196400	current, and they, they made a mutation, and when they did the mutation,
+1196480	1207600	they increase, the double mutation, they increase the, the current, okay, and when they,
+1216480	1224400	they made a mutation of this amino acid, okay, and they could increase the current, okay,
+1225200	1230640	and when they neutralize this charge in the mouse, they reduce the current,
+1232240	1240560	oops, okay, but just changing a little bit the amino acid, so the two amino acids, they could,
+1242320	1252240	how to say, they could mimic the, the change in the current, okay, so in the case of the
+1253200	1266640	CAB 1.3, you have five amino acids, but in the case of the big day, you have plus five amino acid,
+1266640	1272320	but here you have just a change in the amino acid, you don't have more amino acid, but you just
+1272320	1284800	neutralize two amino acids from minus to neutral, okay, and they could change, and change the phenotype,
+1285440	1293840	okay, so what's the consequence for this income of physiology, okay, first is that
+1294160	1304800	they measure the potential, so using the same approach of the patch clamp in the whole cell,
+1306160	1311920	you change from, in the whole cell like this, this is called a voltage clamp,
+1312880	1323840	when you measure the current, but in other case, they measure the, they,
+1325920	1332880	they don't clamp, they just measure the membrane potential, okay, so it's called the
+1333680	1340480	I0 mode, okay, they don't impose, they just measure the potential at,
+1344400	1345760	they just measure the,
+1346400	1365840	no, no, no, they just measure, I don't know, sorry,
+1366320	1379040	they are sitting in the voltage clamp and they, they measure the, the current oscillation, okay,
+1381200	1381440	no,
+1381680	1382240	no, I,
+1387760	1389040	I forgot, oh,
+1412000	1418880	I, I, I, I, I, they measure the potential at different, they measure the potential
+1418880	1425600	fluctuation at different potential value, okay, and they could see oscillation, and they could see
+1425600	1434880	this oscillation at very negative or close to the resting potential, to the resting potential
+1434880	1443280	values of the cell, and you can see that the amplitude of these oscillations,
+1444640	1455200	of these potential oscillations, they fit with the window current, if you remember the window current.
+1464880	1474160	You remember the window current here, okay, and so the window current falls here in 1.3,
+1482480	1493520	here, fits with the oscillatory behavior of the potential at different potential values, okay.
+1493600	1504240	So it means that when the CLD1.3 is constantly open, a fraction of the channels are constantly open,
+1504240	1512480	you have oscillations, okay, you have a lot of oscillations, and when you block the channels
+1512560	1524240	activity, we fed it in for CLD1.3, and DA4BK, so the general blocker for potassium channels
+1524240	1532320	is specific for L type channels, okay, you block the oscillatory behavior, okay, the same
+1532320	1545440	when you add a drug, okay, or a blocker of the potassium channel, okay, so you block the amplitude
+1545440	1555760	of the oscillation, you block the frequency of the oscillations, and then they made a behavior
+1555840	1564080	system, and they have a water tank, they put the fish in the water tank, and pillars, okay,
+1564080	1573280	with some other stimulator, and they put the current in these pillars, okay, for example in
+1573280	1585040	these pillars here, okay, and they look at the skate behavior, and these are the skate,
+1585040	1590800	when they map, using the camera, they map their movement, okay, and you can see when they block
+1592400	1604160	the two channels activity, okay, their behavior, they lost the electroreception capacity, okay,
+1604160	1610000	so here there is a stimulation, so the skate thinks there is a prey around here, so they move
+1610640	1613600	just around the pillar, and when the channels are blocked,
+1615440	1623440	they don't move again around the pillar, okay, so the time near the electrode in the control,
+1623440	1631440	when you have a stimulus, is much higher than when they block the channels, okay, this is a meter
+1631440	1639120	fraction, it's a T channel blocker that uses control, so it has no effect on the behavior of the fish,
+1639120	1653200	okay, so they made a little scheme for their experiment, so a little change in the potential
+1653840	1660960	made of potassium influx, calcium influx, which depolarized at very negative potential,
+1661920	1670320	which depolarized the membrane potential, and then the calcium activates the decay channel,
+1670880	1681680	influx of potassium, so reduction of the potential, and then block the CAV, and then there is a
+1681680	1689120	circle like this, so you have an oscillatory behavior, and it's a protein that also blocks
+1689120	1698560	the activity of the big cake, okay, it's in the paper, but we just mentioned, okay, so just addition
+1698560	1706800	of a few amino acids, which are specific to the little skate, CAV 1.3 and BK channel, make a
+1706800	1712560	major functional difference, and a specific physiological role for the electroreception,
+1712640	1724960	okay, so that's paper, it's very interesting for this, so it's also a very good paper to see the
+1724960	1731440	foundation of the ion channel activity, how they behave, okay, how they are measured in
+1731440	1738560	secret channel activity, or in the whole cell activity, okay, but they also give a very important
+1738640	1745760	and interesting information, how nature can adapt the same gene for a different function
+1745760	1753600	of a different role, okay, and what is interesting, this paper was followed by the same group,
+1753600	1759920	just one year later, they published a major paper, where they also study
+1760880	1768560	electroreception that they compare between shark and the skates, okay, and in the little
+1768560	1775920	skate, sorry, in the little skate, so they have a couple, a functional coupling between CAV 1.3
+1775920	1785280	and the BK channel, what was interesting is that in the shark, in the catch shark, okay,
+1786080	1792560	it's a little shark, it's a shark, it's a little shark, they found that there is not a functional
+1792560	1798640	coupling, but there is a coupling of activity between CAV 1.3 and another potassium channel gene,
+1798640	1806880	it's called CAV 1.3, also 1.3, okay, and they found that these two channels,
+1808080	1812320	this channel has also the same mutation, or not the same, not a mutation, but the same
+1813040	1820080	addition of amino acids than the little skate, but the coupling of the activity is made with
+1820080	1827520	a different potassium channel, and this potassium channel also has a little difference in amino
+1827520	1837360	acid compared to the mammalian one and provides him for more sensitive capacity, okay, and as I briefly
+1837360	1850480	mentioned in the last week's lecture at the end, okay, so this repetition of amino acid
+1850480	1858960	is not only found in fish, but was also found in the pigeon, and not in electroreception, but
+1859840	1868080	in the inner ear of the pigeon, okay, in the vestibular hair cell, okay, in the ear, and
+1869440	1875760	it's probably, they made a supposition, it's not for electroreception, but for
+1875760	1879360	magneto-reception, and you know what is magneto-reception?
+1879920	1886720	What is magneto-reception used for?
+1886720	1897280	Navigation of the birds or other animals, okay, so there is a very,
+1898640	1902000	there is a very fierce debate on magneto-reception,
+1902960	1912960	there is a lot of hypothesis, a lot of mechanism to debate, so I hope maybe one of you can find it,
+1912960	1919360	some say it's a rhodopsin, it's due in the eye, and it's kind of oxidized,
+1920160	1927760	a cytochrome that is important for magneto-reception, others say it's a channel, others say there is a
+1928480	1934000	kind of magnetic, it's kind of a protein that has some magnetic property,
+1935280	1946400	there's a lot of different hypotheses, so it's still a big debate, and maybe if you find
+1948400	1957360	the real, if you prove that you have magneto-reception, that would be a big discovery, okay,
+1958080	1963920	so maybe it's a channel, or maybe it's not a channel, I like the idea of the channel,
+1968080	1976560	okay, so this first paper was important to showing the,
+1977280	1986240	what's an IV curve, okay, how to measure the current, activation,
+1989920	1992000	activation and inactivation,
+1996160	2004080	and also the gating mechanism, okay, the voltage sensing gating, okay, and that they can measure
+2004640	2010080	the gating current, so the current generated by the movement of the voltage sensor, okay,
+2010080	2016800	and with this, measuring this channel property, and they could see the difference between
+2017760	2027280	manians and user states, and they could characterize the electro-reception
+2028000	2036720	molecular mechanism, okay, so this is mainly about gating and the voltage sensing, and
+2036880	2046400	the channel, the channel behavior, okay, but now there is another property of channel,
+2046400	2053680	what is important, it's called ion selectivity, okay, so we saw that CME
+2056000	2062640	1.3 is selected for calcium, I said, maybe you don't remember, but
+2063360	2070720	when you put a patch clamp using a calcium channel, you can replace the calcium by
+2072080	2078160	barium, and actually its channels are more selected for barium than for calcium,
+2078800	2086000	okay, and if you put other ions, so they won't pass through the channel, okay, so,
+2086960	2096800	and the bake is a potassium selective channel, okay, so how the people or how the researchers
+2098160	2105520	claim that this channel is selected for this ion or this channel is selected for this other ion,
+2106240	2115760	so one of the, one of the trick or one of the tool that is used is usually the non-sequation,
+2116960	2127600	so, and measuring the equilibrium potential, and when you, when you do your IV curves,
+2130720	2140640	and you measure the current, this is the voltage, current, okay, and your curve
+2141200	2154800	cross the zero axis, so the value of this potential is called a reversal potential, okay,
+2155360	2162240	and when your reversal potential is the same as this, equilibrium potential for a specific
+2162400	2171760	ion, okay, so you can say this channel is selected for this,
+2174800	2181280	for this ion, okay, and this is what can be used, okay,
+2181520	2192160	this is a paper I published with a collaborator, so we were characterizing
+2192160	2198640	this channel in the cylindrical point membrane, okay, they solve the structure
+2199280	2206160	and I measure the selectivity by measuring the change in the reversal potential
+2206160	2215200	and in different ionic condition, okay, so I could see that the channel is selected for
+2215200	2222400	chloride but also selected for other ions, okay, and that's how you do, why you use
+2223040	2230480	the Boltzmann-Ortin equation that you simplify and you can compare
+2231200	2236960	the selectivity against one single ion channel, yes?
+2236960	2244400	Will it be like always a threshold or relative, like you can see whether a channel is selected
+2244400	2250960	by this base or like a certain threshold you set, yeah, yes, so it's always relative to another ion,
+2251280	2261680	yeah, it's always relative to a standard ion and actually other ions can pass but not that easy,
+2262320	2273600	okay, so the ions are usually the most accepted model is that ions like sodium
+2274560	2282640	are hydrated, they have what's called a hydration shell and you have a little bit of
+2283520	2291600	more negative charge in the oxygen and this makes a hydration shell and the idea is that
+2291600	2299440	we select the filter, we make the hydration shell for a specific ion and this distance here
+2299440	2307440	is different between the oxygen and the sodium and the sodium is different depending on the ion,
+2307440	2313920	okay, not question of ion size, it's a question of distance and the
+2316480	2322880	the selective filter with bimic dehydration shell is oxygen that are at a good distance
+2323680	2331920	with the ion but the model is not always perfect and this is one of the last paper I read on
+2331920	2340960	ion selectivity so it's make a little bit, it's challenging a little bit the model of the hydration
+2340960	2348800	shell, it's not a perfect selectivity so you see that they go well but the sodium ion has a
+2348800	2361040	a passage that's not, it's too narrow for not well enough for the potassium sodium atoms in
+2361040	2367840	selecting the sodium across the potassium channel, the sodium trap in the tortious trajectory for
+2367840	2375600	the sodium can enter the selective filter that doesn't pass well, okay, you have people studying
+2376240	2379920	who is a model but you always can use
+2382800	2391680	this equation to measure your selectivity and that's why I want to study the next paper I send
+2391680	2406240	you with and this paper is here so the the group of Emily Zeman
+2409920	2419840	she had a quest to finding the receptor for acid taste and they found in the in our tongue
+2419840	2426160	or in the Mamalian tongue of the mouse they found a new gene they found not a new gene they found a
+2426160	2434640	gene that they could play it's a proton selective okay so I use this paper as an example for how
+2434640	2443440	the people study the selective in ion channel okay so and you will see that they use the reversal
+2443520	2450560	potential or if you read the paper they use the reversal potential for the proton to show
+2451360	2457520	in their experimental condition to show that the reversal potential of their current
+2458400	2468240	fits with the equilibrium potential of the proton concentration gradient that is theoretically
+2468960	2476080	calculated in their experimental conditions okay and that's how they could play this is with other
+2476080	2488160	different evidence but this is a selective channel approach okay but just before I start I will make
+2488400	2500320	a brief introduction to the taste so taste testing we all enjoy food okay so where do we sense mostly
+2500320	2508400	taste of course there is a combination between olfaction and the tongue and what we see
+2509360	2519680	it's good it smells good and tastes delicious okay and our major organ for taste is our tongue
+2519680	2531680	okay and our tongue can feel how many taste five first sweet sour bitter
+2531680	2542320	salt oh yes and then and then the tablet yeah okay so all these five tastes
+2543600	2552960	have specific receptors the food release molecules and you have receptors and the cells that detect
+2552960	2560160	the taste are for the taste receptor cells for taste and you see they have a similar
+2560960	2572640	organization than the the electro reception it's a group of cells that are together and they are
+2572640	2578400	electrically connected to the central nervous system there is a little part of them that is
+2578400	2585280	exposed outside and the receptors are here and through the receptor activation they can release
+2585280	2592400	no transmitter and give us information or this is taste delicious this is salt and
+2594560	2604000	this image is wrong this 2005 there is no area for the taste we can taste any taste everywhere
+2604400	2614480	this is wrong so you have five taste but you only have three type of
+2616240	2623360	taste receptor cells it's called a taste but it looks like an onion okay and you have a lot around
+2623360	2631440	here around here okay so you have different and that you can feel the surface of your
+2631440	2639600	tongue is not flat there is kind of gluten formation like this okay and within these three
+2641280	2648640	type of cells you have the five tastes okay and how it works inside the cell
+2650800	2657920	so the taste bud is connected through different ganglion you have different nerve projections
+2658880	2666800	and then you have the central nervous system with the taste information so what happened
+2666800	2672720	in term of here so you have a receptor the receptors usually induce a chain of
+2676560	2684560	signaling pathway like release of secondary messenger release of calcium and the calcium
+2684640	2689120	enables the release of neurotransmitter and then the neurotransmitter and generates
+2689120	2699280	an action potential in the nerves okay so you also have one kind of channels and the receptors
+2699280	2708000	are usually for taste five days but they have two types so you have either a gpcr what is a gpcr
+2708560	2719760	okay so it's a seven transfer brain domain protein that it's coupled to a g-protein
+2720400	2728080	and this type of cascade of signaling okay the researcher found the gpcr of the Nobel Prize
+2728080	2735280	the researcher found the g-protein Nobel Prize okay so they are very important not only for taste
+2735280	2744560	but for all the reception and hormone reception and neurotransmitter all kind of communication
+2744560	2754400	in cells okay release of calcium okay so they have gpcr or ion challenge
+2755360	2762000	okay mostly it's a gpcr
+2762320	2767600	okay
+2772320	2774640	and this this is a old
+2777360	2785600	this is a old scheme okay umami umami is a two gpcr
+2792000	2802480	different gpcr together later also gpcr you have different g okay and sodium
+2803040	2807920	it's a sodium channel it's called inac it's the same sodium channel that is in your kidney
+2808880	2812720	okay so uh salt uh it's an ncl
+2817520	2825840	ncl mostly sodium okay so it's easy to have a sodium channel okay and then kind of sour
+2827040	2837680	and this is a old uh review and the sour was a very long quest and people say for example
+2837920	2845840	this pkd channel it's very important for sour taste in this way okay so there was a
+2845840	2850640	a big fight this is another review uh from 2010
+2853520	2863120	so sweet umami is a gpcr and then a chain of interesting events salt is a sodium channel
+2863120	2873120	that deprives the cell and then sour maybe the proton sensitive channel not a proton
+2873120	2881440	selective channel the proton is passing through some mechanism and this will induce an increase
+2881440	2890160	of proton inside the cell and block a channel or other inventory yes it's like other kinds of
+2890160	2897440	salts is it also true the sodium net channel right it's like other kind of salt like potassium
+2897440	2908640	salt potassium chloride i don't think potassium doesn't mean the sensational salt for example if you
+2908640	2914320	eat banana banana is full of potassium don't make it for example some water that's hot different
+2914320	2922160	hotness yeah and then the mineral contains different teeth ah yeah which can be yeah but
+2922160	2931040	salty uh in general i'm not specialist on taste but as in salt taste is mostly defined by the
+2931760	2941840	amount of sodium inside the cell but yeah some some food contain a lot of potassium so what
+2942320	2949040	how they hold the taste i'm not sure and how we are interceding this taste maybe they
+2949040	2956000	they can influence the membrane potential so they they hyper-coronize the cell
+2956560	2965520	in a bit the the social i think taste but i'm not sure oh professor professor i think the potassium
+2965520	2973840	might potassium chloride might be used as a salt substitute in some specific diets yeah so if you
+2973840	2984240	have hypertension yes like i have so you need to have a low potassium food intake so no potato chips
+2984240	2994240	no sodium then i think you you need to have a high the potassium rich food yeah so it's reduced
+2994800	3000800	deparization membrane deparization but i think then potassium chloride might at least be able to
+3000800	3009440	replace sodium by some internal taste yes i think so but i i haven't verified it and it should be
+3009440	3015920	simple to verify okay please check but for an exit i have to smuggle some potassium from the lab
+3016640	3023280	no you never do that but i think i don't i can't buy it anywhere this is for research
+3024080	3029520	okay so if it's very dangerous if you if you have too much potassium intake you might have
+3030640	3038480	a drop of blood pressure and a lot of filling and don't taste the potassium chloride
+3040000	3044880	or even the sodium chloride of course it tastes like salt
+3045920	3049520	but i remember i had a when i was phd student
+3051760	3058960	my lab had the office of an old professor and she always come to our lab take the glucose
+3058960	3066400	and the sucrose and put in her coffee research because it's okay for me i know she said she was
+3066400	3080320	already retired okay so let's come back to the proton okay so one of the
+3085840	3092480	one so the identity was controversial and one of the model was this pkd
+3093200	3095040	proton sensitive channel okay
+3098080	3109120	and one of the evidence for this pkd channel was this experiment okay these are electric
+3110080	3117600	response problems so they put the electrode in the town or behind the town just to measure the
+3117600	3123440	electric influx or the electric response to in the mouse uh on the nerve town
+3126000	3132400	two different tastes okay so they put umami taste with this bitter taste sour taste and salty taste
+3132400	3140240	okay uh and they could observe the response uh to this electrical response with this different
+3140240	3148880	taste and they took already known knockout mice for the different umami sweet and bitter
+3149760	3159120	and you can see that when you have this gbcr t1r1 knockouts you lose the umami taste this t1r2 you
+3159120	3171920	lose the sweet taste t1r3 is important for both sweet and umami and t2r5 and you lose the bitter
+3171920	3182240	taste and they use fish toxin and this toxin in blood is pkd2 and pkd1 channel is like a specific
+3182240	3192960	inhibitor okay and they lost the sour taste okay so using the toxin they say it's an evidence
+3192960	3200000	to say that this the sour uh means this channel okay and then these are two uh
+3200000	3212560	uh uh effectors downstream the this gpcr so phospholipase c beta 2 which is activated by the
+3214240	3221120	release of diacyglycerol after the activation of the gene protein okay and okay you see that
+3221120	3228560	they are important for sweet umami and bitter and tlpm5 is a channel that is activated downstream
+3228560	3236800	this gpcr uh this gpcr activation and they are also important for this sweet taste but not for
+3238960	3251600	sweet unsalted okay so this was 2006 so already 20 years ago uh so that was the model okay and
+3251600	3260080	that's why people were writing this kind of review uh where you have this is important for the sour
+3260080	3272800	taste okay so in this case they use a toxin which is a strong evidence but what should be a more
+3273520	3288000	more effective evidence or a more definitive proof to say that this pkd2 and pkd2 l1 channel
+3289200	3295040	is important for sour taste what kind of experiments would you do
+3295920	3297280	um
+3302160	3305280	when you want to prove that the gene is an important function
+3310480	3310800	okay
+3311840	3317760	knock out mars it means you suppress the gene from the animal and that's what they need
+3318560	3331920	but unfortunately and that was published a few years after the nature paper sour taste
+3331920	3340880	responses in my slagging challenge yeah sometimes you publish a great good paper you are very happy
+3340880	3348800	and then someone i said maybe no okay that's happened so pkd1 is not the major sour taste
+3351360	3358000	okay and that's exactly the same experiments they did uh we use the knock out mice
+3360720	3366080	here and here they have to knock out mice they even have to double knock out mice
+3366800	3375840	they add acid you got salt and phenol and other stuff and they always have a response
+3376480	3387520	okay in the knock out mice oh no okay it's yeah okay you have a response these are other tests
+3387600	3394720	are such a good ncl phenol and it's okay oh no this was published
+3397840	3407280	in 2011 so five years after the 2006 okay so that means oh no you have to start again
+3407360	3411840	and try to find what is the
+3414240	3415440	what is this
+3417920	3425520	set okay and this is the response so there's a little reduction in the in the spike and
+3426800	3436160	in the in the response speed okay the response to the high concentration but they are still
+3436160	3442160	responding and these are the the blood cells and the electrode and they will show the response okay
+3442800	3450400	oh no and then came the group of lima and they published in 2010
+3452240	3455920	so just before the the knock out mice
+3456240	3456720	uh
+3459760	3467120	and they just by electrophysiology they could record the proper current drive action potentials
+3467120	3474880	in genetically identified sour taste cell what does it mean and this was published in the
+3475600	3483120	pns for studying natural academia of science of the united states it's a very prestigious journal
+3483680	3485360	when you are a member of the academy
+3488240	3498640	okay so they could uh generate a mouse with a fluorescence in the sour taste cells
+3500880	3506720	they made a fluorescent mice in mice expressing pkd to l1
+3507360	3518880	okay and the trp m5 mouse is more type 2 or type 3 i forgot but it's more for the umami sweet
+3520080	3530000	and the bitter taste okay so you have cells that are known and fluorescent for the sour taste
+3530560	3537040	you have cells that are more for this other taste and they measure the electrical response
+3538720	3547680	to acid okay and you can see that in this pkd l1 yellow fp yellow fluorescent protein
+3549040	3555840	you have a response to acid ph when you when you stimulate these cells with acid
+3556800	3564400	which was not the case in this trp m5 gfp expressing cells okay so when you have acid
+3565280	3572480	you have an electric response this is a member of uh current okay and when you don't have acid in
+3572480	3583600	the trp m5 almost no response okay and then they did patch clump and they measure the reversal
+3583600	3593680	potential and they plot this uh current also with the current uh with the ph so the more
+3593680	3600400	they acidify the higher is the current so the more you increase the uh concentration gradient of
+3600400	3607440	proton the more you increase the current it's evidence that proton it has some effect on the
+3607440	3616240	current and the reversal potential they measure at different ph condition
+3618640	3629200	fit the theoretical equilibrium uh potential of ph and this is the dash line and this is the
+3629200	3636400	experimental value it's almost the same so that's also very strong evidence to say
+3637760	3646880	this current is uh proton selective there is a ph dependence of the intensity of the current
+3647680	3654800	there is a reversal potential that fits there is a equilibrium reversal potential that fits
+3654800	3665120	with the theoretical equilibrium potential of the ph there is no known inhibitor of uh
+3665920	3672640	proton current except zinc for all the people that work in the proton channels
+3673360	3679920	zinc was always the inhibitor of uh proton conductance they put proton uh they could zinc
+3680640	3689600	and they almost inhibit most of the current okay and the last evidence here they didn't
+3690560	3700480	measure the current but they use the fluorescent fluorescence you know what is fluorescence
+3701440	3703600	yes fluorescent
+3707920	3719120	or proton so it's a molecule compound that emits fluorescence when you have the binding
+3719120	3725600	of the proton or the the opposite you have a when you don't have proton and have fluorescence
+3725680	3728000	okay and that's what they they observe
+3731600	3741440	here there is in this pkd2 cell when they put hdl there's a decrease in the fluorescence so it means
+3742720	3750640	there's some proton movement inside the cell okay which is not the case in prpm5
+3751280	3758480	well the movement is very small so with this one two three four piece of evidence
+3759360	3768240	they could claim yeah there is something about proton there is a proton channel maybe there is a
+3768240	3776160	proton channel that stimulates and activates the cell the proton channel proton influx
+3776160	3782080	deprives the membrane then the sodium channel further deprives the reaction potential influx
+3782080	3791040	of calcium and release of the neurotransmitter okay when this paper was published in 2010
+3793360	3794160	by hurlman
+3794480	3808960	one two three orders that's the professor 2010 and then they started
+3808960	3817680	search for the molecular identity of this channel and how many years does it take
+3818080	3822480	2018
+3824400	3825040	how many years
+3826160	3828960	eight years how many years your studies
+3830640	3839200	four years twice your university time okay so research takes time okay
+3840000	3843120	okay and you can see
+3846240	3847280	who's the first author
+3850080	3857920	do you know the what is that authors and the system last author is always the professor
+3857920	3865040	and the pr who's the first author the one who did the experiments usually to graduate students
+3865040	3871840	PhD students or postdocs okay how much is a graduate studies years how much is a PhD
+3873120	3882880	four five three uh postdocs two or three years eight years okay but you see uh Mr. or Mr. John
+3882880	3890160	I don't know it's here as a first author but he also contributes here
+3891200	3898720	is here as a contribute for this paper okay but maybe it's another student who was the leader of this
+3899280	3909280	but the PI is always the PI okay so when you are in a paper when you're on the side left or right
+3909920	3916480	it's better when you are a leader so high contribution and contribution is started
+3917600	3922880	okay but they still but their name is here so they have a significant contribution
+3924560	3924880	okay
+3927840	3933680	so they they worked very hard for eight years and they found
+3933680	3943440	one one one family of gene that encode for a proton selective channel
+3945360	3950960	and his family is called auto-pattery it's not that they didn't find a new gene
+3952000	3958240	but they identified a gene that was known to function as a proton selective channel
+3958240	3964560	this gene was already known but nobody all the function was not clear okay but they prove
+3965360	3972480	it's a channel okay and it's a proton selective channel so what what they use they use different
+3972480	3981280	methods so they use a mouse that the same mouse they had in the first paper the pns paper so
+3981280	3988720	one expressing jf3 in plpm cells for as control and beta sour sweet
+3990160	4000320	and another one is yfp for kdl2 expressing cells for acetase cells and in 2010 you could not do
+4000320	4008480	single RNA sequencing and that's why it took a few years but with single cell RNA sequencing
+4008480	4015280	technology they could perform a transcriptome analysis and they could clone the gene and then
+4015280	4024480	they did exactly the same in the previous paper we read sequencing cloning and then mRNA prediction
+4025200	4031600	electrophysiology on all sides but cloned on x-cells and a little bit of proton imaging
+4032560	4041280	and that's made to prove that this autopattery is a proton selective channel in sour test cell
+4041920	4050240	and that was published in very prestigious journal no science is a top journal okay
+4050960	4061600	so how they proceed they separated both cells and they is a transcription transcription
+4062720	4075920	transcriptomic analysis with ppm5 cells against pkdl1 cells and one dot is one gene
+4076880	4084720	okay and they measure their expression so they measure the this graph shows that
+4086480	4094240	the genes here are mostly expressed selectively in the pkdl1 cell
+4095840	4102560	and these genes here are mostly only expressed in tpm5 cells and there you see some thresholds
+4103200	4112400	that are experimentally selected okay and you have dots that are a little bigger
+4113920	4118960	and more visible so once you have transcription you have a list of genes
+4118960	4126720	and then you can try to select the genes that are only expressed in the plasma membrane okay and
+4126720	4134720	that's the the dots here okay so they they found a lot of these genes
+4137280	4149120	okay and they could identify 41 genes that are specifically expressed in the membrane of pkd2l1
+4149520	4165680	cell okay so in this 41 genes they took the genes and they had a screening
+4167120	4174560	for a response to acidification and zinc okay as a first and rapid screening
+4174800	4183760	for a potential candidate for proton channel so they observed only one gene
+4187680	4194480	that responds to acidification but generates a current of an acidification and this response
+4194480	4205280	was blocked by zinc all others ignore response okay so you can imagine the stress of the student
+4205280	4212400	or the researcher to start from here and after a few weeks it's still here
+4216560	4221360	or the stress on the other side to start all immediately you've got a response
+4221360	4226320	yeah please don't please don't you check everyone and say no response no
+4228320	4236240	this is the research especially when you do the screen okay but they had they were lucky also
+4236240	4243040	you have luck in the research but they did consistently have the file of this auto p1
+4243760	4249920	response to the cell and this if you have to do this with spatch clumps very long and very hard
+4249920	4257440	so they use the xenopause of the oocyte now the oocyte of xenopause i don't know if you know
+4263600	4272800	so xenopause is a probe you know as you see it's very big and it's a cute and they
+4272800	4281520	have a they have a the female and a lot of oocyte they are quite large and you can see
+4282720	4290400	your eyes okay and they are also used for as an electrophysiological tool you can inject
+4290400	4301920	not the plasmid but directly the mRNA and wait a little bit and you will have the expression
+4301920	4310880	of your channel and then but Trump is very hard because you have to touch the cell under the
+4310880	4317600	microscope but here you just implant two electrodes and then you measure your current
+4318160	4325440	uh now you have a system with several wells so you can put several oocyte and implant
+4326320	4333920	and then measure several at the same time okay so with a an efficient screening they can identify
+4333920	4342000	this auto p1 and they look the literature i mean the database what is auto p1 auto p1 is
+4342000	4353680	abbreviation for auto petrin which was found in uh in the inner here and was related to
+4355520	4367120	hearing uh atology when you have mutation okay so you have several auto petrin 1 2 and 3 which
+4367200	4376480	are surprise variants it's for 1 2 3 4 10 extra 10 transform brain domain okay
+4378880	4386720	and one of there was a paper the function in 2007 uh auto petrion activation by pure
+4386720	4394480	engine electrolyte regulates intracellular calcium that's all okay but here they found
+4394560	4400960	all its response to acid it's blocked the electrical response is blocked by zinc so it has
+4400960	4409200	the potential to do uh channel so if you look at the figure one on figure supplementary figure one
+4410000	4417680	in the Xenopus they measure the current at acid pH at neutral pH the current is very small
+4417680	4425920	you increase the pH you increase the current the reversal potential almost fits
+4428240	4435120	the theoretical equilibrium potential for the pH at least in the range of five or six
+4436080	4446400	okay and they measure in the all side and then they moved uh from all sides to
+4447760	4456560	why it's not uh perfectly fit here because at this high pH the the clamp is not so easy
+4457200	4465120	you don't have using all side you don't have access to here you just change the medium here
+4465120	4472640	so you just acidify it here but the control of the gradient is not perfect uh they just
+4472640	4478640	have an estimation of the intracellular pH okay so it's not perfect so to have a
+4479200	4488080	a perfect fit and use the patch clamp because you have access to the intracellular space
+4488080	4494880	intracellular space is small you can control the pH here you can control the pH here
+4496560	4504160	pH means the concentration of proton you have control both so you have a good control of the
+4504960	4507360	gradient okay
+4510560	4518640	and what they did that's what they did this is in all sides they changed the extracellular pH
+4520080	4529920	so they moved from 7.4 to 6 and then back to 7.4 how they do this so in your experiment
+4530880	4542560	uh your all side is in a tank with a medium at pH 7.4 and you have your electrodes and machine
+4543200	4546800	and here you have what is called a perfusion system with tubes
+4549680	4558080	and you have different tanks with medium at pH 7.4 so you can perfuse
+4558160	4566160	using a pump and then you can change you go to pH 5 and you perfuse and you change the medium
+4566160	4574720	okay so while they change the medium to pH 6 to a higher higher proton concentration
+4575840	4582320	they could see the current okay they clamp it at minus 8 mu1 they increase the the proton
+4582320	4588160	concentration the current increase okay and then they did a ramp test
+4590240	4597120	they did a ramp test at different pH and they measured the reversal potential okay
+4598640	4605520	at the current amplitude as they measure the current amplitude the current increase
+4605520	4613120	is the increase of pH the same here and they did the same in hexels where you have a better clamp
+4613840	4623200	okay from 7.4 to 6 you have the current or increase or increase make a ramp and you see
+4623200	4629280	change of the reversal potential and increase of the current increase of the current I said
+4629280	4634000	increase because we are in the negative the zero is here so the current increase
+4635360	4638080	one they have here the dots here is the control
+4638880	4646880	untranspected cells and here is uninjected cells no mRNA
+4654000	4656880	so
+4657200	4659680	so
+4664640	4668480	this is the first event there's a pH
+4670160	4674720	the content of the current
+4674800	4677520	so
+4680880	4688960	when you have asked you to increase the gradient difference of proton you increase the current
+4688960	4695920	does it mean this is selective for proton no just say increase the gradient increase the proton so
+4696000	4703600	it can be also a proton modulated system so the proton binds and increases the current
+4703600	4711760	okay like basic like the basic channel so they have to check that this is really
+4712560	4713760	uh
+4713760	4721200	transselective so the first uh since they eat they check where
+4722480	4729280	auto key one is expressed uh so they made a construct they tag it's called tag
+4732640	4737280	again so you add a little something so they have auto key one
+4737680	4744000	and they put the tag and the tag is the fluorescent protein and in this case is
+4745360	4753760	YSP so the tag makes it visible by fluorescence and they observe in the cell
+4754480	4761840	where is located the fluorescence and you can see that the location is at the border of the cell
+4762560	4770720	which is means it's expressed in the membrane mostly of course you have signal in the cell why
+4774080	4776160	are you also have fluorescence in the cell
+4777200	4780480	because it's it's creating still at the surface
+4782640	4783680	but this is confocal
+4788240	4791120	yeah it's localized to membrane but you still have signal inside
+4791840	4799360	when you you produce the protein the protein is produced in the of ER and then with the protein
+4802400	4808240	it's a bit of intracellular location but they put a line here and you can see the fluorescence
+4808240	4814160	has a peak in the border then it's lower inside and then at the peak at the other border
+4814160	4819360	so this is a good evidence that uh it's located at the class membrane okay
+4820000	4824080	they use they measure the pH intracellular pH by fluorescence
+4825280	4831120	and they could see that when they acidify the acidified the extracellular medium
+4832640	4838880	in the presence of auto key one they have the strongest intracellular acidification
+4840320	4846160	the the blue lines is the error so you can see the acidification is quite consistent
+4846880	4851200	and when you have a shard it means you transfect something else
+4852000	4858400	the acidification is much less strong okay this is a very strong acidification with a
+4858400	4868560	permeable system as a date both as a control both acidified okay so this is a second evidence
+4869280	4873040	okay you have auto key one you have intracellular acidification
+4879200	4887120	same with the fluorescence here another fluorescent probe they have acidification they use
+4887760	4896960	uh pH rhodo red okay and this is the uh how to say the ultimate
+4900160	4910240	the very strong evidence for the uh or the uh the proof of the ion selectivity
+4910560	4919840	one is ion replacement they measure the current in acid pH the current is here
+4919840	4926640	and then they add another ion they add an excess of another ion just to see if this
+4927440	4933040	excess of other ion will influence the current and you can see that there is almost nothing
+4933040	4941120	happening when they add extra sodium they add extra lithium nothing they add extra cesium
+4941120	4948320	nothing they add extra calcium nothing i think in the supplementary they also use other ions but
+4948320	4958240	nothing move in the presence of proton and another ion that would compete for the selectivity so this
+4958240	4965840	is a strong evidence and then as we discussed they measure the reversal potential at different pH
+4969760	4976880	and they plot this reversal potential against the pH delta pH
+4977360	4988560	and they draw the theoretical equilibrium potential at these pH values
+4989920	4996480	and you see that the point the experimental measurement almost perfectly perfectly
+4997280	5005040	fits with the theoretical value and this is a very strong evidence that this current they measure
+5005040	5013920	here in the presence of auto q1 at this pH this is proton passing from the channel
+5014880	5017680	and these are also strong evidence that this
+5019840	5028000	proton pass but probably only proton pass okay now you could test a lot of other ions but at least
+5028800	5040000	compared to this you have a mostly set proton channel oh for time okay so and then they did a
+5040880	5048000	ion they also test again potassium a little change but not much not significant change okay
+5048400	5060400	this is the auto p1 they look at mouse versus mouse and the auto p1 sequence this is a
+5060400	5067040	transparent domain the sequence in amino acids the concept how much they are conserved
+5068000	5077360	auto p1 and auto p3 also change auto p2 and auto p3 also change the pH so they are also
+5077360	5090320	from proton channels okay please wait five minutes then they measure the current also and also in
+5093200	5102480	in pk1 cell the current is also blocked by zinc so they could get the current so they
+5103440	5106160	the paper had a strong
+5108960	5117440	impact in the community of the taste the taste researchers there was a general general
+5117440	5124560	general physiology there was a comment so auto p1 must be there maybe something else
+5125200	5131840	or strong acid is maybe auto p1 for weak acid maybe something else and they make a scheme okay
+5133280	5144000	so what they use they what they could find the proton selective channel in the acid taste cells
+5144000	5151600	okay is it really the taste receptor how to prove it from what i said you make a
+5152560	5159840	not so it's not cosmic wise and that so that was published in 2018
+5160800	5167920	there was no look at mouse at the time the the research was moving very fast so just one year
+5167920	5175440	later uh lima that probably collaborate with this professor one okay they published a very
+5175440	5181920	nice paper with a structure of auto p1 they could see that they form a diameter
+5183040	5190960	of 12 trans membrane domain and they characterize a little bit they made some mutations to show that
+5190960	5198240	some amino acid are very important for the proton transport of the of the in the channel okay so
+5198240	5207280	that was very fast but the quest was not finished is it really the sour taste receptor you have to
+5207280	5219360	prove it so i go very fast this is the taste system of the mice receptor you have you have
+5219440	5225600	protection of axons in different countries and then like this okay so what happened
+5228480	5235520	bam in 2019 just one year after they published another book
+5237280	5246240	this book published itself it's also top journal for the biology sour sensing from the tongue to the
+5246240	5255920	brain and they did the knockout mice they did the knockout mice and they showed that from the
+5255920	5264480	knockout the the mice is losing the taste i don't present the paper but they did a tremendous work
+5265280	5272080	it's impossible to do this in one year so these guys knew about the paper so they started before
+5272800	5280960	it's a competition so they could see from you see the measure of the
+5281840	5288480	current size before and auto p1 knockout even you have sour taste there is no response
+5288480	5297200	electrical response they could find sour responding neurons in the anglia taste and then in the brain
+5298000	5305120	which is the neuron it's a pkd neuron that responds to the sour and then they did a behavior
+5306480	5317040	test using optogenetics in in mouths and this is liman who also published almost at the same time
+5317040	5323520	the knockout mice but in another journal the current biology so they're a good journal but
+5324240	5332240	that is much better so you see the competition is very tough and when you make a discovery
+5332240	5339200	other ones also to take advantage of your discovery so you have to be very careful when you want to
+5339200	5345920	publish your discovery because it's very tough competition at least they could publish but the
+5345920	5355520	credit will go more than to her of course she had the credit of finding but the proof that it's a
+5355520	5363840	sweet receptor sour receptor is another group and you can see the out
+5363840	5375760	not so many people but they work very hard i guess win the competition
+5379440	5389760	and they okay just to finish that's a uh
+5389840	5398560	oops that's another paper that was just published last year
+5407040	5411360	of course they found the structure but they're also for pharmacological
+5412320	5419840	uh business or for pharmacological use they try to find an inhibitor of
+5421200	5429680	autopsy one and they made a big screening of three hundred thousand compound not by
+5429680	5440000	bachclon but in cdco now we can work in cdco so they can make a talking and they found 50 compound
+5440880	5447520	that they screened for the inhibition also by bachclon using their assay and you can see that
+5447520	5457280	they found this c11 and c22 compound that has a very strong inhibition of the of the current
+5457280	5463600	okay and then they characterize and they could see the pocket of the binding so when you make a big
+5463600	5469280	discovery like this you can continue and try to make other nice discovery this was
+5469280	5477600	published in major communications which is a very good journal and it was published in 2025
+5478320	5488400	okay so when you do research you always advance and make new things and because new methods
+5489040	5496320	enables you to make new discoveries here they took advantage of this uh in cdco work on the
+5496320	5503200	structure and the docking and they could identify compounds that inhibits and could be used in the
+5503200	5515360	future and by the pharma industry a treatment of pathology related to autopsy one okay okay good
+5516160	5523920	i guess you're hungry now you know why you feel all sweet paste uh no acid taste sour taste
+5523920	5528960	so when you eat next time you say okay i'm activating those

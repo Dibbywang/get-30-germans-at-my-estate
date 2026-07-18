@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 5: Mechanosensitive Channels & Piezo1</title>
+    <link rel="icon" type="image/png" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../../g30-styles.css" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 20px auto 10px auto;
+            padding: 0 20px;
+        }
+        .back-btn {
+            background-color: #00664a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            background-color: #004231;
+        }
+        .dual-pane {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto 30px auto;
+            padding: 0 20px;
+            height: calc(100vh - 180px);
+            box-sizing: border-box;
+        }
+        .summary-pane {
+            flex: 1;
+            overflow-y: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .transcript-pane {
+            flex: 1;
+            overflow-y: auto;
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .summary-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .summary-section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .summary-section h3 {
+            color: #00664a;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .summary-section p {
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .summary-section ul, .summary-section ol {
+            padding-left: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .summary-section li {
+            margin-bottom: 8px;
+        }
+        .summary-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .summary-section th, .summary-section td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .summary-section th {
+            background-color: #00664a;
+            color: white;
+        }
+        .equation {
+            background: #f0f7f4;
+            padding: 15px;
+            border-left: 4px solid #00664a;
+            margin: 15px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-align: center;
+        }
+        .transcript-para {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.5s ease, border-left 0.5s ease;
+            border-left: 4px solid transparent;
+        }
+        .transcript-para p {
+            margin: 5px 0 0 0;
+            line-height: 1.5;
+            color: #444;
+        }
+        .timestamp {
+            display: inline-block;
+            background: #00664a;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .timestamp:hover {
+            background: #004231;
+        }
+        .time-link {
+            color: #00664a;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: monospace;
+            padding: 1px 4px;
+            border-radius: 3px;
+            background: #e8f5e9;
+        }
+        .time-link:hover {
+            background: #c8e6c9;
+            text-decoration: underline;
+        }}
+        .transcript-para.highlight {
+            background-color: #e8f5e9;
+            border-left: 4px solid #00664a;
+        }
+        /* Customize scrollbars for a premium feel */
+        .summary-pane::-webkit-scrollbar, .transcript-pane::-webkit-scrollbar {
+            width: 8px;
+        }
+        .summary-pane::-webkit-scrollbar-track, .transcript-pane::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .summary-pane::-webkit-scrollbar-thumb, .transcript-pane::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        .summary-pane::-webkit-scrollbar-thumb:hover, .transcript-pane::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .dual-pane {
+                flex-direction: column;
+                height: auto;
+            }
+            .summary-pane, .transcript-pane {
+                height: 500px;
+                flex: none;
+            }
+        }
+    </style>
+    <!-- MathJax Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <!-- MathJax for rendering equations beautifully -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="../../../favicon.png" alt="G30 Logo" class="logo-image" />
+            <div class="logo-text">is beautiful.</div>
+        </div>
+        <div class="nav-links">
+            <a href="../../../index.html">Home</a>
+            <a href="https://dibbywang.itch.io/get-30-germans-at-my-establishment">Games</a>
+            <a href="https://tact.ac.thers.ac.jp/portal">TACT</a>
+            <a href="../../../resources.html">Resources</a>
+        </div>
+        <div class="user-options"></div>
+    </div>
+
+    <div class="header-container">
+        <h2 style="color: #00664a; margin: 0;">Lecture 5: Mechanosensitive Channels & Piezo1</h2>
+        <a href="CB4.html" class="back-btn">← Back to Index</a>
+    </div>
+
+    <div class="dual-pane">
+        <div class="summary-pane" id="summary-pane">
+            
+    <div class="summary-section">
+        <h3>1. Mechanosensitive Ion Channels & Piezo1</h3>
+        <p>Most cells rely on mechanosensitive ion channels to detect physical forces (pressure, tension, shear stress). The discovery of these sensors (specifically Piezo1 and Piezo2) by Ardem Patapoutian earned the <strong>2021 Nobel Prize in Physiology or Medicine</strong>. <a href="#t-665000" class="time-link">[11:05]</a></p>
+        <p><strong>Structure:</strong> Piezo1 is a massive trimeric protein with long "blades" extending into the lipid bilayer. These blades sense tension. When the membrane stretches or bends, the blades act as levers to pop open the central pore, allowing an influx of cations (primarily Ca<sup>2+</sup>). <a href="#t-785000" class="time-link">[13:05]</a></p>
+    </div>
+
+    <div class="summary-section">
+        <h3>2. The Role of Piezo1 in Tendon Physiology</h3>
+        <p>Tendons, composed heavily of collagen fibers produced by tenocytes, connect muscle to bone and store elastic energy crucial for athletic movements (like jumping). <a href="#t-421000" class="time-link">[07:01]</a></p>
+        <p><strong>Mechanotransduction Pathway:</strong> <a href="#t-484000" class="time-link">[08:04]</a></p>
+        <ul>
+            <li>Mechanical stress (exercise) pulls the tenocyte membrane, activating Piezo1.</li>
+            <li>Ca<sup>2+</sup> rushes into the cell.</li>
+            <li>Intracellular calcium acts as a second messenger, upregulating genes responsible for collagen synthesis and cross-linking.</li>
+            <li>This reinforces the tendon matrix, making it thicker and capable of storing more elastic energy. <a href="#t-565000" class="time-link">[09:25]</a></li>
+        </ul>
+    </div>
+
+    <div class="summary-section">
+        <h3>3. The Piezo1 Gain-of-Function Mutation (R2482H)</h3>
+        <p>A specific missense mutation replaces an Arginine with a Histidine (R2482H) in Piezo1. <a href="#t-1474000" class="time-link">[24:34]</a></p>
+        <p><strong>Biophysical Effect:</strong> This mutation drastically slows down the channel's inactivation kinetics. When force is applied, the channel stays open much longer, resulting in a substantially larger total calcium influx per mechanical stimulus. <a href="#t-1526000" class="time-link">[25:26]</a></p>
+    </div>
+
+    <div class="summary-section">
+        <h3>4. Athletic Performance and the "Super-Jump" Mouse</h3>
+        <p>Researchers engineered a "knock-in" mouse carrying this specific mutation. <a href="#t-1989000" class="time-link">[33:09]</a></p>
+        <ul>
+            <li>These mutant mice demonstrated a massive 30% increase in jumping performance compared to wild-type mice. <a href="#t-2171000" class="time-link">[36:11]</a></li>
+            <li>By restricting the mutation specifically to tendons (tendon-specific knock-in), the super-jump phenotype was completely replicated. <a href="#t-2225000" class="time-link">[37:05]</a></li>
+            <li>Conversely, a muscle-specific knock-in showed no jumping advantage. Morphological analysis revealed no changes in muscle mass, but the mutant tendons were significantly thicker with broader collagen fibrils, enhancing their ability to store and return kinetic energy. <a href="#t-2501000" class="time-link">[41:41]</a></li>
+        </ul>
+    </div>
+
+    <div class="summary-section">
+        <h3>5. Human Population Genetics & Malaria Resistance</h3>
+        <p>The Piezo1 R2482H mutation is naturally present in high frequencies in populations of African descent. <a href="#t-1721000" class="time-link">[28:41]</a></p>
+        <p><strong>Why did it evolve?</strong> In red blood cells (erythrocytes), the prolonged calcium influx caused by this mutation dehydrates the cell. This dehydrated, slightly misshapen state creates an inhospitable environment for the malaria parasite (<em>Plasmodium falciparum</em>), granting carriers significant resistance to malaria. <a href="#t-1788000" class="time-link">[29:48]</a></p>
+        <p><strong>Athletic Advantage:</strong> Genetic screening of elite professional sprinters in Jamaica revealed that approximately half of the athletes carry this exact gain-of-function mutation, suggesting the mutation inadvertently confers a significant biomechanical advantage for high-impact sports. <a href="#t-2994000" class="time-link">[49:54]</a></p>
+    </div>
+    
+        </div>
+
+        <div class="transcript-pane" id="transcript-pane">
+            
+        <div class="transcript-para" id="t-0">
+            <span class="timestamp" data-start="0">00:00</span>
+            <p>Because you can directly check what's working or not. Who is doing sports? No one is doing sports. Who has done sports? Everyone has done in the past. We used to have sports classes. In the university? It was fun. We were playing ping pong. And badminton. I think it's not working this one. Who is tall? Tallest is me. You are tall. I think I can reach. Who can jump?</p>
+        </div>
+
+        <div class="transcript-para" id="t-78000">
+            <span class="timestamp" data-start="78000">01:18</span>
+            <p>Jump in the paper. Don't fall down. Jump in the paper. Who watches the video? You watch the video. The paper has one mutation. Usually mutations are not so good. They can bring you some disease. There are some mutations called gain of function. This is a specific gain of function. Which is very good. Everyone wants to have this mutation. You can see the difference between the left. Which is a normal mice.</p>
+        </div>
+
+        <div class="transcript-para" id="t-180000">
+            <span class="timestamp" data-start="180000">03:00</span>
+            <p>The one who has the mutation. Can you see? Super jump. I guess you want to have this mutation. So you can make a super jump. By the adventure? No, by the mutant. The paper was published in Japan. No, not in Japan. Japan is named, but the professor isn't in the US. Mechanosensitive ion channels. Until now we mostly talk about voltage-gated ion channels. Channels that are open by changing the plasma membrane potential.</p>
+        </div>
+
+        <div class="transcript-para" id="t-230000">
+            <span class="timestamp" data-start="230000">03:50</span>
+            <p>This time we talk about ion channels. Mechanosensitive. So it's the pressure that is applied on the surface of the plasma membrane. That triggers the channel opening. Next class in tendons. And regulate the physical performance. they prepare what is called a knocking mice. With a specific mutant of this channel called Piezo1. But there is also another deletion mutant. Who was recently found to have a gain of function. So there are different mutants that can provide a gain of function.</p>
+        </div>
+
+        <div class="transcript-para" id="t-278000">
+            <span class="timestamp" data-start="278000">04:38</span>
+            <p>And if you read the paper until the end. They also found this mutation in the population of Jamaica. And especially in a population of people who are athletes. Some athletes have this mutation and they can perform well. That's quite interesting. What was interesting for me when I found this paper. Is that the mutation does not occur in the muscle. We always see in the muscle is important. For sports performance, for athletic performance.</p>
+        </div>
+
+        <div class="transcript-para" id="t-322000">
+            <span class="timestamp" data-start="322000">05:22</span>
+            <p>Physical performance. But tendons who hold the muscles are also very essential for physical performance. So in my lab we mainly focus on the muscle. tendons are also important components for physical performance. Especially tendons. Because they hold the muscle to the bone. So they are made of a lot of fibers. A lot of collagen elastic fibers. They are elastic. And they provide a specific force for athletic performance. tendons are very important here for the runners.</p>
+        </div>
+
+        <div class="transcript-para" id="t-378000">
+            <span class="timestamp" data-start="378000">06:18</span>
+            <p>Or here for the muscles. So they accumulate what is called elastic energy. To promote the physical contraction. When you want to jump, you always bend. And this will pull the tendons. It can be released in form of energy. So the tendons. Once you rely on what is called the extracellular matrix. So the cell will produce the proteins that are exported outside the cell. They will accumulate and they will form long fibers.</p>
+        </div>
+
+        <div class="transcript-para" id="t-421000">
+            <span class="timestamp" data-start="421000">07:01</span>
+            <p>So they can have mechanical loadings. And improve the function. So this extracellular matrix is formed through accumulation of different proteins. Mainly collagen fibers. And you have cells, tenocytes that build this tendon. And the more your tendons are thick and important. The more your strength or your capacity to develop athletic performance will be increased. And this tendon will, synthesize or secret collagen. Through mechanical stimulation. So the more you exercise, the more you induce a mechanical force on your tendon.</p>
+        </div>
+
+        <div class="transcript-para" id="t-484000">
+            <span class="timestamp" data-start="484000">08:04</span>
+            <p>And this will stimulate the formation of collagen fibers and muscles. And that's the, that it is about. And how this tendon has a mechanical stimulator. Is through the, through the stimulation of a mechanical sensor. Which is called piezo one. And this will induce the calcium influx into the cell. And this calcium act as a messenger to stimulate the gene transcription. So this is a simple scheme. So you have a tendon.</p>
+        </div>
+
+        <div class="transcript-para" id="t-521000">
+            <span class="timestamp" data-start="521000">08:41</span>
+            <p>Tendon is stimulated by the force. This force is transused through the collagenase. So there is a stress on the ten, tenocytes. Tenocytes express this piezo one mechanical sensing channel. The change in the, in the stress here, in the mechanical stress here will induce the opening of the piezo one. This will induce a calcium influx. The calcium influx will increase the enzyme activity and the expression of tendon. And then the tendon will be more organized.</p>
+        </div>
+
+        <div class="transcript-para" id="t-565000">
+            <span class="timestamp" data-start="565000">09:25</span>
+            <p>There will be more cross link with the tendon. And this will increase the jumping performance of the, of the human. And not only the jumping performance, but also the athletic performance. And you see that this mutant here has a gain on function. And then they increase 30% jump performance in this study. So you can see that they studied the tendon. And then the jump here, the jump, jump performance.</p>
+        </div>
+
+        <div class="transcript-para" id="t-613000">
+            <span class="timestamp" data-start="613000">10:13</span>
+            <p>And the jump performance was increased by the, by the person who was carrying the mutation. So what is this piezo one channel? have you heard about this channel? Yes. But there was a special news about this channel. The Nobel Prize. Yeah. The Nobel Prize. So in 2021, there was two recipient of the Nobel Prize. One of the recipient of the Nobel Prize. So the Nobel Prize in physiological medicine was through sensing.</p>
+        </div>
+
+        <div class="transcript-para" id="t-665000">
+            <span class="timestamp" data-start="665000">11:05</span>
+            <p>So there is two types of sensing. One is a kind sensing. And the other one sensing more like pain, or temperature. So one was the discovery of the TRP channels who are temperature and pain sensing. And the other one was proprioception. So touching. And this is through the sense of touching. It's through the piezo channel or mechanical force on the surface of the cell membrane. And use the opening of this channel.</p>
+        </div>
+
+        <div class="transcript-para" id="t-700000">
+            <span class="timestamp" data-start="700000">11:40</span>
+            <p>So the piezo one was discovered. And then this has become a big change in the, in the term of physiology. Because mechanical sensing is not just the surface of your skin, but there is a lot in our human body. That depends on mechanical sensing, our bone formations, the blood pressure. The heart also is important. But also the immune system, the cancer preparation. So the discovery of this channel has changed a lot.</p>
+        </div>
+
+        <div class="transcript-para" id="t-743000">
+            <span class="timestamp" data-start="743000">12:23</span>
+            <p>The field of medicine. And this is the discovery of piezo one. This is the structure of piezo one channel. So the channel in the center here. And then you have these blades. They are called blades. So they are a large, long structure that goes inside the glass, at the surface or inside the plasma membrane. And these are very important for the mechanical sensing. So when the plasma membrane bends or changes, this will be transmitted through these blades for the opening of the channel in the middle.</p>
+        </div>
+
+        <div class="transcript-para" id="t-785000">
+            <span class="timestamp" data-start="785000">13:05</span>
+            <p>So it's like this. So these are the blades that go outside. And when the plasma membrane changes, the blade will move. And this will propagate the getting of the channel. And there have been rapidly some molecules for Yoda and Jedi that are specific agonists of the channel. So they can trigger the opening of the channel. But at the moment, there is still no specific antagonist of the channel.</p>
+        </div>
+
+        <div class="transcript-para" id="t-823000">
+            <span class="timestamp" data-start="823000">13:43</span>
+            <p>So there is a lot of researchers that are trying to find specific molecules that can bind only to piezo, to block their activity. So as we said, so at least piezo one is expressed in a lot of different tissue, especially in the skeletal muscular system, so the skeletal muscle, in the vertebrae disc, in the tendons and the ligaments, in the joints, in the bones. But they are also important to the bladder.</p>
+        </div>
+
+        <div class="transcript-para" id="t-862000">
+            <span class="timestamp" data-start="862000">14:22</span>
+            <p>A lot of pressure. The digestive system, the lung, the vascular cells. So anything, we are mechanical. We are from mechanical. So mechanical sensing is very important for all our functions. For example, in the bones, if the people can go to space, and not to know people, but if they stay too long in the space, they don't feel the Earth. Gravity. Gravity, yes. And their bones start to degrade.</p>
+        </div>
+
+        <div class="transcript-para" id="t-904000">
+            <span class="timestamp" data-start="904000">15:04</span>
+            <p>And when they come back from Earth, not only their bones, but also their muscles. And so when they come back to Earth, they are already a little, after a long stay in the space, their bones and the muscle volume reduce. So this is a big problem for people who want to do well, mass, to the moon, or beyond, for a long-term space training. So this is a big challenge for the human or the animals that will be sent to other planets how to compensate this.</p>
+        </div>
+
+        <div class="transcript-para" id="t-948000">
+            <span class="timestamp" data-start="948000">15:48</span>
+            <p>So in the bones, the activation by exercise or by movement of the individual, they will trigger stimulation for the osteoblast and the osteocyte to form new bones. And that's quite important. And that's the same for the muscle. If you want to get big muscles, you need to make them stimulate your muscles. And the more you can stimulate your muscle, the more you will improve your muscle identity. So when muscles are on your muscle fiber, you have cells called muscle satellite cells, and they are important for renewing your muscles and for increasing your muscle mass.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1011000">
+            <span class="timestamp" data-start="1011000">16:51</span>
+            <p>So when you stimulate these cells, they will differentiate into myoblasts, they will fuse from new myotubes, and this myotube will fuse with the muscle fibers and then you have more muscles. And if you block this Piezo1, your muscle will start to decrease and you will have what is called atrophy. And also, because one is also important for the vascularization of your muscle, you need oxygen, then sugar to work and all this is bring by the vascular system.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1052000">
+            <span class="timestamp" data-start="1052000">17:32</span>
+            <p>And if you block Piezo1, you will decrease the muscle vascularization. So Piezo1 is an important sensor of the pressure or the mechanical activity of your muscle and then they will be good for to increase your strength and capability. So when you are getting old, I hope you never have, but if you have accident, you cannot move. So this will reduce your muscles. People going into space also. If you have, I hope you don't have, but if you have an accident in your leg and you cannot use your leg for 700 weeks, which happened to me when I was young, you will see just by touching your muscles, you will see that they start to reduce and you can compare your right arm</p>
+        </div>
+
+        <div class="transcript-para" id="t-1118000">
+            <span class="timestamp" data-start="1118000">18:38</span>
+            <p>And you will see that your muscle that still functioning will stay large and the other one will decrease. When you get old, this is something difficult to go against, but your muscle will also decrease and this is mostly due to the case of channels that are not active. And if your Piezo1 is active, through mechanical force, you agonists can help these people to keep their muscles. but also if you have good nutrition, this will also stimulate PS01 and this will stimulate your muscle regeneration.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1164000">
+            <span class="timestamp" data-start="1164000">19:24</span>
+            <p>So it's important to have, you are young, so you should go for sports every week to keep your health in shape, but not only for your body, but also for your brain, it's recommended. So please do sports. Just a little bit of the structure of this channel, so as I said, so they have these structures that go inside the plasma membrane from the side of the, on the side of the pore of the channel, and they are for the blades and these blades are important for mechanical sensing.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1211000">
+            <span class="timestamp" data-start="1211000">20:11</span>
+            <p>So they will bend the plasma membrane at the channel side. So if you have mechanical force, this will, straighten the plasma membrane and the blade will feed this change and this will open the channel and the channel will let different iron pass. So at the difference with voltage-gated iron channels, these channels are not so specific. So calcium, but also sodium, potassium, almost anything can pass through these channels.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1252000">
+            <span class="timestamp" data-start="1252000">20:52</span>
+            <p>They are not so specific in terms of channel pass. And there are mutants of this channel in the population, in the population. So when, this looks here, when people study this channel activity, so they will do the patch flow, as we have seen before, they will measure the current not by changing the membrane potential, so the membrane potential will be fixed, but they will change the pressure on the plasma membrane.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1298000">
+            <span class="timestamp" data-start="1298000">21:38</span>
+            <p>How they change this pressure, how they can control the pressure, they will just, they have a, so on the experiments, you have plastic or glass, where you have the cell. You can apply the patch-clone pipette, on the surface of the cell. You can do the whole cell configuration. What you can do, because you have a micromanipulator, so you can push the pipette to micrometer, this will, this will mechanically stress the cell, just by moving, or you can apply another pipette next to the cell, and then you apply, mechanically apply something on the surface of the plasma membrane, and the plasma membrane will move.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1372000">
+            <span class="timestamp" data-start="1372000">22:52</span>
+            <p>So that's what they do, using a micromanipulator, or automatic micromanipulator, with the piezo-system control, you can change the surface, and they can control, they can apply a few micrometer pressure on the plasma membrane, and they recall the current according to the change on the surface of the plasma membrane. And you can see that you have a transient inward current, so a negative current, and the negative current means that you have positive ions flowing inside the cell, calcium, sodium.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1426000">
+            <span class="timestamp" data-start="1426000">23:46</span>
+            <p>The influx of ions reflects a negative current. And you can see that this current increases with the increase of the pressure. And even if you apply the pressure for a longer time, this current will, this is activation, this is when it comes back, even your stimulation is called inactivation. Inactivation. So you have quite rapid inactivation. These are a few hundred milliseconds. This is not even one second, but you can see that they have a rapid inactivation.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1474000">
+            <span class="timestamp" data-start="1474000">24:34</span>
+            <p>And you see that it's mutant. It's an arginine, 2482, to a histidine. What happened? Is there inactivation? It's closed down inactivation. So the channel is open with a longer time with the stimulation. And this is in the mouth. But even in humans, you have some humans that have this mutation and the different mutation show a slow inactivation in the channel. It's slow inactivation. What implies slow inactivation? So we measure the current.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1526000">
+            <span class="timestamp" data-start="1526000">25:26</span>
+            <p>So it means that you have cation influx. You have a transient influx of cation. So if you measure the calcium concentration, it will increase. Go down. And if you have a slow inactivation, you can measure the calcium concentration. You can measure the calcium concentration. And this is the current. So the current is transient. You have a fast inactivation. And the calcium influx will be transient. And downstream the calcium influx, you have a lot of events like gene transcription, synthesis of new proteins.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1580000">
+            <span class="timestamp" data-start="1580000">26:20</span>
+            <p>And for example, differentiation or muscle formation or bone formation. They all depend on the calcium influx due to the mechanical force applied on the surface of the cell. Is there a directionality to the tension? Meaning whether it curves the membrane inwards or outwards. Oh, that's a good question. Is it related to a tendon? Let's see if I impact my tendon in a certain direction. Does it matter how it affects the channel of the knee?</p>
+        </div>
+
+        <div class="transcript-para" id="t-1615000">
+            <span class="timestamp" data-start="1615000">26:55</span>
+            <p>So usually, I would check, usually people make inward, they push, they press the cell. Then probably, but that would imply attaching something to the cell. But probably, that's a good question. Maybe you can check it. Or maybe you can do the experiment, but that's a good question. But I guess, on both directions, a good comment. you see that's the time constant, the time the current will go back to zero through the inactivation and it's much longer in these different mutants.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1676000">
+            <span class="timestamp" data-start="1676000">27:56</span>
+            <p>And what is interesting is that these mutants there is also something mechanical in red blood cells. the red blood cells have a specific donor shape. And this is also good to have mechanical force and osmotic force. And what is interesting is that the mutant that carries these mutations have an erythrocyte that has a little bit strange shape. Not with shape. And this will also give an advantage for the carrying mutants in terms of resistance to the disease.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1721000">
+            <span class="timestamp" data-start="1721000">28:41</span>
+            <p>The resistance to malaria. And you can see that population carrying the mutation is larger in Africa, where you have the impact of malaria. And this population person increase of malaria. Good question. But at least one heterozyte should be enough. Professor. Malaria is not just in Africa. In Southeast Asia it's also, but it doesn't have a trend. No. You have more impact of malaria in Asia. But the mutation is mostly in African population.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1788000">
+            <span class="timestamp" data-start="1788000">29:48</span>
+            <p>That's very interesting. There are so much. You have a little bit here. In Bangladesh population. And there are some also in China. Much less than here. And almost all in the European population. You see that descendants of African migration, ancestry, are also carrying the mutation. And also in the Karatea. And what would be interesting is that this population also has a stronger faith in them. After this. But with the athletic ability we do, which because the red blood cell doesn't seem Because they carry up until the end.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1845000">
+            <span class="timestamp" data-start="1845000">30:45</span>
+            <p>You have the population in Jamaica where you have hetero and homo. The population of course is not so high. The tested population is 100. But you can see that already the hetero is a large percent. And in this population they check the athletes, the professional athletes. And you can see that almost half, half, either homo or hetero. And hetero you can see in the jumping, the jumping mouse, hetero is not a strong jump.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1898000">
+            <span class="timestamp" data-start="1898000">31:38</span>
+            <p>And you can see that. And also in both control, so normal population and sprinkler population may or may have a very high proportion. So it gives you an advantage. So maybe the CIO should check on people with mutations or not. But that might be a problem. If you want to have good athletes, you can put a mutation on the athletes. It might be legal. Maybe you shouldn't do this.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1941000">
+            <span class="timestamp" data-start="1941000">32:21</span>
+            <p>You can check. If you have children and the parents can say, I want children with this mutation. So you have a lot of ethical questions related to this. Yes, no, yes, no. Let's see. Even if the nature gives you some advantage, is it okay or not? A lot of questions. But it's interesting. So how, if you write the paper, how they could do their experiments. So they they made a knocking.</p>
+        </div>
+
+        <div class="transcript-para" id="t-1989000">
+            <span class="timestamp" data-start="1989000">33:09</span>
+            <p>It's called knocking. So usually you want to study a gene or a gene function. They do a very dramatic change in the mice. So usually they knock out. So they take the gene out. They remove the gene or at least a portion of the gene. And then the gene is not functional. And then you can look at the physiological or morphological change. But you also have the possibility to do a knock-in.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2031000">
+            <span class="timestamp" data-start="2031000">33:51</span>
+            <p>So you want to study a gene mutation or something. So you insert the gene data version and you insert in the genome or you change the genome of the animal with the gene data version. And that's what they did. So they used these locks key sequences. And they could insert a portion. Because these genes vary a lot. So they insert a portion from eggs with the mutation. So the mutations are 2, 4, 8, 5, 6, 7.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2075000">
+            <span class="timestamp" data-start="2075000">34:35</span>
+            <p>And they had they had a they had a general mutation. So they put it in the whole body. They use promoter of a gene that is only expressed in the tendon. So they can knock-in in the tendon. And then they use a specific skeletal muscle knocking. Where you only have the knocking in the skeletal muscle. And then they did two tests, two physical tests. One is a long jump.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2120000">
+            <span class="timestamp" data-start="2120000">35:20</span>
+            <p>The other one is running until the mouse can run. So run to exhaustion. Test. And I already showed you the general mutant. This is the skeletal knocking. And this is just in the tendon knocking. So the general the whole body mutation you can look at the muscle compared to the tendon. Let's see here. The video works in. The video speaks more. Wow. Wow. See? It's very, very different.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2171000">
+            <span class="timestamp" data-start="2171000">36:11</span>
+            <p>I want this mutation. Maybe I don't know. Maybe I have. I'm not a professional. That doesn't mean you have this mutation. The mouse has not been training but if you want to have physical performance that doesn't exclude the training. So the video is impressive. And then they analyze the video. So you can analyze the jump. You can see the the pathway of the jump. And you can see also the mouse poster how they pose.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2225000">
+            <span class="timestamp" data-start="2225000">37:05</span>
+            <p>You see that the way they jump here and they pose is quite different. One is the other one bending outside. It's quite interesting why they bend also differently. You can see from the posture it's like A and the other one is more like B. In the case of both here it's very different how they jump. So the jumping stance they compare also male and female and you can see that the jumping stance has a significant increase in the whole body or just in the tendon and there is no difference in how the mutation adjusts the muscle.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2291000">
+            <span class="timestamp" data-start="2291000">38:11</span>
+            <p>And for the running stance there is not so much change in terms of distance. There is a slight increase, but there is no statistic difference. What was interesting was dramatic or dramatic increase in the tendon gender male tendon. They jump they run faster but they don't run down the distance the distance is slightly increased but not much. Or it will be threatening to also turn the tendon population running in a passive way.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2354000">
+            <span class="timestamp" data-start="2354000">39:14</span>
+            <p>So and then one of the figures they check the expression in the muscle and you can the cells that express tendon specific genes express more and they measure the activity of calcium release in the cell and you can see that the one who contains the mutant when they stimulate the one the calcium increase in the cell is significantly increased so this is a measure of channel activity. They didn't leave channel activity measurement, just measure in terms of calcium increase because this mutant was already characterized in terms of electrophysiology.</p>
+        </div>
+
+        <div class="transcript-para" id="t-2420000">
+            <span class="timestamp" data-start="2420000">40:20</span>
+            <p>And then what was interesting this is the tendon so they measure the tendon physical parameter across the different mice, the wild life mice the systemic mutant, the general mutant the tendon mutant and the muscle mutant and what you can see is that the tendon is larger in the two mutant the tendon specific mutant, the general mutant but there is no difference in the tendon muscle and then they cut, they isolated the tendon, they cut and they look at the fiber collagen fiber with diameter and you can see that the tendon and systemic mutant you have a larger tendon larger collagen fibers fibers are much thicker in the mutant so this mutant which induce a large calcium</p>
+        </div>
+
+        <div class="transcript-para" id="t-2501000">
+            <span class="timestamp" data-start="2501000">41:41</span>
+            <p>A larger calcium influx stimulates the formation of seeker collagen fiber in the tendon and then the tendon seeker also okay and this is a proteomic or proteomic or genomic measurement of gene expression and you can see that they increase the muscle the mutant does not increase the muscle fracture but more collagen than fracture and then they measure the different tendon specific gene in particular collagen the marker of the tendon formation and they are all much increased compared to the wild type or even if you increase the mutation in the in the muscle hour you express the mutation in the muscle so they measure the changes they have also measure the the mouth, the tendon and they have different</p>
+        </div>
+
+        <div class="transcript-para" id="t-2590000">
+            <span class="timestamp" data-start="2590000">43:10</span>
+            <p>Measurements with and the legs not much not changing them on legs compared to that with but they also check the muscle formation so the tendon is a larger seeker but the skeletal muscle hasn't changed the morphology of the muscle they check the morphology of the muscle legs and this is a skeletal muscle tissue that is in the diameter so they cut in the section and then they check they stay in this section and they check the fibroids sections in terms of weight, the skeletal muscle hasn't changed, in terms of morphology they change the little blue dots here are the nucleus then you have the section then they can measure the cross section and if they don't have any morphology</p>
+        </div>
+
+        <div class="transcript-para" id="t-2681000">
+            <span class="timestamp" data-start="2681000">44:41</span>
+            <p>They can change, they check the expression of some heavy chain which are the proteins and they see that they don't have much difference in the different movements, so the muscle is not affected at all and what they examine later is the position, of course they made a video where they can see the mouse jump and what was interesting they observed how the mice prepare itself in terms of jumping and then they could see quite different they observed the centroid, so the centre of how they jump and they could see a significant difference and then they could calculate the potential energy of this preparation and you can see that energy is increased and they measure the angle here</p>
+        </div>
+
+        <div class="transcript-para" id="t-2766000">
+            <span class="timestamp" data-start="2766000">46:06</span>
+            <p>Of the tibia, the lower tibia angle, in the preparation when they push and they also make dynamic change and you can see that the angle is changed and they could bend more and they could prepare more, so the angle is reduced so it means that they are more flexible in terms of preparation and this will give more energy for the jump they measure the stress of the train and you can see that there is more significant jump so there is the elastic limit of the pendulum so the pendulum can extend more significantly and there is for this young module and it is a higher role and the formation compared to the one type so in terms of mechanophysical</p>
+        </div>
+
+        <div class="transcript-para" id="t-2832000">
+            <span class="timestamp" data-start="2832000">47:12</span>
+            <p>Which are motivations at all but you can see the clear difference in terms of preparation and how they change in the comparison of the mutant express and the wild type and then that you can see that they can store more energy and the dissipation of energy is much lower so there is a clear change in terms of energy elastic energy in the pendulum when you have this limitation and this gives you a clear advantage physical advantage, at least for the mice for the jump and to increase and what was interesting is our other mice they also check just after birth and you can see also the postnatal change increase the physical activity so it means that even if you are born with the mutant</p>
+        </div>
+
+        <div class="transcript-para" id="t-2907000">
+            <span class="timestamp" data-start="2907000">48:27</span>
+            <p>Without any training you already have not you but the mice have already a physical advantage in terms of running and in terms of jumping so you don't need any physical preparation but the case of mutation will already improve your dental sickness and it will already give you a physical advantage and and the last figure of the paper is that is a small population in the Jamaican so I know that Jamaican athletes are very good in performing Olympic games especially in the Olympics they often get medals and what is interesting is that within the Jamaican professional sprinter you have half of these athletes who have this kind of function mutation and this is in the same proportion</p>
+        </div>
+
+        <div class="transcript-para" id="t-2994000">
+            <span class="timestamp" data-start="2994000">49:54</span>
+            <p>In terms of male and female sprinter you have a large proportion of people carrying the mutation but they even do but it will be interesting to do so if you take the athletes with a gold medal or a medalist in the Olympic game if you have a higher proportion of people with mutations with medals one day it will be done so just a conclusion so Pieszo is critical as a mechanical sensing he promotes the dental function increased the specific gene expression modified the dental structure and also enhance the dental function so it can be also of course in terms of athletics it can also be a good target for people who have musculoskeletal disorder and they can also improve</p>
+        </div>
+
+        <div class="transcript-para" id="t-3063000">
+            <span class="timestamp" data-start="3063000">51:03</span>
+            <p>The new athletic performance so this will be decided by the ethical committees and the CIO in the future but there is something to think about gene and the gene mutation and performance so this is a little bit lecture on ion channel it's a different ion channel it's a mechanical sensing ion channel so it sends the pressure and drives an influx of ion inside the cell and you have some mutations that are in the human population these mutations give a gain of function so they increase the inactivation of the channel the increase of inactivation of the channel so there is some change morphological change in some cells this can give you some advantage in terms of disease resistance</p>
+        </div>
+
+        <div class="transcript-para" id="t-3135000">
+            <span class="timestamp" data-start="3135000">52:15</span>
+            <p>For example for malaria that's why this mutant spreads into some population not the population that are facing malaria it can also give a physical advantage in terms of jumping of athletic performance so the athletic performance doesn't only depend on your physical training but it can also depend on your gene background any questions or comments I have a comment before about the muscles being unimportant not being unimportant but the mutation in there doesn't matter which is I think the muscle size can change drastically based on exercise so the gene might not do that much of course but when you are running your heart is also important your blood circulation is also important your VO2 max is also very important</p>
+        </div>
+
+        <div class="transcript-para" id="t-3216000">
+            <span class="timestamp" data-start="3216000">53:36</span>
+            <p>So how much your if you have a lot of muscle but your heart is weak it will be very exhausted because your muscle will not get oxygen of course in terms of physical like this they break a few advantage but the skeletal muscle is also important in the way you train your muscles so what type of muscle you have you have skeletal muscle which is the same you have to try to find out what are the differences they have a slightly different one can work anaerobic so you have some muscles I am standing here am I using muscles yes you have muscles that are just here for standing and then you have muscles that are used for moving</p>
+        </div>
+
+        <div class="transcript-para" id="t-3294000">
+            <span class="timestamp" data-start="3294000">54:54</span>
+            <p>Type 2 so they are also quite important in terms of how you are moving and how you train your muscle rapid training or heavy loading increase your body mass he is already very old but he was very famous guy when I was younger but that's not enough so he was injecting products so I have a very good friend he was a big fan from being but he never touched he said I would never lose and he was pumping a lot but he never gained muscle but actually his strength was quite strong it's not the mass of your body but your training your body mass I have a student in the lab she is doing a lot of climbing</p>
+        </div>
+
+        <div class="transcript-para" id="t-3369000">
+            <span class="timestamp" data-start="3369000">56:09</span>
+            <p>She has muscle but she doesn't like it but when you hold her take her hand and shake your hand you can sense that she is very strong ok so of course some genetic background will give you some advantage but that doesn't mean you can't perform well in a competition if you just have a strong genetic background you need training just like studying you might be smart but if you don't study you won't perform well sorry so studying is like training stimulates your organs and this stimulation provides a stimulation will increase the activity of many channels in brain, your action potential will be stimulated in your muscle your muscle channel will be stimulated when you have influx of calcium</p>
+        </div>
+
+        <div class="transcript-para" id="t-3441000">
+            <span class="timestamp" data-start="3441000">57:21</span>
+            <p>In the heart, in the blood all these activities are channel dependent and the channels are not only important when you are moving muscle or ion channel traction but also they are important for building your muscle building your tendon building your physique and I used to present also another paper in this in this in this course it's related to the heart and there is one channel that generates a current which is a pacemaker it shows that this pacemaker channel is important for your heart reason and if you increase this channel expression in the heart you increase your archipelago performance so the expression of channels, not only the activity are also very important in terms of physical performance</p>
+        </div>
+
+        <div class="transcript-para" id="t-3528000">
+            <span class="timestamp" data-start="3528000">58:48</span>
+            <p>Any question? any question related to the pacemaker if you don't have a question because next week it will be quite intense so maybe I just read the next paper so we have seen ion channels that are important in terms of physiological effects so last week the acid taste sensing the electro reception and these are studies that are mainly done in terms of physiological and pathological but in this one so in the in the recent year there is a trend in studying in I don't know if you can know if if the protein design you can design you can design your own protein and you can design whatever protein and you can design a protein be it a protein</p>
+        </div>
+
+        <div class="transcript-para" id="t-3645000">
+            <span class="timestamp" data-start="3645000">60:45</span>
+            <p>This is what I want to talk about I will upload this in the in the time here so it's a paper that was published inside so you have three journals which are so the title is the noble design voltage so this is not a natural channel they have designed in a channel that is selected for chloride so they make a computer an ion channel and they express this ion channel in neurons so they did a tremendous work and then they invested in the real cells and they could design a chloride channel and then they give a name to their channel and they put the channel inside the neuron they merge the action potential of these neurons</p>
+        </div>
+
+        <div class="transcript-para" id="t-3762000">
+            <span class="timestamp" data-start="3762000">62:42</span>
+            <p>In the brain of the mouse and they could lower the activity or even shut down the activity of neurons so the study reports would be noble design of a voltage channel that are distinct from a natural channel so they could make something that has never been done by nature they exhibit voltage in conductance so they could make design protein that is voltage dependent and they could change the conductance they could tune and they are capable of being tuned for biological applications such as neural networks so this looks like an independent science fiction but it's actual and this is really the last trend one of the last trends of the new ion channel so it's not only for ion channels</p>
+        </div>
+
+        <div class="transcript-para" id="t-3822000">
+            <span class="timestamp" data-start="3822000">63:42</span>
+            <p>So the protein design is something new for any protein so if you are interested in doing research this is one direction that you can take if you like ion channels you can design for ion channels not only ion channels per se but any protein that modulates also of natural ion channels so this is something quite new in the field so I will upload this paper which is right to me there is a long path that is just on the design of the ion channel structure so we will talk a little bit about ion channel structure and then they make what you do when you do the ion channel so they will they see the voltage dependent</p>
+        </div>
+
+        <div class="transcript-para" id="t-3885000">
+            <span class="timestamp" data-start="3885000">64:45</span>
+            <p>They study the selectivity as we discussed last week so they measure the reversal potential and then they change the ion leak and they see the change in the reversal potential and they could estimate the selectivity against different ions so as we discussed last week they did a single channel internal activity as we discussed they solve the structure so they design, they made the gene in the DNA, they express the DNA in the cells and they make the high voltage electron microscopy structure of the channel so they can see the channel they design, actually in the cell they could see the power of the channel and then they play with the system so they make mutations, they change a little bit</p>
+        </div>
+
+        <div class="transcript-para" id="t-3951000">
+            <span class="timestamp" data-start="3951000">65:51</span>
+            <p>The channel and they observe how this change affect the channel internal structure and finally try to read the whole paper they express this channel in the brain and they observe the change in the gene of the mouse brain so it's really a very nice paper it was just published last year in December so it's very new, so please try to read even if it's a little bit hard I'm going to discuss next the question finished today because we have a half time ok ok</p>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeLinks = document.querySelectorAll('.time-link');
+            const transcriptPane = document.getElementById('transcript-pane');
+
+            timeLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    let targetPara = document.getElementById(targetId);
+
+                    if (!targetPara) {
+                        const requestedTime = parseInt(targetId.replace('t-', ''));
+                        const allParas = Array.from(document.querySelectorAll('.transcript-para'));
+                        let closest = null;
+                        let minDiff = Infinity;
+                        
+                        allParas.forEach(p => {
+                            const pTime = parseInt(p.id.replace('t-', ''));
+                            if (!isNaN(pTime)) {
+                                const diff = Math.abs(pTime - requestedTime);
+                                if (diff < minDiff) {
+                                    minDiff = diff;
+                                    closest = p;
+                                }
+                            }
+                        });
+                        targetPara = closest;
+                    }
+
+                    if (targetPara) {
+                        // Remove highlight from any other paragraph
+                        document.querySelectorAll('.transcript-para').forEach(p => {
+                            p.classList.remove('highlight');
+                        });
+
+                        // Scroll the paragraph into view in the right pane
+                        const topPos = targetPara.offsetTop - transcriptPane.offsetTop - 10;
+                        transcriptPane.scrollTo({
+                            top: topPos,
+                            behavior: 'smooth'
+                        });
+
+                        // Highlight the target paragraph
+                        targetPara.classList.add('highlight');
+                        setTimeout(() => {
+                            targetPara.classList.remove('highlight');
+                        }, 3000);
+                    }
+                });
+            });
+
+            // Clicking on timestamps in the transcript highlights them too
+            const timestamps = document.querySelectorAll('.timestamp');
+            timestamps.forEach(ts => {
+                ts.addEventListener('click', () => {
+                    const para = ts.closest('.transcript-para');
+                    if (para) {
+                        para.classList.add('highlight');
+                        setTimeout(() => {
+                            para.classList.remove('highlight');
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

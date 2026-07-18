@@ -1,0 +1,838 @@
+start	end	text
+0	5000	You have to see the enemy can, I think the line is moving downward.
+5000	8000	This is a very short time, one microsecond.
+8000	15000	But I think while they recall or make their simulation, the line is moving down.
+15000	24000	So this probably indicates that ions move inside.
+24000	33000	And here you can see that it's moving up to that line on the other side.
+33000	46000	And simulation is just computerized simulation to recreate movement of protein structure or ion movement and things like this.
+46000	52000	I'm not sure how to work, but it's always on a very short period of time.
+52000	57000	Microsecond or PT or 100 microsecond.
+57000	58000	Yes.
+58000	67000	I mean, I want to ask about perhaps how the researchers use cryo-EM to get the structures of the protein.
+67000	77000	Because I know how scanning or electron microscopy works to give us atomic information.
+77000	81000	Yeah, so they have to freeze.
+81000	93000	And then they have a large electron microscope, and the beam is passing through the sample.
+93000	97000	And then you can get little pictures like this.
+97000	104000	And from this, using I guess computer, they can reform the protein.
+104000	107000	And then they can make the alphabets.
+107000	112000	So they spin the sample?
+112000	116000	No, I think there are many samples.
+116000	123000	And then they take different pictures with different angle, I guess.
+123000	128000	But I don't think the sample is rotating somewhere.
+128000	133000	I think they can take pictures of different.
+133000	137000	The proteins are randomly displayed.
+137000	141000	And can rotate.
+141000	144000	So you just spin the protein.
+144000	147000	So you have many of the simple things.
+147000	156000	So when you shine the electron beam, you have different angles of the simple mechanism.
+156000	159000	Let's say you have a simple thing.
+159000	162000	Let's say you have some 2 nanometer thick sample.
+162000	165000	You have the proteins in different orientations, but in the same sample.
+165000	169000	So when you take a single image, you have many orientations in each effect.
+170000	173000	You can also rotate the stitches.
+173000	178000	So basically give them a CT scanner.
+178000	182000	Yeah, it's kind of a CT scanner.
+189000	193000	So I think this paper is very nice.
+193000	196000	I also read it for the first time.
+196000	201000	There is a new, recently, there was a Nobel Prize.
+201000	207000	It got a Nobel Prize for designing proteins.
+207000	211000	So you can design and make proteins and make them functional.
+211000	214000	And this is one of the first paper.
+214000	217000	Maybe not the first.
+217000	225000	This is the first voltage-gated, annual channel that was designed and tested in D.O.
+225000	230000	And it suppressed the neuron firing.
+230000	242000	So chloride is anion, so it has a negative charge.
+242000	257000	So most of the other ions are usually positive, calcium, potassium, proton, and medium.
+257000	261000	So you have channels for zinc.
+261000	265000	You have channels for cation.
+265000	269000	You also have channels for chloride.
+269000	279000	So chloride has many important functions in the physiology in our body.
+279000	287000	And you have various different types of chloride channels that have been discovered.
+287000	289000	They have important functions.
+289000	294000	And you also have associated disease with chloride channels.
+294000	296000	Do you know some of these?
+296000	297000	No.
+297000	299000	Okay.
+299000	302000	I should set up.
+302000	306000	Which are quite famous?
+306000	308000	ADHD.
+308000	309000	Huh?
+309000	310000	ADHD, maybe.
+310000	313000	We all know this one.
+313000	314000	epilepsy.
+314000	315000	Huh?
+315000	317000	epilepsy.
+317000	321000	I don't know why.
+321000	323000	Yaar?
+323000	326000	Is this the five voltage?
+326000	329000	Is this a channel?
+329000	330000	It's a channel.
+330000	332000	Is this a channel?
+332000	334000	That is a lamp.
+334000	339000	And we cannot secret the phosphate.
+339000	342000	And it's very dramatic.
+342000	359000	I think CFTR is a gene that belongs to the ABC transporters that make a chloride channel
+359000	366000	station on CFTR. They are very, not common, I wouldn't say common, but they are quite
+366000	373000	Europe, and Europe and Japan are more rare. Of course, they are rare. The Japanese are
+373000	381000	not so much, but in Europe they are quite a lot of station, and this is one of the...
+381000	406000	Another one is myotonia. Myotonia function. It's a muscle disease, and it affects the
+406000	421000	chloride channel for the CLC1. It's a voltage-gated chloride channel, and it's very important
+421000	433000	for your muscle relaxation. Chloride usually is a negative ion, so it usually reduces the
+433000	440000	excitability of the brain, the growth of the muscle. It's important for the muscle relaxation
+440000	450000	and the function. The objective was to... It's very simple, so everything is explained
+450000	460000	in the title. It was designed voltage channel, and they tested the illegal, and they suppressed
+460000	472000	neuron action potential. They are graphical abstract, so there is a huge in silico work
+472000	482000	for designing, testing, and then they test the channel electrophysiologically. They did
+483000	495000	structural analysis to see how the channel moves. Finally, they expressed their channel
+495000	503000	in the neuron, and they could see that when expressing these channels, they reduced the
+503000	511000	activity of the neuron. It's not quite a very nice work. That's why it was published
+511000	526000	in the paper itself. The in silico work was tested on the electrophysiologically and structurally,
+526000	533000	but there was always feedback by changing and fine-tuning the channel they could improve.
+533000	542000	It's quite a large work, and you can see that there's a lot of author in the... There's
+542000	550000	a lot of author that contribute to this research because they need different specialities.
+550000	557000	Some of the researchers are specializing in silico. Some of the researchers are specializing
+557000	567000	in electrophysiologically. There was also some biochemical and molecular characterization.
+567000	576000	There are some specialists of the structural, so the prior EM, and specialists of measuring
+576000	582000	action potential neurons. We need all these different specialities together. You cannot
+582000	588000	do one researcher. I think it's very difficult for one or two researchers to do this kind
+588000	596000	of work. You need a teamwork, and you will see in the future when you do research, you
+596000	603000	have to do teamwork. It's called collaborations. When you have two collaborators, you can make
+603000	612000	papers like this. Nowadays, we've got one researcher, like in the past and everything
+612000	623000	by himself. The first step for doing this paper was the design. I'm not especially
+623000	632000	interested in the design. I have some friends that do protein design now. What they have
+632000	639000	to know before they start their design is how the channels structure looks like. You
+639000	646000	can see they have different... They are usually alpha leaks in the transformed brain domain,
+646000	652000	and you can see that they have different configurations. They can be trimer, they can
+652000	670000	be... One, two, three, four, five. And here, one, two, three, four, five. Here, five. Some
+670000	680000	they have... Here, they have also eczema, or they have trimer, and even dimer. This is
+680000	696000	a case for chloride channel. You have dimer. Here, you have... So I'm using the tetramer.
+696000	704000	For example, you have the core. You have the formation of water feed core or porous
+704000	714000	structure that allows the passage of ions. This is an example. It's a voltage-gated potassium
+714000	724000	channel, so it's a tetramer. And within the tetramer, you have the formation with two
+724000	732000	alpha leaks and a loop. You have the formation up here, okay? Two alpha leaks, so S5, S6,
+732000	740000	as we discussed previously, and a loop. They form a form, okay, a selective form for the
+740000	747000	passage of ions, which are usually dehydrated. And in the context of the form, you have the
+747000	754000	formation of the structure that replaced, or at this minute, the hydration of the ion
+754000	764000	in the water, okay? So they have oxygen. The amino acid-side atoms are oxygen, and they
+764000	773000	are exposed to the form, and they form the hydration channel. You have also pentamine,
+773000	783000	okay? And the design is a chloride channel in the plant, in the chloroplast membrane,
+783000	793000	okay? And it's a pentamine and form a form, a channel in the membrane of the plant, okay?
+794000	806000	And this structure, so this, there are symmetry in proteins, like in molecules, and they
+806000	815000	said they design a C5 symmetry, so it's like pentagon, okay? And they put five, so you
+816000	829000	design it as five, so you have also C4, okay, and C3, okay? That's a chemistry. So you have
+829000	840000	heard about C5 symmetry? Yeah. Not good memories. Not good memories. But for protein, you have
+840000	847000	similar, okay? You have similar things. So they did this. So they, I don't know exactly
+847000	856000	how, they used a lot of different computer program, including alpha-4, but alpha-4 was
+856000	865000	used to predict the structure of their design, so the design, and they tested more than
+865000	873000	thousand sequences, and they made alpha-4 to prediction, okay? So the structure was
+873000	881000	something like this, so 1, 2, 3, 4, 5, and one of the S2, one of the alpha leaks, so
+881000	890000	they used a trimer, three alpha leaks, and one was inside this C5 structure, okay? And
+890000	896000	they used 15, alpha leaks of 15 amino acid, okay? And they could check that it's a nine
+896000	904000	well, so you read the paper, so they could make a prediction structure, okay? And it
+904000	913000	makes also a prediction structure of a fusion protein, BTT, which is from potassium channels,
+913000	922000	so they call it DMZCH. There's a lot of names, BTT, okay? Because this fusion protein are
+922000	930000	good for resolving the structure of the channel, okay? So they first put the alpha leaks like
+930000	938000	this, and choose one of this structure, and try to measure, so then, from the amino acid
+938000	948000	sequence, they have the DNA sequence, and they could order one DNA sequence, and as
+948000	959000	we said, they put this in a plasmid, okay? So they put the plasmid from the design. From
+959000	966000	the design, they got the cDNA, so it's all synthetic, so I guess it costs quite a lot,
+967000	980000	and the cDNA, they express in a cell, okay, and give the electroencelogy characterization, okay?
+981000	995000	So there is also a lot of supplemental figures, so that's important. So the first
+995000	1010000	one is DMZCH8BTP, so no current, okay? Why? But then they made a modification, and they
+1010000	1030000	could see the current. Okay, how many they put? They put three, huh? There were, why they choose
+1030000	1041000	the arginine, they put three, I think, maybe around here, around here, okay? And they put
+1041000	1047000	the arginine, okay? So you said that they are put in a plasmid, so what is the advantage of putting
+1048000	1064000	arginine inside the, inside the, that's aligned inside the form? Yeah, okay, that was it, so they
+1064000	1078000	can attract it, all right? Okay, so they can solve the problem of the, say, the PDE, and what else?
+1078000	1101000	What is the advantage of arginine? The process is in charge. Yeah, a sensor op, yeah, op, op, all page, okay?
+1101000	1112000	So they move in an electrical field, and if they move in an electrical field, they displace the alphabets, okay?
+1112000	1122000	And that's the move in the electrical field, okay? So that's the first structure, huh?
+1122000	1132000	Some voltage, they are applied, and you can see that there is a positive current appearing, okay, quite large,
+1132000	1143000	positive current, when they have, so they call it E and Z C8 3R, okay? And they have a positive current appearing
+1143000	1159000	upon their expression, okay? And if they measure the maximum current at each voltage, they could plot an ID curve, okay?
+1159000	1170000	And you can see that the current at here, or start to appear, plus, after plus, short, immediate work, okay?
+1170000	1182000	So what implies this positive current? What does mean the positive current?
+1182000	1193000	What does your positive current, what does it mean?
+1193000	1200000	The positive current is called the sum of the cells.
+1200000	1201000	Did it close?
+1201000	1202000	Uh-huh.
+1202000	1213000	Did it close, sir?
+1213000	1222000	If I have a negative current.
+1222000	1248000	When we studied the calcium channel in the lethal scale, we had a current, I guess, that's the ID curve, that's the current voltage, that's the ID curve,
+1248000	1253000	the current was negative. What does it mean for calcium?
+1253000	1255000	In the function.
+1255000	1258000	In the function, okay?
+1258000	1269000	When you have a sodium current, you can see the negative current, so it's an influx of code, okay?
+1269000	1295000	When you have a positive current, it's the negative current for calcium.
+1295000	1321000	So you have to be careful when you measure potassium current, you can measure also the same.
+1322000	1336000	But if it's potassium, it means it's a flux of potassium. But here, it's a chloride, and you measure positive current, so it's an influx of chloride, okay?
+1336000	1341000	So please remember this, okay? So you are in a chloride, so everything is opposite.
+1341000	1363000	So it means that in a positive membrane potential, when the membrane potential is positive, the chloride is coming inside the cell, why?
+1363000	1375000	So when I said the voltage is clamped plus 80, what does it mean?
+1375000	1404000	What is it plus 8? This is inside, this is outside, the chloride is here, and it means, okay, plus 80 millivolts, what is it plus 40 millivolts?
+1404000	1412000	After resting potential, do you remember what is the resting potential?
+1412000	1422000	How does it mean down to the plasma membrane? Close.
+1422000	1430000	So what means the plasma membrane potential?
+1430000	1447000	Yeah, okay, so I draw the membrane like this. When you measure a membrane potential, you measure the potential difference between what and what?
+1447000	1465000	One is inside and outside. Inside and outside, okay? So when the membrane potential is minus 60 means the inside is more negative than outside.
+1466000	1471000	So when they set the membrane potential at plus 80 means that?
+1471000	1481000	It's plus 80. Yeah, inside or positive, okay? And outside is negative. That's why the chloride moves in, okay?
+1481000	1499000	So that's why they can measure positive curve, okay? So they put three arginine in a different position, okay?
+1500000	1510000	And they could measure, and now for current, and this is figure one, okay? Control, nothing.
+1511000	1534000	T and C8, almost no current, here. This is the reward of crack, okay? And when they put three arginine here with a plasma membrane potential, they could see a current increase, okay?
+1534000	1548000	And quite positive potential, so usually the maximum action potential comes around plus 40 plus 50, okay? So these are little bit extra, okay?
+1548000	1565000	So they put the current as plus 100 millivolts here. They put the bar graph, and they put all the N numbers, okay? And they compare with the control and the original design, okay?
+1565000	1579000	So by just changing of your amino acid in the alpha helix design, okay? So your amino acid generates a voltage dependent current, okay?
+1579000	1595000	It's still quite good, okay? So that's the current, and you go 25, 14, and that's enough for making a good statistic difference, okay?
+1596000	1604000	Then we'll go, what is this? Toe, toe act, and toe, yeah?
+1609000	1614000	Let me see, how? But we'll present how in a second.
+1621000	1623000	No? Good.
+1626000	1636000	The time between here and here.
+1637000	1647000	So the time, yeah, the time when the getting started, and so, but you see here, you have the impression it's just a straight line.
+1647000	1657000	But if you, this is 100 milliseconds, but if you just zoom here, you will see something like this, okay?
+1658000	1681000	So what kind of, you can measure the half time to the peak, how the results, man, what's in peak, what kind of growth,
+1682000	1692000	exponential, and from the formula, there is something in the formula, how is the half time, okay?
+1693000	1700000	So usually, you can measure how fast this will give the how fast at all channel growth, okay?
+1701000	1705000	Some channels are very slow, some channels are very fast, okay?
+1705000	1716000	So you see that the more you increase the potential difference, the faster they will open, okay?
+1717000	1721000	Very slow, faster, faster, okay?
+1722000	1734000	And how the act of deactivation, that's the difference between deactivation and deactivation.
+1735000	1746000	Yeah, deactivation, yeah, one more time.
+1747000	1756000	Deactivation means that it can't open, and deactivation means it can't for a certain amount of time.
+1757000	1761000	Not so correct, but pro.
+1766000	1768000	Anyone else pro for something else?
+1776000	1783000	So what is activation? So what are the three major conformation of the channel?
+1787000	1788000	Before activation.
+1789000	1790000	These?
+1791000	1793000	Which one?
+1794000	1795000	These?
+1796000	1797000	Pro.
+1799000	1801000	And then you have activation.
+1804000	1805000	Activation.
+1806000	1811000	So that's why they measure how activation is.
+1812000	1814000	After activation is?
+1816000	1817000	Pro.
+1819000	1820000	Pro.
+1821000	1823000	Don't be slow, don't be slow.
+1828000	1837000	And then something happens, and then it's inactivation, okay?
+1838000	1846000	And this is called deactivation, okay?
+1847000	1859000	So you can measure the flow of an activation, and then it has come back again to the flow of the activation.
+1860000	1864000	And this is called deactivation.
+1868000	1871000	Okay, all of these are deactivation.
+1872000	1875000	There is no deactivation, okay?
+1876000	1896000	So this is in terms of potential, if you have a question, this is the potential is the, for example, resting potential.
+1898000	1903000	When it's open, it's depolarized, plus 4, then it evolves.
+1904000	1907000	What's the voltage when it's inactivation?
+1910000	1911000	Huh?
+1912000	1914000	What's minus 6 here or plus 4?
+1916000	1917000	Minus 6.
+1919000	1920000	Plus 4.
+1920000	1921000	Plus 4.
+1925000	1926000	Okay, huh?
+1927000	1937000	When you have the voltage protocol on the touch ground, you start from at 1 minus 6T and go to plus 4T.
+1938000	1939000	Minivolt.
+1942000	1943000	This is your current.
+1944000	1952000	If it's a custom channel, this is the activation.
+1954000	1971000	This is the scheme.
+1972000	1973000	What is this one?
+1977000	1978000	Huh?
+1979000	1980000	Activation.
+1983000	1984000	What is this one?
+1986000	1987000	Inactivation.
+1987000	1988000	Yes.
+1991000	1992000	Inactivation.
+1993000	1995000	And then when you put the chuck on what?
+1998000	1999000	Where is deactivation?
+2002000	2004000	This is deactivation.
+2007000	2008000	Huh?
+2009000	2010000	Come back to the closed form formation.
+2011000	2012000	It's inactivated.
+2013000	2016000	It's open, but no ion can pass, okay?
+2017000	2019000	There's a rock, okay?
+2022000	2024000	Activation, okay?
+2024000	2032000	So here, there's a tau for activation, so the time, it's very short, huh?
+2033000	2037000	It can be very fast activation or it can be very slow activation.
+2038000	2040000	So they merge your time.
+2041000	2044000	They didn't merge your inactivation. Why?
+2046000	2049000	Because basically there's no inactivation.
+2050000	2052000	If it goes down, there is inactivation.
+2053000	2056000	Some channels, some natural channels don't have inactivation.
+2057000	2061000	But then, the potential goes back to zero.
+2062000	2069000	So there is some time from here down, or this is the deactivation.
+2070000	2078000	tau plus tau, tau plus tau divided by tau, tau of T and tau of E, tau of A, okay?
+2079000	2081000	Carbon... parameter of time, yes?
+2083000	2084000	Essentially.
+2089000	2090000	Yeah.
+2091000	2092000	This is deactivation.
+2093000	2097000	All the channels deactivate when you come back to the resting potential.
+2097000	2114000	potential. But some channels are very slow or don't inactivate. Most of channels inactivate but there are very rare natural channels that
+2114000	2128360	don't inactivate. One example is EC3 in the whole site of the Xenopus. When you have the
+2128480	2147940	protonal reaction, the membrane potential will arise and this will also prevent the entry of the
+2147940	2157580	inactivation. So here we are. So they measure the time and they also feed the exponential decay.
+2157580	2178660	Okay, that's just a little characterization and then what they measure in here. So they are experimental
+2178660	2206660	condition and they put chloride as a major ion and as a cation, they remove the sodium and they put what's called an N-M-B-G inside and outside and they could measure the current and then they change the ionic condition in the
+2206660	2233660	pipe and in the vase. In the vase they keep N-M-B-G chloride but they replace N-M-B-G by sodium and they replace the chloride by sodium butamine. And you can see they are c current and then they replace the outside ion
+2233660	2259660	sodium chloride by N-M-B-G chloride by sodium butamine. Outside and inside and you see no current. Then the video positive, inside with the pipe that will be inside they have N-M-B-G chloride and sodium butamine and there is no current. So what does this indicate?
+2259660	2265660	There is current only when you have
+2265660	2279660	What you have
+2279660	2289660	When you have
+2289660	2303660	When you have
+2303660	2325660	When you have
+2325660	2353660	There is no current
+2353660	2381660	There is no current
+2381660	2410660	If you have sodium outside N-M-B-G inside so you have a strong potential, electrochemical potential for sodium moving inside but there is no current so the sodium doesn't pass through the channel
+2410660	2436660	Okay, probably only chloride. So it also gives you an indication of the silicon. And then to measure the, to measure the silicon, as we saw in the last week, they measure the reverse of potential using different anions.
+2437660	2462660	Chloride, bromide, iodide, pure nitrate. They are all negative. And you see that, because of potential change a little bit and using the Reynolds equation, they could measure the ratio, they could check the permeability between chloride and another ion.
+2462660	2480660	And they could see that the most permeable ion, anion, is chloride compared to bromide, chloride, nitrate, nitrate, and iodide.
+2480660	2501660	And this is very special because most of the, say, chloride channels are more permeable for these ions than for chloride. So this makes a really artificial but purely, not purely, but more permeable for chloride and other ions.
+2501660	2520660	This is quite interesting. And this is the IID. And in the supplementary region, you see that the current in the different conditions. And how they measure this reverse of potential, they use, this is the protocol they use with the IID.
+2520660	2538660	They use another protocol that is called tail current. So they measure the, they need the same vaporization, but they vaporize a different operation, and they measure what is called the tail current.
+2538660	2545660	And they measure the current in the tail, and they can measure here.
+2550660	2562660	So in the challenging activity, you have a remaining current, okay, and this current reverse of the current potential, depending on the ion.
+2562660	2569660	And you can change the ion information, but you can't change the first part of the machine.
+2569660	2581660	And the last thing they need, what is this?
+2581660	2587660	What is the first scan of the body?
+2587660	2591660	This is the whole cell.
+2591660	2610660	So all the channels on the surface of the plasma membrane.
+2610660	2632660	Yeah, simple channel measurement. So the whole cell, you put the biped, break the membrane under the biped, measure all the current of all the channels, and they could measure the current like this when they do the work-based steps.
+2632660	2649660	Or they can, they can just take a piece of membrane, and if you have a channel, you can measure one channel active.
+2649660	2670660	You can measure the conductance, or you can measure how many ions can pass through a single channel. You can calculate how you can calculate if this current is 1 to 4 ampere within, okay, instantaneously.
+2670660	2690660	You can measure how many chloride ions pass through the channel at one single ion, or you can calculate this.
+2690660	2700660	One from there, how many ions?
+2700660	2705660	How many ions can pass when you have 1 to 4 ampere?
+2705660	2709660	How many ions it represents?
+2709660	2720660	Current is, current definition is?
+2720660	2723660	Column per second, column second.
+2723660	2727660	Okay, but exactly this time, so 1 to 4 ampere.
+2727660	2728660	1 second.
+2728660	2734660	And 1 coulomb per second.
+2734660	2735660	1 coulomb.
+2735660	2736660	1 charge.
+2736660	2737660	1 charge.
+2737660	2739660	Yeah, probably 1 to 1 electron charge.
+2739660	2747660	1.6, 1 was extent of minus 19 coulombs.
+2747660	2748660	Yeah.
+2749660	2752660	Minus 19.
+2753660	2756660	Okay, so this is 1, 1.
+2756660	2765660	So when you have 1 to 4 ampere, how many charges?
+2765660	2769660	What is 1 to 4 ampere?
+2769660	2771660	N minus 12.
+2771660	2772660	1.
+2772660	2773660	Okay.
+2773660	2785660	So 10 minus 1, so you have 10, 1.6, 10 to the minus, plus 7.
+2785660	2786660	Yeah, plus 7.
+2786660	2798660	So you have 16 million.
+2798660	2813660	I think we need to divide 10 by 1.6, so it's not 16.
+2813660	2816660	Oh, yeah.
+2816660	2819660	No, it's like something 10 divided.
+2819660	2820660	Ah, 10 divided.
+2820660	2821660	Yeah.
+2831660	2832660	6 million.
+2832660	2833660	Yeah.
+2833660	2835660	6.25 million.
+2841660	2842660	Okay.
+2842660	2843660	All right.
+2843660	2846660	I can pass in 1 to contact.
+2846660	2847660	Okay.
+2847660	2857660	If you want to calculate how much you have to calculate this area here.
+2857660	2859660	But yeah, it gives you an indication.
+2859660	2867660	So it's very efficient for a lot of ions can pass through the channel very fast.
+2867660	2868660	Okay.
+2868660	2874660	So usually you don't measure like this, but what you do.
+2874660	2880660	So they recall the current of a single channel in different voltage for several seconds.
+2880660	2881660	Okay.
+2881660	2882660	And you can see here.
+2882660	2891660	So the more you depolarize, the more the current increase and the more activity increase.
+2891660	2892660	Okay.
+2892660	2894660	And this is a small square.
+2894660	2898660	It's a zoom of the activity here for 200 milliseconds.
+2898660	2899660	Okay.
+2899660	2901660	So they can make the ID.
+2901660	2906660	The ID block, which looks like this one.
+2906660	2907660	Okay.
+2907660	2912660	And they measure what's called the open problem.
+2912660	2916660	So is the channel open or closed?
+2916660	2922660	So it's the time the channel is open over the time of the whole recording.
+2922660	2926660	It gives that kind of problem to the channel is open.
+2926660	2928660	So it's 30 millivolts.
+2928660	2930660	The problem is very low.
+2930660	2933660	0.1 or less.
+2933660	2937660	But then you can increase the membrane potential.
+2937660	2940660	The problem becomes more than half.
+2940660	2943660	More than half of the time.
+2943660	2945660	Okay.
+2945660	2947660	That's what it means.
+2947660	2951660	It's an indication of the channel activity.
+2951660	2955660	So next, what they need.
+2955660	2968660	They made the structure of the channel by prior year.
+2968660	2976660	So as we discussed before, they checked, they take a picture with a high voltage income microscopy.
+2976660	2979660	We have here Nagoya, one or two ICs.
+2979660	2985660	So for those who are interested, professor, the structure of proteins,
+2985660	2989660	if you are interested in measuring the structure of the proteins,
+2989660	2993660	you can join the labs like this.
+2993660	3001660	And you can reconstitute and make the image of the alphabets of your protein.
+3001660	3008660	And the image fits with their prediction, their design prediction.
+3008660	3016660	So pentamer of three alphabets with alphabets number two being in the center and forming the core.
+3016660	3018660	Okay.
+3018660	3021660	And they add here this DTT domain.
+3021660	3028660	So this DTT domain belongs to a potassium channel whose structure is known.
+3028660	3031660	And it's a trick.
+3031660	3037660	It's a kind of trick that helps the formation of the alphabets.
+3037660	3049660	So if you have a C-terminal or N-terminal fusion or even in between the alphabets,
+3049660	3060660	it stabilizes the protein, helps for the crystallization, the purification, and the crystal formation.
+3060660	3069660	So it really helps the resolution of the crystal structure of proteins,
+3069660	3075660	especially membrane proteins, which are quite difficult to crystallize.
+3075660	3082660	And then they can see inside the core the alignment of the arginine.
+3082660	3089660	And they could see here a constriction that made the gate of the channel.
+3089660	3095660	So you can see that they measure the distance between the alphabets here.
+3095660	3100660	And you can see that after 1.57, the constriction is very strong.
+3100660	3103660	So it means that it's slow.
+3103660	3110660	And what they need also, they purify or they make the crystal in the presence of a negative ion.
+3110660	3114660	And they use ion, which is maybe easier to be made.
+3114660	3123660	And they could see that the ion is trapped here between the arginine residue.
+3123660	3131660	So this also means there is a selection of heat terms here inside.
+3131660	3143660	So that was well done, because just by adding the arginine, they could make voltage sensing.
+3143660	3154660	And chloride safety filter.
+3154660	3160660	So that's the advantage of their system.
+3160660	3166660	And here, so they could see the arginine, how they are displayed.
+3166660	3172660	And you can see that depending on the position, the arginine side chain
+3172660	3179660	are a little bit differently displayed inside the pore.
+3179660	3192660	And that's why you have 1.57 is more constricted here, more closed inside.
+3192660	3201660	And as for a natural channel, when you want to understand, of course you can see here in the structure
+3201660	3208660	what you want to confirm that it's an important amino acid for the conduction.
+3208660	3216660	So they did a metagenesis. They changed the amino acid for arginine or glycine or other amino acid.
+3216660	3221660	And you can see that it would reduce the current.
+3221660	3229660	So it means that arginine 165 is quite important for the current conduction.
+3229660	3238660	When they change amino acid, the current is not more rectified, but also reversed.
+3238660	3245660	So you can play with the system, and you can change the amino acid, and you can see that you change.
+3245660	3251660	You can leave the characteristic of your channel.
+3251660	3266660	Change of the selectivity, so you can play with the system.
+3266660	3274660	What was interesting?
+3274660	3279660	What was interesting?
+3279660	3288660	The first design that doesn't contain the three arginine does not show any current.
+3288660	3301660	But when they saw the structure, they could see a very large pore in here.
+3301660	3309660	And the radius is large through the whole pore.
+3309660	3329660	But they could not record current while they give an hypothesis.
+3329660	3340660	When they see the current, it's quite large, so ions would easily pass whatever ions would easily pass inside.
+3340660	3343660	Electrostatic interacting?
+3343660	3351660	That's one explanation. There is no electrostatic attraction by the arginine.
+3351660	3359660	But even if you impose a potential, you should see something moving.
+3359660	3368660	If you have a negative here, positive here, and you have a sodium, it could pass.
+3368660	3372660	What do they see here?
+3373660	3378660	When you saw the structure of the channel, you did the arginine.
+3378660	3383660	And inside the structure, they could see the arginine, which almost be repeats.
+3383660	3393660	So one of their explanations is that mainly the pore is large, so some repeats can enter here and block the channel.
+3393660	3397660	But that's just an hypothesis.
+3403660	3418660	And then they did an MD simulation, so they can see the chloride pass in thermal influx.
+3418660	3423660	At 500 mV, it's quite big, but it's a simulation.
+3423660	3435660	But they can see the position change of the ion compared to the sodium, where they don't see any change in their simulation.
+3435660	3443660	Maybe other kind of structural analysis, which I don't understand well.
+3443660	3449660	And then finally, they could make a model of their channel.
+3449660	3465660	And this is also the crystal structure with the ionized onion, or iodide, inside the structure and trapped within the arginine region.
+3465660	3470660	They could take a picture with the ion.
+3470660	3477660	So the crystal structure is always something that is just one picture, the present picture.
+3477660	3492660	It's not dynamic, but recently, they can do structure at different positions, at different kind of time codes of the different structural channels.
+3492660	3497660	So the technique also is involved in the past.
+3497660	3501660	Just I forgot to mention.
+3501660	3504660	So they did also biochemical analysis.
+3504660	3511660	They did different, so they observed the protein expression in the membranes.
+3511660	3521660	And they did immunostaining, where they expressed the channel and they infused with the GFP in the oocyte.
+3521660	3528660	And you can see that the expression is only around the oocyte.
+3528660	3531660	It's the surface expression.
+3531660	3534660	The channel is well expressed in the plasma membrane.
+3534660	3541660	And they used facts to study the expression on egg cells.
+3541660	3548660	And they could see the sheet in the fluorescence indicating the surface expression.
+3548660	3554660	Do you know what is the facts?
+3554660	3557660	Not facts like this.
+3557660	3560660	It's all standard.
+3560660	3565660	The key facts.
+3565660	3568660	How much is using in the lab?
+3569660	3573660	The rest of them.
+3573660	3576660	Is it seven?
+3576660	3579660	One is eight.
+3579660	3581660	Assisted?
+3581660	3582660	Yeah.
+3582660	3586660	Oh, really?
+3586660	3589660	Okay.
+3589660	3595660	So what is this?
+3595660	3597660	Who knows?
+3597660	3599660	Who doesn't know?
+3599660	3603660	Who has never heard of this?
+3603660	3608660	Fluorescence and cell solving.
+3608660	3615660	It's a kind of analysis technique where you can count and check each cell fluorescence.
+3615660	3618660	And you can count thousands of cells.
+3618660	3621660	The treat very simply.
+3621660	3623660	Explain.
+3623660	3626660	Through a small...
+3626660	3630660	How to say it?
+3630660	3636660	Also...
+3636660	3638660	No, no.
+3638660	3639660	The stream of...
+3639660	3640660	There is a laser.
+3640660	3642660	The laser is here.
+3642660	3644660	And the laser is here.
+3644660	3646660	And there is a small...
+3646660	3658660	Yeah, beam of cells that are passed just one by one in a degree.
+3658660	3663660	And you can pass the cell across a laser.
+3663660	3670660	The analyzer will count the cell and measure the intensity of the fluorescence.
+3670660	3683660	If you decorate your cell with an antibody and a proper protocol, the cell will measure the fluorescence,
+3683660	3687660	count the cell, measure the intensity of the fluorescence.
+3687660	3692660	You can have a laser one and laser two.
+3692660	3698660	So you can decorate with another color also.
+3699660	3701660	And you can analyze.
+3701660	3711660	And you can usually kind of plot where the analyzer population of cells according to the fluorescence.
+3711660	3717660	And then you can have a magnetic trick.
+3717660	3720660	And you can separate cells that have high...
+3720660	3723660	You can say, I want cells like this.
+3723660	3729660	So you can separate cells according to the fluorescence intensity.
+3729660	3731660	It's a very powerful trick.
+3731660	3734660	One machine costs the price of the house.
+3734660	3735660	Very expensive.
+3735660	3738660	Or even more expensive than a house.
+3738660	3741660	So it's a very powerful technique.
+3741660	3746660	It's an immunology using a lot of facts.
+3746660	3757660	So you can count the population of cells and separate cell population and use them for other experiments.
+3757660	3759660	So they use the facts.
+3759660	3769660	So they decorate their chloride channel and they see that it's well at the surface of the plasma membrane.
+3769660	3775660	So you can say, if it's not at the surface of the plasma membrane, you cannot see the fluorescence.
+3776660	3780660	That's how they do using the facts.
+3780660	3785660	And what was the last experiment they did?
+3792660	3793660	So they measure in.
+3793660	3794660	Ah!
+3794660	3795660	No.
+3795660	3796660	There's some symbol in the first.
+3796660	3797660	Ah, here.
+3797660	3798660	Yeah.
+3798660	3799660	Okay.
+3799660	3802660	So they have a nice channel.
+3802660	3804660	And they do some mutation.
+3804660	3806660	They characterize the mutant.
+3806660	3812660	But they do one more mutation where they replace the algae by an aminoxidone.
+3812660	3814660	What is it?
+3816660	3818660	Aminoxidone.
+3823660	3824660	Okay.
+3824660	3825660	Ah!
+3825660	3826660	Okay.
+3826660	3827660	They change aminoxidone.
+3827660	3829660	And one thing, they are cell.
+3829660	3836660	So the one side, I mean, the first design of the chloride channel.
+3836660	3839660	The first version of the chloride channel.
+3839660	3842660	And design both these data.
+3842660	3844660	And another.
+3844660	3847660	And they will change one amino acid.
+3847660	3848660	And what they are cell?
+3848660	3849660	Yeah.
+3849660	3852660	You can see a sheet.
+3852660	3861660	I mean, a sheet where the, how do you say, the threshold of, the voltage threshold of
+3861660	3865660	activation is shifted by around 20 millivolts.
+3865660	3870660	And the activation, we already observed that plus 20 millivolts.
+3870660	3876660	And there is a large current at 40 millivolts compared to the original one.
+3876660	3878660	You can see the change.
+3878660	3882660	Here is the voltage at first 40, at first 20.
+3882660	3884660	And you can see a significant increase.
+3884660	3885660	Ah!
+3885660	3892660	Already, 100 quanpere, which is the current in terms of physiology.
+3892660	3897660	At first 40, you already have 400 quanpere, which is quite large.
+3897660	3898660	Okay.
+3898660	3900660	There is no change in the safety.
+3900660	3901660	Ah!
+3901660	3903660	Still very selective chloride.
+3903660	3904660	Ah!
+3904660	3907660	So, what does this imply?
+3907660	3911660	Is this quantification, is puny, small puny.
+3911660	3912660	Ah!
+3912660	3918660	Generate chloride current at physiological range for the action potential.
+3918660	3919660	Ah!
+3919660	3920660	Okay.
+3920660	3922660	So, what does it mean?
+3922660	3928660	That if you have an action potential plus 40, you will activate the chloride channel.
+3928660	3929660	Ah!
+3929660	3936660	You might have some physiological impact in people.
+3936660	3938660	So, what they need?
+3938660	3941660	They construct an AAD.
+3941660	3943660	What is AAD?
+3950660	3951660	AAD.
+3954660	3955660	It's final.
+3956660	3959660	We can feed virus.
+3959660	3961660	No problem with the virus.
+3963660	3964660	Ah!
+3964660	3965660	Yeah.
+3965660	3966660	We will develop.
+3967660	3968660	You just...
+3972660	3979660	You just use the genes of the virus and the cells will make the virus by themselves.
+3979660	3981660	And then you can refit the virus.
+3982660	3985660	Just for research purposes.
+3987660	3990660	Some people can read that.
+3990660	3993660	But usually it's for...
+3993660	3996660	Why this kind of virus?
+3996660	3998660	How do you keep the...
+3998660	4004660	So, we discussed before when you have the DNA and you want to express the channel
+4004660	4008660	and you want to put the DNA into the cell and protect cells.
+4008660	4012660	So, what is the technique for research?
+4012660	4013660	We'll show you.
+4013660	4015660	We'll go over there.
+4017660	4018660	Tran.
+4018660	4019660	Tran.
+4020660	4021660	Tran.
+4021660	4022660	Tran.
+4022660	4023660	Tran.
+4023660	4024660	Tran.
+4024660	4025660	Tran.
+4025660	4026660	Tran.
+4026660	4027660	Tran.
+4027660	4028660	Tran.
+4028660	4029660	Tran.
+4029660	4030660	Tran.
+4030660	4031660	Tran.
+4031660	4032660	Tran.
+4032660	4033660	Tran.
+4033660	4034660	Tran.
+4034660	4035660	Tran.
+4035660	4036660	Tran.
+4036660	4037660	Tran.
+4037660	4038660	Tran.
+4038660	4039660	Tran.
+4040660	4041660	Tran.
+4041660	4042660	Tran.
+4042660	4043660	Tran.
+4043660	4044660	Tran.
+4044660	4045660	Tran.
+4045660	4046660	Tran.
+4047660	4048660	Tran.
+4049660	4050660	Tran.
+4050660	4051660	Tran.
+4052660	4053660	Tran.
+4057660	4058660	Tran.
+4059660	4060660	Tran.
+4061660	4062660	Tran.
+4063660	4064660	Tran.
+4065660	4066660	Tran.
+4066660	4070660	temperature for a real differentiated cell.
+4070660	4076660	So what we use, we infect cells as when we are infected
+4076660	4081660	by the influenza, we will easily enter our cells.
+4081660	4088660	So using virus, we can transuse transduction, not
+4088660	4089660	transprotection.
+4089660	4090660	It's transduction.
+4090660	4093660	We just put some virus.
+4093660	4098660	Inside the virus, you have the gene of interest.
+4098660	4101660	It can be fluorescent protein, or it can be a channel.
+4101660	4104660	And the virus enters easily into the neuron
+4104660	4106660	or the cardinal site.
+4106660	4108660	But you can also use the virus, and you just
+4108660	4113660	need to intermise.
+4113660	4115660	So they inject the virus.
+4115660	4120660	And AAV is called associated adenovirus.
+4121660	4123660	It's a type of virus.
+4123660	4126660	So they made the construction adenov-associated virus
+4126660	4135660	with one A promoter, GFP, and the three channels.
+4135660	4140660	The original construct, the voltage-gated anion channel,
+4140660	4146660	and the modified one, voltage-gated anion channel,
+4146660	4147660	number one.
+4148660	4153660	Using a syringe, they inject in a specific area of the brain,
+4153660	4158660	and they can see the fluorescence by GFP.
+4158660	4163660	So they can locate within the tissue what cells are being
+4163660	4165660	infected, and they can see that the neurons are
+4165660	4168660	being infected in their system.
+4168660	4171660	And using electrodes, just like patch cloth,
+4171660	4176660	they don't measure the current, but they measure the,
+4176660	4188660	if you don't measure the current, you measure the membrane.
+4188660	4189660	Potential.
+4189660	4190660	Yes.
+4190660	4191660	OK.
+4191660	4193660	So they can measure action potential.
+4193660	4194660	OK.
+4194660	4196660	And that's the PBLM here.
+4196660	4199660	So uninfected cells.
+4199660	4202660	So they can measure the activity of neurons.
+4202660	4205660	Now you can see that they inject a different current
+4205660	4208660	on the stimulus, and then they measure the action potential.
+4208660	4210660	OK.
+4210660	4216660	When they infect with the original construct,
+4216660	4218660	they have a little bit of the channel activity,
+4218660	4220660	but not so much.
+4220660	4221660	OK.
+4221660	4225660	But when they use the voltage-gated anion channel,
+4225660	4228660	they reduce the activity vis-a-vis the company.
+4228660	4231660	And when they use a modified one,
+4231660	4235660	they can completely stop the activation.
+4235660	4242660	Or they count the firing rate, and the last human one
+4242660	4246660	completely block the action potential.
+4246660	4247660	OK.
+4247660	4254660	In response to different current injections,
+4254660	4256660	that's one other point there.
+4256660	4258660	They have a significant reduction.
+4258660	4259660	OK.
+4259660	4262660	So they design a chloride channel,
+4262660	4264660	a voltage-gated fluorine channel.
+4264660	4268660	They tune the channel so it has nice characteristic
+4268660	4270660	of zero-tigarification.
+4270660	4272660	They make the structure.
+4272660	4276660	The structure help to tune the channel axis.
+4276660	4280660	And then they need some in vivo experiments
+4280660	4286660	to prove that their channel can be used in vivo.
+4286660	4287660	OK.
+4287660	4290660	So it's a gene that never exists,
+4290660	4296660	but it was just built up from scratch.
+4296660	4301660	So that makes it a very, very interesting nice paper.
+4301660	4306660	So there is room for improvement or modification and change.
+4306660	4308660	OK.
+4308660	4309660	Questions?
+4309660	4317660	Just about the method, like the virus-infected one,
+4317660	4321660	would it be contagious to do it as well?
+4321660	4322660	Yeah.
+4322660	4323660	Really?
+4323660	4324660	Yeah.
+4324660	4326660	So you have to wear gloves.
+4326660	4328660	OK.
+4328660	4330660	Special lens.
+4330660	4334660	And I had an accident once when I was purifying.
+4334660	4338660	So you produce the cell, and you have the liquid,
+4338660	4341660	you isolate the liquid in the tubes,
+4341660	4347660	and then using season chloride radiance
+4347660	4350660	and other neutral centrifugation,
+4350660	4356660	you can concentrate the virus in an area in a chloride,
+4356660	4358660	season chloride radiance.
+4358660	4361660	And then you need to put the C range
+4361660	4370660	and take the virus in the C range, and then clean.
+4370660	4375660	You have to remove the system chloride by cleaning steps.
+4375660	4379660	And I took out too fast the C range
+4379660	4383660	and the liquid was dropping out.
+4383660	4385660	Luckily, I have my glasses.
+4385660	4387660	I have the virus on my glasses.
+4387660	4392660	And so I was like, why don't you wear eyes?
+4392660	4395660	If you touch your skin, it doesn't happen anything,
+4395660	4397660	but your eyes have to be protected.
+4397660	4399660	You have to be careful not to inject your cell.
+4399660	4400660	Yeah.
+4400660	4404660	So you have the history level.
+4404660	4411660	You have levels of, how to say, culture rules, cell culture
+4411660	4413660	rules, where you can work with them.
+4413660	4419660	So some people, I remember, worked with an anti-virus,
+4419660	4424660	HIV virus, to do the research also.
+4424660	4428660	So they have a very specific, you have to wear.
+4428660	4429660	Yeah.
+4429660	4431660	And you have the sophistication.
+4431660	4433660	There's no idea how to do it.
+4433660	4434660	Yeah.
+4434660	4437660	And in a virus, you can do it just like this.
+4437660	4439660	But you have to be careful not to.
+4439660	4440660	Yeah.
+4440660	4442660	So of course, when you do the experiments,
+4442660	4444660	you work with dangerous signals.
+4444660	4448660	You have to be very careful when you do your research.
+4448660	4451660	That's why you have to have special training.
+4451660	4455660	We used to work with, nowadays, it's very rare,
+4455660	4459660	but we used to work with radiography.
+4459660	4461660	There's also the two.
+4461660	4463660	It's Tricia, and it seems like this.
+4463660	4468660	I have some people I knew working with IO.
+4469660	4471660	It's very, very dangerous.
+4471660	4474660	We have special protection and special labs for these.
+4474660	4481660	Nowadays, the radiography is very much less.
+4481660	4484660	But I used to work with them.
+4484660	4488660	When you have the combat, you have to be careful.
+4488660	4490660	And then you have to check everywhere.
+4490660	4491660	You have to check the clothes.
+4491660	4493660	You don't have spots.
+4493660	4499660	Otherwise, the scalp and the containers.
+4499660	4500660	Yeah, yeah.
+4500660	4503660	Working with chemicals is dangerous.
+4503660	4508660	Working with biological as a material.
+4508660	4510660	You have to be extra careful.
+4510660	4513660	So don't choose as fast when you do experiments.
+4513660	4514660	Okay?
+4514660	4515660	Stay concentrated.
+4515660	4518660	Stay focused on your experiments.
+4518660	4520660	In some patch camp experiments,
+4520660	4523660	I use a tetrodotoxin.
+4523660	4526660	Careful.
+4526660	4529660	I have a colleague in the hospital.
+4529660	4534660	She was working with bacteria,
+4534660	4540660	called this very infectious bacteria.
+4540660	4544660	And she had to inject mice.
+4544660	4546660	And the mice was very nervous.
+4547660	4548660	The mice moved.
+4548660	4550660	And she injected herself with bacteria.
+4550660	4553660	She spent three months in the hospital.
+4553660	4556660	So she had to...
+4556660	4559660	She could get better, but three months in the hospital.
+4559660	4567660	It's not fun with bacteria, infectious bacteria.
+4567660	4571660	So when they have to produce this virus,
+4571660	4572660	you have to be careful.
+4572660	4577660	And the injection, you have to be careful.
+4577660	4582660	The research light is interesting.
+4582660	4584660	Okay.
+4584660	4588660	Question?
+4588660	4589660	Okay.
+4589660	4591660	We have five minutes.
+4591660	4596660	I know I'll stress you the most in the exam questions.
+4596660	4601660	So we had four papers.
+4602660	4605660	So most...
+4605660	4608660	The only question we come from is paper.
+4608660	4609660	Okay?
+4609660	4612660	So I will help you.
+4612660	4614660	We have four papers.
+4614660	4622660	The first one was the CAB1.2, I think.
+4622660	4625660	The liquid scale and the electro-sensing.
+4625660	4626660	Okay?
+4626660	4630660	And we saw that there was gate impairment.
+4630660	4633660	The ID curve and things like this.
+4633660	4637660	And then the second was a proton channel
+4637660	4642660	where they identify a new proton channel as a test.
+4642660	4645660	And we can see the selectivity.
+4645660	4649660	So they tested the protein.
+4649660	4656660	They identified selectivity for proton.
+4656660	4659660	So it was interesting.
+4659660	4663660	The paper was...
+4663660	4668660	The third paper was not on electrophysiology characterization.
+4668660	4674660	It was just the function of this mutant, this super mutant.
+4674660	4678660	Everybody wanted to have a mutation.
+4678660	4680660	We can make a big jump.
+4680660	4681660	Okay?
+4681660	4685660	And this last paper on the design of the channel.
+4685660	4686660	Okay?
+4686660	4688660	So...
+4688660	4689660	Yeah.
+4689660	4693660	Please read this one because it's interesting.
+4693660	4694660	I don't know.
+4694660	4696660	It's very designed.
+4698660	4699660	So...
+4699660	4700660	Yeah.
+4700660	4703660	There will be probably no question on this paper,
+4703660	4707660	but mostly on ion channel characteristics.
+4707660	4711660	And there is a very difficult characteristic
+4711660	4714660	of getting ion channel.
+4714660	4717660	How you measure the current.
+4717660	4719660	What is an ID curve?
+4719660	4721660	What does it mean?
+4721660	4723660	Selectivity in the current.
+4723660	4724660	This kind of thing.
+4724660	4725660	Okay?
+4725660	4729660	So please try to read the papers and understand,
+4729660	4733660	especially the electrophysiological features.
+4733660	4735660	Try to understand them.
+4735660	4737660	And the question will be more about this.
+4737660	4738660	And if you have question,
+4738660	4739660	I want to understand this.
+4739660	4741660	What does this ID mean?
+4741660	4743660	Just send an e-mail.
+4743660	4747660	And I will reply to everyone.
+4747660	4750660	So everyone can have a question and reply.
+4750660	4752660	Which might help everyone.
+4752660	4756660	And not everyone ask me the same question.
+4756660	4757660	Okay?
+4757660	4758660	Okay?
+4758660	4760660	Good?
+4760660	4761660	Okay.
+4761660	4763660	So, study hard.
+4763660	4765660	Go to your job.
+4766660	4771660	After studying, you will have to work hard.
+4771660	4774660	And then you will say, oh, you have to work hard.
+4778660	4779660	Okay?
+4779660	4786660	But, enjoy your human life.
+4786660	4790660	Because student's life is the best time.
+4790660	4792660	Human life, I think.
+4793660	4794660	Ha-ha-ha!
+4796660	4797660	Class?
+4797660	4801660	Yeah.
+4801660	4802660	Class?

@@ -1,0 +1,837 @@
+You have to see the enemy can, I think the line is moving downward.
+This is a very short time, one microsecond.
+But I think while they recall or make their simulation, the line is moving down.
+So this probably indicates that ions move inside.
+And here you can see that it's moving up to that line on the other side.
+And simulation is just computerized simulation to recreate movement of protein structure or ion movement and things like this.
+I'm not sure how to work, but it's always on a very short period of time.
+Microsecond or PT or 100 microsecond.
+Yes.
+I mean, I want to ask about perhaps how the researchers use cryo-EM to get the structures of the protein.
+Because I know how scanning or electron microscopy works to give us atomic information.
+Yeah, so they have to freeze.
+And then they have a large electron microscope, and the beam is passing through the sample.
+And then you can get little pictures like this.
+And from this, using I guess computer, they can reform the protein.
+And then they can make the alphabets.
+So they spin the sample?
+No, I think there are many samples.
+And then they take different pictures with different angle, I guess.
+But I don't think the sample is rotating somewhere.
+I think they can take pictures of different.
+The proteins are randomly displayed.
+And can rotate.
+So you just spin the protein.
+So you have many of the simple things.
+So when you shine the electron beam, you have different angles of the simple mechanism.
+Let's say you have a simple thing.
+Let's say you have some 2 nanometer thick sample.
+You have the proteins in different orientations, but in the same sample.
+So when you take a single image, you have many orientations in each effect.
+You can also rotate the stitches.
+So basically give them a CT scanner.
+Yeah, it's kind of a CT scanner.
+So I think this paper is very nice.
+I also read it for the first time.
+There is a new, recently, there was a Nobel Prize.
+It got a Nobel Prize for designing proteins.
+So you can design and make proteins and make them functional.
+And this is one of the first paper.
+Maybe not the first.
+This is the first voltage-gated, annual channel that was designed and tested in D.O.
+And it suppressed the neuron firing.
+So chloride is anion, so it has a negative charge.
+So most of the other ions are usually positive, calcium, potassium, proton, and medium.
+So you have channels for zinc.
+You have channels for cation.
+You also have channels for chloride.
+So chloride has many important functions in the physiology in our body.
+And you have various different types of chloride channels that have been discovered.
+They have important functions.
+And you also have associated disease with chloride channels.
+Do you know some of these?
+No.
+Okay.
+I should set up.
+Which are quite famous?
+ADHD.
+Huh?
+ADHD, maybe.
+We all know this one.
+epilepsy.
+Huh?
+epilepsy.
+I don't know why.
+Yaar?
+Is this the five voltage?
+Is this a channel?
+It's a channel.
+Is this a channel?
+That is a lamp.
+And we cannot secret the phosphate.
+And it's very dramatic.
+I think CFTR is a gene that belongs to the ABC transporters that make a chloride channel
+station on CFTR. They are very, not common, I wouldn't say common, but they are quite
+Europe, and Europe and Japan are more rare. Of course, they are rare. The Japanese are
+not so much, but in Europe they are quite a lot of station, and this is one of the...
+Another one is myotonia. Myotonia function. It's a muscle disease, and it affects the
+chloride channel for the CLC1. It's a voltage-gated chloride channel, and it's very important
+for your muscle relaxation. Chloride usually is a negative ion, so it usually reduces the
+excitability of the brain, the growth of the muscle. It's important for the muscle relaxation
+and the function. The objective was to... It's very simple, so everything is explained
+in the title. It was designed voltage channel, and they tested the illegal, and they suppressed
+neuron action potential. They are graphical abstract, so there is a huge in silico work
+for designing, testing, and then they test the channel electrophysiologically. They did
+structural analysis to see how the channel moves. Finally, they expressed their channel
+in the neuron, and they could see that when expressing these channels, they reduced the
+activity of the neuron. It's not quite a very nice work. That's why it was published
+in the paper itself. The in silico work was tested on the electrophysiologically and structurally,
+but there was always feedback by changing and fine-tuning the channel they could improve.
+It's quite a large work, and you can see that there's a lot of author in the... There's
+a lot of author that contribute to this research because they need different specialities.
+Some of the researchers are specializing in silico. Some of the researchers are specializing
+in electrophysiologically. There was also some biochemical and molecular characterization.
+There are some specialists of the structural, so the prior EM, and specialists of measuring
+action potential neurons. We need all these different specialities together. You cannot
+do one researcher. I think it's very difficult for one or two researchers to do this kind
+of work. You need a teamwork, and you will see in the future when you do research, you
+have to do teamwork. It's called collaborations. When you have two collaborators, you can make
+papers like this. Nowadays, we've got one researcher, like in the past and everything
+by himself. The first step for doing this paper was the design. I'm not especially
+interested in the design. I have some friends that do protein design now. What they have
+to know before they start their design is how the channels structure looks like. You
+can see they have different... They are usually alpha leaks in the transformed brain domain,
+and you can see that they have different configurations. They can be trimer, they can
+be... One, two, three, four, five. And here, one, two, three, four, five. Here, five. Some
+they have... Here, they have also eczema, or they have trimer, and even dimer. This is
+a case for chloride channel. You have dimer. Here, you have... So I'm using the tetramer.
+For example, you have the core. You have the formation of water feed core or porous
+structure that allows the passage of ions. This is an example. It's a voltage-gated potassium
+channel, so it's a tetramer. And within the tetramer, you have the formation with two
+alpha leaks and a loop. You have the formation up here, okay? Two alpha leaks, so S5, S6,
+as we discussed previously, and a loop. They form a form, okay, a selective form for the
+passage of ions, which are usually dehydrated. And in the context of the form, you have the
+formation of the structure that replaced, or at this minute, the hydration of the ion
+in the water, okay? So they have oxygen. The amino acid-side atoms are oxygen, and they
+are exposed to the form, and they form the hydration channel. You have also pentamine,
+okay? And the design is a chloride channel in the plant, in the chloroplast membrane,
+okay? And it's a pentamine and form a form, a channel in the membrane of the plant, okay?
+And this structure, so this, there are symmetry in proteins, like in molecules, and they
+said they design a C5 symmetry, so it's like pentagon, okay? And they put five, so you
+design it as five, so you have also C4, okay, and C3, okay? That's a chemistry. So you have
+heard about C5 symmetry? Yeah. Not good memories. Not good memories. But for protein, you have
+similar, okay? You have similar things. So they did this. So they, I don't know exactly
+how, they used a lot of different computer program, including alpha-4, but alpha-4 was
+used to predict the structure of their design, so the design, and they tested more than
+thousand sequences, and they made alpha-4 to prediction, okay? So the structure was
+something like this, so 1, 2, 3, 4, 5, and one of the S2, one of the alpha leaks, so
+they used a trimer, three alpha leaks, and one was inside this C5 structure, okay? And
+they used 15, alpha leaks of 15 amino acid, okay? And they could check that it's a nine
+well, so you read the paper, so they could make a prediction structure, okay? And it
+makes also a prediction structure of a fusion protein, BTT, which is from potassium channels,
+so they call it DMZCH. There's a lot of names, BTT, okay? Because this fusion protein are
+good for resolving the structure of the channel, okay? So they first put the alpha leaks like
+this, and choose one of this structure, and try to measure, so then, from the amino acid
+sequence, they have the DNA sequence, and they could order one DNA sequence, and as
+we said, they put this in a plasmid, okay? So they put the plasmid from the design. From
+the design, they got the cDNA, so it's all synthetic, so I guess it costs quite a lot,
+and the cDNA, they express in a cell, okay, and give the electroencelogy characterization, okay?
+So there is also a lot of supplemental figures, so that's important. So the first
+one is DMZCH8BTP, so no current, okay? Why? But then they made a modification, and they
+could see the current. Okay, how many they put? They put three, huh? There were, why they choose
+the arginine, they put three, I think, maybe around here, around here, okay? And they put
+the arginine, okay? So you said that they are put in a plasmid, so what is the advantage of putting
+arginine inside the, inside the, that's aligned inside the form? Yeah, okay, that was it, so they
+can attract it, all right? Okay, so they can solve the problem of the, say, the PDE, and what else?
+What is the advantage of arginine? The process is in charge. Yeah, a sensor op, yeah, op, op, all page, okay?
+So they move in an electrical field, and if they move in an electrical field, they displace the alphabets, okay?
+And that's the move in the electrical field, okay? So that's the first structure, huh?
+Some voltage, they are applied, and you can see that there is a positive current appearing, okay, quite large,
+positive current, when they have, so they call it E and Z C8 3R, okay? And they have a positive current appearing
+upon their expression, okay? And if they measure the maximum current at each voltage, they could plot an ID curve, okay?
+And you can see that the current at here, or start to appear, plus, after plus, short, immediate work, okay?
+So what implies this positive current? What does mean the positive current?
+What does your positive current, what does it mean?
+The positive current is called the sum of the cells.
+Did it close?
+Uh-huh.
+Did it close, sir?
+If I have a negative current.
+When we studied the calcium channel in the lethal scale, we had a current, I guess, that's the ID curve, that's the current voltage, that's the ID curve,
+the current was negative. What does it mean for calcium?
+In the function.
+In the function, okay?
+When you have a sodium current, you can see the negative current, so it's an influx of code, okay?
+When you have a positive current, it's the negative current for calcium.
+So you have to be careful when you measure potassium current, you can measure also the same.
+But if it's potassium, it means it's a flux of potassium. But here, it's a chloride, and you measure positive current, so it's an influx of chloride, okay?
+So please remember this, okay? So you are in a chloride, so everything is opposite.
+So it means that in a positive membrane potential, when the membrane potential is positive, the chloride is coming inside the cell, why?
+So when I said the voltage is clamped plus 80, what does it mean?
+What is it plus 8? This is inside, this is outside, the chloride is here, and it means, okay, plus 80 millivolts, what is it plus 40 millivolts?
+After resting potential, do you remember what is the resting potential?
+How does it mean down to the plasma membrane? Close.
+So what means the plasma membrane potential?
+Yeah, okay, so I draw the membrane like this. When you measure a membrane potential, you measure the potential difference between what and what?
+One is inside and outside. Inside and outside, okay? So when the membrane potential is minus 60 means the inside is more negative than outside.
+So when they set the membrane potential at plus 80 means that?
+It's plus 80. Yeah, inside or positive, okay? And outside is negative. That's why the chloride moves in, okay?
+So that's why they can measure positive curve, okay? So they put three arginine in a different position, okay?
+And they could measure, and now for current, and this is figure one, okay? Control, nothing.
+T and C8, almost no current, here. This is the reward of crack, okay? And when they put three arginine here with a plasma membrane potential, they could see a current increase, okay?
+And quite positive potential, so usually the maximum action potential comes around plus 40 plus 50, okay? So these are little bit extra, okay?
+So they put the current as plus 100 millivolts here. They put the bar graph, and they put all the N numbers, okay? And they compare with the control and the original design, okay?
+So by just changing of your amino acid in the alpha helix design, okay? So your amino acid generates a voltage dependent current, okay?
+It's still quite good, okay? So that's the current, and you go 25, 14, and that's enough for making a good statistic difference, okay?
+Then we'll go, what is this? Toe, toe act, and toe, yeah?
+Let me see, how? But we'll present how in a second.
+No? Good.
+The time between here and here.
+So the time, yeah, the time when the getting started, and so, but you see here, you have the impression it's just a straight line.
+But if you, this is 100 milliseconds, but if you just zoom here, you will see something like this, okay?
+So what kind of, you can measure the half time to the peak, how the results, man, what's in peak, what kind of growth,
+exponential, and from the formula, there is something in the formula, how is the half time, okay?
+So usually, you can measure how fast this will give the how fast at all channel growth, okay?
+Some channels are very slow, some channels are very fast, okay?
+So you see that the more you increase the potential difference, the faster they will open, okay?
+Very slow, faster, faster, okay?
+And how the act of deactivation, that's the difference between deactivation and deactivation.
+Yeah, deactivation, yeah, one more time.
+Deactivation means that it can't open, and deactivation means it can't for a certain amount of time.
+Not so correct, but pro.
+Anyone else pro for something else?
+So what is activation? So what are the three major conformation of the channel?
+Before activation.
+These?
+Which one?
+These?
+Pro.
+And then you have activation.
+Activation.
+So that's why they measure how activation is.
+After activation is?
+Pro.
+Pro.
+Don't be slow, don't be slow.
+And then something happens, and then it's inactivation, okay?
+And this is called deactivation, okay?
+So you can measure the flow of an activation, and then it has come back again to the flow of the activation.
+And this is called deactivation.
+Okay, all of these are deactivation.
+There is no deactivation, okay?
+So this is in terms of potential, if you have a question, this is the potential is the, for example, resting potential.
+When it's open, it's depolarized, plus 4, then it evolves.
+What's the voltage when it's inactivation?
+Huh?
+What's minus 6 here or plus 4?
+Minus 6.
+Plus 4.
+Plus 4.
+Okay, huh?
+When you have the voltage protocol on the touch ground, you start from at 1 minus 6T and go to plus 4T.
+Minivolt.
+This is your current.
+If it's a custom channel, this is the activation.
+This is the scheme.
+What is this one?
+Huh?
+Activation.
+What is this one?
+Inactivation.
+Yes.
+Inactivation.
+And then when you put the chuck on what?
+Where is deactivation?
+This is deactivation.
+Huh?
+Come back to the closed form formation.
+It's inactivated.
+It's open, but no ion can pass, okay?
+There's a rock, okay?
+Activation, okay?
+So here, there's a tau for activation, so the time, it's very short, huh?
+It can be very fast activation or it can be very slow activation.
+So they merge your time.
+They didn't merge your inactivation. Why?
+Because basically there's no inactivation.
+If it goes down, there is inactivation.
+Some channels, some natural channels don't have inactivation.
+But then, the potential goes back to zero.
+So there is some time from here down, or this is the deactivation.
+tau plus tau, tau plus tau divided by tau, tau of T and tau of E, tau of A, okay?
+Carbon... parameter of time, yes?
+Essentially.
+Yeah.
+This is deactivation.
+All the channels deactivate when you come back to the resting potential.
+potential. But some channels are very slow or don't inactivate. Most of channels inactivate but there are very rare natural channels that
+don't inactivate. One example is EC3 in the whole site of the Xenopus. When you have the
+protonal reaction, the membrane potential will arise and this will also prevent the entry of the
+inactivation. So here we are. So they measure the time and they also feed the exponential decay.
+Okay, that's just a little characterization and then what they measure in here. So they are experimental
+condition and they put chloride as a major ion and as a cation, they remove the sodium and they put what's called an N-M-B-G inside and outside and they could measure the current and then they change the ionic condition in the
+pipe and in the vase. In the vase they keep N-M-B-G chloride but they replace N-M-B-G by sodium and they replace the chloride by sodium butamine. And you can see they are c current and then they replace the outside ion
+sodium chloride by N-M-B-G chloride by sodium butamine. Outside and inside and you see no current. Then the video positive, inside with the pipe that will be inside they have N-M-B-G chloride and sodium butamine and there is no current. So what does this indicate?
+There is current only when you have
+What you have
+When you have
+When you have
+When you have
+There is no current
+There is no current
+If you have sodium outside N-M-B-G inside so you have a strong potential, electrochemical potential for sodium moving inside but there is no current so the sodium doesn't pass through the channel
+Okay, probably only chloride. So it also gives you an indication of the silicon. And then to measure the, to measure the silicon, as we saw in the last week, they measure the reverse of potential using different anions.
+Chloride, bromide, iodide, pure nitrate. They are all negative. And you see that, because of potential change a little bit and using the Reynolds equation, they could measure the ratio, they could check the permeability between chloride and another ion.
+And they could see that the most permeable ion, anion, is chloride compared to bromide, chloride, nitrate, nitrate, and iodide.
+And this is very special because most of the, say, chloride channels are more permeable for these ions than for chloride. So this makes a really artificial but purely, not purely, but more permeable for chloride and other ions.
+This is quite interesting. And this is the IID. And in the supplementary region, you see that the current in the different conditions. And how they measure this reverse of potential, they use, this is the protocol they use with the IID.
+They use another protocol that is called tail current. So they measure the, they need the same vaporization, but they vaporize a different operation, and they measure what is called the tail current.
+And they measure the current in the tail, and they can measure here.
+So in the challenging activity, you have a remaining current, okay, and this current reverse of the current potential, depending on the ion.
+And you can change the ion information, but you can't change the first part of the machine.
+And the last thing they need, what is this?
+What is the first scan of the body?
+This is the whole cell.
+So all the channels on the surface of the plasma membrane.
+Yeah, simple channel measurement. So the whole cell, you put the biped, break the membrane under the biped, measure all the current of all the channels, and they could measure the current like this when they do the work-based steps.
+Or they can, they can just take a piece of membrane, and if you have a channel, you can measure one channel active.
+You can measure the conductance, or you can measure how many ions can pass through a single channel. You can calculate how you can calculate if this current is 1 to 4 ampere within, okay, instantaneously.
+You can measure how many chloride ions pass through the channel at one single ion, or you can calculate this.
+One from there, how many ions?
+How many ions can pass when you have 1 to 4 ampere?
+How many ions it represents?
+Current is, current definition is?
+Column per second, column second.
+Okay, but exactly this time, so 1 to 4 ampere.
+1 second.
+And 1 coulomb per second.
+1 coulomb.
+1 charge.
+1 charge.
+Yeah, probably 1 to 1 electron charge.
+1.6, 1 was extent of minus 19 coulombs.
+Yeah.
+Minus 19.
+Okay, so this is 1, 1.
+So when you have 1 to 4 ampere, how many charges?
+What is 1 to 4 ampere?
+N minus 12.
+1.
+Okay.
+So 10 minus 1, so you have 10, 1.6, 10 to the minus, plus 7.
+Yeah, plus 7.
+So you have 16 million.
+I think we need to divide 10 by 1.6, so it's not 16.
+Oh, yeah.
+No, it's like something 10 divided.
+Ah, 10 divided.
+Yeah.
+6 million.
+Yeah.
+6.25 million.
+Okay.
+All right.
+I can pass in 1 to contact.
+Okay.
+If you want to calculate how much you have to calculate this area here.
+But yeah, it gives you an indication.
+So it's very efficient for a lot of ions can pass through the channel very fast.
+Okay.
+So usually you don't measure like this, but what you do.
+So they recall the current of a single channel in different voltage for several seconds.
+Okay.
+And you can see here.
+So the more you depolarize, the more the current increase and the more activity increase.
+Okay.
+And this is a small square.
+It's a zoom of the activity here for 200 milliseconds.
+Okay.
+So they can make the ID.
+The ID block, which looks like this one.
+Okay.
+And they measure what's called the open problem.
+So is the channel open or closed?
+So it's the time the channel is open over the time of the whole recording.
+It gives that kind of problem to the channel is open.
+So it's 30 millivolts.
+The problem is very low.
+0.1 or less.
+But then you can increase the membrane potential.
+The problem becomes more than half.
+More than half of the time.
+Okay.
+That's what it means.
+It's an indication of the channel activity.
+So next, what they need.
+They made the structure of the channel by prior year.
+So as we discussed before, they checked, they take a picture with a high voltage income microscopy.
+We have here Nagoya, one or two ICs.
+So for those who are interested, professor, the structure of proteins,
+if you are interested in measuring the structure of the proteins,
+you can join the labs like this.
+And you can reconstitute and make the image of the alphabets of your protein.
+And the image fits with their prediction, their design prediction.
+So pentamer of three alphabets with alphabets number two being in the center and forming the core.
+Okay.
+And they add here this DTT domain.
+So this DTT domain belongs to a potassium channel whose structure is known.
+And it's a trick.
+It's a kind of trick that helps the formation of the alphabets.
+So if you have a C-terminal or N-terminal fusion or even in between the alphabets,
+it stabilizes the protein, helps for the crystallization, the purification, and the crystal formation.
+So it really helps the resolution of the crystal structure of proteins,
+especially membrane proteins, which are quite difficult to crystallize.
+And then they can see inside the core the alignment of the arginine.
+And they could see here a constriction that made the gate of the channel.
+So you can see that they measure the distance between the alphabets here.
+And you can see that after 1.57, the constriction is very strong.
+So it means that it's slow.
+And what they need also, they purify or they make the crystal in the presence of a negative ion.
+And they use ion, which is maybe easier to be made.
+And they could see that the ion is trapped here between the arginine residue.
+So this also means there is a selection of heat terms here inside.
+So that was well done, because just by adding the arginine, they could make voltage sensing.
+And chloride safety filter.
+So that's the advantage of their system.
+And here, so they could see the arginine, how they are displayed.
+And you can see that depending on the position, the arginine side chain
+are a little bit differently displayed inside the pore.
+And that's why you have 1.57 is more constricted here, more closed inside.
+And as for a natural channel, when you want to understand, of course you can see here in the structure
+what you want to confirm that it's an important amino acid for the conduction.
+So they did a metagenesis. They changed the amino acid for arginine or glycine or other amino acid.
+And you can see that it would reduce the current.
+So it means that arginine 165 is quite important for the current conduction.
+When they change amino acid, the current is not more rectified, but also reversed.
+So you can play with the system, and you can change the amino acid, and you can see that you change.
+You can leave the characteristic of your channel.
+Change of the selectivity, so you can play with the system.
+What was interesting?
+What was interesting?
+The first design that doesn't contain the three arginine does not show any current.
+But when they saw the structure, they could see a very large pore in here.
+And the radius is large through the whole pore.
+But they could not record current while they give an hypothesis.
+When they see the current, it's quite large, so ions would easily pass whatever ions would easily pass inside.
+Electrostatic interacting?
+That's one explanation. There is no electrostatic attraction by the arginine.
+But even if you impose a potential, you should see something moving.
+If you have a negative here, positive here, and you have a sodium, it could pass.
+What do they see here?
+When you saw the structure of the channel, you did the arginine.
+And inside the structure, they could see the arginine, which almost be repeats.
+So one of their explanations is that mainly the pore is large, so some repeats can enter here and block the channel.
+But that's just an hypothesis.
+And then they did an MD simulation, so they can see the chloride pass in thermal influx.
+At 500 mV, it's quite big, but it's a simulation.
+But they can see the position change of the ion compared to the sodium, where they don't see any change in their simulation.
+Maybe other kind of structural analysis, which I don't understand well.
+And then finally, they could make a model of their channel.
+And this is also the crystal structure with the ionized onion, or iodide, inside the structure and trapped within the arginine region.
+They could take a picture with the ion.
+So the crystal structure is always something that is just one picture, the present picture.
+It's not dynamic, but recently, they can do structure at different positions, at different kind of time codes of the different structural channels.
+So the technique also is involved in the past.
+Just I forgot to mention.
+So they did also biochemical analysis.
+They did different, so they observed the protein expression in the membranes.
+And they did immunostaining, where they expressed the channel and they infused with the GFP in the oocyte.
+And you can see that the expression is only around the oocyte.
+It's the surface expression.
+The channel is well expressed in the plasma membrane.
+And they used facts to study the expression on egg cells.
+And they could see the sheet in the fluorescence indicating the surface expression.
+Do you know what is the facts?
+Not facts like this.
+It's all standard.
+The key facts.
+How much is using in the lab?
+The rest of them.
+Is it seven?
+One is eight.
+Assisted?
+Yeah.
+Oh, really?
+Okay.
+So what is this?
+Who knows?
+Who doesn't know?
+Who has never heard of this?
+Fluorescence and cell solving.
+It's a kind of analysis technique where you can count and check each cell fluorescence.
+And you can count thousands of cells.
+The treat very simply.
+Explain.
+Through a small...
+How to say it?
+Also...
+No, no.
+The stream of...
+There is a laser.
+The laser is here.
+And the laser is here.
+And there is a small...
+Yeah, beam of cells that are passed just one by one in a degree.
+And you can pass the cell across a laser.
+The analyzer will count the cell and measure the intensity of the fluorescence.
+If you decorate your cell with an antibody and a proper protocol, the cell will measure the fluorescence,
+count the cell, measure the intensity of the fluorescence.
+You can have a laser one and laser two.
+So you can decorate with another color also.
+And you can analyze.
+And you can usually kind of plot where the analyzer population of cells according to the fluorescence.
+And then you can have a magnetic trick.
+And you can separate cells that have high...
+You can say, I want cells like this.
+So you can separate cells according to the fluorescence intensity.
+It's a very powerful trick.
+One machine costs the price of the house.
+Very expensive.
+Or even more expensive than a house.
+So it's a very powerful technique.
+It's an immunology using a lot of facts.
+So you can count the population of cells and separate cell population and use them for other experiments.
+So they use the facts.
+So they decorate their chloride channel and they see that it's well at the surface of the plasma membrane.
+So you can say, if it's not at the surface of the plasma membrane, you cannot see the fluorescence.
+That's how they do using the facts.
+And what was the last experiment they did?
+So they measure in.
+Ah!
+No.
+There's some symbol in the first.
+Ah, here.
+Yeah.
+Okay.
+So they have a nice channel.
+And they do some mutation.
+They characterize the mutant.
+But they do one more mutation where they replace the algae by an aminoxidone.
+What is it?
+Aminoxidone.
+Okay.
+Ah!
+Okay.
+They change aminoxidone.
+And one thing, they are cell.
+So the one side, I mean, the first design of the chloride channel.
+The first version of the chloride channel.
+And design both these data.
+And another.
+And they will change one amino acid.
+And what they are cell?
+Yeah.
+You can see a sheet.
+I mean, a sheet where the, how do you say, the threshold of, the voltage threshold of
+activation is shifted by around 20 millivolts.
+And the activation, we already observed that plus 20 millivolts.
+And there is a large current at 40 millivolts compared to the original one.
+You can see the change.
+Here is the voltage at first 40, at first 20.
+And you can see a significant increase.
+Ah!
+Already, 100 quanpere, which is the current in terms of physiology.
+At first 40, you already have 400 quanpere, which is quite large.
+Okay.
+There is no change in the safety.
+Ah!
+Still very selective chloride.
+Ah!
+So, what does this imply?
+Is this quantification, is puny, small puny.
+Ah!
+Generate chloride current at physiological range for the action potential.
+Ah!
+Okay.
+So, what does it mean?
+That if you have an action potential plus 40, you will activate the chloride channel.
+Ah!
+You might have some physiological impact in people.
+So, what they need?
+They construct an AAD.
+What is AAD?
+AAD.
+It's final.
+We can feed virus.
+No problem with the virus.
+Ah!
+Yeah.
+We will develop.
+You just...
+You just use the genes of the virus and the cells will make the virus by themselves.
+And then you can refit the virus.
+Just for research purposes.
+Some people can read that.
+But usually it's for...
+Why this kind of virus?
+How do you keep the...
+So, we discussed before when you have the DNA and you want to express the channel
+and you want to put the DNA into the cell and protect cells.
+So, what is the technique for research?
+We'll show you.
+We'll go over there.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+Tran.
+temperature for a real differentiated cell.
+So what we use, we infect cells as when we are infected
+by the influenza, we will easily enter our cells.
+So using virus, we can transuse transduction, not
+transprotection.
+It's transduction.
+We just put some virus.
+Inside the virus, you have the gene of interest.
+It can be fluorescent protein, or it can be a channel.
+And the virus enters easily into the neuron
+or the cardinal site.
+But you can also use the virus, and you just
+need to intermise.
+So they inject the virus.
+And AAV is called associated adenovirus.
+It's a type of virus.
+So they made the construction adenov-associated virus
+with one A promoter, GFP, and the three channels.
+The original construct, the voltage-gated anion channel,
+and the modified one, voltage-gated anion channel,
+number one.
+Using a syringe, they inject in a specific area of the brain,
+and they can see the fluorescence by GFP.
+So they can locate within the tissue what cells are being
+infected, and they can see that the neurons are
+being infected in their system.
+And using electrodes, just like patch cloth,
+they don't measure the current, but they measure the,
+if you don't measure the current, you measure the membrane.
+Potential.
+Yes.
+OK.
+So they can measure action potential.
+OK.
+And that's the PBLM here.
+So uninfected cells.
+So they can measure the activity of neurons.
+Now you can see that they inject a different current
+on the stimulus, and then they measure the action potential.
+OK.
+When they infect with the original construct,
+they have a little bit of the channel activity,
+but not so much.
+OK.
+But when they use the voltage-gated anion channel,
+they reduce the activity vis-a-vis the company.
+And when they use a modified one,
+they can completely stop the activation.
+Or they count the firing rate, and the last human one
+completely block the action potential.
+OK.
+In response to different current injections,
+that's one other point there.
+They have a significant reduction.
+OK.
+So they design a chloride channel,
+a voltage-gated fluorine channel.
+They tune the channel so it has nice characteristic
+of zero-tigarification.
+They make the structure.
+The structure help to tune the channel axis.
+And then they need some in vivo experiments
+to prove that their channel can be used in vivo.
+OK.
+So it's a gene that never exists,
+but it was just built up from scratch.
+So that makes it a very, very interesting nice paper.
+So there is room for improvement or modification and change.
+OK.
+Questions?
+Just about the method, like the virus-infected one,
+would it be contagious to do it as well?
+Yeah.
+Really?
+Yeah.
+So you have to wear gloves.
+OK.
+Special lens.
+And I had an accident once when I was purifying.
+So you produce the cell, and you have the liquid,
+you isolate the liquid in the tubes,
+and then using season chloride radiance
+and other neutral centrifugation,
+you can concentrate the virus in an area in a chloride,
+season chloride radiance.
+And then you need to put the C range
+and take the virus in the C range, and then clean.
+You have to remove the system chloride by cleaning steps.
+And I took out too fast the C range
+and the liquid was dropping out.
+Luckily, I have my glasses.
+I have the virus on my glasses.
+And so I was like, why don't you wear eyes?
+If you touch your skin, it doesn't happen anything,
+but your eyes have to be protected.
+You have to be careful not to inject your cell.
+Yeah.
+So you have the history level.
+You have levels of, how to say, culture rules, cell culture
+rules, where you can work with them.
+So some people, I remember, worked with an anti-virus,
+HIV virus, to do the research also.
+So they have a very specific, you have to wear.
+Yeah.
+And you have the sophistication.
+There's no idea how to do it.
+Yeah.
+And in a virus, you can do it just like this.
+But you have to be careful not to.
+Yeah.
+So of course, when you do the experiments,
+you work with dangerous signals.
+You have to be very careful when you do your research.
+That's why you have to have special training.
+We used to work with, nowadays, it's very rare,
+but we used to work with radiography.
+There's also the two.
+It's Tricia, and it seems like this.
+I have some people I knew working with IO.
+It's very, very dangerous.
+We have special protection and special labs for these.
+Nowadays, the radiography is very much less.
+But I used to work with them.
+When you have the combat, you have to be careful.
+And then you have to check everywhere.
+You have to check the clothes.
+You don't have spots.
+Otherwise, the scalp and the containers.
+Yeah, yeah.
+Working with chemicals is dangerous.
+Working with biological as a material.
+You have to be extra careful.
+So don't choose as fast when you do experiments.
+Okay?
+Stay concentrated.
+Stay focused on your experiments.
+In some patch camp experiments,
+I use a tetrodotoxin.
+Careful.
+I have a colleague in the hospital.
+She was working with bacteria,
+called this very infectious bacteria.
+And she had to inject mice.
+And the mice was very nervous.
+The mice moved.
+And she injected herself with bacteria.
+She spent three months in the hospital.
+So she had to...
+She could get better, but three months in the hospital.
+It's not fun with bacteria, infectious bacteria.
+So when they have to produce this virus,
+you have to be careful.
+And the injection, you have to be careful.
+The research light is interesting.
+Okay.
+Question?
+Okay.
+We have five minutes.
+I know I'll stress you the most in the exam questions.
+So we had four papers.
+So most...
+The only question we come from is paper.
+Okay?
+So I will help you.
+We have four papers.
+The first one was the CAB1.2, I think.
+The liquid scale and the electro-sensing.
+Okay?
+And we saw that there was gate impairment.
+The ID curve and things like this.
+And then the second was a proton channel
+where they identify a new proton channel as a test.
+And we can see the selectivity.
+So they tested the protein.
+They identified selectivity for proton.
+So it was interesting.
+The paper was...
+The third paper was not on electrophysiology characterization.
+It was just the function of this mutant, this super mutant.
+Everybody wanted to have a mutation.
+We can make a big jump.
+Okay?
+And this last paper on the design of the channel.
+Okay?
+So...
+Yeah.
+Please read this one because it's interesting.
+I don't know.
+It's very designed.
+So...
+Yeah.
+There will be probably no question on this paper,
+but mostly on ion channel characteristics.
+And there is a very difficult characteristic
+of getting ion channel.
+How you measure the current.
+What is an ID curve?
+What does it mean?
+Selectivity in the current.
+This kind of thing.
+Okay?
+So please try to read the papers and understand,
+especially the electrophysiological features.
+Try to understand them.
+And the question will be more about this.
+And if you have question,
+I want to understand this.
+What does this ID mean?
+Just send an e-mail.
+And I will reply to everyone.
+So everyone can have a question and reply.
+Which might help everyone.
+And not everyone ask me the same question.
+Okay?
+Okay?
+Good?
+Okay.
+So, study hard.
+Go to your job.
+After studying, you will have to work hard.
+And then you will say, oh, you have to work hard.
+Okay?
+But, enjoy your human life.
+Because student's life is the best time.
+Human life, I think.
+Ha-ha-ha!
+Class?
+Yeah.
+Class?
