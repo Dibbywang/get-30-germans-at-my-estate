@@ -1,5 +1,10 @@
-/* g30-styles.css */
-body {
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -12,15 +17,18 @@ body {
     color: white;
     padding: 10px 20px;
     display: flex;
-    justify-content: flex-start; /* Change from space-between to flex-start */
+    justify-content: flex-start;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 
 /* Modify the nav-links */
 .nav-links {
     display: flex;
-    margin-left: 40px; /* Add some space between logo and links */
+    margin-left: 20px;
+    flex-wrap: wrap;
 }
 
 .John_notif {
@@ -36,13 +44,12 @@ body {
 .user-options {
     display: none; /* Hide it completely */
 }
-/* And modify the logo-container */
+
 .logo-container {
     display: flex;
     align-items: center;
-    min-width: 180px; /* Add this to give the logo area a fixed space */
+    min-width: 180px;
 }
-
 
 .logo-image {
     height: 40px;
@@ -54,24 +61,43 @@ body {
     font-weight: bold;
 }
 
-.nav-links {
-    display: flex;
-    /* Remove justify-content: center; */
-    /* Remove flex-grow: 1; */
-    margin-left: 20px; /* Add this instead */
-}
-
 .nav-links a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
-    padding: 8px 15px;
+    margin: 0 10px;
+    padding: 8px 12px;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .nav-links a:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 10px 15px;
+        justify-content: space-between;
+    }
+    .logo-container {
+        min-width: auto;
+    }
+    .logo-text {
+        font-size: 20px;
+    }
+    .nav-links {
+        margin-left: 0;
+        margin-top: 8px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 4px;
+    }
+    .nav-links a {
+        margin: 2px 4px;
+        padding: 6px 10px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
 }
 
 .user-options {

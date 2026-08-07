@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G30 is Beautiful - Statistics</title>
+    <title>G30 is Beautiful - Statistics & Awards</title>
     <link rel="stylesheet" href="g30-styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
 
     <style>
-        /* --- INTERNAL STYLES FOR STATS-SPECIFIC ELEMENTS --- 
-           (Only defining things not present in g30-styles.css like tables, tabs, and loading spinners) 
-        */
+        /* --- INTERNAL STYLES FOR STATS & AWARDS --- */
 
-        /* --- LOADING STATE --- */
+        /* LOADING STATE */
         #loading-screen {
             text-align: center;
             padding-top: 100px;
@@ -21,7 +19,7 @@
 
         .spinner {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #00664a; /* Matched to Theme Green */
+            border-top: 4px solid #00664a;
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -34,7 +32,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* --- TABS (Updated colors to match Theme) --- */
+        /* TABS */
         .tabs {
             display: flex;
             border-bottom: 2px solid #e1e4e8;
@@ -47,7 +45,7 @@
             padding: 12px 25px;
             background: none;
             border: none;
-            font-size: 16px; /* Approx 1rem */
+            font-size: 16px;
             color: #666;
             cursor: pointer;
             border-bottom: 4px solid transparent;
@@ -58,15 +56,15 @@
         }
 
         .tab-btn:hover {
-            color: #00664a; /* Theme Green */
+            color: #00664a;
         }
 
         .tab-btn.active {
-            color: #00664a; /* Theme Green */
+            color: #00664a;
             border-bottom: 4px solid #00664a;
         }
 
-        /* --- PANELS --- */
+        /* PANELS */
         .panel {
             display: none;
             animation: fadeIn 0.4s ease;
@@ -81,7 +79,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- STAT LIST STYLES (Inside Course Cards) --- */
+        /* STAT LIST STYLES */
         .stat-row {
             display: flex;
             justify-content: space-between;
@@ -96,7 +94,7 @@
         }
 
         .stat-badge {
-            background: #e6f0ed; /* Light Green Tint */
+            background: #e6f0ed;
             color: #00664a;
             padding: 4px 12px;
             border-radius: 20px;
@@ -114,7 +112,7 @@
             border-left: 4px solid #00664a;
         }
 
-        /* --- SEARCH INPUTS --- */
+        /* SEARCH INPUTS */
         .search-box {
             width: 100%;
             padding: 15px;
@@ -123,7 +121,7 @@
             font-size: 16px;
             margin-bottom: 20px;
             box-sizing: border-box;
-            transition: border 0.2s;
+            transition: border 0.2s, box-shadow 0.2s;
             background: #fff;
         }
 
@@ -133,7 +131,174 @@
             box-shadow: 0 0 0 3px rgba(0, 102, 74, 0.1);
         }
 
-        /* --- CSV TABLE --- */
+        /* CLICKABLE STUDENT LINKS */
+        .student-link {
+            color: #00664a;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.15s ease, text-decoration 0.15s ease;
+        }
+
+        .student-link:hover {
+            color: #004231;
+            text-decoration: underline;
+        }
+
+        .author-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            border-bottom: 1px solid #eee;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+
+        .author-card:hover {
+            background: #f0f7f4;
+            transform: translateX(4px);
+        }
+
+        /* SEMESTER AWARDS STYLES */
+        .award-card {
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #e1e4e8;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            padding: 22px;
+            margin-bottom: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .award-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        .award-semester-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #004231;
+            border-bottom: 2px solid #00664a;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .award-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .award-item {
+            background: #f8fbf9;
+            border: 1px solid #d0e6df;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .award-item-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #00664a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .award-item-content {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .award-item-meta {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 720px;
+            max-height: 85vh;
+            max-height: 85dvh;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fcfcfc;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 30px;
+            color: #888;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+            max-height: calc(85vh - 85px);
+        }
+
+        /* CSV TABLE STYLES */
         .csv-wrapper {
             overflow-x: auto;
             border: 1px solid #e1e4e8;
@@ -146,7 +311,7 @@
             border-collapse: collapse;
             font-family: 'Consolas', monospace;
             font-size: 14px;
-            min-width: 600px;
+            min-width: 650px;
         }
 
         .csv-table th {
@@ -169,7 +334,7 @@
 
         .raw-csv-area {
             width: 100%;
-            height: 150px;
+            height: 160px;
             padding: 15px;
             font-family: monospace;
             border: 1px solid #ddd;
@@ -180,15 +345,45 @@
             box-sizing: border-box;
         }
 
-        /* --- ERROR MESSAGE --- */
-        .error-box {
-            background: #ffeef0;
-            color: #b31d28;
-            padding: 20px;
-            border-radius: 5px;
-            border: 1px solid #f9d1d5;
-            display: none;
-            margin-top: 20px;
+        /* MOBILE RESPONSIVENESS POLISH */
+        @media (max-width: 650px) {
+            .page-title {
+                font-size: 22px;
+                margin-bottom: 18px;
+            }
+            .tabs {
+                gap: 4px;
+            }
+            .tab-btn {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            .award-grid {
+                grid-template-columns: 1fr;
+            }
+            .award-card {
+                padding: 15px;
+            }
+            .course-details {
+                padding: 16px !important;
+            }
+            .modal-content {
+                width: 95%;
+                max-height: 90vh;
+            }
+            .modal-header {
+                padding: 14px 16px;
+            }
+            .modal-body {
+                padding: 16px;
+            }
+            .stat-badge {
+                font-size: 0.75rem;
+                padding: 3px 8px;
+            }
+            .award-semester-title {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
@@ -211,7 +406,7 @@
 
     <div class="main-content">
 
-        <h1 class="page-title">Database Statistics</h1>
+        <h1 class="page-title">Database Statistics & Awards</h1>
 
         <div id="loading-screen">
             <div class="spinner"></div>
@@ -226,11 +421,14 @@
                 <button class="tab-btn active" onclick="showTab('overview', this)">Overview</button>
                 <button class="tab-btn" onclick="showTab('authors', this)">Students</button>
                 <button class="tab-btn" onclick="showTab('reports', this)">Publications</button>
+                <button class="tab-btn" onclick="showTab('overall', this)">Overall Awards</button>
+                <button class="tab-btn" onclick="showTab('awards', this)">Semester Awards</button>
                 <button class="tab-btn" onclick="showTab('csv', this)">Data Export</button>
             </div>
 
+            <!-- OVERVIEW PANEL -->
             <div id="overview" class="panel active">
-                <div class="courses-grid">
+                <div class="courses-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
                     
                     <div class="course-card">
                         <div class="course-details">
@@ -242,24 +440,19 @@
                     <div class="course-card">
                         <div class="course-details">
                             <h3 class="course-title">Course Semesters</h3>
-                            <div id="category-list" style="max-height: 400px; overflow-y: auto;"></div>
+                            <div id="category-list" style="max-height: 450px; overflow-y: auto;"></div>
                         </div>
                     </div>
 
-                    <div class="course-card">
-                        <div class="course-details">
-                            <h3 class="course-title">Highest Collaboration</h3>
-                            <p class="course-description">Publications with the highest number of co-authors.</p>
-                            <div id="collab-stats"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
+            <!-- STUDENTS PANEL -->
             <div id="authors" class="panel">
                 <div class="course-card">
                     <div class="course-details">
                         <h3 class="course-title">Student Contributors</h3>
+                        <p class="course-description" style="margin-bottom:12px;">Click on any student to view all their published reports in the database.</p>
                         <input type="text" id="author-search" class="search-box" placeholder="Search for a student..."
                             onkeyup="renderAuthors()">
                         <div id="author-list" style="max-height: 600px; overflow-y: auto;"></div>
@@ -267,35 +460,62 @@
                 </div>
             </div>
 
+            <!-- PUBLICATIONS PANEL -->
             <div id="reports" class="panel">
                 <div class="course-card">
                     <div class="course-details">
                         <h3 class="course-title">Publication Archive</h3>
-                        <input type="text" id="report-search" class="search-box" placeholder="Search by title..."
+                        <input type="text" id="report-search" class="search-box" placeholder="Search by paper title or student name..."
                             onkeyup="renderReports()">
                         <div id="report-list"></div>
                     </div>
                 </div>
             </div>
 
+            <!-- OVERALL AWARDS PANEL -->
+            <div id="overall" class="panel">
+                <div style="margin-bottom: 20px;">
+                    <h2 style="color:#004231; margin-bottom:8px;">Overall Hall of Fame Awards</h2>
+                    <p style="color:#666; margin:0;">Top 10 leaderboard rankings across all course semesters recorded in the database repository.</p>
+                </div>
+                <div id="overall-awards-container"></div>
+            </div>
+
+            <!-- SEMESTER AWARDS PANEL -->
+            <div id="awards" class="panel">
+                <div style="margin-bottom: 20px;">
+                    <h2 style="color:#004231; margin-bottom:8px;">Semester Recognition & Awards</h2>
+                    <p style="color:#666; margin:0;">Calculated statistics and records for each course semester. Click any author name to inspect their publications.</p>
+                </div>
+                <div id="awards-list"></div>
+            </div>
+
+            <!-- DATA EXPORT PANEL -->
             <div id="csv" class="panel">
                 <div class="course-card">
                     <div class="course-details">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                            <h3 class="course-title">Generated Data</h3>
-                            <button onclick="copyCSV()" class="course-button" style="border:none; cursor:pointer;">
-                                Copy Raw CSV
-                            </button>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
+                            <div>
+                                <h3 class="course-title" style="margin:0;">Database Export</h3>
+                                <p style="color:#666; font-size:14px; margin:4px 0 0 0;">Complete repository records exported in CSV format.</p>
+                            </div>
+                            <div style="display:flex; gap:10px;">
+                                <button onclick="setExportMode('reports')" id="btn-export-reports" class="course-button" style="border:none; cursor:pointer; background:#00664a;">
+                                    All Reports CSV
+                                </button>
+                                <button onclick="setExportMode('summary')" id="btn-export-summary" class="course-button" style="border:none; cursor:pointer; background:#666;">
+                                    Semester Summaries CSV
+                                </button>
+                                <button onclick="copyCSV()" class="course-button" style="border:none; cursor:pointer; background:#004231;">
+                                    Copy Raw CSV
+                                </button>
+                            </div>
                         </div>
                         
                         <div class="csv-wrapper">
                             <table class="csv-table" id="csv-table-body">
                                 <thead>
-                                    <tr>
-                                        <th>Course / Semester</th>
-                                        <th>Statistic</th>
-                                        <th>Data</th>
-                                    </tr>
+                                    <tr id="csv-table-headers"></tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
@@ -310,6 +530,20 @@
         </div>
     </div>
 
+    <!-- STUDENT DETAIL MODAL -->
+    <div id="student-modal" class="modal-backdrop" onclick="closeStudentModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modal-student-name" style="margin:0; color:#00664a; font-size:22px;"></h2>
+                    <div id="modal-student-subtitle" style="color:#666; font-size:14px; margin-top:4px;"></div>
+                </div>
+                <button class="modal-close" onclick="closeStudentModal()">&times;</button>
+            </div>
+            <div id="modal-student-reports" class="modal-body"></div>
+        </div>
+    </div>
+
     <script>
         // --- CONFIGURATION ---
         const DB_FILE = 'sml_reports.db';
@@ -321,6 +555,7 @@
         let reportsByPage = {};
         let reportsByAuthor = {}; 
         let nameVariations = {}; 
+        let currentExportMode = 'reports'; // 'reports' or 'summary'
 
         // --- INITIALIZATION ---
         window.onload = async function () {
@@ -408,11 +643,62 @@
             return valB - valA; 
         }
 
+        // --- STUDENT MODAL LOGIC ---
+        function openStudentModal(key) {
+            const reports = reportsByAuthor[key] || [];
+            const displayName = getDisplayName(key);
+            
+            document.getElementById('modal-student-name').innerText = displayName;
+            document.getElementById('modal-student-subtitle').innerText = `${reports.length} Published Report${reports.length === 1 ? '' : 's'} recorded in database`;
+            
+            let html = '';
+            if (reports.length === 0) {
+                html = '<div style="text-align:center; padding:30px; color:#888;">No published reports found.</div>';
+            } else {
+                reports.forEach(r => {
+                    const coAuthors = r.authors.map(a => {
+                        const aKey = normalizeName(a);
+                        const aName = getDisplayName(aKey);
+                        if (aKey === key) return `<strong>${aName}</strong>`;
+                        return `<span class="student-link" onclick="event.stopPropagation(); openStudentModal('${aKey}')">${aName}</span>`;
+                    }).join(', ');
+
+                    html += `
+                        <div class="collab-item" style="margin-bottom:15px; background:#fff; border-left-color:#00664a; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+                            <div style="font-size:12px; font-weight:bold; color:#00664a; text-transform:uppercase; margin-bottom:4px; letter-spacing:0.5px;">
+                                ${r.page_title}
+                            </div>
+                            <div style="font-size:16px; font-weight:bold; color:#333; margin-bottom:6px; line-height:1.3;">
+                                ${r.title}
+                            </div>
+                            <div style="font-size:13px; color:#555; margin-bottom:8px;">
+                                Authors: ${coAuthors}
+                            </div>
+                            ${r.link ? `<a href="${r.link}" target="_blank" style="font-size:13px; color:#00664a; font-weight:bold; text-decoration:none; display:inline-block;">View Publication PDF &rarr;</a>` : ''}
+                        </div>
+                    `;
+                });
+            }
+            
+            document.getElementById('modal-student-reports').innerHTML = html;
+            document.getElementById('student-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStudentModal(e) {
+            if (!e || e.target === document.getElementById('student-modal') || e.target.classList.contains('modal-close')) {
+                document.getElementById('student-modal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
         // --- RENDERING ---
         function renderAll() {
             renderOverview();
             renderAuthors(); 
             renderReports(); 
+            renderOverall();
+            renderAwards();
             renderCSV();
         }
 
@@ -432,25 +718,145 @@
                 catHtml += `<div class="stat-row"><span>${p}</span> <span class="stat-badge">${reportsByPage[p].length}</span></div>`;
             });
             document.getElementById('category-list').innerHTML = catHtml;
+        }
 
-            if (allReports.length > 0) {
-                const sortedRep = [...allReports].sort((a, b) => b.authors.length - a.authors.length);
-                const max = sortedRep[0].authors.length;
-                const tops = sortedRep.filter(r => r.authors.length === max);
-                let collabHtml = `<p>Max authors on one paper: <strong>${max}</strong></p>`;
-                tops.forEach(r => {
-                    collabHtml += `
-                    <div class="collab-item">
-                        <strong style="display:block; margin-bottom:5px; color:#333;">${r.title}</strong>
-                        <small style="color:#666;">${r.authors.join(', ')}</small>
-                    </div>`;
-                });
-                document.getElementById('collab-stats').innerHTML = collabHtml;
+        let overallExpandState = {
+            shortest: false,
+            longest: false,
+            collab: false
+        };
+
+        function toggleOverallExpand(key) {
+            overallExpandState[key] = !overallExpandState[key];
+            renderOverall();
+        }
+
+        function renderOverall() {
+            const container = document.getElementById('overall-awards-container');
+            if (!container) return;
+
+            if (allReports.length === 0) {
+                container.innerHTML = '<div style="padding:20px; text-align:center; color:#888;">No database records available.</div>';
+                return;
             }
+
+            // 1. Shortest Titles (Top 15 available, top 5 preview)
+            const shortestList = [...allReports]
+                .sort((a, b) => a.title_char_count - b.title_char_count || a.id - b.id)
+                .slice(0, 15);
+            const shortestShown = overallExpandState.shortest ? shortestList : shortestList.slice(0, 5);
+
+            // 2. Longest Titles (Top 15 available, top 5 preview)
+            const longestList = [...allReports]
+                .sort((a, b) => b.title_char_count - a.title_char_count || a.id - b.id)
+                .slice(0, 15);
+            const longestShown = overallExpandState.longest ? longestList : longestList.slice(0, 5);
+
+            // 3. Academic Honesty Award (Top 15 available, top 5 preview)
+            const collabList = [...allReports]
+                .sort((a, b) => b.authors.length - a.authors.length || a.id - b.id)
+                .slice(0, 15);
+            const collabShown = overallExpandState.collab ? collabList : collabList.slice(0, 5);
+
+            function renderListItems(list, getBadgeText) {
+                return list.map((r, idx) => {
+                    const authorsHtml = r.authors.map(a => {
+                        const k = normalizeName(a);
+                        return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                    }).join(', ');
+
+                    return `
+                        <div style="padding: 12px 14px; border-bottom: 1px solid #eee; display:flex; align-items:flex-start; gap:12px; transition: background 0.15s;" onmouseover="this.style.background='#f9fbf9'" onmouseout="this.style.background='transparent'">
+                            <span style="background:#00664a; color:#fff; font-weight:bold; font-size:13px; border-radius:50%; min-width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; margin-top:2px; flex-shrink:0;">#${idx + 1}</span>
+                            <div style="flex-grow:1; min-width:0; word-break:break-word; overflow-wrap:anywhere;">
+                                <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px;">
+                                    <span style="font-weight:bold; color:#222; font-size:16px; word-break:break-word;">"${r.title}"</span>
+                                    <span class="stat-badge" style="flex-shrink:0; margin-left:auto;">${getBadgeText(r)}</span>
+                                </div>
+                                <div style="font-size:14px; color:#555; margin-top:4px; word-break:break-word;">
+                                    by ${authorsHtml} &bull; <span style="color:#00664a; font-weight:600;">${r.page_title}</span>
+                                </div>
+                                ${r.link ? `<a href="${r.link}" target="_blank" style="font-size:13px; color:#00664a; text-decoration:none; font-weight:bold; display:inline-block; margin-top:6px;">View PDF &rarr;</a>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const html = `
+                <div style="display: flex; flex-direction: column; gap: 30px;">
+                    
+                    <!-- SECTION 1: SHORTEST TITLES -->
+                    <div class="course-card">
+                        <div class="course-details" style="padding:24px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px; border-bottom:2px solid #00664a; padding-bottom:12px; flex-wrap:wrap; gap:8px;">
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    <span style="font-size:26px;">🤏</span>
+                                    <h3 class="course-title" style="margin:0; font-size:22px; color:#004231;">Shortest Titles (${overallExpandState.shortest ? 'Top 15' : 'Top 5 Preview'})</h3>
+                                </div>
+                                <span class="stat-badge">${shortestShown.length} of ${shortestList.length} shown</span>
+                            </div>
+                            <div>
+                                ${renderListItems(shortestShown, r => `${r.title_char_count} Chars`)}
+                            </div>
+                            <div style="text-align:center; margin-top:16px;">
+                                <button onclick="toggleOverallExpand('shortest')" class="course-button" style="border:none; cursor:pointer; background:#00664a; display:inline-block; padding:10px 24px;">
+                                    ${overallExpandState.shortest ? 'Show Top 5 &uarr;' : 'Learn More (Show Top 15) &darr;'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 2: LONGEST TITLES -->
+                    <div class="course-card">
+                        <div class="course-details" style="padding:24px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px; border-bottom:2px solid #00664a; padding-bottom:12px; flex-wrap:wrap; gap:8px;">
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    <span style="font-size:26px;">📜</span>
+                                    <h3 class="course-title" style="margin:0; font-size:22px; color:#004231;">Longest Titles (${overallExpandState.longest ? 'Top 15' : 'Top 5 Preview'})</h3>
+                                </div>
+                                <span class="stat-badge">${longestShown.length} of ${longestList.length} shown</span>
+                            </div>
+                            <div>
+                                ${renderListItems(longestShown, r => `${r.title_char_count} Chars`)}
+                            </div>
+                            <div style="text-align:center; margin-top:16px;">
+                                <button onclick="toggleOverallExpand('longest')" class="course-button" style="border:none; cursor:pointer; background:#00664a; display:inline-block; padding:10px 24px;">
+                                    ${overallExpandState.longest ? 'Show Top 5 &uarr;' : 'Learn More (Show Top 15) &darr;'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 3: ACADEMIC HONESTY AWARD -->
+                    <div class="course-card">
+                        <div class="course-details" style="padding:24px;">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px; border-bottom:2px solid #00664a; padding-bottom:12px; flex-wrap:wrap; gap:8px;">
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    <span style="font-size:26px;">🚨</span>
+                                    <h3 class="course-title" style="margin:0; font-size:22px; color:#004231;">Academic Honesty Award (${overallExpandState.collab ? 'Top 15 Most Collaborators' : 'Top 5 Preview'})</h3>
+                                </div>
+                                <span class="stat-badge">${collabShown.length} of ${collabList.length} shown</span>
+                            </div>
+                            <div>
+                                ${renderListItems(collabShown, r => `${r.authors.length} Authors`)}
+                            </div>
+                            <div style="text-align:center; margin-top:16px;">
+                                <button onclick="toggleOverallExpand('collab')" class="course-button" style="border:none; cursor:pointer; background:#00664a; display:inline-block; padding:10px 24px;">
+                                    ${overallExpandState.collab ? 'Show Top 5 &uarr;' : 'Learn More (Show Top 15) &darr;'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+
+            container.innerHTML = html;
         }
 
         function renderAuthors() {
-            const q = document.getElementById('author-search').value.toLowerCase();
+            const q = document.getElementById('author-search').value.toLowerCase().trim();
             const container = document.getElementById('author-list');
             let list = Object.keys(reportsByAuthor).map(key => ({
                 key: key,
@@ -464,75 +870,253 @@
             const limit = q ? list.length : 100;
             list.slice(0, limit).forEach(item => {
                 html += `
-                    <div class="stat-row">
-                        <span>${item.display}</span>
-                        <span class="stat-badge">${item.count}</span>
+                    <div class="author-card" onclick="openStudentModal('${item.key}')">
+                        <span class="student-link" style="font-size:15px; pointer-events:none;">${item.display}</span>
+                        <span class="stat-badge">${item.count} paper${item.count === 1 ? '' : 's'} &rarr;</span>
                     </div>`;
             });
-            if (list.length > limit) html += `<div style="text-align:center; padding:10px; color:#888;">...and ${list.length - limit} more</div>`;
-            if (list.length === 0) html = `<div style="padding:20px; text-align:center; color:#888;">No students found.</div>`;
+            if (list.length > limit) html += `<div style="text-align:center; padding:12px; color:#888;">...and ${list.length - limit} more</div>`;
+            if (list.length === 0) html = `<div style="padding:20px; text-align:center; color:#888;">No students found matching "${q}".</div>`;
             container.innerHTML = html;
         }
 
         function renderReports() {
-            const q = document.getElementById('report-search').value.toLowerCase();
+            const q = document.getElementById('report-search').value.toLowerCase().trim();
             const container = document.getElementById('report-list');
             let matches = allReports;
-            if (q) matches = allReports.filter(r => r.title.toLowerCase().includes(q));
-            else matches = allReports.slice(0, 20); 
+            if (q) {
+                matches = allReports.filter(r => 
+                    r.title.toLowerCase().includes(q) || 
+                    r.author_name.toLowerCase().includes(q) ||
+                    r.authors.some(a => a.toLowerCase().includes(q))
+                );
+            } else {
+                matches = allReports.slice(0, 30);
+            }
 
             let html = '';
             matches.forEach(r => {
+                const authorsHtml = r.authors.map(a => {
+                    const k = normalizeName(a);
+                    const d = getDisplayName(k);
+                    return `<span class="student-link" onclick="openStudentModal('${k}')">${d}</span>`;
+                }).join(', ');
+
                 html += `
-                    <div style="padding:15px; border-bottom:1px solid #eee;">
+                    <div style="padding:16px; border-bottom:1px solid #eee; transition:background 0.2s;" onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background='transparent'">
                         <div style="font-weight:bold; color:#00664a; font-size:12px; text-transform:uppercase; letter-spacing:0.5px;">${r.page_title}</div>
                         <div style="font-size:18px; margin:6px 0; font-weight:bold; color:#333;">${r.title}</div>
-                        <div style="color:#666; font-size:14px;">by ${r.author_name}</div>
-                        ${r.link ? `<a href="${r.link}" target="_blank" style="display:inline-block; margin-top:8px; font-size:14px; color:#00664a; text-decoration:none; font-weight:bold;">View Publication &rarr;</a>` : ''}
+                        <div style="color:#555; font-size:14px;">by ${authorsHtml}</div>
+                        ${r.link ? `<a href="${r.link}" target="_blank" style="display:inline-block; margin-top:8px; font-size:14px; color:#00664a; text-decoration:none; font-weight:bold;">View Publication PDF &rarr;</a>` : ''}
                     </div>`;
             });
-            if (matches.length === 0) html = `<div style="padding:20px; text-align:center; color:#888;">No publications found.</div>`;
+            if (matches.length === 0) html = `<div style="padding:20px; text-align:center; color:#888;">No publications matching "${q}" found.</div>`;
             container.innerHTML = html;
         }
 
-        function renderCSV() {
-            const tbody = document.querySelector('#csv-table-body tbody');
-            let rawText = "Course,Statistic,Data\n";
-            let htmlRows = "";
-            const sortedPages = Object.keys(reportsByPage).sort(sortPagesDescending); 
+        function renderAwards() {
+            const container = document.getElementById('awards-list');
+            if (!container) return;
+
+            const sortedPages = Object.keys(reportsByPage).sort(sortPagesDescending);
+            let html = '';
 
             sortedPages.forEach(page => {
                 const reports = reportsByPage[page];
                 if (reports.length === 0) return;
-                const first = reports[0]; 
 
-                const addRow = (metric, val) => {
-                    htmlRows += `<tr><td><strong>${page}</strong></td><td>${metric}</td><td>${val}</td></tr>`;
-                    const safeVal = val.replace(/"/g, '""');
-                    rawText += `"${page}","${metric}","${safeVal}"\n`;
-                };
+                // 1. Earliest Submission (single earliest as requested)
+                const first = reports[0];
+                const firstAuthorsHtml = first.authors.map(a => {
+                    const k = normalizeName(a);
+                    return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                }).join(', ');
 
-                addRow("Earliest Submission", `'${first.title}' by ${first.author_name}`);
-
+                // 2. Top Contributor(s) - handle ties
                 const counts = {};
                 reports.forEach(r => r.authors.forEach(a => {
                     const k = normalizeName(a);
                     if (k !== 'unknown author') counts[k] = (counts[k] || 0) + 1;
                 }));
 
+                let topContributorContent = 'None';
+                let topContributorMeta = 'Most published papers this term';
+                let isTopTied = false;
+
                 if (Object.keys(counts).length > 0) {
-                    const topKey = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
-                    addRow("Most Frequent Contributor", `${getDisplayName(topKey)} (${counts[topKey]} papers)`);
+                    const maxCount = Math.max(...Object.values(counts));
+                    const topKeys = Object.keys(counts).filter(k => counts[k] === maxCount);
+                    const links = topKeys.map(k => `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`);
+
+                    if (topKeys.length === 1) {
+                        topContributorContent = `${links[0]} (${maxCount} paper${maxCount === 1 ? '' : 's'})`;
+                    } else {
+                        isTopTied = true;
+                        topContributorContent = links.join(', ');
+                        topContributorMeta = `<strong style="color:#00664a;">Tied:</strong> ${maxCount} paper${maxCount === 1 ? '' : 's'} each`;
+                    }
                 }
 
-                const shortest = reports.reduce((a, b) => a.title_char_count < b.title_char_count ? a : b);
-                const longest = reports.reduce((a, b) => a.title_char_count > b.title_char_count ? a : b);
+                // 3. Shortest Title(s) - handle ties
+                const minChars = Math.min(...reports.map(r => r.title_char_count));
+                const shortestReports = reports.filter(r => r.title_char_count === minChars);
 
-                addRow("Shortest Title", `'${shortest.title}' (${shortest.title_char_count} chars)`);
-                addRow("Longest Title", `'${longest.title}' (${longest.title_char_count} chars)`);
+                let shortestContent = '';
+                let shortestMeta = '';
+                if (shortestReports.length === 1) {
+                    const s = shortestReports[0];
+                    const sAuthorsHtml = s.authors.map(a => {
+                        const k = normalizeName(a);
+                        return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                    }).join(', ');
+                    shortestContent = `"${s.title}"`;
+                    shortestMeta = `by ${sAuthorsHtml} (${s.title_char_count} chars)`;
+                } else {
+                    shortestContent = shortestReports.map(s => {
+                        const sAuthorsHtml = s.authors.map(a => {
+                            const k = normalizeName(a);
+                            return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                        }).join(', ');
+                        return `<div style="margin-bottom:6px;">"${s.title}" <small style="color:#555; font-weight:normal;">by ${sAuthorsHtml}</small></div>`;
+                    }).join('');
+                    shortestMeta = `<strong style="color:#00664a;">Tied:</strong> ${minChars} chars each`;
+                }
 
-                htmlRows += `<tr style="background:#f4f6f8; height:10px;"><td colspan="3"></td></tr>`;
+                // 4. Longest Title(s) - handle ties
+                const maxChars = Math.max(...reports.map(r => r.title_char_count));
+                const longestReports = reports.filter(r => r.title_char_count === maxChars);
+
+                let longestContent = '';
+                let longestMeta = '';
+                if (longestReports.length === 1) {
+                    const l = longestReports[0];
+                    const lAuthorsHtml = l.authors.map(a => {
+                        const k = normalizeName(a);
+                        return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                    }).join(', ');
+                    longestContent = `"${l.title}"`;
+                    longestMeta = `by ${lAuthorsHtml} (${l.title_char_count} chars)`;
+                } else {
+                    longestContent = longestReports.map(l => {
+                        const lAuthorsHtml = l.authors.map(a => {
+                            const k = normalizeName(a);
+                            return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                        }).join(', ');
+                        return `<div style="margin-bottom:6px;">"${l.title}" <small style="color:#555; font-weight:normal;">by ${lAuthorsHtml}</small></div>`;
+                    }).join('');
+                    longestMeta = `<strong style="color:#00664a;">Tied:</strong> ${maxChars} chars each`;
+                }
+
+                html += `
+                    <div class="award-card">
+                        <div class="award-semester-title">
+                            <span>${page}</span>
+                            <span class="stat-badge">${reports.length} Reports</span>
+                        </div>
+                        <div class="award-grid">
+                            <div class="award-item">
+                                <div class="award-item-title">🥇 Earliest Submission</div>
+                                <div class="award-item-content">"${first.title}"</div>
+                                <div class="award-item-meta">by ${firstAuthorsHtml}</div>
+                            </div>
+                            <div class="award-item">
+                                <div class="award-item-title">👑 Top Contributor${isTopTied ? 's' : ''}</div>
+                                <div class="award-item-content">${topContributorContent}</div>
+                                <div class="award-item-meta">${topContributorMeta}</div>
+                            </div>
+                            <div class="award-item">
+                                <div class="award-item-title">🤏 Shortest Title${shortestReports.length > 1 ? 's' : ''}</div>
+                                <div class="award-item-content">${shortestContent}</div>
+                                <div class="award-item-meta">${shortestMeta}</div>
+                            </div>
+                            <div class="award-item">
+                                <div class="award-item-title">📜 Longest Title${longestReports.length > 1 ? 's' : ''}</div>
+                                <div class="award-item-content">${longestContent}</div>
+                                <div class="award-item-meta">${longestMeta}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
             });
+
+            container.innerHTML = html;
+        }
+
+        function setExportMode(mode) {
+            currentExportMode = mode;
+            document.getElementById('btn-export-reports').style.background = mode === 'reports' ? '#00664a' : '#666';
+            document.getElementById('btn-export-summary').style.background = mode === 'summary' ? '#00664a' : '#666';
+            renderCSV();
+        }
+
+        function renderCSV() {
+            const headerRow = document.getElementById('csv-table-headers');
+            const tbody = document.querySelector('#csv-table-body tbody');
+            let rawText = "";
+            let htmlRows = "";
+
+            if (currentExportMode === 'reports') {
+                headerRow.innerHTML = `
+                    <th>ID</th>
+                    <th>Semester</th>
+                    <th>Authors</th>
+                    <th>Report Title</th>
+                    <th>Char Count</th>
+                    <th>PDF Link</th>
+                `;
+                rawText = "ID,Semester,Authors,Title,TitleCharCount,Link\n";
+
+                allReports.forEach(r => {
+                    const safeTitle = r.title.replace(/"/g, '""');
+                    const safeAuthors = r.author_name.replace(/"/g, '""');
+                    const safeLink = (r.link || '').replace(/"/g, '""');
+
+                    rawText += `${r.id},"${r.page_title}","${safeAuthors}","${safeTitle}",${r.title_char_count},"${safeLink}"\n`;
+
+                    htmlRows += `
+                        <tr>
+                            <td>${r.id}</td>
+                            <td><strong>${r.page_title}</strong></td>
+                            <td>${r.author_name}</td>
+                            <td>${r.title}</td>
+                            <td>${r.title_char_count}</td>
+                            <td>${r.link ? `<a href="${r.link}" target="_blank" style="color:#00664a;">PDF Link</a>` : ''}</td>
+                        </tr>
+                    `;
+                });
+            } else {
+                headerRow.innerHTML = `
+                    <th>Semester</th>
+                    <th>Total Reports</th>
+                    <th>Unique Authors</th>
+                    <th>Avg Title Length</th>
+                `;
+                rawText = "Semester,TotalReports,UniqueAuthors,AvgTitleLength\n";
+
+                const sortedPages = Object.keys(reportsByPage).sort(sortPagesDescending);
+                sortedPages.forEach(page => {
+                    const reports = reportsByPage[page];
+                    const uniqueAuths = new Set();
+                    let totalChars = 0;
+                    reports.forEach(r => {
+                        totalChars += r.title_char_count;
+                        r.authors.forEach(a => uniqueAuths.add(normalizeName(a)));
+                    });
+                    const avgLen = reports.length > 0 ? (totalChars / reports.length).toFixed(1) : 0;
+
+                    rawText += `"${page}",${reports.length},${uniqueAuths.size},${avgLen}\n`;
+
+                    htmlRows += `
+                        <tr>
+                            <td><strong>${page}</strong></td>
+                            <td>${reports.length}</td>
+                            <td>${uniqueAuths.size}</td>
+                            <td>${avgLen} chars</td>
+                        </tr>
+                    `;
+                });
+            }
+
             tbody.innerHTML = htmlRows;
             document.getElementById('raw-csv').value = rawText;
         }
