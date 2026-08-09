@@ -940,8 +940,9 @@
                 reports.forEach(r => {
                     const coAuthors = r.authors.map(a => {
                         const aKey = normalizeName(a);
-                        if (aKey === key) return `<strong>${renderStudentHTML(aKey, null)}</strong>`;
-                        return renderStudentHTML(aKey, `event.stopPropagation(); openStudentModal('${aKey}')`);
+                        const aName = getDisplayName(aKey);
+                        if (aKey === key) return `<strong>${aName}</strong>`;
+                        return `<span class="student-link" onclick="event.stopPropagation(); openStudentModal('${aKey}')">${aName}</span>`;
                     }).join(', ');
 
                     html += `
@@ -1180,7 +1181,8 @@
             matches.forEach(r => {
                 const authorsHtml = r.authors.map(a => {
                     const k = normalizeName(a);
-                    return renderStudentHTML(k, `openStudentModal('${k}')`);
+                    const d = getDisplayName(k);
+                    return `<span class="student-link" onclick="openStudentModal('${k}')">${d}</span>`;
                 }).join(', ');
 
                 html += `
