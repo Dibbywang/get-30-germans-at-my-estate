@@ -385,6 +385,99 @@
                 font-size: 18px;
             }
         }
+
+        /* --- AWARD BADGES STYLING --- */
+        .student-badge-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        .emoji-badge {
+            display: inline-block;
+            font-style: normal;
+            line-height: 1;
+            font-size: 1.05em;
+            vertical-align: middle;
+            transition: transform 0.2s ease, filter 0.2s ease;
+            cursor: help;
+        }
+
+        .emoji-badge:hover {
+            transform: scale(1.35);
+        }
+
+        .crown-badge {
+            display: inline-block;
+            font-style: normal;
+            line-height: 1;
+            font-size: 1.15em;
+            vertical-align: middle;
+            margin-left: 4px;
+            margin-right: 2px;
+            filter: drop-shadow(0 0 3px rgba(255, 215, 0, 1)) drop-shadow(0 0 1px #FF8C00);
+            transition: transform 0.2s ease;
+            cursor: help;
+        }
+
+        .crown-badge:hover {
+            transform: scale(1.4) rotate(8deg);
+        }
+
+        .badge-gold {
+            filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.95)) sepia(100%) saturate(500%) hue-rotate(15deg);
+        }
+
+        .badge-silver {
+            filter: drop-shadow(0 0 2px rgba(100, 100, 100, 0.95)) grayscale(100%) brightness(0.8) contrast(1.4);
+        }
+
+        .badge-bronze {
+            filter: drop-shadow(0 0 2px rgba(205, 127, 50, 0.95)) sepia(100%) saturate(350%) hue-rotate(-25deg) brightness(0.85);
+        }
+
+        .grinch-badge {
+            height: 1.25em;
+            width: auto;
+            vertical-align: -0.2em;
+            margin-left: 4px;
+            margin-right: 2px;
+            display: inline-block;
+            transition: transform 0.2s ease, filter 0.2s ease;
+            cursor: help;
+            object-fit: contain;
+        }
+
+        .grinch-badge:hover {
+            transform: scale(1.4) rotate(-6deg);
+        }
+
+        .grinch-bronze {
+            filter: sepia(100%) hue-rotate(-30deg) saturate(350%) contrast(1.1) brightness(0.85) drop-shadow(0 0 2px #8B4513);
+        }
+
+        .grinch-silver {
+            filter: grayscale(100%) brightness(0.8) contrast(1.4) drop-shadow(0 0 2px #555555);
+        }
+
+        .grinch-gold {
+            filter: sepia(100%) hue-rotate(15deg) saturate(500%) brightness(1.1) drop-shadow(0 0 3px #FFD700);
+        }
+
+        .grinch-rainbow {
+            animation: grinch-rainbow-anim 2.5s linear infinite;
+        }
+
+        @keyframes grinch-rainbow-anim {
+            0% { filter: hue-rotate(0deg) saturate(4) brightness(1.1) drop-shadow(0 0 3px red); }
+            20% { filter: hue-rotate(72deg) saturate(4) brightness(1.1) drop-shadow(0 0 3px yellow); }
+            40% { filter: hue-rotate(144deg) saturate(4) brightness(1.1) drop-shadow(0 0 3px green); }
+            60% { filter: hue-rotate(216deg) saturate(4) brightness(1.1) drop-shadow(0 0 3px cyan); }
+            80% { filter: hue-rotate(288deg) saturate(4) brightness(1.1) drop-shadow(0 0 3px magenta); }
+            100% { filter: hue-rotate(360deg) saturate(4) brightness(1.1) drop-shadow(0 0 3px red); }
+        }
     </style>
 </head>
 
@@ -556,6 +649,10 @@
         let reportsByAuthor = {}; 
         let nameVariations = {}; 
         let currentExportMode = 'reports'; // 'reports' or 'summary'
+        let overallShortestWinners = {}; // key -> { rank, shade, emoji: '🤏' }
+        let overallLongestWinners = {};  // key -> { rank, shade, emoji: '📜' }
+        let semesterAwardAchievements = {}; // key -> count of category awards achieved in Semester Awards section
+        let topContributorsEver = new Set(); // set of keys for #1 Top Contributor(s) Ever
 
         // --- INITIALIZATION ---
         window.onload = async function () {
@@ -623,9 +720,195 @@
                     });
                 }
                 stmt.free();
+
+                computeOverallBadges();
+                computeSemesterAwardsGrinch();
+                computeTopContributorsEver();
             } catch (e) {
                 throw new Error("Database schema invalid.");
             }
+        }
+
+        function computeTopContributorsEver() {
+            topContributorsEver = new Set();
+            let maxPapers = 0;
+            Object.keys(reportsByAuthor).forEach(k => {
+                const len = reportsByAuthor[k].length;
+                if (len > maxPapers) maxPapers = len;
+            });
+            if (maxPapers > 0) {
+                Object.keys(reportsByAuthor).forEach(k => {
+                    if (reportsByAuthor[k].length === maxPapers) {
+                        topContributorsEver.add(k);
+                    }
+                });
+            }
+        }
+
+        function computeOverallBadges() {
+            overallShortestWinners = {};
+            overallLongestWinners = {};
+            const shades = ['gold', 'silver', 'bronze'];
+
+            // Shortest titles overall (Unique Top 3 character lengths with ties included)
+            const uniqueShortestLens = Array.from(new Set(allReports.map(r => r.title_char_count)))
+                .sort((a, b) => a - b)
+                .slice(0, 3);
+
+            uniqueShortestLens.forEach((len, idx) => {
+                const shade = shades[idx];
+                const rank = idx + 1;
+                const matchingReports = allReports.filter(r => r.title_char_count === len);
+                matchingReports.forEach(r => {
+                    r.authors.forEach(a => {
+                        const k = normalizeName(a);
+                        if (k !== 'unknown author' && !overallShortestWinners[k]) {
+                            overallShortestWinners[k] = { rank: rank, shade: shade, emoji: '🤏' };
+                        }
+                    });
+                });
+            });
+
+            // Longest titles overall (Unique Top 3 character lengths with ties included)
+            const uniqueLongestLens = Array.from(new Set(allReports.map(r => r.title_char_count)))
+                .sort((a, b) => b - a)
+                .slice(0, 3);
+
+            uniqueLongestLens.forEach((len, idx) => {
+                const shade = shades[idx];
+                const rank = idx + 1;
+                const matchingReports = allReports.filter(r => r.title_char_count === len);
+                matchingReports.forEach(r => {
+                    r.authors.forEach(a => {
+                        const k = normalizeName(a);
+                        if (k !== 'unknown author' && !overallLongestWinners[k]) {
+                            overallLongestWinners[k] = { rank: rank, shade: shade, emoji: '📜' };
+                        }
+                    });
+                });
+            });
+            // Academic Honesty overall award is explicitly excluded!
+        }
+
+        function computeSemesterAwardsGrinch() {
+            semesterAwardAchievements = {};
+
+            Object.keys(reportsByPage).forEach(page => {
+                const reports = reportsByPage[page];
+                if (!reports || reports.length === 0) return;
+
+                // 1. Earliest Submission Category
+                const first = reports[0];
+                first.authors.forEach(a => {
+                    const k = normalizeName(a);
+                    if (k !== 'unknown author') {
+                        semesterAwardAchievements[k] = (semesterAwardAchievements[k] || 0) + 1;
+                    }
+                });
+
+                // 2. Top Contributor(s) Category
+                const counts = {};
+                reports.forEach(r => r.authors.forEach(a => {
+                    const k = normalizeName(a);
+                    if (k !== 'unknown author') counts[k] = (counts[k] || 0) + 1;
+                }));
+                if (Object.keys(counts).length > 0) {
+                    const maxCount = Math.max(...Object.values(counts));
+                    const topKeys = Object.keys(counts).filter(k => counts[k] === maxCount);
+                    topKeys.forEach(k => {
+                        semesterAwardAchievements[k] = (semesterAwardAchievements[k] || 0) + 1;
+                    });
+                }
+
+                // 3. Shortest Title(s) Category
+                const minChars = Math.min(...reports.map(r => r.title_char_count));
+                const shortestReports = reports.filter(r => r.title_char_count === minChars);
+                const shortestAuthorsProcessed = new Set();
+                shortestReports.forEach(s => {
+                    s.authors.forEach(a => {
+                        const k = normalizeName(a);
+                        if (k !== 'unknown author' && !shortestAuthorsProcessed.has(k)) {
+                            shortestAuthorsProcessed.add(k);
+                            semesterAwardAchievements[k] = (semesterAwardAchievements[k] || 0) + 1;
+                        }
+                    });
+                });
+
+                // 4. Longest Title(s) Category
+                const maxChars = Math.max(...reports.map(r => r.title_char_count));
+                const longestReports = reports.filter(r => r.title_char_count === maxChars);
+                const longestAuthorsProcessed = new Set();
+                longestReports.forEach(l => {
+                    l.authors.forEach(a => {
+                        const k = normalizeName(a);
+                        if (k !== 'unknown author' && !longestAuthorsProcessed.has(k)) {
+                            longestAuthorsProcessed.add(k);
+                            semesterAwardAchievements[k] = (semesterAwardAchievements[k] || 0) + 1;
+                        }
+                    });
+                });
+            });
+        }
+
+        function getGrinchBadgeForCount(count) {
+            if (count === 3) return { shade: 'bronze', text: '3 Semester Category Awards (Bronze Grinch)' };
+            if (count === 4) return { shade: 'silver', text: '4 Semester Category Awards (Silver Grinch)' };
+            if (count === 5) return { shade: 'gold', text: '5 Semester Category Awards (Gold Grinch)' };
+            if (count > 5) return { shade: 'rainbow', text: `${count} Semester Category Awards (Rainbow Grinch)` };
+            return null;
+        }
+
+        function getStudentBadgesHTML(key, isSemesterAwardsTab = false) {
+            if (!key || key === 'unknown author') return '';
+            let html = '';
+
+            const isTopEver = topContributorsEver.has(key);
+
+            // 1. Crown Badge (#1 Top Contributor Ever) - Shown EVERYWHERE including Semester Awards!
+            if (isTopEver) {
+                const crownTitle = `All-Time #1 Top Contributor (${reportsByAuthor[key].length} Publications)`;
+                html += `<span class="crown-badge" title="${crownTitle}">👑</span>`;
+            }
+
+            // On Semester Awards tab, display ONLY the Crown badge if student is #1 Top Contributor Ever (no extra clutter)
+            if (isSemesterAwardsTab) {
+                if (html) {
+                    return `<span class="student-badge-container">${html}</span>`;
+                }
+                return '';
+            }
+
+            // 2. Overall Badges (Shortest Title & Longest Title Top 3)
+            if (overallShortestWinners[key]) {
+                const b = overallShortestWinners[key];
+                const tText = `Overall Hall of Fame: Shortest Title #${b.rank} (${b.shade.toUpperCase()})`;
+                html += `<span class="emoji-badge badge-${b.shade}" title="${tText}">${b.emoji}</span>`;
+            }
+            if (overallLongestWinners[key]) {
+                const b = overallLongestWinners[key];
+                const tText = `Overall Hall of Fame: Longest Title #${b.rank} (${b.shade.toUpperCase()})`;
+                html += `<span class="emoji-badge badge-${b.shade}" title="${tText}">${b.emoji}</span>`;
+            }
+
+            // 3. Semester Awards Grinch Badges
+            const awardCount = semesterAwardAchievements[key] || 0;
+            const g = getGrinchBadgeForCount(awardCount);
+            if (g) {
+                const grinchTitle = `Semester Awards Winner: ${awardCount} category awards achieved (${g.shade.toUpperCase()} Grinch)`;
+                html += `<img src="assets/grinch.png" alt="Grinch" class="grinch-badge grinch-${g.shade}" title="${grinchTitle}">`;
+            }
+
+            if (html) {
+                return `<span class="student-badge-container">${html}</span>`;
+            }
+            return '';
+        }
+
+        function renderStudentHTML(key, clickJs, isSemesterAwardsTab = false) {
+            const displayName = getDisplayName(key);
+            const badgesHtml = getStudentBadgesHTML(key, isSemesterAwardsTab);
+            const clickAttr = clickJs ? `onclick="${clickJs}"` : '';
+            return `<span class="student-link" ${clickAttr}>${displayName}</span>${badgesHtml}`;
         }
 
         function sortPagesDescending(a, b) {
@@ -646,9 +929,8 @@
         // --- STUDENT MODAL LOGIC ---
         function openStudentModal(key) {
             const reports = reportsByAuthor[key] || [];
-            const displayName = getDisplayName(key);
             
-            document.getElementById('modal-student-name').innerText = displayName;
+            document.getElementById('modal-student-name').innerHTML = renderStudentHTML(key);
             document.getElementById('modal-student-subtitle').innerText = `${reports.length} Published Report${reports.length === 1 ? '' : 's'} recorded in database`;
             
             let html = '';
@@ -658,9 +940,8 @@
                 reports.forEach(r => {
                     const coAuthors = r.authors.map(a => {
                         const aKey = normalizeName(a);
-                        const aName = getDisplayName(aKey);
-                        if (aKey === key) return `<strong>${aName}</strong>`;
-                        return `<span class="student-link" onclick="event.stopPropagation(); openStudentModal('${aKey}')">${aName}</span>`;
+                        if (aKey === key) return `<strong>${renderStudentHTML(aKey, null)}</strong>`;
+                        return renderStudentHTML(aKey, `event.stopPropagation(); openStudentModal('${aKey}')`);
                     }).join(', ');
 
                     html += `
@@ -762,7 +1043,7 @@
                 return list.map((r, idx) => {
                     const authorsHtml = r.authors.map(a => {
                         const k = normalizeName(a);
-                        return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                        return renderStudentHTML(k, `openStudentModal('${k}')`);
                     }).join(', ');
 
                     return `
@@ -869,9 +1150,10 @@
             let html = '';
             const limit = q ? list.length : 100;
             list.slice(0, limit).forEach(item => {
+                const nameWithBadges = renderStudentHTML(item.key, null);
                 html += `
                     <div class="author-card" onclick="openStudentModal('${item.key}')">
-                        <span class="student-link" style="font-size:15px; pointer-events:none;">${item.display}</span>
+                        <span style="font-size:15px;">${nameWithBadges}</span>
                         <span class="stat-badge">${item.count} paper${item.count === 1 ? '' : 's'} &rarr;</span>
                     </div>`;
             });
@@ -898,8 +1180,7 @@
             matches.forEach(r => {
                 const authorsHtml = r.authors.map(a => {
                     const k = normalizeName(a);
-                    const d = getDisplayName(k);
-                    return `<span class="student-link" onclick="openStudentModal('${k}')">${d}</span>`;
+                    return renderStudentHTML(k, `openStudentModal('${k}')`);
                 }).join(', ');
 
                 html += `
@@ -929,7 +1210,7 @@
                 const first = reports[0];
                 const firstAuthorsHtml = first.authors.map(a => {
                     const k = normalizeName(a);
-                    return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                    return renderStudentHTML(k, `openStudentModal('${k}')`, true);
                 }).join(', ');
 
                 // 2. Top Contributor(s) - handle ties
@@ -946,7 +1227,7 @@
                 if (Object.keys(counts).length > 0) {
                     const maxCount = Math.max(...Object.values(counts));
                     const topKeys = Object.keys(counts).filter(k => counts[k] === maxCount);
-                    const links = topKeys.map(k => `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`);
+                    const links = topKeys.map(k => renderStudentHTML(k, `openStudentModal('${k}')`, true));
 
                     if (topKeys.length === 1) {
                         topContributorContent = `${links[0]} (${maxCount} paper${maxCount === 1 ? '' : 's'})`;
@@ -967,7 +1248,7 @@
                     const s = shortestReports[0];
                     const sAuthorsHtml = s.authors.map(a => {
                         const k = normalizeName(a);
-                        return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                        return renderStudentHTML(k, `openStudentModal('${k}')`, true);
                     }).join(', ');
                     shortestContent = `"${s.title}"`;
                     shortestMeta = `by ${sAuthorsHtml} (${s.title_char_count} chars)`;
@@ -975,7 +1256,7 @@
                     shortestContent = shortestReports.map(s => {
                         const sAuthorsHtml = s.authors.map(a => {
                             const k = normalizeName(a);
-                            return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                            return renderStudentHTML(k, `openStudentModal('${k}')`, true);
                         }).join(', ');
                         return `<div style="margin-bottom:6px;">"${s.title}" <small style="color:#555; font-weight:normal;">by ${sAuthorsHtml}</small></div>`;
                     }).join('');
@@ -992,7 +1273,7 @@
                     const l = longestReports[0];
                     const lAuthorsHtml = l.authors.map(a => {
                         const k = normalizeName(a);
-                        return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                        return renderStudentHTML(k, `openStudentModal('${k}')`, true);
                     }).join(', ');
                     longestContent = `"${l.title}"`;
                     longestMeta = `by ${lAuthorsHtml} (${l.title_char_count} chars)`;
@@ -1000,7 +1281,7 @@
                     longestContent = longestReports.map(l => {
                         const lAuthorsHtml = l.authors.map(a => {
                             const k = normalizeName(a);
-                            return `<span class="student-link" onclick="openStudentModal('${k}')">${getDisplayName(k)}</span>`;
+                            return renderStudentHTML(k, `openStudentModal('${k}')`, true);
                         }).join(', ');
                         return `<div style="margin-bottom:6px;">"${l.title}" <small style="color:#555; font-weight:normal;">by ${lAuthorsHtml}</small></div>`;
                     }).join('');
