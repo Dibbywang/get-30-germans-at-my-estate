@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G30 is Beautiful - Harper Grammar Checker</title>
+    <link rel="stylesheet" href="g30-styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        /* --- HARPER GRAMMAR CHECKER STYLES --- */
+        
+        .checker-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ENGINE STATUS PILL */
+        .engine-status-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .engine-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            color: #00664a;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border: 1px solid rgba(0, 102, 74, 0.2);
+            white-space: nowrap;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ff9800;
+        }
+
+        .status-dot.ready {
+            background-color: #2e7d32;
+        }
+
+        /* TOOLBAR */
+        .toolbar {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tool-select {
+            padding: 7px 12px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            font-size: 13px;
+            background: #f6f8fa;
+            color: #24292f;
+            cursor: pointer;
+            font-weight: 500;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .tool-select:focus, .tool-select:hover {
+            border-color: #00664a;
+            background: #ffffff;
+        }
+
+        .tool-btn {
+            background: #f6f8fa;
+            border: 1px solid #d0d7de;
+            color: #24292f;
+            padding: 7px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tool-btn:hover {
+            background: #00664a;
+            color: #ffffff;
+            border-color: #00664a;
+        }
+
+        .tool-btn.primary {
+            background: #00664a;
+            color: #ffffff;
+            border-color: #00664a;
+        }
+
+        .tool-btn.primary:hover {
+            background: #004231;
+            border-color: #004231;
+        }
+
+        /* MAIN WORKSPACE GRID */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* EDITOR PANE */
+        .editor-card {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .editor-header {
+            padding: 12px 18px;
+            background: #fafbfc;
+            border-bottom: 1px solid #e1e4e8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* SYNCHRONIZED HIGHLIGHT TEXTAREA */
+        .editor-wrapper {
+            position: relative;
+            min-height: 440px;
+            background: #ffffff;
+        }
+
+        .editor-backdrop,
+        .editor-textarea {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 18px;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            letter-spacing: normal;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            overflow-y: auto;
+            border: none;
+            outline: none;
+        }
+
+        .editor-backdrop {
+            color: transparent;
+            pointer-events: none;
+            z-index: 1;
+            user-select: none;
+            background: transparent;
+        }
+
+        .editor-textarea {
+            background: transparent;
+            color: #24292f;
+            resize: none;
+            z-index: 2;
+            caret-color: #00664a;
+        }
+
+        /* LINT HIGHLIGHT MARKS */
+        mark.lint-mark {
+            background-color: rgba(255, 235, 59, 0.15);
+            color: transparent;
+            border-bottom: 2.5px wavy #f57c00;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        mark.lint-mark.spelling {
+            border-bottom-color: #d32f2f;
+            background-color: rgba(244, 67, 54, 0.12);
+        }
+
+        mark.lint-mark.grammar {
+            border-bottom-color: #f57c00;
+            background-color: rgba(255, 152, 0, 0.12);
+        }
+
+        mark.lint-mark.style {
+            border-bottom-color: #1976d2;
+            background-color: rgba(33, 150, 243, 0.12);
+        }
+
+        mark.lint-mark.punctuation, mark.lint-mark.capitalization {
+            border-bottom-color: #7b1fa2;
+            background-color: rgba(156, 39, 176, 0.12);
+        }
+
+        mark.lint-mark.active {
+            background-color: rgba(0, 102, 74, 0.25) !important;
+        }
+
+        /* METRICS FOOTER */
+        .metrics-bar {
+            padding: 10px 18px;
+            background: #f6f8fa;
+            border-top: 1px solid #e1e4e8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: #57606a;
+        }
+
+        .metrics-items {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .metric-item strong {
+            color: #24292f;
+        }
+
+        /* SIDEBAR / ISSUES PANEL */
+        .sidebar-card {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            max-height: 700px;
+        }
+
+        .sidebar-header {
+            padding: 16px 18px;
+            background: #fafbfc;
+            border-bottom: 1px solid #e1e4e8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title {
+            margin: 0;
+            font-size: 17px;
+            font-weight: bold;
+            color: #004231;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* FILTER TABS */
+        .filter-pills {
+            display: flex;
+            padding: 8px 12px;
+            background: #f6f8fa;
+            border-bottom: 1px solid #e1e4e8;
+            overflow-x: auto;
+            gap: 6px;
+        }
+
+        .filter-pill {
+            background: none;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #57606a;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s;
+        }
+
+        .filter-pill:hover {
+            background: #e1e4e8;
+            color: #24292f;
+        }
+
+        .filter-pill.active {
+            background: #00664a;
+            color: #ffffff;
+        }
+
+        /* ISSUES LIST */
+        .issues-list {
+            padding: 14px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        /* ISSUE CARD */
+        .issue-card {
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 14px;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .issue-card:hover, .issue-card.active {
+            border-color: #00664a;
+            box-shadow: 0 4px 12px rgba(0, 102, 74, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .issue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .issue-badge {
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .issue-badge.spelling {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+        }
+
+        .issue-badge.grammar {
+            background: #fff3e0;
+            color: #ef6c00;
+            border: 1px solid #ffe0b2;
+        }
+
+        .issue-badge.style {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #bbdefb;
+        }
+
+        .issue-badge.punctuation, .issue-badge.capitalization {
+            background: #f3e5f5;
+            color: #6a1b9a;
+            border: 1px solid #e1bee7;
+        }
+
+        .issue-problem {
+            font-size: 15px;
+            font-weight: 700;
+            color: #24292f;
+            margin-bottom: 6px;
+        }
+
+        .issue-problem span.err-word {
+            background: #ffeef0;
+            color: #b31d28;
+            padding: 1px 4px;
+            border-radius: 3px;
+            text-decoration: line-through;
+        }
+
+        .issue-message {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 12px;
+            line-height: 1.45;
+        }
+
+        .suggestions-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .suggestion-btn {
+            background: #e6f0ed;
+            color: #00664a;
+            border: 1px solid rgba(0, 102, 74, 0.2);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .suggestion-btn:hover {
+            background: #00664a;
+            color: #ffffff;
+            border-color: #00664a;
+        }
+
+        .issue-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 8px;
+        }
+
+        .issue-action-btn {
+            background: none;
+            border: none;
+            font-size: 12px;
+            color: #666;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.15s;
+        }
+
+        .issue-action-btn:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        /* EMPTY STATE / NO ISSUES */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #57606a;
+        }
+
+        .empty-state-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .empty-state-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00664a;
+            margin-bottom: 6px;
+        }
+
+        /* LOADING OVERLAY */
+        #loading-overlay {
+            text-align: center;
+            padding: 50px 20px;
+            background: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #00664a;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* TOAST NOTIFICATION */
+        #toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #004231;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: all 0.25s ease;
+            z-index: 99999;
+        }
+
+        #toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* DICTIONARY MODAL */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 540px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 85vh;
+        }
+
+        .modal-header {
+            padding: 16px 20px;
+            background: #fafbfc;
+            border-bottom: 1px solid #e1e4e8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            margin: 0;
+            font-size: 18px;
+            color: #004231;
+            font-weight: bold;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            padding: 12px 20px;
+            background: #f6f8fa;
+            border-top: 1px solid #e1e4e8;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* DICTIONARY WORD CHIPS */
+        .word-chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background: #f6f8fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+            margin-top: 10px;
+        }
+
+        .word-chip {
+            background: #ffffff;
+            border: 1px solid #d0d7de;
+            border-radius: 16px;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .word-chip-remove {
+            color: #999;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .word-chip-remove:hover {
+            color: #d32f2f;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 900px) {
+            .workspace-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar-card {
+                max-height: 500px;
+            }
+
+            .editor-wrapper {
+                min-height: 360px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="favicon.png" alt="G30 Logo" class="logo-image" onerror="this.style.display='none'">
+            <div class="logo-text">G30 Resources</div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="https://dibbywang.itch.io/get-30-germans-at-my-establishment">Games</a>
+            <a href="https://tact.ac.thers.ac.jp/portal">TACT</a>
+            <a href="https://portal.nagoya-u.ac.jp/portal">Portal</a>
+            <a href="resources.html" style="background-color: rgba(255, 255, 255, 0.2);">Resources</a>
+        </div>
+        <div class="user-options"></div>
+    </div>
+
+    <div class="main-content">
+        <div class="checker-container">
+
+            <h1 class="page-title">Harper Grammar Checker</h1>
+
+            <div class="engine-status-container">
+                <div class="engine-status-pill" id="engine-status">
+                    <span class="status-dot" id="status-dot"></span>
+                    <span id="status-text">Loading Harper WASM...</span>
+                </div>
+            </div>
+
+            <!-- INITIAL LOADING STATE -->
+            <div id="loading-overlay">
+                <div class="spinner"></div>
+                <h3 style="margin-top:0; color:#00664a;">Initializing Harper Engine...</h3>
+                <p style="color:#666; font-size:14px; margin:0;">Compiling WebAssembly linter for offline grammar and spell checking.</p>
+            </div>
+
+            <!-- MAIN WORKSPACE -->
+            <div id="main-workspace" style="display: none;">
+
+                <!-- TOOLBAR -->
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <label for="dialect-select" style="font-size:13px; font-weight:600; color:#333;">Dialect:</label>
+                        <select id="dialect-select" class="tool-select" onchange="changeDialect()">
+                            <option value="0" selected>American English (US)</option>
+                            <option value="1">British English (UK)</option>
+                            <option value="2">Australian English (AU)</option>
+                            <option value="3">Canadian English (CA)</option>
+                            <option value="4">Indian English (IN)</option>
+                        </select>
+
+                        <label for="sample-select" style="font-size:13px; font-weight:600; color:#333; margin-left:6px;">Sample:</label>
+                        <select id="sample-select" class="tool-select" onchange="loadSampleText(this.value)">
+                            <option value="" disabled selected>Load sample text...</option>
+                            <option value="academic">Academic Report Abstract</option>
+                            <option value="general">Casual Essay / General</option>
+                            <option value="quick">Quick Test Sentences</option>
+                        </select>
+                    </div>
+
+                    <div class="toolbar-group">
+                        <button class="tool-btn" onclick="applyTitleCase()" title="Convert selected text or title to proper academic Title Case using Harper">
+                            🔠 Title Case
+                        </button>
+                        <button class="tool-btn" onclick="openDictionaryModal()" title="Manage custom words saved to dictionary">
+                            📖 Dictionary
+                        </button>
+                        <label class="tool-btn" style="margin:0; cursor:pointer;" title="Load text from a .txt or .md file">
+                            📂 Open File
+                            <input type="file" id="file-input" accept=".txt,.md,.tex" style="display:none;" onchange="handleFileUpload(event)">
+                        </label>
+                        <button class="tool-btn" onclick="downloadText()" title="Download current text as a file">
+                            💾 Download
+                        </button>
+                        <button class="tool-btn" onclick="copyText()" title="Copy text to clipboard">
+                            📋 Copy
+                        </button>
+                        <button class="tool-btn" onclick="clearText()" title="Clear editor content">
+                            🧹 Clear
+                        </button>
+                    </div>
+                </div>
+
+                <!-- WORKSPACE GRID -->
+                <div class="workspace-grid">
+
+                    <!-- LEFT: EDITOR -->
+                    <div class="editor-card">
+                        <div class="editor-header">
+                            <span>Document Editor</span>
+                            <span id="speed-indicator" style="font-size:12px; font-weight:normal; color:#666;">⚡ Ready</span>
+                        </div>
+
+                        <div class="editor-wrapper">
+                            <div id="editor-backdrop" class="editor-backdrop"></div>
+                            <textarea id="editor-textarea" class="editor-textarea" placeholder="Paste or type your text here to check grammar, spelling, and phrasing in real-time..." spellcheck="false"></textarea>
+                        </div>
+
+                        <div class="metrics-bar">
+                            <div class="metrics-items">
+                                <span class="metric-item"><strong id="metric-words">0</strong> words</span>
+                                <span class="metric-item"><strong id="metric-chars">0</strong> chars</span>
+                                <span class="metric-item"><strong id="metric-sentences">0</strong> sentences</span>
+                                <span class="metric-item"><strong id="metric-reading-time">0 min</strong> read</span>
+                            </div>
+                            <div>
+                                <span id="metric-issues-count" style="font-weight:bold; color:#00664a;">0 issues</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: ISSUES SIDEBAR -->
+                    <div class="sidebar-card">
+                        <div class="sidebar-header">
+                            <h3 class="sidebar-title">
+                                <span>Diagnostics</span>
+                                <span id="issues-total-badge" class="engine-status-pill" style="font-size:11px;">0</span>
+                            </h3>
+                            <button id="fix-all-btn" class="tool-btn primary" style="padding:4px 10px; font-size:12px;" onclick="fixAllIssues()" style="display:none;">
+                                ⚡ Fix All
+                            </button>
+                        </div>
+
+                        <!-- FILTER TABS -->
+                        <div class="filter-pills">
+                            <button class="filter-pill active" onclick="setIssueFilter('all', this)">All</button>
+                            <button class="filter-pill" onclick="setIssueFilter('spelling', this)">Spelling</button>
+                            <button class="filter-pill" onclick="setIssueFilter('grammar', this)">Grammar</button>
+                            <button class="filter-pill" onclick="setIssueFilter('style', this)">Style</button>
+                            <button class="filter-pill" onclick="setIssueFilter('punctuation', this)">Punctuation</button>
+                        </div>
+
+                        <!-- ISSUES CARDS LIST -->
+                        <div id="issues-list" class="issues-list">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">✨</div>
+                                <div class="empty-state-title">No issues detected</div>
+                                <div>Type or paste your text on the left to start checking.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DICTIONARY MODAL -->
+    <div id="dictionary-modal" class="modal-backdrop" onclick="closeDictionaryModal(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Personal Dictionary</h3>
+                <button class="modal-close-btn" onclick="closeDictionaryModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:13px; color:#555; margin-top:0;">
+                    Words added here will be recognized by Harper and won't be flagged as spelling errors. Saved in your local browser storage.
+                </p>
+
+                <div style="display:flex; gap:8px; margin-bottom:14px;">
+                    <input type="text" id="new-word-input" class="tool-select" style="flex-grow:1; font-size:14px;" placeholder="Add word (e.g. Nagoya, SML, G30)..." onkeydown="if(event.key==='Enter') addWordFromModal()">
+                    <button class="tool-btn primary" onclick="addWordFromModal()">Add Word</button>
+                </div>
+
+                <label style="font-size:12px; font-weight:bold; color:#444; text-transform:uppercase;">Custom Words (<span id="dict-count">0</span>)</label>
+                <div id="dict-words-list" class="word-chips-container">
+                    <span style="color:#888; font-size:12px;">No custom words added yet.</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="tool-btn" onclick="exportDictionary()">Export JSON</button>
+                <button class="tool-btn" onclick="clearDictionary()" style="color:#b31d28;">Clear All</button>
+                <button class="tool-btn primary" onclick="closeDictionaryModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast">Applied fix!</div>
+
+    <!-- HARPER JS INTEGRATION -->
+    <script type="module">
+        // --- CDN CONFIGURATION ---
+        const HARPER_CDN_INDEX = 'https://unpkg.com/harper.js@3.0.0/dist/index.js';
+        const HARPER_CDN_BINARY = 'https://unpkg.com/harper.js@3.0.0/dist/binary.js';
+
+        // --- STATE ---
+        let HarperModule = null;
+        let linter = null;
+        let currentDialect = 0; // Dialect.American
+        let currentLints = [];
+        let currentFilter = 'all';
+        let customWords = [];
+        let ignoredContextHashes = new Set();
+        let lintDebounceTimer = null;
+
+        // SAMPLE TEXTS
+        const SAMPLE_TEXTS = {
+            academic: `Probability measure and conditional probability play an fundamental role in modern statistical mechanics. In this report, we considers a discrete probability space with finite outcomes. The following calculations demonstrates that when two random variables is independent, their joint distributon factors directly into the product of their marginals. However, there are som subtle edge cases where correlation does not implies dependence. We also investigate Lienard's Theorem and the Van der Pol oscillator to observe non-linear limit cycles.`,
+            general: `Last summer, i went to tokyo for a academic conference with my colleagues. It was very very hot outside, but we still enjoyed our visit. We arrived at tokyo airport and realized that there was an problem with our hotel reservations. Thankfully, a helpful staff member resolved the issue quickly. He have always been reliable whenever we visited japan in the back in the days.`,
+            quick: `This are an bad test sentence with som spelling erors.`
+        };
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', async () => {
+            loadSavedDictionary();
+            setupScrollSync();
+            setupEditorEvents();
+            await initHarper();
+        });
+
+        async function initHarper() {
+            const statusDot = document.getElementById('status-dot');
+            const statusText = document.getElementById('status-text');
+
+            try {
+                // Dynamically import Harper ES modules
+                const [indexMod, binaryMod] = await Promise.all([
+                    import(HARPER_CDN_INDEX),
+                    import(HARPER_CDN_BINARY)
+                ]);
+
+                HarperModule = indexMod;
+                const binary = binaryMod.binary;
+
+                // Try WorkerLinter first; gracefully fall back to LocalLinter if Worker is blocked
+                try {
+                    linter = new HarperModule.WorkerLinter({
+                        binary: binary,
+                        dialect: currentDialect
+                    });
+                    await linter.setup();
+                    // Verification lint
+                    await linter.lint("test");
+                    statusText.textContent = "Engine: Ready (Web Worker)";
+                } catch (workerErr) {
+                    console.warn("WorkerLinter unavailable, switching to LocalLinter:", workerErr);
+                    linter = new HarperModule.LocalLinter({
+                        binary: binary,
+                        dialect: currentDialect
+                    });
+                    await linter.setup();
+                    statusText.textContent = "Engine: Ready (Local WASM)";
+                }
+
+                // Import saved custom dictionary words
+                if (customWords.length > 0) {
+                    await linter.importWords(customWords);
+                }
+
+                statusDot.classList.add('ready');
+                document.getElementById('loading-overlay').style.display = 'none';
+                document.getElementById('main-workspace').style.display = 'block';
+
+                // Initial sample
+                const textarea = document.getElementById('editor-textarea');
+                textarea.value = SAMPLE_TEXTS.quick;
+                triggerLint();
+
+            } catch (err) {
+                console.error("Harper initialization error:", err);
+                statusText.textContent = "Engine Error";
+                statusDot.style.backgroundColor = "#d32f2f";
+                document.getElementById('loading-overlay').innerHTML = `
+                    <div style="color:#b31d28; font-weight:bold; font-size:18px; margin-bottom:8px;">Failed to Load Harper Engine</div>
+                    <p style="color:#555; font-size:14px; max-width:600px; margin:0 auto 16px auto;">${err.message || err}</p>
+                    <button class="tool-btn primary" onclick="location.reload()">Retry</button>
+                `;
+            }
+        }
+
+        // --- LINTING WORKFLOW ---
+        async function runLint() {
+            if (!linter) return;
+
+            const textarea = document.getElementById('editor-textarea');
+            const text = textarea.value;
+
+            updateMetrics(text);
+
+            if (!text.trim()) {
+                currentLints = [];
+                renderHighlights([]);
+                renderIssuesList([]);
+                document.getElementById('speed-indicator').textContent = '⚡ 0ms';
+                return;
+            }
+
+            const startTime = performance.now();
+            try {
+                const lints = await linter.lint(text);
+                const duration = Math.round(performance.now() - startTime);
+                document.getElementById('speed-indicator').textContent = `⚡ Linted in ${duration}ms`;
+
+                // Filter out any ignored lints
+                currentLints = lints.filter(l => !isLintIgnored(text, l));
+
+                renderHighlights(currentLints);
+                renderIssuesList(currentLints);
+
+            } catch (err) {
+                console.error("Linting failed:", err);
+            }
+        }
+
+        function triggerLint() {
+            clearTimeout(lintDebounceTimer);
+            lintDebounceTimer = setTimeout(runLint, 200);
+        }
+
+        // --- METRICS CALCULATION ---
+        function updateMetrics(text) {
+            const trimmed = text.trim();
+            const words = trimmed ? trimmed.split(/\s+/).length : 0;
+            const chars = text.length;
+            const sentences = trimmed ? (trimmed.match(/[^.!?]+[.!?]+(\s|$)/g) || [trimmed]).length : 0;
+            const readingTime = Math.ceil(words / 200) || 0;
+
+            document.getElementById('metric-words').textContent = words.toLocaleString();
+            document.getElementById('metric-chars').textContent = chars.toLocaleString();
+            document.getElementById('metric-sentences').textContent = sentences.toLocaleString();
+            document.getElementById('metric-reading-time').textContent = `${readingTime} min`;
+        }
+
+        // --- SYNCHRONIZED BACKDROP HIGHLIGHTS ---
+        function renderHighlights(lints) {
+            const textarea = document.getElementById('editor-textarea');
+            const backdrop = document.getElementById('editor-backdrop');
+            const text = textarea.value;
+
+            if (!text) {
+                backdrop.innerHTML = '';
+                return;
+            }
+
+            // Sort lints by start index ascending
+            const sortedLints = [...lints].sort((a, b) => a.span().start - b.span().start);
+
+            let html = '';
+            let lastIndex = 0;
+
+            sortedLints.forEach((lint, idx) => {
+                const span = lint.span();
+                const start = span.start;
+                const end = span.end;
+
+                if (start < lastIndex || start > text.length || end > text.length) {
+                    return; // Skip overlapping or out-of-range spans
+                }
+
+                // Append unhighlighted text before this error
+                html += escapeHtml(text.substring(lastIndex, start));
+
+                // Determine category CSS class
+                const category = getLintCategory(lint);
+                const errorText = escapeHtml(text.substring(start, end));
+
+                html += `<mark class="lint-mark ${category}" data-lint-index="${idx}" onclick="selectLintFromHighlight(${idx})">${errorText}</mark>`;
+                lastIndex = end;
+            });
+
+            // Append remaining text
+            html += escapeHtml(text.substring(lastIndex));
+            // Ensure trailing newline is accounted for in textarea
+            if (text.endsWith('\n')) {
+                html += '<br>&nbsp;';
+            }
+
+            backdrop.innerHTML = html;
+        }
+
+        // --- ISSUES SIDEBAR RENDERING ---
+        function renderIssuesList(lints) {
+            const container = document.getElementById('issues-list');
+            const textarea = document.getElementById('editor-textarea');
+            const text = textarea.value;
+
+            const totalBadge = document.getElementById('issues-total-badge');
+            const fixAllBtn = document.getElementById('fix-all-btn');
+            const issuesCountMetric = document.getElementById('metric-issues-count');
+
+            totalBadge.textContent = lints.length;
+            issuesCountMetric.textContent = `${lints.length} issue${lints.length === 1 ? '' : 's'}`;
+
+            // Check if there are fixable issues
+            const fixable = lints.some(l => l.suggestions().length > 0);
+            fixAllBtn.style.display = fixable ? 'inline-flex' : 'none';
+
+            // Filter lints by current tab
+            const filtered = lints.filter(l => {
+                if (currentFilter === 'all') return true;
+                return getLintCategory(l) === currentFilter;
+            });
+
+            if (lints.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎉</div>
+                        <div class="empty-state-title">Great writing!</div>
+                        <div>No spelling or grammar errors detected by Harper.</div>
+                    </div>
+                `;
+                return;
+            }
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">✅</div>
+                        <div class="empty-state-title">No ${currentFilter} issues</div>
+                        <div>Switch to "All" to view other recommendations.</div>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach((lint) => {
+                const globalIndex = lints.indexOf(lint);
+                const span = lint.span();
+                const problemText = text.substring(span.start, span.end);
+                const category = getLintCategory(lint);
+                const categoryPretty = lint.lint_kind_pretty ? lint.lint_kind_pretty() : category;
+                const message = lint.message();
+                const suggestions = lint.suggestions();
+
+                let suggestionsHtml = '';
+                if (suggestions.length > 0) {
+                    suggestionsHtml = '<div class="suggestions-group">';
+                    suggestions.slice(0, 4).forEach((s) => {
+                        const repText = s.get_replacement_text();
+                        suggestionsHtml += `
+                            <button class="suggestion-btn" onclick="applySingleFix(${globalIndex}, '${escapeJsString(repText)}')">
+                                ${escapeHtml(repText)}
+                            </button>
+                        `;
+                    });
+                    suggestionsHtml += '</div>';
+                }
+
+                const isSpelling = category === 'spelling';
+                const addDictBtn = isSpelling ? `
+                    <button class="issue-action-btn" onclick="addWordToDictionary('${escapeJsString(problemText.trim())}')" title="Never flag this word again">
+                        + Add to Dict
+                    </button>
+                ` : '';
+
+                html += `
+                    <div class="issue-card" id="issue-card-${globalIndex}" onclick="highlightInEditor(${span.start}, ${span.end}, ${globalIndex})">
+                        <div class="issue-header">
+                            <span class="issue-badge ${category}">${escapeHtml(categoryPretty)}</span>
+                            <span style="font-size:11px; color:#888;">#${globalIndex + 1}</span>
+                        </div>
+                        <div class="issue-problem">
+                            <span class="err-word">${escapeHtml(problemText)}</span>
+                        </div>
+                        <div class="issue-message">${escapeHtml(message)}</div>
+                        ${suggestionsHtml}
+                        <div class="issue-actions">
+                            ${addDictBtn}
+                            <button class="issue-action-btn" onclick="ignoreLintCard(${globalIndex})">Ignore</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // --- CATEGORIZATION HELPER ---
+        function getLintCategory(lint) {
+            const kind = (lint.lint_kind ? lint.lint_kind() : '').toLowerCase();
+            if (kind.includes('spell') || kind.includes('typo')) return 'spelling';
+            if (kind.includes('punct')) return 'punctuation';
+            if (kind.includes('capit')) return 'capitalization';
+            if (kind.includes('style') || kind.includes('wordchoice') || kind.includes('repet')) return 'style';
+            return 'grammar';
+        }
+
+        // --- ACTIONS & CORRECTIONS ---
+        window.applySingleFix = function(lintIndex, replacement) {
+            const textarea = document.getElementById('editor-textarea');
+            const text = textarea.value;
+            const lint = currentLints[lintIndex];
+            if (!lint) return;
+
+            const span = lint.span();
+            const newText = text.slice(0, span.start) + replacement + text.slice(span.end);
+            textarea.value = newText;
+
+            // Move cursor to end of replacement
+            const newCursor = span.start + replacement.length;
+            textarea.setSelectionRange(newCursor, newCursor);
+            textarea.focus();
+
+            showToast(`Applied: "${replacement}"`);
+            runLint();
+        };
+
+        window.fixAllIssues = function() {
+            const textarea = document.getElementById('editor-textarea');
+            let text = textarea.value;
+
+            // Filter fixable lints and sort descending by span.start
+            const fixable = currentLints
+                .filter(l => l.suggestions().length > 0)
+                .map(l => ({
+                    start: l.span().start,
+                    end: l.span().end,
+                    replacement: l.suggestions()[0].get_replacement_text()
+                }))
+                .sort((a, b) => b.start - a.start);
+
+            if (fixable.length === 0) return;
+
+            for (const fix of fixable) {
+                text = text.slice(0, fix.start) + fix.replacement + text.slice(fix.end);
+            }
+
+            textarea.value = text;
+            showToast(`Fixed ${fixable.length} issue${fixable.length === 1 ? '' : 's'}!`);
+            runLint();
+        };
+
+        window.ignoreLintCard = function(lintIndex) {
+            const lint = currentLints[lintIndex];
+            const text = document.getElementById('editor-textarea').value;
+            if (!lint) return;
+
+            const span = lint.span();
+            const key = `${span.start}_${span.end}_${text.substring(span.start, span.end)}`;
+            ignoredContextHashes.add(key);
+
+            showToast("Issue ignored");
+            runLint();
+        };
+
+        function isLintIgnored(text, lint) {
+            const span = lint.span();
+            const key = `${span.start}_${span.end}_${text.substring(span.start, span.end)}`;
+            return ignoredContextHashes.has(key);
+        }
+
+        window.highlightInEditor = function(start, end, globalIndex) {
+            const textarea = document.getElementById('editor-textarea');
+            textarea.focus();
+            textarea.setSelectionRange(start, end);
+
+            // Active visual cue on sidebar card
+            document.querySelectorAll('.issue-card').forEach(c => c.classList.remove('active'));
+            const card = document.getElementById(`issue-card-${globalIndex}`);
+            if (card) {
+                card.classList.add('active');
+            }
+        };
+
+        window.selectLintFromHighlight = function(index) {
+            const card = document.getElementById(`issue-card-${index}`);
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                card.classList.add('active');
+                setTimeout(() => card.classList.remove('active'), 1500);
+            }
+        };
+
+        window.setIssueFilter = function(filter, btn) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            renderIssuesList(currentLints);
+        };
+
+        // --- DIALECT SWITCHING ---
+        window.changeDialect = async function() {
+            const select = document.getElementById('dialect-select');
+            const dialectVal = parseInt(select.value, 10);
+            currentDialect = dialectVal;
+
+            if (linter && linter.setDialect) {
+                await linter.setDialect(dialectVal);
+                showToast(`Dialect set to ${select.options[select.selectedIndex].text}`);
+                runLint();
+            }
+        };
+
+        // --- TITLE CASE CONVERTER ---
+        window.applyTitleCase = async function() {
+            if (!linter) return;
+            const textarea = document.getElementById('editor-textarea');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+
+            // If text is selected, convert selection; otherwise convert entire text
+            if (start !== end) {
+                const selected = text.substring(start, end);
+                const titleCased = await linter.toTitleCase(selected);
+                textarea.value = text.slice(0, start) + titleCased + text.slice(end);
+                textarea.setSelectionRange(start, start + titleCased.length);
+                showToast("Selection converted to Title Case!");
+            } else {
+                const titleCased = await linter.toTitleCase(text);
+                textarea.value = titleCased;
+                showToast("Text converted to Title Case!");
+            }
+            runLint();
+        };
+
+        // --- SAMPLE TEXT LOADER ---
+        window.loadSampleText = function(key) {
+            if (!SAMPLE_TEXTS[key]) return;
+            const textarea = document.getElementById('editor-textarea');
+            textarea.value = SAMPLE_TEXTS[key];
+            ignoredContextHashes.clear();
+            showToast(`Loaded ${key} sample text`);
+            triggerLint();
+            document.getElementById('sample-select').value = "";
+        };
+
+        // --- FILE IMPORT / EXPORT / CLIPBOARD ---
+        window.handleFileUpload = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const textarea = document.getElementById('editor-textarea');
+                textarea.value = event.target.result;
+                ignoredContextHashes.clear();
+                showToast(`Loaded file: ${file.name}`);
+                triggerLint();
+            };
+            reader.readAsText(file);
+            e.target.value = '';
+        };
+
+        window.downloadText = function() {
+            const text = document.getElementById('editor-textarea').value;
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'corrected_document.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast("Document downloaded!");
+        };
+
+        window.copyText = function() {
+            const text = document.getElementById('editor-textarea').value;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast("Copied text to clipboard!");
+            }).catch(() => {
+                showToast("Failed to copy text.");
+            });
+        };
+
+        window.clearText = function() {
+            if (confirm("Clear editor contents?")) {
+                document.getElementById('editor-textarea').value = '';
+                ignoredContextHashes.clear();
+                triggerLint();
+                showToast("Editor cleared");
+            }
+        };
+
+        // --- PERSONAL DICTIONARY MANAGEMENT ---
+        function loadSavedDictionary() {
+            try {
+                const saved = localStorage.getItem('harper_custom_words');
+                if (saved) {
+                    customWords = JSON.parse(saved);
+                }
+            } catch (e) {
+                customWords = [];
+            }
+        }
+
+        function saveDictionary() {
+            try {
+                localStorage.setItem('harper_custom_words', JSON.stringify(customWords));
+            } catch (e) {}
+        }
+
+        window.addWordToDictionary = async function(word) {
+            const clean = word.trim();
+            if (!clean) return;
+
+            if (!customWords.includes(clean)) {
+                customWords.push(clean);
+                saveDictionary();
+                if (linter && linter.importWords) {
+                    await linter.importWords([clean]);
+                }
+                showToast(`Added "${clean}" to dictionary`);
+                runLint();
+            }
+        };
+
+        window.openDictionaryModal = function() {
+            renderDictionaryList();
+            document.getElementById('dictionary-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => document.getElementById('new-word-input').focus(), 100);
+        };
+
+        window.closeDictionaryModal = function(e) {
+            if (!e || e.target === document.getElementById('dictionary-modal') || e.target.classList.contains('modal-close-btn') || e.target.tagName === 'BUTTON') {
+                document.getElementById('dictionary-modal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        };
+
+        function renderDictionaryList() {
+            const listEl = document.getElementById('dict-words-list');
+            const countEl = document.getElementById('dict-count');
+            countEl.textContent = customWords.length;
+
+            if (customWords.length === 0) {
+                listEl.innerHTML = '<span style="color:#888; font-size:12px;">No custom words saved yet.</span>';
+                return;
+            }
+
+            let html = '';
+            customWords.forEach((word, idx) => {
+                html += `
+                    <div class="word-chip">
+                        <span>${escapeHtml(word)}</span>
+                        <span class="word-chip-remove" onclick="removeWordFromDictionary(${idx})">&times;</span>
+                    </div>
+                `;
+            });
+            listEl.innerHTML = html;
+        }
+
+        window.addWordFromModal = async function() {
+            const input = document.getElementById('new-word-input');
+            const val = input.value.trim();
+            if (!val) return;
+
+            await addWordToDictionary(val);
+            input.value = '';
+            renderDictionaryList();
+        };
+
+        window.removeWordFromDictionary = async function(idx) {
+            const removed = customWords.splice(idx, 1)[0];
+            saveDictionary();
+            renderDictionaryList();
+
+            // Re-sync with linter
+            if (linter && linter.clearWords) {
+                await linter.clearWords();
+                if (customWords.length > 0) {
+                    await linter.importWords(customWords);
+                }
+            }
+            showToast(`Removed "${removed}"`);
+            runLint();
+        };
+
+        window.clearDictionary = async function() {
+            if (confirm("Clear all custom dictionary words?")) {
+                customWords = [];
+                saveDictionary();
+                if (linter && linter.clearWords) {
+                    await linter.clearWords();
+                }
+                renderDictionaryList();
+                showToast("Dictionary cleared");
+                runLint();
+            }
+        };
+
+        window.exportDictionary = function() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(customWords, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", "harper_dictionary.json");
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            document.body.removeChild(dlAnchor);
+        };
+
+        // --- EDITOR EVENTS & SYNC ---
+        function setupScrollSync() {
+            const textarea = document.getElementById('editor-textarea');
+            const backdrop = document.getElementById('editor-backdrop');
+
+            textarea.addEventListener('scroll', () => {
+                backdrop.scrollTop = textarea.scrollTop;
+                backdrop.scrollLeft = textarea.scrollLeft;
+            });
+        }
+
+        function setupEditorEvents() {
+            const textarea = document.getElementById('editor-textarea');
+            textarea.addEventListener('input', triggerLint);
+            textarea.addEventListener('paste', () => setTimeout(triggerLint, 50));
+        }
+
+        // --- UTILITIES ---
+        function escapeHtml(str) {
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function escapeJsString(str) {
+            return str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
