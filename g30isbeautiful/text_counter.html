@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G30 is Beautiful - Automatic Text Counter</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="g30-styles.css">
+    <style>
+        /* Text Counter Custom Styles */
+        .counter-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .counter-subtitle {
+            color: #555;
+            font-size: 16px;
+            max-width: 650px;
+            margin: 0 auto 20px auto;
+            line-height: 1.5;
+        }
+
+        /* Metric Cards Grid */
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e4e8;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .metric-label {
+            font-size: 13px;
+            font-weight: bold;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #00664a;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .metric-sub {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Text Input Area Card */
+        .editor-container {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e4e8;
+            margin-bottom: 25px;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .toolbar-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn {
+            background-color: #00664a;
+            color: #ffffff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background-color: #004231;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background-color: #e9ecef;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background-color: #dee2e6;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #bd2130;
+        }
+
+        .text-input-box {
+            width: 100%;
+            min-height: 220px;
+            padding: 16px;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #222;
+            border: 2px solid #ced4da;
+            border-radius: 6px;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .text-input-box:focus {
+            border-color: #00664a;
+            box-shadow: 0 0 0 3px rgba(0, 102, 74, 0.15);
+        }
+
+        .editor-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            color: #666;
+            font-size: 13px;
+            gap: 8px;
+        }
+
+        /* Secondary Analytics Grid */
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e4e8;
+        }
+
+        .info-card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #004231;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid #00664a;
+            padding-bottom: 8px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-value {
+            font-weight: bold;
+            color: #00664a;
+        }
+
+        /* SML Awards Banner */
+        .sml-banner {
+            background: linear-gradient(135deg, #004231 0%, #00664a 100%);
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(0, 66, 49, 0.2);
+        }
+
+        .sml-banner-text h4 {
+            margin: 0 0 6px 0;
+            font-size: 18px;
+        }
+
+        .sml-banner-text p {
+            margin: 0;
+            font-size: 14px;
+            color: #e0f2ec;
+        }
+
+        .sml-banner-btn {
+            background: #ffffff;
+            color: #004231;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+
+        .sml-banner-btn:hover {
+            background: #d4ede3;
+            color: #002e22;
+        }
+
+        /* Toast notification */
+        #toast {
+            visibility: hidden;
+            min-width: 220px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 12px 20px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .counter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .metric-value {
+                font-size: 28px;
+            }
+            .editor-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .toolbar-group {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="logo-container">
+            <img src="favicon.png" alt="G30 Logo" class="logo-image">
+            <div class="logo-text"> is beautiful.</div>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="https://dibbywang.itch.io/get-30-germans-at-my-establishment">Games</a>
+            <a href="https://tact.ac.thers.ac.jp/portal">TACT</a>
+            <a href="https://portal.nagoya-u.ac.jp/portal">Portal</a>
+            <a href="resources.html">Resources</a>
+            <a href="text_counter.html" class="active" style="background-color: rgba(255, 255, 255, 0.25);">Text Counter</a>
+        </div>
+        <div class="user-options">
+            <!-- Empty div for spacing -->
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="counter-header">
+            <h1 class="page-title" style="margin-bottom: 8px;">Automatic Text Counter</h1>
+            <p class="counter-subtitle">
+                Paste or type any text into the text bar below. Characters, words, sentences, and reading estimates will update automatically in real time.
+            </p>
+        </div>
+
+        <!-- Primary Live Metrics -->
+        <div class="counter-grid">
+            <div class="metric-card">
+                <div class="metric-label">Characters</div>
+                <div class="metric-value" id="char-count">0</div>
+                <div class="metric-sub">With spaces & punctuation</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Chars (No Spaces)</div>
+                <div class="metric-value" id="char-nospace-count">0</div>
+                <div class="metric-sub">Pure text characters</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Words</div>
+                <div class="metric-value" id="word-count">0</div>
+                <div class="metric-sub">Whitespace separated</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Sentences</div>
+                <div class="metric-value" id="sentence-count">0</div>
+                <div class="metric-sub">Punctuation delimited</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Paragraphs</div>
+                <div class="metric-value" id="paragraph-count">0</div>
+                <div class="metric-sub">Blocks of text</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Lines</div>
+                <div class="metric-value" id="line-count">0</div>
+                <div class="metric-sub">Line breaks count</div>
+            </div>
+        </div>
+
+        <!-- Text Input Card -->
+        <div class="editor-container">
+            <div class="editor-toolbar">
+                <div class="toolbar-group">
+                    <button class="btn" onclick="pasteFromClipboard()" title="Paste text from clipboard">
+                        📋 Paste
+                    </button>
+                    <button class="btn btn-secondary" onclick="copyToClipboard()" title="Copy text to clipboard">
+                        📑 Copy
+                    </button>
+                    <button class="btn btn-secondary" onclick="insertSampleText()" title="Insert sample text">
+                        📄 Sample Text
+                    </button>
+                    <button class="btn btn-danger" onclick="clearText()" title="Clear all text">
+                        🗑️ Clear
+                    </button>
+                </div>
+                <div class="toolbar-group">
+                    <button class="btn btn-secondary" onclick="transformCase('upper')" title="Convert to uppercase">
+                        UPPER
+                    </button>
+                    <button class="btn btn-secondary" onclick="transformCase('lower')" title="Convert to lowercase">
+                        lower
+                    </button>
+                    <button class="btn btn-secondary" onclick="transformCase('title')" title="Convert to Title Case">
+                        Title Case
+                    </button>
+                    <button class="btn btn-secondary" onclick="trimWhitespace()" title="Remove redundant spaces">
+                        Clean Spaces
+                    </button>
+                </div>
+            </div>
+
+            <!-- The Automatic Counting Text Bar -->
+            <textarea 
+                id="text-input" 
+                class="text-input-box" 
+                placeholder="Paste or type your text here to automatically count characters and words..."
+                autofocus
+            ></textarea>
+
+            <div class="editor-footer">
+                <span id="typing-status">Ready. Paste or start typing to count automatically.</span>
+                <span id="char-density" style="color: #00664a; font-weight: bold;"></span>
+            </div>
+        </div>
+
+        <!-- Detailed Analytics & SML Integration -->
+        <div class="analytics-grid">
+            <div class="info-card">
+                <h3 class="info-card-title">⏱️ Reading & Speaking Estimates</h3>
+                <div class="info-row">
+                    <span>Estimated Reading Time:</span>
+                    <span class="info-value" id="reading-time">0 sec</span>
+                </div>
+                <div class="info-row">
+                    <span>Estimated Speaking Time:</span>
+                    <span class="info-value" id="speaking-time">0 sec</span>
+                </div>
+                <div class="info-row">
+                    <span>Average Word Length:</span>
+                    <span class="info-value" id="avg-word-len">0 chars</span>
+                </div>
+                <div class="info-row">
+                    <span>Longest Word:</span>
+                    <span class="info-value" id="longest-word" style="max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">-</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3 class="info-card-title">🎯 SML Title Length Checker</h3>
+                <div class="info-row">
+                    <span>Title Character Count:</span>
+                    <span class="info-value" id="sml-char-count">0 chars</span>
+                </div>
+                <div class="info-row">
+                    <span>SML All-Time Shortest Record:</span>
+                    <span class="info-value" style="color: #d97706;">6 chars ("470/19")</span>
+                </div>
+                <div class="info-row">
+                    <span>SML All-Time Longest Record:</span>
+                    <span class="info-value" style="color: #2563eb;">132 chars ("Liénard's Theorem...")</span>
+                </div>
+                <div class="info-row">
+                    <span>Current Title Status:</span>
+                    <span class="info-value" id="sml-status">Waiting for text...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner connecting to SML Awards -->
+        <div class="sml-banner">
+            <div class="sml-banner-text">
+                <h4>Looking for SML Paper Awards & Title Records?</h4>
+                <p>Explore the full leaderboard of shortest and longest title winners across Nagoya University SML seminars.</p>
+            </div>
+            <a href="sml_awards.html" class="sml-banner-btn">View SML Awards &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast">Copied to clipboard!</div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const inputEl = document.getElementById('text-input');
+        const charCountEl = document.getElementById('char-count');
+        const charNoSpaceEl = document.getElementById('char-nospace-count');
+        const wordCountEl = document.getElementById('word-count');
+        const sentenceCountEl = document.getElementById('sentence-count');
+        const paragraphCountEl = document.getElementById('paragraph-count');
+        const lineCountEl = document.getElementById('line-count');
+        const readingTimeEl = document.getElementById('reading-time');
+        const speakingTimeEl = document.getElementById('speaking-time');
+        const avgWordLenEl = document.getElementById('avg-word-len');
+        const longestWordEl = document.getElementById('longest-word');
+        const smlCharCountEl = document.getElementById('sml-char-count');
+        const smlStatusEl = document.getElementById('sml-status');
+        const charDensityEl = document.getElementById('char-density');
+        const typingStatusEl = document.getElementById('typing-status');
+
+        // Automatic counting function
+        function updateCounts() {
+            const text = inputEl.value;
+
+            // Total Characters (Unicode safe)
+            const charsTotal = Array.from(text).length;
+            charCountEl.textContent = charsTotal.toLocaleString();
+            smlCharCountEl.textContent = `${charsTotal} char${charsTotal === 1 ? '' : 's'}`;
+
+            // Characters without whitespace
+            const charsNoSpace = Array.from(text.replace(/\s/g, '')).length;
+            charNoSpaceEl.textContent = charsNoSpace.toLocaleString();
+
+            // Words
+            const trimmed = text.trim();
+            const wordsArray = trimmed.length === 0 ? [] : trimmed.split(/\s+/);
+            const wordCount = wordsArray.length;
+            wordCountEl.textContent = wordCount.toLocaleString();
+
+            // Sentences
+            let sentenceCount = 0;
+            if (trimmed.length > 0) {
+                const sentenceMatches = text.match(/[^.!?\n]+[.!?]+(\s|$)/g);
+                if (sentenceMatches) {
+                    sentenceCount = sentenceMatches.length;
+                } else {
+                    sentenceCount = 1;
+                }
+            }
+            sentenceCountEl.textContent = sentenceCount.toLocaleString();
+
+            // Paragraphs (non-empty blocks)
+            const paragraphs = trimmed.length === 0 
+                ? 0 
+                : text.split(/\n+/).map(p => p.trim()).filter(p => p.length > 0).length;
+            paragraphCountEl.textContent = paragraphs.toLocaleString();
+
+            // Lines
+            const lines = text.length === 0 ? 0 : text.split('\n').length;
+            lineCountEl.textContent = lines.toLocaleString();
+
+            // Estimated reading time (~200 words per minute)
+            const readSeconds = Math.ceil((wordCount / 200) * 60);
+            if (wordCount === 0) {
+                readingTimeEl.textContent = '0 sec';
+            } else if (readSeconds < 60) {
+                readingTimeEl.textContent = `${readSeconds} sec`;
+            } else {
+                const m = Math.floor(readSeconds / 60);
+                const s = readSeconds % 60;
+                readingTimeEl.textContent = `${m} min${s > 0 ? ` ${s} sec` : ''}`;
+            }
+
+            // Estimated speaking time (~130 words per minute)
+            const speakSeconds = Math.ceil((wordCount / 130) * 60);
+            if (wordCount === 0) {
+                speakingTimeEl.textContent = '0 sec';
+            } else if (speakSeconds < 60) {
+                speakingTimeEl.textContent = `${speakSeconds} sec`;
+            } else {
+                const m = Math.floor(speakSeconds / 60);
+                const s = speakSeconds % 60;
+                speakingTimeEl.textContent = `${m} min${s > 0 ? ` ${s} sec` : ''}`;
+            }
+
+            // Average word length & longest word
+            if (wordCount === 0) {
+                avgWordLenEl.textContent = '0 chars';
+                longestWordEl.textContent = '-';
+                longestWordEl.title = '';
+                charDensityEl.textContent = '';
+                typingStatusEl.textContent = 'Ready. Paste or start typing to count automatically.';
+                smlStatusEl.textContent = 'Waiting for text...';
+                smlStatusEl.style.color = '#888';
+            } else {
+                const cleanWords = wordsArray.map(w => w.replace(/^[^\w\u00C0-\u024F]+|[^\w\u00C0-\u024F]+$/g, '')).filter(w => w.length > 0);
+                if (cleanWords.length > 0) {
+                    const totalCharsInWords = cleanWords.reduce((sum, w) => sum + w.length, 0);
+                    const avgLen = (totalCharsInWords / cleanWords.length).toFixed(1);
+                    avgWordLenEl.textContent = `${avgLen} chars`;
+
+                    const longest = cleanWords.reduce((max, w) => w.length > max.length ? w : max, '');
+                    longestWordEl.textContent = longest;
+                    longestWordEl.title = longest;
+                } else {
+                    avgWordLenEl.textContent = '0 chars';
+                    longestWordEl.textContent = '-';
+                }
+
+                // SML Title length status
+                if (charsTotal <= 6) {
+                    smlStatusEl.textContent = '🏆 Ties/Breaks Shortest SML Title Record!';
+                    smlStatusEl.style.color = '#00664a';
+                } else if (charsTotal <= 15) {
+                    smlStatusEl.textContent = '🤏 Very Short Title (Hall of Fame range)';
+                    smlStatusEl.style.color = '#00664a';
+                } else if (charsTotal >= 132) {
+                    smlStatusEl.textContent = '👑 Ties/Breaks Longest SML Title Record!';
+                    smlStatusEl.style.color = '#2563eb';
+                } else if (charsTotal >= 90) {
+                    smlStatusEl.textContent = '📜 Very Long Title (Hall of Fame range)';
+                    smlStatusEl.style.color = '#2563eb';
+                } else {
+                    smlStatusEl.textContent = 'Standard Length Title';
+                    smlStatusEl.style.color = '#555';
+                }
+
+                charDensityEl.textContent = `${wordCount} words • ${charsTotal} characters`;
+                typingStatusEl.textContent = `Auto-counted ${charsTotal} characters in real time.`;
+            }
+        }
+
+        // Real-time Event Listeners
+        inputEl.addEventListener('input', updateCounts);
+        inputEl.addEventListener('paste', () => {
+            setTimeout(updateCounts, 10);
+            showToast('Pasted & counted automatically!');
+        });
+        inputEl.addEventListener('keyup', updateCounts);
+        inputEl.addEventListener('change', updateCounts);
+
+        // Toolbar Actions
+        async function pasteFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                inputEl.value = text;
+                updateCounts();
+                inputEl.focus();
+                showToast('Pasted from clipboard!');
+            } catch (err) {
+                inputEl.focus();
+                showToast('Please press Ctrl+V (or Cmd+V) to paste');
+            }
+        }
+
+        function copyToClipboard() {
+            if (!inputEl.value) {
+                showToast('Nothing to copy!');
+                return;
+            }
+            navigator.clipboard.writeText(inputEl.value).then(() => {
+                showToast('Text copied to clipboard!');
+            }).catch(() => {
+                inputEl.select();
+                document.execCommand('copy');
+                showToast('Text copied to clipboard!');
+            });
+        }
+
+        function clearText() {
+            if (!inputEl.value) return;
+            inputEl.value = '';
+            updateCounts();
+            inputEl.focus();
+            showToast('Text cleared!');
+        }
+
+        function insertSampleText() {
+            inputEl.value = "Bijective relations between spectral measures, spectral families, self-adjoint operators, and strongly continuous unitary groups.\n\nThis paper explores functional analysis in mathematical physics with precise spectral theorems and linear representations.";
+            updateCounts();
+            inputEl.focus();
+            showToast('Sample text inserted!');
+        }
+
+        function transformCase(mode) {
+            const text = inputEl.value;
+            if (!text) return;
+
+            if (mode === 'upper') {
+                inputEl.value = text.toUpperCase();
+            } else if (mode === 'lower') {
+                inputEl.value = text.toLowerCase();
+            } else if (mode === 'title') {
+                inputEl.value = text.replace(/\b\w+/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+            }
+            updateCounts();
+            showToast(`Converted to ${mode} case!`);
+        }
+
+        function trimWhitespace() {
+            const text = inputEl.value;
+            if (!text) return;
+            inputEl.value = text.replace(/[ \t]+/g, ' ').replace(/\n\s*\n/g, '\n\n').trim();
+            updateCounts();
+            showToast('Extra spaces cleaned!');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Initialize counts on page load
+        updateCounts();
+    </script>
+</body>
+</html>
